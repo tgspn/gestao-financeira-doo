@@ -53,13 +53,11 @@ jobs:
     runs-on:
       windows-latest # For a list of available runner types, refer to
       # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
-    env:
-      working-directory: ./GestaoFinanceira
 
     env:
       Solution_Name: GestaoFinanceira.sln # Replace with your solution name, i.e. MyWpfApp.sln.
       Test_Project_Path: GestaoFinanceiraTests\GestaoFinanceiraTests.csproj # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
-
+      working-directory: ./GestaoFinanceira
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -79,12 +77,11 @@ jobs:
       # Execute all unit tests in the solution
       - name: Execute unit tests
         run: dotnet test
-        working-directory: ${{env.working-directory}}
+        working-directory: ${{ env.working-directory }}
 
       # Restore the application to populate the obj folder with RuntimeIdentifiers
       - name: Restore the application
         run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
-        working-directory: ${{env.working-directory}}
+        working-directory: ${{ env.working-directory }}
         env:
           Configuration: ${{ matrix.configuration }}
-
