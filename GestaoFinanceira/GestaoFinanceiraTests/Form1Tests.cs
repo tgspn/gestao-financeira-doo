@@ -14,7 +14,8 @@ namespace GestaoFinanceira.Tests
         [TestMethod()]
         public void Form1Test()
         {
-            Assert.Inconclusive();
+            //var result = função.soma(1,1);
+            Assert.Equals(2);
         }
     }
 }
