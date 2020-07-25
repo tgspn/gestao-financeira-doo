@@ -1,4 +1,4 @@
-﻿namespace GestaoFinanceira
+namespace GestaoFinanceira
 {
     partial class Form1
     {
@@ -20,6 +20,7 @@
             base.Dispose(disposing);
         }
 
+        //teste commite
         #region Windows Form Designer generated code
 
         /// <summary>
