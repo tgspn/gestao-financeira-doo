@@ -20,6 +20,8 @@
             base.Dispose(disposing);
         }
 
+
+        //Isto ira dar conflito
         #region Windows Form Designer generated code
 
         /// <summary>
