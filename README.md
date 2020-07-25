@@ -4,5 +4,3 @@
 [![Build Status](https://dev.azure.com/tiagospana/gestao-financeira-doo/_apis/build/status/tgspn.gestao-financeira-doo?branchName=master)](https://dev.azure.com/tiagospana/gestao-financeira-doo/_build/latest?definitionId=1&branchName=master)
 
 Este é um projeto para gestão financeira pessoal
-
-teste de comit
