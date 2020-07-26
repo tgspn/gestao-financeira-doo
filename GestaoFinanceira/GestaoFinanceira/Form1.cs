@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace GestaoFinanceira
 {
-    public partial class Form1 : Form
+    public partial class frm_DashBoard : Form
     {
-        public Form1()
+        public frm_DashBoard()
         {
             InitializeComponent();
+        }
+
+        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
