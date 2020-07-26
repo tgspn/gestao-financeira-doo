@@ -1,6 +1,6 @@
 ﻿namespace GestaoFinanceira.Views
 {
-    partial class frm_MothCalendar
+    partial class FrmMothCalendar
     {
         /// <summary>
         /// Required designer variable.

@@ -26,8 +26,18 @@ namespace GestaoFinanceira
 
         private void lb_MesAtual_Click(object sender, EventArgs e)
         {
-            Form form = new frm_MothCalendar();
+            Form form = new FrmMothCalendar();
             form.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

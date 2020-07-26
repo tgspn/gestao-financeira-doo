@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace GestaoFinanceira.Views
 {
-    public partial class frm_MothCalendar : Form
+    public partial class FrmMothCalendar : Form
     {
-        public frm_MothCalendar()
+        public FrmMothCalendar()
         {
             InitializeComponent();
         }
