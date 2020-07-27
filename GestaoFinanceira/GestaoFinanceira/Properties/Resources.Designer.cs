@@ -63,16 +63,6 @@ namespace GestaoFinanceira.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap BankAccount {
-            get {
-                object obj = ResourceManager.GetObject("BankAccount", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap barraAno {
             get {
                 object obj = ResourceManager.GetObject("barraAno", resourceCulture);
@@ -93,19 +83,9 @@ namespace GestaoFinanceira.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap CreditCard {
+        internal static System.Drawing.Bitmap icons8_bank_40px_3 {
             get {
-                object obj = ResourceManager.GetObject("CreditCard", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap down {
-            get {
-                object obj = ResourceManager.GetObject("down", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_bank_40px_3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +113,9 @@ namespace GestaoFinanceira.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_plus_30px {
+        internal static System.Drawing.Bitmap icons8_credit_control_40px_1 {
             get {
-                object obj = ResourceManager.GetObject("icons8_plus_30px", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_credit_control_40px_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +123,39 @@ namespace GestaoFinanceira.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap up {
+        internal static System.Drawing.Bitmap icons8_down_arrow_30px {
             get {
-                object obj = ResourceManager.GetObject("up", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_down_arrow_30px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_down_button_20px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_down_button_20px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_plus_30px_1 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_plus_30px_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_up_30px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_up_30px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
