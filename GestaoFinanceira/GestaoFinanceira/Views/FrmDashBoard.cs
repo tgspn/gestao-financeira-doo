@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace GestaoFinanceira
 {
-    public partial class frm_DashBoard : Form
+    public partial class FrmDashBoard : Form
     {
-        public frm_DashBoard()
+        public FrmDashBoard()
         {
             InitializeComponent();
 

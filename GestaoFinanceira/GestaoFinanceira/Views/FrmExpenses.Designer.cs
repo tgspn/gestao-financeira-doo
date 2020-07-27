@@ -1,6 +1,6 @@
 ﻿namespace GestaoFinanceira
 {
-    partial class frm_Expenses
+    partial class FrmExpenses
     {
         /// <summary>
         /// Required designer variable.

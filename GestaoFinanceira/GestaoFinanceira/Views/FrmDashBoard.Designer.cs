@@ -1,6 +1,6 @@
 namespace GestaoFinanceira
 {
-    partial class frm_DashBoard
+    partial class FrmDashBoard
     {
         /// <summary>
         /// Required designer variable.
