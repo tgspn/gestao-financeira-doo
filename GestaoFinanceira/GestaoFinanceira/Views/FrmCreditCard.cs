@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace GestaoFinanceira.Views
 {
-    public partial class FrmRevenue : Form
+    public partial class FrmCreditCard : Form
     {
-        public FrmRevenue()
+        public FrmCreditCard()
         {
             InitializeComponent();
         }

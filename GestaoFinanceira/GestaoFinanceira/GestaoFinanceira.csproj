@@ -48,17 +48,46 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmBankAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmBankAccount.Designer.cs">
+      <DependentUpon>FrmBankAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmCategories.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmCategories.Designer.cs">
+      <DependentUpon>FrmCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmCreditCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmCreditCard.Designer.cs">
+      <DependentUpon>FrmCreditCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FrmDashBoard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\FrmDashBoard.Designer.cs">
       <DependentUpon>FrmDashBoard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FrmExpenses.cs">
+    <Compile Include="Views\FrmEntries.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FrmExpenses.Designer.cs">
-      <DependentUpon>FrmExpenses.cs</DependentUpon>
+    <Compile Include="Views\FrmEntries.Designer.cs">
+      <DependentUpon>FrmEntries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmExpense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmExpense.Designer.cs">
+      <DependentUpon>FrmExpense.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\FrmMothCalendar.cs">
       <SubType>Form</SubType>
@@ -66,36 +95,31 @@
     <Compile Include="Views\FrmMothCalendar.Designer.cs">
       <DependentUpon>FrmMothCalendar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\FrmReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmReport.Designer.cs">
+      <DependentUpon>FrmReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\FrmRevenue.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\FrmRevenue.Designer.cs">
       <DependentUpon>FrmRevenue.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Views\FrmDashBoard.resx">
       <DependentUpon>FrmDashBoard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\FrmExpenses.resx">
-      <DependentUpon>FrmExpenses.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmMothCalendar.resx">
       <DependentUpon>FrmMothCalendar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\FrmRevenue.resx">
-      <DependentUpon>FrmRevenue.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -110,22 +134,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\up.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\down.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\close.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BankAccount.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CreditCard.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8_plus_30px.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\barraAno.png" />
@@ -135,6 +144,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8_chevron_right_20px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_up_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_down_arrow_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_bank_40px_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_credit_control_40px_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_plus_30px_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_down_button_20px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
