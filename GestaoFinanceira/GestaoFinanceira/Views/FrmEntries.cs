@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GestaoFinanceira
+namespace GestaoFinanceira.Views
 {
-    public partial class FrmExpenses : Form
+    public partial class FrmEntries : Form
     {
-        public FrmExpenses()
+        public FrmEntries()
         {
             InitializeComponent();
         }

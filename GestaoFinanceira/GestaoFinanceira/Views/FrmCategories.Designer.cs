@@ -1,6 +1,6 @@
-﻿namespace GestaoFinanceira
+﻿namespace GestaoFinanceira.Views
 {
-    partial class FrmExpenses
+    partial class FrmCategories
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,14 @@
         {
             this.SuspendLayout();
             // 
-            // frm_Expenses
+            // FrmCategories
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(433, 450);
-            this.Name = "frm_Expenses";
-            this.Text = "frm_Expenses";
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Name = "FrmCategories";
+            this.Text = "FrmCategories";
             this.ResumeLayout(false);
 
         }
