@@ -17,6 +17,27 @@ namespace GestaoFinanceira
         {
             InitializeComponent();
 
+            this.ctCategories.Series["Categories"].Points.Add(0);
+            this.ctCategories.Series["Categories"].Points[0].LegendText = "Categoria A";
+            this.ctCategories.Series["Categories"].Points[0].SetValueXY(10, 10);
+            this.ctCategories.Series["Categories"].Points[0].Label = "10%";
+            this.ctCategories.Series["Categories"].Points.Add(1);
+            this.ctCategories.Series["Categories"].Points[1].LegendText = "Categoria B";
+            this.ctCategories.Series["Categories"].Points[1].SetValueXY(15, 15);
+            this.ctCategories.Series["Categories"].Points[1].Label = "15%";
+            this.ctCategories.Series["Categories"].Points.Add(3);
+            this.ctCategories.Series["Categories"].Points[2].LegendText = "Categoria C";
+            this.ctCategories.Series["Categories"].Points[2].SetValueXY(30, 30);
+            this.ctCategories.Series["Categories"].Points[2].Label = "35%";
+            this.ctCategories.Series["Categories"].Points.Add(4);
+            this.ctCategories.Series["Categories"].Points[3].LegendText = "Categoria D";
+            this.ctCategories.Series["Categories"].Points[3].SetValueXY(5, 5);
+            this.ctCategories.Series["Categories"].Points[3].Label = "5%";
+            this.ctCategories.Series["Categories"].Points.Add(5);
+            this.ctCategories.Series["Categories"].Points[4].LegendText = "Categoria E";
+            this.ctCategories.Series["Categories"].Points[4].SetValueXY(35, 35);
+            this.ctCategories.Series["Categories"].Points[4].Label = "35%";
+
             this.ctBank.Series["Bank"].Points.Add(0);
             this.ctBank.Series["Bank"].Points[0].LegendText = "Banco A";
             this.ctBank.Series["Bank"].Points[0].SetValueXY(15, 15);
@@ -49,8 +70,10 @@ namespace GestaoFinanceira
 
         private void btnOpenCalendar_Click(object sender, EventArgs e)
         {
-            Form form = new FrmMothCalendar();
-            form.Show();
+            FrmMothCalendar form = new FrmMothCalendar();
+            form.ShowDialog();
+            if (form.Moth != null)
+                this.lb_MesAtual.Text = form.Moth;
         }
 
         private void btnOpenBank_Click(object sender, EventArgs e)
@@ -80,6 +103,18 @@ namespace GestaoFinanceira
         private void btnOpenRevenue_Click(object sender, EventArgs e)
         {
             Form form = new FrmRevenue();
+            form.Show();
+        }
+
+        private void ctCategories_Click(object sender, EventArgs e)
+        {
+            Form form = new FrmCategories();
+            form.Show();
+        }
+
+        private void gerarRelatórioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form form = new FrmReport();
             form.Show();
         }
     }

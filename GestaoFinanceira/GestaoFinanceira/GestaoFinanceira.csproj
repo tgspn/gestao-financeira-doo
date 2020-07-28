@@ -109,8 +109,23 @@
     <Compile Include="Views\FrmRevenue.Designer.cs">
       <DependentUpon>FrmRevenue.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\FrmBankAccount.resx">
+      <DependentUpon>FrmBankAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmCategories.resx">
+      <DependentUpon>FrmCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmCreditCard.resx">
+      <DependentUpon>FrmCreditCard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmDashBoard.resx">
       <DependentUpon>FrmDashBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmEntries.resx">
+      <DependentUpon>FrmEntries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmExpense.resx">
+      <DependentUpon>FrmExpense.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmMothCalendar.resx">
       <DependentUpon>FrmMothCalendar.cs</DependentUpon>
@@ -119,6 +134,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmReport.resx">
+      <DependentUpon>FrmReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmRevenue.resx">
+      <DependentUpon>FrmRevenue.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
