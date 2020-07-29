@@ -10,7 +10,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestaoFinanceira
-{
+{   
+    //Cores utilizadas no projeto 
+    //verde R79 G230 B0
+    //Vermelho R255
+    //Azul R25 G25 B225
     public partial class FrmDashBoard : Form
     {
         public FrmDashBoard()
