@@ -249,6 +249,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.pnBanner);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FrmEntryExpenses";
             this.Text = "Despesas";
             this.pnBanner.ResumeLayout(false);
