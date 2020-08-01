@@ -16,7 +16,6 @@ namespace GestaoFinanceira
         public FrmDashBoard()
         {
             InitializeComponent();
-
             this.ctCategories.Series["Categories"].Points.Add(0);
             this.ctCategories.Series["Categories"].Points[0].LegendText = "Categoria A";
             this.ctCategories.Series["Categories"].Points[0].SetValueXY(10, 10);

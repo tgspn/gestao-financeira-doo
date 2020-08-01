@@ -16,5 +16,19 @@ namespace GestaoFinanceira.Views
         {
             InitializeComponent();
         }
+
+        private void btnRevenue_Click(object sender, EventArgs e)
+        {
+            FrmRevenue form = new FrmRevenue();
+            form.Show();
+            this.Close();
+        }
+
+        private void btnExpense_Click(object sender, EventArgs e)
+        {
+            FrmExpense form = new FrmExpense();
+            form.Show();
+            this.Close();
+        }
     }
 }

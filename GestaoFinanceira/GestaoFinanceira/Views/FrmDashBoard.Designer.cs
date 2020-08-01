@@ -163,7 +163,7 @@ namespace GestaoFinanceira
             // gerarRelatórioToolStripMenuItem
             // 
             this.gerarRelatórioToolStripMenuItem.Name = "gerarRelatórioToolStripMenuItem";
-            this.gerarRelatórioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gerarRelatórioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.gerarRelatórioToolStripMenuItem.Text = "Gerar Relatório";
             this.gerarRelatórioToolStripMenuItem.Click += new System.EventHandler(this.gerarRelatórioToolStripMenuItem_Click);
             // 
@@ -320,6 +320,7 @@ namespace GestaoFinanceira
             this.btnOpenEntries.Name = "btnOpenEntries";
             this.btnOpenEntries.Size = new System.Drawing.Size(42, 42);
             this.btnOpenEntries.TabIndex = 5;
+            this.btnOpenEntries.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnOpenEntries.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnOpenEntries.UseVisualStyleBackColor = true;
             this.btnOpenEntries.Click += new System.EventHandler(this.btnOpenEntries_Click);
@@ -541,6 +542,7 @@ namespace GestaoFinanceira
             this.Controls.Add(this.btnOpenExpense);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmDashBoard";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestão Financeira";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

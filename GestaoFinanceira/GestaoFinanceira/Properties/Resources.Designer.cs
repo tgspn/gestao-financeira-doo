@@ -93,6 +93,16 @@ namespace GestaoFinanceira.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_checkmark_30px_2 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_checkmark_30px_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_chevron_left_20px {
             get {
                 object obj = ResourceManager.GetObject("icons8_chevron_left_20px", resourceCulture);
@@ -123,6 +133,16 @@ namespace GestaoFinanceira.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_delete_30px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_delete_30px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_down_arrow_30px {
             get {
                 object obj = ResourceManager.GetObject("icons8_down_arrow_30px", resourceCulture);
@@ -146,6 +166,16 @@ namespace GestaoFinanceira.Properties {
         internal static System.Drawing.Bitmap icons8_plus_30px_1 {
             get {
                 object obj = ResourceManager.GetObject("icons8_plus_30px_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_plus_math_15px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_plus_math_15px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
