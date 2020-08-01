@@ -1,10 +1,12 @@
-﻿using GestaoFinanceira.Views;
+﻿using GestaoFinanceira.Enums;
+using GestaoFinanceira.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -107,13 +109,49 @@ namespace GestaoFinanceira
 
         private void ctCategories_Click(object sender, EventArgs e)
         {
-            Form form = new FrmCategories();
+            Form form = new FrmListCategories ();
             form.Show();
         }
 
         private void gerarRelatórioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form form = new FrmReport();
+            form.Show();
+        }
+
+        private void despesaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmEntryExpenses form = new FrmEntryExpenses(EntryType.Expense);
+            form.Show();
+        }
+
+        private void receitaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmEntryExpenses form = new FrmEntryExpenses(EntryType.Revenue);
+            form.Show();
+        }
+
+        private void exportarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form form = new FrmReport();
+            form.Show();
+        }
+
+        private void sairToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+
+        private void categoriaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form form = new FrmCategories();
+            form.Show();
+        }
+
+        private void versãoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form form = new FrmAbout();
             form.Show();
         }
     }

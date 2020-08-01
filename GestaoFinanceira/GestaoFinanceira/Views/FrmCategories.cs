@@ -16,6 +16,7 @@ namespace GestaoFinanceira.Views
         {
             InitializeComponent();
             btnSave.Enabled = false;
+            panel1.BackColor = SystemColors.BLUE;
         }
 
         private void HabilitSave()
@@ -28,7 +29,7 @@ namespace GestaoFinanceira.Views
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            if (txtCategoria.Text != "" || txtSubCategoria.Text != "")
+            if (txtCategoria.Text != "")
             {
                 if (MessageBox.Show("Tem certeza que quer fechar ?", "Confirmação de fechamento", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     this.Close();
@@ -41,6 +42,12 @@ namespace GestaoFinanceira.Views
         private void txtCategoria_TextChanged(object sender, EventArgs e)
         {
             HabilitSave();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Categorias salvas com sucesso!", "" , MessageBoxButtons.OK) == DialogResult.OK)
+                this.Close();
         }
     }
 }
