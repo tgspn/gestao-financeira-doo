@@ -32,15 +32,16 @@ namespace GestaoFinanceira
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDashBoard));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -65,18 +66,18 @@ namespace GestaoFinanceira
             this.btnOpenExpense = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.lbEconomia = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
+            this.btnContaA = new System.Windows.Forms.Button();
+            this.btnContaB = new System.Windows.Forms.Button();
+            this.btnContaC = new System.Windows.Forms.Button();
+            this.btnContaD = new System.Windows.Forms.Button();
+            this.btnCondaE = new System.Windows.Forms.Button();
+            this.btnContaF = new System.Windows.Forms.Button();
+            this.btnCartaoA = new System.Windows.Forms.Button();
+            this.btnCartaoB = new System.Windows.Forms.Button();
+            this.btnCartaoC = new System.Windows.Forms.Button();
+            this.btnCartaoD = new System.Windows.Forms.Button();
+            this.btnCartaoE = new System.Windows.Forms.Button();
+            this.btnCartaoF = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ctBank)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctCreditCard)).BeginInit();
@@ -163,7 +164,7 @@ namespace GestaoFinanceira
             // gerarRelatórioToolStripMenuItem
             // 
             this.gerarRelatórioToolStripMenuItem.Name = "gerarRelatórioToolStripMenuItem";
-            this.gerarRelatórioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gerarRelatórioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.gerarRelatórioToolStripMenuItem.Text = "Gerar Relatório";
             this.gerarRelatórioToolStripMenuItem.Click += new System.EventHandler(this.gerarRelatórioToolStripMenuItem_Click);
             // 
@@ -192,17 +193,17 @@ namespace GestaoFinanceira
             // 
             // ctBank
             // 
-            chartArea10.Name = "ChartArea1";
-            this.ctBank.ChartAreas.Add(chartArea10);
-            legend10.Name = "Legend1";
-            this.ctBank.Legends.Add(legend10);
+            chartArea1.Name = "ChartArea1";
+            this.ctBank.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.ctBank.Legends.Add(legend1);
             this.ctBank.Location = new System.Drawing.Point(370, 160);
             this.ctBank.Name = "ctBank";
-            series10.ChartArea = "ChartArea1";
-            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series10.Legend = "Legend1";
-            series10.Name = "Bank";
-            this.ctBank.Series.Add(series10);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "Bank";
+            this.ctBank.Series.Add(series1);
             this.ctBank.Size = new System.Drawing.Size(238, 125);
             this.ctBank.TabIndex = 6;
             this.ctBank.Text = "chart1";
@@ -216,35 +217,35 @@ namespace GestaoFinanceira
             // ctCreditCard
             // 
             this.ctCreditCard.BorderSkin.BorderWidth = 0;
-            chartArea11.AxisX2.Title = "Cartões";
-            chartArea11.AxisY.Title = "Reais";
-            chartArea11.AxisY2.Title = "Cartões";
-            chartArea11.Name = "ChartArea1";
-            this.ctCreditCard.ChartAreas.Add(chartArea11);
+            chartArea2.AxisX2.Title = "Cartões";
+            chartArea2.AxisY.Title = "Reais";
+            chartArea2.AxisY2.Title = "Cartões";
+            chartArea2.Name = "ChartArea1";
+            this.ctCreditCard.ChartAreas.Add(chartArea2);
             this.ctCreditCard.IsSoftShadows = false;
-            legend11.Name = "Legend1";
-            this.ctCreditCard.Legends.Add(legend11);
+            legend2.Name = "Legend1";
+            this.ctCreditCard.Legends.Add(legend2);
             this.ctCreditCard.Location = new System.Drawing.Point(370, 308);
             this.ctCreditCard.Name = "ctCreditCard";
             this.ctCreditCard.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
             this.ctCreditCard.PaletteCustomColors = new System.Drawing.Color[] {
         System.Drawing.Color.Blue};
             this.ctCreditCard.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            series11.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Top;
-            series11.BackImageTransparentColor = System.Drawing.Color.White;
-            series11.BackImageWrapMode = System.Windows.Forms.DataVisualization.Charting.ChartImageWrapMode.TileFlipX;
-            series11.BorderWidth = 0;
-            series11.ChartArea = "ChartArea1";
-            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
-            series11.IsVisibleInLegend = false;
-            series11.Label = "0";
-            series11.LabelBackColor = System.Drawing.Color.Transparent;
-            series11.Legend = "Legend1";
-            series11.LegendText = "Cartões";
-            series11.MarkerBorderWidth = 0;
-            series11.MarkerSize = 1;
-            series11.Name = "CreditCard";
-            this.ctCreditCard.Series.Add(series11);
+            series2.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Top;
+            series2.BackImageTransparentColor = System.Drawing.Color.White;
+            series2.BackImageWrapMode = System.Windows.Forms.DataVisualization.Charting.ChartImageWrapMode.TileFlipX;
+            series2.BorderWidth = 0;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
+            series2.IsVisibleInLegend = false;
+            series2.Label = "0";
+            series2.LabelBackColor = System.Drawing.Color.Transparent;
+            series2.Legend = "Legend1";
+            series2.LegendText = "Cartões";
+            series2.MarkerBorderWidth = 0;
+            series2.MarkerSize = 1;
+            series2.Name = "CreditCard";
+            this.ctCreditCard.Series.Add(series2);
             this.ctCreditCard.Size = new System.Drawing.Size(238, 125);
             this.ctCreditCard.TabIndex = 6;
             this.ctCreditCard.TabStop = false;
@@ -252,17 +253,17 @@ namespace GestaoFinanceira
             // 
             // ctCategories
             // 
-            chartArea12.Name = "ChartArea1";
-            this.ctCategories.ChartAreas.Add(chartArea12);
-            legend12.Name = "Legend1";
-            this.ctCategories.Legends.Add(legend12);
+            chartArea3.Name = "ChartArea1";
+            this.ctCategories.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.ctCategories.Legends.Add(legend3);
             this.ctCategories.Location = new System.Drawing.Point(370, 27);
             this.ctCategories.Name = "ctCategories";
-            series12.ChartArea = "ChartArea1";
-            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series12.Legend = "Legend1";
-            series12.Name = "Categories";
-            this.ctCategories.Series.Add(series12);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series3.Legend = "Legend1";
+            series3.Name = "Categories";
+            this.ctCategories.Series.Add(series3);
             this.ctCategories.Size = new System.Drawing.Size(238, 125);
             this.ctCategories.TabIndex = 6;
             this.ctCategories.Text = "chart1";
@@ -366,141 +367,141 @@ namespace GestaoFinanceira
             this.lbEconomia.TabIndex = 0;
             this.lbEconomia.Text = "37.25 %";
             // 
-            // button1
+            // btnContaA
             // 
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(46, 193);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(91, 46);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Conta A";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnContaA.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnContaA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnContaA.Location = new System.Drawing.Point(46, 193);
+            this.btnContaA.Name = "btnContaA";
+            this.btnContaA.Size = new System.Drawing.Size(91, 40);
+            this.btnContaA.TabIndex = 7;
+            this.btnContaA.Text = "Conta A";
+            this.btnContaA.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnContaB
             // 
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(144, 193);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(91, 46);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Conta B";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnContaB.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnContaB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnContaB.Location = new System.Drawing.Point(143, 193);
+            this.btnContaB.Name = "btnContaB";
+            this.btnContaB.Size = new System.Drawing.Size(91, 40);
+            this.btnContaB.TabIndex = 7;
+            this.btnContaB.Text = "Conta B";
+            this.btnContaB.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnContaC
             // 
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(241, 193);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(91, 46);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Conta C";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnContaC.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnContaC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnContaC.Location = new System.Drawing.Point(240, 193);
+            this.btnContaC.Name = "btnContaC";
+            this.btnContaC.Size = new System.Drawing.Size(91, 40);
+            this.btnContaC.TabIndex = 7;
+            this.btnContaC.Text = "Conta C";
+            this.btnContaC.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnContaD
             // 
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(46, 245);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(91, 40);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "Conta D";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnContaD.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnContaD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnContaD.Location = new System.Drawing.Point(46, 242);
+            this.btnContaD.Name = "btnContaD";
+            this.btnContaD.Size = new System.Drawing.Size(91, 40);
+            this.btnContaD.TabIndex = 7;
+            this.btnContaD.Text = "Conta D";
+            this.btnContaD.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // btnCondaE
             // 
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(143, 245);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(91, 40);
-            this.button5.TabIndex = 7;
-            this.button5.Text = "Conta E";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnCondaE.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnCondaE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCondaE.Location = new System.Drawing.Point(143, 242);
+            this.btnCondaE.Name = "btnCondaE";
+            this.btnCondaE.Size = new System.Drawing.Size(91, 40);
+            this.btnCondaE.TabIndex = 7;
+            this.btnCondaE.Text = "Conta E";
+            this.btnCondaE.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btnContaF
             // 
-            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Location = new System.Drawing.Point(241, 245);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(91, 40);
-            this.button6.TabIndex = 7;
-            this.button6.Text = "Conta F";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Visible = false;
+            this.btnContaF.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnContaF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnContaF.Location = new System.Drawing.Point(240, 242);
+            this.btnContaF.Name = "btnContaF";
+            this.btnContaF.Size = new System.Drawing.Size(91, 40);
+            this.btnContaF.TabIndex = 7;
+            this.btnContaF.Text = "Conta F";
+            this.btnContaF.UseVisualStyleBackColor = true;
+            this.btnContaF.Visible = false;
             // 
-            // button7
+            // btnCartaoA
             // 
-            this.button7.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Location = new System.Drawing.Point(46, 290);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(91, 46);
-            this.button7.TabIndex = 7;
-            this.button7.Text = "Cartão 1";
-            this.button7.UseVisualStyleBackColor = true;
+            this.btnCartaoA.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnCartaoA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCartaoA.Location = new System.Drawing.Point(46, 291);
+            this.btnCartaoA.Name = "btnCartaoA";
+            this.btnCartaoA.Size = new System.Drawing.Size(91, 40);
+            this.btnCartaoA.TabIndex = 7;
+            this.btnCartaoA.Text = "Cartão 1";
+            this.btnCartaoA.UseVisualStyleBackColor = true;
             // 
-            // button8
+            // btnCartaoB
             // 
-            this.button8.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Location = new System.Drawing.Point(144, 290);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(91, 46);
-            this.button8.TabIndex = 7;
-            this.button8.Text = "Cartão 2";
-            this.button8.UseVisualStyleBackColor = true;
+            this.btnCartaoB.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnCartaoB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCartaoB.Location = new System.Drawing.Point(143, 291);
+            this.btnCartaoB.Name = "btnCartaoB";
+            this.btnCartaoB.Size = new System.Drawing.Size(91, 40);
+            this.btnCartaoB.TabIndex = 7;
+            this.btnCartaoB.Text = "Cartão 2";
+            this.btnCartaoB.UseVisualStyleBackColor = true;
             // 
-            // button9
+            // btnCartaoC
             // 
-            this.button9.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Location = new System.Drawing.Point(241, 290);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(91, 46);
-            this.button9.TabIndex = 7;
-            this.button9.Text = "Cartão 3";
-            this.button9.UseVisualStyleBackColor = true;
+            this.btnCartaoC.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnCartaoC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCartaoC.Location = new System.Drawing.Point(240, 291);
+            this.btnCartaoC.Name = "btnCartaoC";
+            this.btnCartaoC.Size = new System.Drawing.Size(91, 40);
+            this.btnCartaoC.TabIndex = 7;
+            this.btnCartaoC.Text = "Cartão 3";
+            this.btnCartaoC.UseVisualStyleBackColor = true;
             // 
-            // button10
+            // btnCartaoD
             // 
-            this.button10.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Location = new System.Drawing.Point(46, 342);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(91, 40);
-            this.button10.TabIndex = 7;
-            this.button10.Text = "Cartão 4";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Visible = false;
+            this.btnCartaoD.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnCartaoD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCartaoD.Location = new System.Drawing.Point(46, 340);
+            this.btnCartaoD.Name = "btnCartaoD";
+            this.btnCartaoD.Size = new System.Drawing.Size(91, 40);
+            this.btnCartaoD.TabIndex = 7;
+            this.btnCartaoD.Text = "Cartão 4";
+            this.btnCartaoD.UseVisualStyleBackColor = true;
+            this.btnCartaoD.Visible = false;
             // 
-            // button11
+            // btnCartaoE
             // 
-            this.button11.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Location = new System.Drawing.Point(143, 342);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(91, 40);
-            this.button11.TabIndex = 7;
-            this.button11.Text = "Cartão 5";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Visible = false;
+            this.btnCartaoE.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnCartaoE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCartaoE.Location = new System.Drawing.Point(143, 340);
+            this.btnCartaoE.Name = "btnCartaoE";
+            this.btnCartaoE.Size = new System.Drawing.Size(91, 40);
+            this.btnCartaoE.TabIndex = 7;
+            this.btnCartaoE.Text = "Cartão 5";
+            this.btnCartaoE.UseVisualStyleBackColor = true;
+            this.btnCartaoE.Visible = false;
             // 
-            // button12
+            // btnCartaoF
             // 
-            this.button12.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.Location = new System.Drawing.Point(241, 342);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(91, 40);
-            this.button12.TabIndex = 7;
-            this.button12.Text = "Cartão 6";
-            this.button12.UseVisualStyleBackColor = true;
-            this.button12.Visible = false;
+            this.btnCartaoF.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnCartaoF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCartaoF.Location = new System.Drawing.Point(240, 340);
+            this.btnCartaoF.Name = "btnCartaoF";
+            this.btnCartaoF.Size = new System.Drawing.Size(91, 40);
+            this.btnCartaoF.TabIndex = 7;
+            this.btnCartaoF.Text = "Cartão 6";
+            this.btnCartaoF.UseVisualStyleBackColor = true;
+            this.btnCartaoF.Visible = false;
             // 
             // FrmDashBoard
             // 
@@ -508,18 +509,18 @@ namespace GestaoFinanceira
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(620, 445);
-            this.Controls.Add(this.button12);
-            this.Controls.Add(this.button11);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button10);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button9);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnCartaoF);
+            this.Controls.Add(this.btnCartaoE);
+            this.Controls.Add(this.btnContaF);
+            this.Controls.Add(this.btnCartaoD);
+            this.Controls.Add(this.btnCondaE);
+            this.Controls.Add(this.btnCartaoC);
+            this.Controls.Add(this.btnContaD);
+            this.Controls.Add(this.btnCartaoB);
+            this.Controls.Add(this.btnContaC);
+            this.Controls.Add(this.btnCartaoA);
+            this.Controls.Add(this.btnContaB);
+            this.Controls.Add(this.btnContaA);
             this.Controls.Add(this.lb_MesAtual);
             this.Controls.Add(this.lbExpense);
             this.Controls.Add(this.btnOpenBank);
@@ -539,8 +540,10 @@ namespace GestaoFinanceira
             this.Controls.Add(this.btnOpenCalendar);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.btnOpenExpense);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmDashBoard";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestão Financeira";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -578,18 +581,18 @@ namespace GestaoFinanceira
         private System.Windows.Forms.DataVisualization.Charting.Chart ctCategories;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lbEconomia;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button btnContaA;
+        private System.Windows.Forms.Button btnContaB;
+        private System.Windows.Forms.Button btnContaC;
+        private System.Windows.Forms.Button btnContaD;
+        private System.Windows.Forms.Button btnCondaE;
+        private System.Windows.Forms.Button btnContaF;
+        private System.Windows.Forms.Button btnCartaoA;
+        private System.Windows.Forms.Button btnCartaoB;
+        private System.Windows.Forms.Button btnCartaoC;
+        private System.Windows.Forms.Button btnCartaoD;
+        private System.Windows.Forms.Button btnCartaoE;
+        private System.Windows.Forms.Button btnCartaoF;
     }
 }
 

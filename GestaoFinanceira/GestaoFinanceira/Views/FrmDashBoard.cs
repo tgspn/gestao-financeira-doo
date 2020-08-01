@@ -121,5 +121,6 @@ namespace GestaoFinanceira
             Form form = new FrmReport();
             form.Show();
         }
+
     }
 }
