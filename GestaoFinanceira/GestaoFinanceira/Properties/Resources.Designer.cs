@@ -93,6 +93,26 @@ namespace GestaoFinanceira.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_bank_70px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_bank_70px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_checkmark_26px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_checkmark_26px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_chevron_left_20px {
             get {
                 object obj = ResourceManager.GetObject("icons8_chevron_left_20px", resourceCulture);
@@ -136,6 +156,16 @@ namespace GestaoFinanceira.Properties {
         internal static System.Drawing.Bitmap icons8_down_button_20px {
             get {
                 object obj = ResourceManager.GetObject("icons8_down_button_20px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_multiply_26px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_multiply_26px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
