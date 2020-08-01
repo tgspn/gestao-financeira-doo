@@ -210,6 +210,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(254, 327);
+            this.ControlBox = false;
             this.Controls.Add(this.btnAddCategorias);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCancel);

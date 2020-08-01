@@ -84,13 +84,13 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(282, 94);
+            this.ControlBox = false;
             this.Controls.Add(this.btnExpense);
             this.Controls.Add(this.btnRevenue);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "FrmEntries";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmEntries";
             this.ResumeLayout(false);
             this.PerformLayout();
 
