@@ -70,8 +70,8 @@ namespace GestaoFinanceira
         private void btnOpenCalendar_Click(object sender, EventArgs e)
         {
             FrmMothCalendar form = new FrmMothCalendar();
-            form.ShowDialog();
-            if (form.Moth != null)
+            
+            if (form.ShowDialog() == DialogResult.OK)
                 this.lb_MesAtual.Text = form.Moth;
         }
 
