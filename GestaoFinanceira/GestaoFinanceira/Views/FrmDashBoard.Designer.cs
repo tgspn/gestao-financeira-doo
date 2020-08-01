@@ -42,20 +42,25 @@ namespace GestaoFinanceira
             System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDashBoard));
+
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lbBalance = new System.Windows.Forms.Label();
             this.lbRevenue = new System.Windows.Forms.Label();
             this.lbExpense = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.opçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gerarRelatórioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lb_MesAtual = new System.Windows.Forms.Label();
             this.ctBank = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.ctCreditCard = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.ctCategories = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnOpenBank = new System.Windows.Forms.Button();
@@ -66,6 +71,7 @@ namespace GestaoFinanceira
             this.btnOpenExpense = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.lbEconomia = new System.Windows.Forms.Label();
+
             this.btnContaA = new System.Windows.Forms.Button();
             this.btnContaB = new System.Windows.Forms.Button();
             this.btnContaC = new System.Windows.Forms.Button();
@@ -78,7 +84,7 @@ namespace GestaoFinanceira
             this.btnCartaoD = new System.Windows.Forms.Button();
             this.btnCartaoE = new System.Windows.Forms.Button();
             this.btnCartaoF = new System.Windows.Forms.Button();
-            this.menuStrip1.SuspendLayout();
+
             ((System.ComponentModel.ISupportInitialize)(this.ctBank)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctCreditCard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctCategories)).BeginInit();
@@ -141,46 +147,6 @@ namespace GestaoFinanceira
             this.lbExpense.TabIndex = 0;
             this.lbExpense.Text = "R$ 1300,00";
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.opçõesToolStripMenuItem,
-            this.sobreToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(620, 24);
-            this.menuStrip1.TabIndex = 2;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // opçõesToolStripMenuItem
-            // 
-            this.opçõesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.gerarRelatórioToolStripMenuItem,
-            this.sairToolStripMenuItem});
-            this.opçõesToolStripMenuItem.Name = "opçõesToolStripMenuItem";
-            this.opçõesToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
-            this.opçõesToolStripMenuItem.Text = "Opções";
-            // 
-            // gerarRelatórioToolStripMenuItem
-            // 
-            this.gerarRelatórioToolStripMenuItem.Name = "gerarRelatórioToolStripMenuItem";
-            this.gerarRelatórioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.gerarRelatórioToolStripMenuItem.Text = "Gerar Relatório";
-            this.gerarRelatórioToolStripMenuItem.Click += new System.EventHandler(this.gerarRelatórioToolStripMenuItem_Click);
-            // 
-            // sairToolStripMenuItem
-            // 
-            this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.sairToolStripMenuItem.Text = "Sair";
-            this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
-            // 
-            // sobreToolStripMenuItem
-            // 
-            this.sobreToolStripMenuItem.Name = "sobreToolStripMenuItem";
-            this.sobreToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
-            this.sobreToolStripMenuItem.Text = "Sobre";
-            // 
             // lb_MesAtual
             // 
             this.lb_MesAtual.AutoSize = true;
@@ -204,19 +170,15 @@ namespace GestaoFinanceira
             series1.Legend = "Legend1";
             series1.Name = "Bank";
             this.ctBank.Series.Add(series1);
+
             this.ctBank.Size = new System.Drawing.Size(238, 125);
             this.ctBank.TabIndex = 6;
             this.ctBank.Text = "chart1";
             // 
-            // imageList1
-            // 
-            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            // 
             // ctCreditCard
             // 
             this.ctCreditCard.BorderSkin.BorderWidth = 0;
+
             chartArea2.AxisX2.Title = "Cartões";
             chartArea2.AxisY.Title = "Reais";
             chartArea2.AxisY2.Title = "Cartões";
@@ -225,12 +187,14 @@ namespace GestaoFinanceira
             this.ctCreditCard.IsSoftShadows = false;
             legend2.Name = "Legend1";
             this.ctCreditCard.Legends.Add(legend2);
+
             this.ctCreditCard.Location = new System.Drawing.Point(370, 308);
             this.ctCreditCard.Name = "ctCreditCard";
             this.ctCreditCard.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
             this.ctCreditCard.PaletteCustomColors = new System.Drawing.Color[] {
         System.Drawing.Color.Blue};
             this.ctCreditCard.RightToLeft = System.Windows.Forms.RightToLeft.No;
+
             series2.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Top;
             series2.BackImageTransparentColor = System.Drawing.Color.White;
             series2.BackImageWrapMode = System.Windows.Forms.DataVisualization.Charting.ChartImageWrapMode.TileFlipX;
@@ -246,6 +210,7 @@ namespace GestaoFinanceira
             series2.MarkerSize = 1;
             series2.Name = "CreditCard";
             this.ctCreditCard.Series.Add(series2);
+
             this.ctCreditCard.Size = new System.Drawing.Size(238, 125);
             this.ctCreditCard.TabIndex = 6;
             this.ctCreditCard.TabStop = false;
@@ -253,6 +218,7 @@ namespace GestaoFinanceira
             // 
             // ctCategories
             // 
+
             chartArea3.Name = "ChartArea1";
             this.ctCategories.ChartAreas.Add(chartArea3);
             legend3.Name = "Legend1";
@@ -264,6 +230,7 @@ namespace GestaoFinanceira
             series3.Legend = "Legend1";
             series3.Name = "Categories";
             this.ctCategories.Series.Add(series3);
+
             this.ctCategories.Size = new System.Drawing.Size(238, 125);
             this.ctCategories.TabIndex = 6;
             this.ctCategories.Text = "chart1";
@@ -538,15 +505,15 @@ namespace GestaoFinanceira
             this.Controls.Add(this.lbRevenue);
             this.Controls.Add(this.btnOpenEntries);
             this.Controls.Add(this.btnOpenCalendar);
-            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.btnOpenExpense);
+
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
+
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+
             this.Name = "FrmDashBoard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestão Financeira";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ctBank)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctCreditCard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctCategories)).EndInit();
@@ -563,11 +530,6 @@ namespace GestaoFinanceira
         private System.Windows.Forms.Label lbBalance;
         private System.Windows.Forms.Label lbRevenue;
         private System.Windows.Forms.Label lbExpense;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem opçõesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem gerarRelatórioToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sobreToolStripMenuItem;
         private System.Windows.Forms.Label lb_MesAtual;
         private System.Windows.Forms.Button btnOpenExpense;
         private System.Windows.Forms.Button btnOpenBank;
@@ -576,7 +538,6 @@ namespace GestaoFinanceira
         private System.Windows.Forms.DataVisualization.Charting.Chart ctBank;
         private System.Windows.Forms.Button btnOpenEntries;
         private System.Windows.Forms.Button btnOpenCalendar;
-        private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.DataVisualization.Charting.Chart ctCreditCard;
         private System.Windows.Forms.DataVisualization.Charting.Chart ctCategories;
         private System.Windows.Forms.Label label4;

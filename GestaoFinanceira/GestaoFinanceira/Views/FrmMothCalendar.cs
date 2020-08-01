@@ -19,11 +19,6 @@ namespace GestaoFinanceira.Views
             InitializeComponent();
         }
 
-        private void btn_Cancelar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void btnRightYear_Click(object sender, EventArgs e)
         {
             this.lbYear.Text = Convert.ToString(Convert.ToInt32(this.lbYear.Text) + 1);
@@ -36,73 +31,9 @@ namespace GestaoFinanceira.Views
 
         private void btnJan_Click(object sender, EventArgs e)
         {
-            this.Moth = "Janeiro";
-            this.Close();
-        }
-
-        private void btnFev_Click(object sender, EventArgs e)
-        {
-            this.Moth = "Fevereiro";
-            this.Close();
-        }
-
-        private void btnMar_Click(object sender, EventArgs e)
-        {
-            this.Moth = "Março";
-            this.Close();
-        }
-
-        private void btnAbr_Click(object sender, EventArgs e)
-        {
-            this.Moth = "Abril";
-            this.Close();
-        }
-
-        private void btnMai_Click(object sender, EventArgs e)
-        {
-            this.Moth = "Maio";
-            this.Close();
-        }
-
-        private void btnJun_Click(object sender, EventArgs e)
-        {
-            this.Moth = "Junho";
-            this.Close();
-        }
-
-        private void btnJul_Click(object sender, EventArgs e)
-        {
-            this.Moth = "Julho";
-            this.Close();
-        }
-
-        private void btnAgo_Click(object sender, EventArgs e)
-        {
-            this.Moth = "Agosto";
-            this.Close();
-        }
-
-        private void btnSet_Click(object sender, EventArgs e)
-        {
-            this.Moth = "Setembro";
-            this.Close();
-        }
-
-        private void btnOut_Click(object sender, EventArgs e)
-        {
-            this.Moth = "Outubro";
-            this.Close();
-        }
-
-        private void btnNov_Click(object sender, EventArgs e)
-        {
-            this.Moth = "Novembro";
-            this.Close();
-        }
-
-        private void btnDez_Click(object sender, EventArgs e)
-        {
-            this.Moth = "Dezembro";
+            var btn = (Button)sender;
+            this.Moth = btn.Tag.ToString();
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
@@ -148,6 +79,7 @@ namespace GestaoFinanceira.Views
                     this.Moth = "Dezembro";
                     break;
             }
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
     }

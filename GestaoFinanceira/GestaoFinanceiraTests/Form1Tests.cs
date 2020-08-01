@@ -1,5 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿
 using GestaoFinanceira;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,8 +15,7 @@ namespace GestaoFinanceira.Tests
         [TestMethod()]
         public void Form1Test()
         {
-            //var result = função.soma(1,1);
-            Assert.Equals(2);
+            Assert.Inconclusive();            
         }
     }
 }

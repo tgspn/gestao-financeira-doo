@@ -82,6 +82,7 @@
             // 
             // btn_Cancelar
             // 
+            this.btn_Cancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btn_Cancelar.FlatAppearance.BorderSize = 0;
             this.btn_Cancelar.Location = new System.Drawing.Point(55, 112);
             this.btn_Cancelar.Name = "btn_Cancelar";
@@ -89,7 +90,6 @@
             this.btn_Cancelar.TabIndex = 2;
             this.btn_Cancelar.Text = "Cancelar";
             this.btn_Cancelar.UseVisualStyleBackColor = true;
-            this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
             // 
             // BtnLeftYear
             // 
@@ -135,6 +135,7 @@
             this.btnJan.Name = "btnJan";
             this.btnJan.Size = new System.Drawing.Size(45, 27);
             this.btnJan.TabIndex = 2;
+            this.btnJan.Tag = "Janeiro";
             this.btnJan.Text = "Jan";
             this.btnJan.UseVisualStyleBackColor = false;
             this.btnJan.Click += new System.EventHandler(this.btnJan_Click);
@@ -152,9 +153,10 @@
             this.btnFev.Name = "btnFev";
             this.btnFev.Size = new System.Drawing.Size(45, 27);
             this.btnFev.TabIndex = 2;
+            this.btnFev.Tag = "Fevereiro";
             this.btnFev.Text = "Fev";
             this.btnFev.UseVisualStyleBackColor = false;
-            this.btnFev.Click += new System.EventHandler(this.btnFev_Click);
+            this.btnFev.Click += new System.EventHandler(this.btnJan_Click);
             // 
             // btnMar
             // 
@@ -169,9 +171,10 @@
             this.btnMar.Name = "btnMar";
             this.btnMar.Size = new System.Drawing.Size(45, 27);
             this.btnMar.TabIndex = 2;
+            this.btnMar.Tag = "Março";
             this.btnMar.Text = "Mar";
             this.btnMar.UseVisualStyleBackColor = false;
-            this.btnMar.Click += new System.EventHandler(this.btnMar_Click);
+            this.btnMar.Click += new System.EventHandler(this.btnJan_Click);
             // 
             // btnMai
             // 
@@ -186,9 +189,10 @@
             this.btnMai.Name = "btnMai";
             this.btnMai.Size = new System.Drawing.Size(45, 27);
             this.btnMai.TabIndex = 2;
+            this.btnMai.Tag = "Maio";
             this.btnMai.Text = "Mai";
             this.btnMai.UseVisualStyleBackColor = false;
-            this.btnMai.Click += new System.EventHandler(this.btnMai_Click);
+            this.btnMai.Click += new System.EventHandler(this.btnJan_Click);
             // 
             // btnJun
             // 
@@ -203,9 +207,10 @@
             this.btnJun.Name = "btnJun";
             this.btnJun.Size = new System.Drawing.Size(45, 27);
             this.btnJun.TabIndex = 2;
+            this.btnJun.Tag = "Junho";
             this.btnJun.Text = "Jun";
             this.btnJun.UseVisualStyleBackColor = false;
-            this.btnJun.Click += new System.EventHandler(this.btnJun_Click);
+            this.btnJun.Click += new System.EventHandler(this.btnJan_Click);
             // 
             // btnNov
             // 
@@ -220,9 +225,10 @@
             this.btnNov.Name = "btnNov";
             this.btnNov.Size = new System.Drawing.Size(45, 27);
             this.btnNov.TabIndex = 2;
+            this.btnNov.Tag = "Novembro";
             this.btnNov.Text = "Nov";
             this.btnNov.UseVisualStyleBackColor = false;
-            this.btnNov.Click += new System.EventHandler(this.btnNov_Click);
+            this.btnNov.Click += new System.EventHandler(this.btnJan_Click);
             // 
             // btnOut
             // 
@@ -237,9 +243,10 @@
             this.btnOut.Name = "btnOut";
             this.btnOut.Size = new System.Drawing.Size(45, 27);
             this.btnOut.TabIndex = 2;
+            this.btnOut.Tag = "Outubro";
             this.btnOut.Text = "Out";
             this.btnOut.UseVisualStyleBackColor = false;
-            this.btnOut.Click += new System.EventHandler(this.btnOut_Click);
+            this.btnOut.Click += new System.EventHandler(this.btnJan_Click);
             // 
             // btnSet
             // 
@@ -254,9 +261,10 @@
             this.btnSet.Name = "btnSet";
             this.btnSet.Size = new System.Drawing.Size(45, 27);
             this.btnSet.TabIndex = 2;
+            this.btnSet.Tag = "Setembro";
             this.btnSet.Text = "Set";
             this.btnSet.UseVisualStyleBackColor = false;
-            this.btnSet.Click += new System.EventHandler(this.btnSet_Click);
+            this.btnSet.Click += new System.EventHandler(this.btnJan_Click);
             // 
             // btnAgo
             // 
@@ -271,9 +279,10 @@
             this.btnAgo.Name = "btnAgo";
             this.btnAgo.Size = new System.Drawing.Size(45, 27);
             this.btnAgo.TabIndex = 2;
+            this.btnAgo.Tag = "Agosto";
             this.btnAgo.Text = "Ago";
             this.btnAgo.UseVisualStyleBackColor = false;
-            this.btnAgo.Click += new System.EventHandler(this.btnAgo_Click);
+            this.btnAgo.Click += new System.EventHandler(this.btnJan_Click);
             // 
             // btnJul
             // 
@@ -288,9 +297,10 @@
             this.btnJul.Name = "btnJul";
             this.btnJul.Size = new System.Drawing.Size(45, 27);
             this.btnJul.TabIndex = 2;
+            this.btnJul.Tag = "Julho";
             this.btnJul.Text = "Jul";
             this.btnJul.UseVisualStyleBackColor = false;
-            this.btnJul.Click += new System.EventHandler(this.btnJul_Click);
+            this.btnJul.Click += new System.EventHandler(this.btnJan_Click);
             // 
             // btnDez
             // 
@@ -305,9 +315,10 @@
             this.btnDez.Name = "btnDez";
             this.btnDez.Size = new System.Drawing.Size(45, 27);
             this.btnDez.TabIndex = 2;
+            this.btnDez.Tag = "Dezembro";
             this.btnDez.Text = "Dez";
             this.btnDez.UseVisualStyleBackColor = false;
-            this.btnDez.Click += new System.EventHandler(this.btnDez_Click);
+            this.btnDez.Click += new System.EventHandler(this.btnJan_Click);
             // 
             // btnAbr
             // 
@@ -322,16 +333,19 @@
             this.btnAbr.Name = "btnAbr";
             this.btnAbr.Size = new System.Drawing.Size(45, 27);
             this.btnAbr.TabIndex = 2;
+            this.btnAbr.Tag = "Abril";
             this.btnAbr.Text = "Abr";
             this.btnAbr.UseVisualStyleBackColor = false;
-            this.btnAbr.Click += new System.EventHandler(this.btnAbr_Click);
+            this.btnAbr.Click += new System.EventHandler(this.btnJan_Click);
             // 
             // FrmMothCalendar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.CancelButton = this.btn_Cancelar;
             this.ClientSize = new System.Drawing.Size(299, 146);
+            this.ControlBox = false;
             this.Controls.Add(this.btn_Cancelar);
             this.Controls.Add(this.btnRightYear);
             this.Controls.Add(this.btnAbr);
@@ -350,10 +364,10 @@
             this.Controls.Add(this.lbYear);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnMar);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FrmMothCalendar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frm_MothCalendar";
+            this.Text = "Calendário";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
