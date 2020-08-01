@@ -28,179 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.img_Right = new System.Windows.Forms.PictureBox();
-            this.img_Left = new System.Windows.Forms.PictureBox();
+            this.lbYear = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnMesAtual = new System.Windows.Forms.Button();
             this.btn_Cancelar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.img_Right)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.img_Left)).BeginInit();
+            this.BtnLeftYear = new System.Windows.Forms.Button();
+            this.btnRightYear = new System.Windows.Forms.Button();
+            this.btnJan = new System.Windows.Forms.Button();
+            this.btnFev = new System.Windows.Forms.Button();
+            this.btnMar = new System.Windows.Forms.Button();
+            this.btnMai = new System.Windows.Forms.Button();
+            this.btnJun = new System.Windows.Forms.Button();
+            this.btnNov = new System.Windows.Forms.Button();
+            this.btnOut = new System.Windows.Forms.Button();
+            this.btnSet = new System.Windows.Forms.Button();
+            this.btnAgo = new System.Windows.Forms.Button();
+            this.btnJul = new System.Windows.Forms.Button();
+            this.btnDez = new System.Windows.Forms.Button();
+            this.btnAbr = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // lbYear
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(33, 42);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 18);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Jan";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(72, 42);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 18);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Fev";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(112, 42);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 18);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Mar";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(152, 42);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(34, 18);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Abr";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(192, 42);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 18);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Mai";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(233, 42);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(34, 18);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Jun";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Century", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(36, 70);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(30, 18);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "Jul";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Century", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(71, 70);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(35, 18);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "Ago";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Century", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(112, 70);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(31, 18);
-            this.label9.TabIndex = 1;
-            this.label9.Text = "Set";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Century", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(151, 70);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(35, 18);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "Out";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Century", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(188, 70);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(36, 18);
-            this.label11.TabIndex = 1;
-            this.label11.Text = "Nov";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Century", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(226, 70);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(35, 18);
-            this.label12.TabIndex = 1;
-            this.label12.Text = "Dez";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.Snow;
-            this.label13.Location = new System.Drawing.Point(127, 7);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(45, 20);
-            this.label13.TabIndex = 1;
-            this.label13.Text = "2020";
-            // 
-            // img_Right
-            // 
-            this.img_Right.Image = global::GestaoFinanceira.Properties.Resources.icons8_chevron_right_20px;
-            this.img_Right.Location = new System.Drawing.Point(236, 7);
-            this.img_Right.Name = "img_Right";
-            this.img_Right.Size = new System.Drawing.Size(20, 20);
-            this.img_Right.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.img_Right.TabIndex = 0;
-            this.img_Right.TabStop = false;
-            // 
-            // img_Left
-            // 
-            this.img_Left.Image = global::GestaoFinanceira.Properties.Resources.icons8_chevron_left_20px;
-            this.img_Left.Location = new System.Drawing.Point(46, 7);
-            this.img_Left.Name = "img_Left";
-            this.img_Left.Size = new System.Drawing.Size(20, 20);
-            this.img_Left.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.img_Left.TabIndex = 0;
-            this.img_Left.TabStop = false;
+            this.lbYear.AutoSize = true;
+            this.lbYear.BackColor = System.Drawing.Color.Black;
+            this.lbYear.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbYear.ForeColor = System.Drawing.Color.Snow;
+            this.lbYear.Location = new System.Drawing.Point(127, 7);
+            this.lbYear.Name = "lbYear";
+            this.lbYear.Size = new System.Drawing.Size(45, 20);
+            this.lbYear.TabIndex = 1;
+            this.lbYear.Text = "2020";
             // 
             // pictureBox1
             // 
@@ -211,53 +70,304 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // button1
+            // btnMesAtual
             // 
-            this.button1.Location = new System.Drawing.Point(165, 95);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Mês Atual";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnMesAtual.Location = new System.Drawing.Point(166, 112);
+            this.btnMesAtual.Name = "btnMesAtual";
+            this.btnMesAtual.Size = new System.Drawing.Size(75, 23);
+            this.btnMesAtual.TabIndex = 2;
+            this.btnMesAtual.Text = "Mês Atual";
+            this.btnMesAtual.UseVisualStyleBackColor = true;
+            this.btnMesAtual.Click += new System.EventHandler(this.btnMesAtual_Click);
             // 
             // btn_Cancelar
             // 
-            this.btn_Cancelar.Location = new System.Drawing.Point(46, 95);
+            this.btn_Cancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btn_Cancelar.FlatAppearance.BorderSize = 0;
+            this.btn_Cancelar.Location = new System.Drawing.Point(55, 112);
             this.btn_Cancelar.Name = "btn_Cancelar";
             this.btn_Cancelar.Size = new System.Drawing.Size(75, 23);
             this.btn_Cancelar.TabIndex = 2;
             this.btn_Cancelar.Text = "Cancelar";
             this.btn_Cancelar.UseVisualStyleBackColor = true;
-            this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
             // 
-            // frm_MothCalendar
+            // BtnLeftYear
+            // 
+            this.BtnLeftYear.BackColor = System.Drawing.Color.Black;
+            this.BtnLeftYear.BackgroundImage = global::GestaoFinanceira.Properties.Resources.icons8_chevron_left_20px;
+            this.BtnLeftYear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BtnLeftYear.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnLeftYear.FlatAppearance.BorderSize = 0;
+            this.BtnLeftYear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnLeftYear.Location = new System.Drawing.Point(36, 4);
+            this.BtnLeftYear.Margin = new System.Windows.Forms.Padding(0);
+            this.BtnLeftYear.Name = "BtnLeftYear";
+            this.BtnLeftYear.Size = new System.Drawing.Size(29, 23);
+            this.BtnLeftYear.TabIndex = 2;
+            this.BtnLeftYear.UseVisualStyleBackColor = false;
+            this.BtnLeftYear.Click += new System.EventHandler(this.BtnLeftYear_Click);
+            // 
+            // btnRightYear
+            // 
+            this.btnRightYear.BackColor = System.Drawing.Color.Black;
+            this.btnRightYear.BackgroundImage = global::GestaoFinanceira.Properties.Resources.icons8_chevron_right_20px;
+            this.btnRightYear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnRightYear.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRightYear.FlatAppearance.BorderSize = 0;
+            this.btnRightYear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRightYear.Location = new System.Drawing.Point(236, 4);
+            this.btnRightYear.Name = "btnRightYear";
+            this.btnRightYear.Size = new System.Drawing.Size(29, 23);
+            this.btnRightYear.TabIndex = 2;
+            this.btnRightYear.UseVisualStyleBackColor = false;
+            this.btnRightYear.Click += new System.EventHandler(this.btnRightYear_Click);
+            // 
+            // btnJan
+            // 
+            this.btnJan.BackColor = System.Drawing.Color.Transparent;
+            this.btnJan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnJan.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnJan.FlatAppearance.BorderSize = 0;
+            this.btnJan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnJan.Font = new System.Drawing.Font("Century", 11.25F);
+            this.btnJan.Location = new System.Drawing.Point(9, 42);
+            this.btnJan.Margin = new System.Windows.Forms.Padding(0);
+            this.btnJan.Name = "btnJan";
+            this.btnJan.Size = new System.Drawing.Size(45, 27);
+            this.btnJan.TabIndex = 2;
+            this.btnJan.Tag = "Janeiro";
+            this.btnJan.Text = "Jan";
+            this.btnJan.UseVisualStyleBackColor = false;
+            this.btnJan.Click += new System.EventHandler(this.btnJan_Click);
+            // 
+            // btnFev
+            // 
+            this.btnFev.BackColor = System.Drawing.Color.Transparent;
+            this.btnFev.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnFev.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFev.FlatAppearance.BorderSize = 0;
+            this.btnFev.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFev.Font = new System.Drawing.Font("Century", 11.25F);
+            this.btnFev.Location = new System.Drawing.Point(55, 42);
+            this.btnFev.Margin = new System.Windows.Forms.Padding(0);
+            this.btnFev.Name = "btnFev";
+            this.btnFev.Size = new System.Drawing.Size(45, 27);
+            this.btnFev.TabIndex = 2;
+            this.btnFev.Tag = "Fevereiro";
+            this.btnFev.Text = "Fev";
+            this.btnFev.UseVisualStyleBackColor = false;
+            this.btnFev.Click += new System.EventHandler(this.btnJan_Click);
+            // 
+            // btnMar
+            // 
+            this.btnMar.BackColor = System.Drawing.Color.Transparent;
+            this.btnMar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnMar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMar.FlatAppearance.BorderSize = 0;
+            this.btnMar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMar.Font = new System.Drawing.Font("Century", 11.25F);
+            this.btnMar.Location = new System.Drawing.Point(101, 42);
+            this.btnMar.Margin = new System.Windows.Forms.Padding(0);
+            this.btnMar.Name = "btnMar";
+            this.btnMar.Size = new System.Drawing.Size(45, 27);
+            this.btnMar.TabIndex = 2;
+            this.btnMar.Tag = "Março";
+            this.btnMar.Text = "Mar";
+            this.btnMar.UseVisualStyleBackColor = false;
+            this.btnMar.Click += new System.EventHandler(this.btnJan_Click);
+            // 
+            // btnMai
+            // 
+            this.btnMai.BackColor = System.Drawing.Color.Transparent;
+            this.btnMai.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnMai.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMai.FlatAppearance.BorderSize = 0;
+            this.btnMai.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMai.Font = new System.Drawing.Font("Century", 11.25F);
+            this.btnMai.Location = new System.Drawing.Point(196, 42);
+            this.btnMai.Margin = new System.Windows.Forms.Padding(0);
+            this.btnMai.Name = "btnMai";
+            this.btnMai.Size = new System.Drawing.Size(45, 27);
+            this.btnMai.TabIndex = 2;
+            this.btnMai.Tag = "Maio";
+            this.btnMai.Text = "Mai";
+            this.btnMai.UseVisualStyleBackColor = false;
+            this.btnMai.Click += new System.EventHandler(this.btnJan_Click);
+            // 
+            // btnJun
+            // 
+            this.btnJun.BackColor = System.Drawing.Color.Transparent;
+            this.btnJun.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnJun.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnJun.FlatAppearance.BorderSize = 0;
+            this.btnJun.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnJun.Font = new System.Drawing.Font("Century", 11.25F);
+            this.btnJun.Location = new System.Drawing.Point(245, 42);
+            this.btnJun.Margin = new System.Windows.Forms.Padding(0);
+            this.btnJun.Name = "btnJun";
+            this.btnJun.Size = new System.Drawing.Size(45, 27);
+            this.btnJun.TabIndex = 2;
+            this.btnJun.Tag = "Junho";
+            this.btnJun.Text = "Jun";
+            this.btnJun.UseVisualStyleBackColor = false;
+            this.btnJun.Click += new System.EventHandler(this.btnJan_Click);
+            // 
+            // btnNov
+            // 
+            this.btnNov.BackColor = System.Drawing.Color.Transparent;
+            this.btnNov.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnNov.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNov.FlatAppearance.BorderSize = 0;
+            this.btnNov.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNov.Font = new System.Drawing.Font("Century", 11.25F);
+            this.btnNov.Location = new System.Drawing.Point(196, 69);
+            this.btnNov.Margin = new System.Windows.Forms.Padding(0);
+            this.btnNov.Name = "btnNov";
+            this.btnNov.Size = new System.Drawing.Size(45, 27);
+            this.btnNov.TabIndex = 2;
+            this.btnNov.Tag = "Novembro";
+            this.btnNov.Text = "Nov";
+            this.btnNov.UseVisualStyleBackColor = false;
+            this.btnNov.Click += new System.EventHandler(this.btnJan_Click);
+            // 
+            // btnOut
+            // 
+            this.btnOut.BackColor = System.Drawing.Color.Transparent;
+            this.btnOut.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnOut.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnOut.FlatAppearance.BorderSize = 0;
+            this.btnOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOut.Font = new System.Drawing.Font("Century", 11.25F);
+            this.btnOut.Location = new System.Drawing.Point(146, 69);
+            this.btnOut.Margin = new System.Windows.Forms.Padding(0);
+            this.btnOut.Name = "btnOut";
+            this.btnOut.Size = new System.Drawing.Size(45, 27);
+            this.btnOut.TabIndex = 2;
+            this.btnOut.Tag = "Outubro";
+            this.btnOut.Text = "Out";
+            this.btnOut.UseVisualStyleBackColor = false;
+            this.btnOut.Click += new System.EventHandler(this.btnJan_Click);
+            // 
+            // btnSet
+            // 
+            this.btnSet.BackColor = System.Drawing.Color.Transparent;
+            this.btnSet.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnSet.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSet.FlatAppearance.BorderSize = 0;
+            this.btnSet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSet.Font = new System.Drawing.Font("Century", 11.25F);
+            this.btnSet.Location = new System.Drawing.Point(101, 69);
+            this.btnSet.Margin = new System.Windows.Forms.Padding(0);
+            this.btnSet.Name = "btnSet";
+            this.btnSet.Size = new System.Drawing.Size(45, 27);
+            this.btnSet.TabIndex = 2;
+            this.btnSet.Tag = "Setembro";
+            this.btnSet.Text = "Set";
+            this.btnSet.UseVisualStyleBackColor = false;
+            this.btnSet.Click += new System.EventHandler(this.btnJan_Click);
+            // 
+            // btnAgo
+            // 
+            this.btnAgo.BackColor = System.Drawing.Color.Transparent;
+            this.btnAgo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAgo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAgo.FlatAppearance.BorderSize = 0;
+            this.btnAgo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgo.Font = new System.Drawing.Font("Century", 11.25F);
+            this.btnAgo.Location = new System.Drawing.Point(55, 69);
+            this.btnAgo.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAgo.Name = "btnAgo";
+            this.btnAgo.Size = new System.Drawing.Size(45, 27);
+            this.btnAgo.TabIndex = 2;
+            this.btnAgo.Tag = "Agosto";
+            this.btnAgo.Text = "Ago";
+            this.btnAgo.UseVisualStyleBackColor = false;
+            this.btnAgo.Click += new System.EventHandler(this.btnJan_Click);
+            // 
+            // btnJul
+            // 
+            this.btnJul.BackColor = System.Drawing.Color.Transparent;
+            this.btnJul.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnJul.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnJul.FlatAppearance.BorderSize = 0;
+            this.btnJul.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnJul.Font = new System.Drawing.Font("Century", 11.25F);
+            this.btnJul.Location = new System.Drawing.Point(9, 69);
+            this.btnJul.Margin = new System.Windows.Forms.Padding(0);
+            this.btnJul.Name = "btnJul";
+            this.btnJul.Size = new System.Drawing.Size(45, 27);
+            this.btnJul.TabIndex = 2;
+            this.btnJul.Tag = "Julho";
+            this.btnJul.Text = "Jul";
+            this.btnJul.UseVisualStyleBackColor = false;
+            this.btnJul.Click += new System.EventHandler(this.btnJan_Click);
+            // 
+            // btnDez
+            // 
+            this.btnDez.BackColor = System.Drawing.Color.Transparent;
+            this.btnDez.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnDez.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDez.FlatAppearance.BorderSize = 0;
+            this.btnDez.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDez.Font = new System.Drawing.Font("Century", 11.25F);
+            this.btnDez.Location = new System.Drawing.Point(245, 69);
+            this.btnDez.Margin = new System.Windows.Forms.Padding(0);
+            this.btnDez.Name = "btnDez";
+            this.btnDez.Size = new System.Drawing.Size(45, 27);
+            this.btnDez.TabIndex = 2;
+            this.btnDez.Tag = "Dezembro";
+            this.btnDez.Text = "Dez";
+            this.btnDez.UseVisualStyleBackColor = false;
+            this.btnDez.Click += new System.EventHandler(this.btnJan_Click);
+            // 
+            // btnAbr
+            // 
+            this.btnAbr.BackColor = System.Drawing.Color.Transparent;
+            this.btnAbr.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAbr.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAbr.FlatAppearance.BorderSize = 0;
+            this.btnAbr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAbr.Font = new System.Drawing.Font("Century", 11.25F);
+            this.btnAbr.Location = new System.Drawing.Point(146, 42);
+            this.btnAbr.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAbr.Name = "btnAbr";
+            this.btnAbr.Size = new System.Drawing.Size(45, 27);
+            this.btnAbr.TabIndex = 2;
+            this.btnAbr.Tag = "Abril";
+            this.btnAbr.Text = "Abr";
+            this.btnAbr.UseVisualStyleBackColor = false;
+            this.btnAbr.Click += new System.EventHandler(this.btnJan_Click);
+            // 
+            // FrmMothCalendar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(299, 130);
+            this.BackColor = System.Drawing.Color.White;
+            this.CancelButton = this.btn_Cancelar;
+            this.ClientSize = new System.Drawing.Size(299, 146);
+            this.ControlBox = false;
             this.Controls.Add(this.btn_Cancelar);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.img_Right);
-            this.Controls.Add(this.img_Left);
+            this.Controls.Add(this.btnRightYear);
+            this.Controls.Add(this.btnAbr);
+            this.Controls.Add(this.btnDez);
+            this.Controls.Add(this.btnJul);
+            this.Controls.Add(this.btnAgo);
+            this.Controls.Add(this.btnSet);
+            this.Controls.Add(this.btnOut);
+            this.Controls.Add(this.btnNov);
+            this.Controls.Add(this.btnJun);
+            this.Controls.Add(this.btnMai);
+            this.Controls.Add(this.btnFev);
+            this.Controls.Add(this.btnJan);
+            this.Controls.Add(this.BtnLeftYear);
+            this.Controls.Add(this.btnMesAtual);
+            this.Controls.Add(this.lbYear);
             this.Controls.Add(this.pictureBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frm_MothCalendar";
-            this.Text = "frm_MothCalendar";
-            ((System.ComponentModel.ISupportInitialize)(this.img_Right)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.img_Left)).EndInit();
+            this.Controls.Add(this.btnMar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Name = "FrmMothCalendar";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Calendário";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -267,22 +377,22 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.PictureBox img_Left;
-        private System.Windows.Forms.PictureBox img_Right;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lbYear;
+        private System.Windows.Forms.Button btnMesAtual;
         private System.Windows.Forms.Button btn_Cancelar;
+        private System.Windows.Forms.Button BtnLeftYear;
+        private System.Windows.Forms.Button btnRightYear;
+        private System.Windows.Forms.Button btnJan;
+        private System.Windows.Forms.Button btnFev;
+        private System.Windows.Forms.Button btnMar;
+        private System.Windows.Forms.Button btnMai;
+        private System.Windows.Forms.Button btnJun;
+        private System.Windows.Forms.Button btnNov;
+        private System.Windows.Forms.Button btnOut;
+        private System.Windows.Forms.Button btnSet;
+        private System.Windows.Forms.Button btnAgo;
+        private System.Windows.Forms.Button btnJul;
+        private System.Windows.Forms.Button btnDez;
+        private System.Windows.Forms.Button btnAbr;
     }
 }
