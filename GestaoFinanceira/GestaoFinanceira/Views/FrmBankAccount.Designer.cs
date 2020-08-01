@@ -50,7 +50,7 @@
             this.txtBank.Name = "txtBank";
             this.txtBank.Size = new System.Drawing.Size(100, 20);
             this.txtBank.TabIndex = 2;
-            this.txtBank.TextChanged += new System.EventHandler(this.txtBank_TextChanged);
+            this.txtBank.TextChanged += new System.EventHandler(this.txtHolder_TextChanged);
             // 
             // txtAccount
             // 
@@ -58,7 +58,7 @@
             this.txtAccount.Name = "txtAccount";
             this.txtAccount.Size = new System.Drawing.Size(100, 20);
             this.txtAccount.TabIndex = 4;
-            this.txtAccount.TextChanged += new System.EventHandler(this.txtAccount_TextChanged);
+            this.txtAccount.TextChanged += new System.EventHandler(this.txtHolder_TextChanged);
             // 
             // txtAgency
             // 
@@ -66,7 +66,7 @@
             this.txtAgency.Name = "txtAgency";
             this.txtAgency.Size = new System.Drawing.Size(100, 20);
             this.txtAgency.TabIndex = 3;
-            this.txtAgency.TextChanged += new System.EventHandler(this.txtAgency_TextChanged);
+            this.txtAgency.TextChanged += new System.EventHandler(this.txtHolder_TextChanged);
             // 
             // txtHolder
             // 
@@ -82,7 +82,7 @@
             this.txtLimit.Name = "txtLimit";
             this.txtLimit.Size = new System.Drawing.Size(100, 20);
             this.txtLimit.TabIndex = 5;
-            this.txtLimit.TextChanged += new System.EventHandler(this.txtLimit_TextChanged);
+            this.txtLimit.TextChanged += new System.EventHandler(this.txtHolder_TextChanged);
             // 
             // label1
             // 
