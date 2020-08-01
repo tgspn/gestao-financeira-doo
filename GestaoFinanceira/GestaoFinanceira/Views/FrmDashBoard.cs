@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestaoFinanceira
-{
+{   
     public partial class FrmDashBoard : Form
     {
         public FrmDashBoard()
