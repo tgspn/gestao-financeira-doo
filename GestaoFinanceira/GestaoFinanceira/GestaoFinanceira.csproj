@@ -48,10 +48,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\Enums.cs" />
+    <Compile Include="Extends\FormExtends.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\SystemColors.cs" />
+    <Compile Include="Views\FrmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmAbout.Designer.cs">
+      <DependentUpon>FrmAbout.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\FrmBankAccount.cs">
       <SubType>Form</SubType>
@@ -83,11 +92,23 @@
     <Compile Include="Views\FrmEntries.Designer.cs">
       <DependentUpon>FrmEntries.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\FrmEntryExpenses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmEntryExpenses.Designer.cs">
+      <DependentUpon>FrmEntryExpenses.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FrmExpense.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\FrmExpense.Designer.cs">
       <DependentUpon>FrmExpense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmListCategories.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmListCategories.Designer.cs">
+      <DependentUpon>FrmListCategories.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\FrmMothCalendar.cs">
       <SubType>Form</SubType>
@@ -109,6 +130,9 @@
     <Compile Include="Views\FrmRevenue.Designer.cs">
       <DependentUpon>FrmRevenue.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\FrmAbout.resx">
+      <DependentUpon>FrmAbout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmBankAccount.resx">
       <DependentUpon>FrmBankAccount.cs</DependentUpon>
     </EmbeddedResource>
@@ -124,8 +148,11 @@
     <EmbeddedResource Include="Views\FrmEntries.resx">
       <DependentUpon>FrmEntries.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\FrmExpense.resx">
-      <DependentUpon>FrmExpense.cs</DependentUpon>
+    <EmbeddedResource Include="Views\FrmEntryExpenses.resx">
+      <DependentUpon>FrmEntryExpenses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmListCategories.resx">
+      <DependentUpon>FrmListCategories.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmMothCalendar.resx">
       <DependentUpon>FrmMothCalendar.cs</DependentUpon>
@@ -192,6 +219,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8_bank_70px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_checkmark_30px_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_delete_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_plus_math_15px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

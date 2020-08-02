@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestaoFinanceira.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,20 @@ namespace GestaoFinanceira.Views
         public FrmEntries()
         {
             InitializeComponent();
+        }
+
+        private void btnRevenue_Click(object sender, EventArgs e)
+        {
+            FrmEntryExpenses form = new FrmEntryExpenses(EntryType.Revenue);
+            form.Show();
+            this.Close();
+        }
+
+        private void btnExpense_Click(object sender, EventArgs e)
+        {
+            FrmEntryExpenses form = new FrmEntryExpenses(EntryType.Expense);
+            form.Show();
+            this.Close();
         }
     }
 }
