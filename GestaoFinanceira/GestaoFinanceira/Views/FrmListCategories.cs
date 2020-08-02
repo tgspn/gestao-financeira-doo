@@ -18,6 +18,7 @@ namespace GestaoFinanceira.Views
             InitializeComponent();
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;
+            pnCategories.BackColor = SystemColors.BLUE;
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
@@ -43,6 +44,15 @@ namespace GestaoFinanceira.Views
             {
                 MessageBox.Show("Categoria apagado com sucesso!", "", MessageBoxButtons.OK);
             }    
+        }
+
+        private void lbCategories_Paint(object sender, PaintEventArgs e)
+        {
+            Font myFont = new Font("Microsoft PhagsPa", 16, FontStyle.Bold);
+            Brush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
+            e.Graphics.TranslateTransform(6, 125);
+            e.Graphics.RotateTransform(-90);
+            e.Graphics.DrawString("Categorias", myFont, myBrush, 0, 0);
         }
     }
 }
