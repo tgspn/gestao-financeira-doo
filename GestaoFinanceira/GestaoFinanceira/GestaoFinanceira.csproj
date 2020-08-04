@@ -98,12 +98,6 @@
     <Compile Include="Views\FrmEntryExpenses.Designer.cs">
       <DependentUpon>FrmEntryExpenses.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FrmExpense.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\FrmExpense.Designer.cs">
-      <DependentUpon>FrmExpense.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\FrmListCategories.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,11 +118,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\FrmRevenue.cs">
+    <Compile Include="Views\FrmListEntryRevenue.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FrmRevenue.Designer.cs">
-      <DependentUpon>FrmRevenue.cs</DependentUpon>
+    <Compile Include="Views\FrmListEntryRevenue.Designer.cs">
+      <DependentUpon>FrmListEntryRevenue.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Views\FrmAbout.resx">
       <DependentUpon>FrmAbout.cs</DependentUpon>
@@ -165,8 +159,8 @@
     <EmbeddedResource Include="Views\FrmReport.resx">
       <DependentUpon>FrmReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\FrmRevenue.resx">
-      <DependentUpon>FrmRevenue.cs</DependentUpon>
+    <EmbeddedResource Include="Views\FrmListEntryRevenue.resx">
+      <DependentUpon>FrmListEntryRevenue.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -240,6 +234,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8_credit_card_70px_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_edit_26px_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_trash_26px_1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
