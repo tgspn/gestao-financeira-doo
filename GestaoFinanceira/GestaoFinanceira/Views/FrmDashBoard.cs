@@ -97,13 +97,13 @@ namespace GestaoFinanceira
 
         private void btnOpenExpense_Click(object sender, EventArgs e)
         {
-            Form form = new FrmExpense();
+            FrmListEntryRevenue form = new FrmListEntryRevenue(EntryType.Expense);
             form.Show();
         }
 
         private void btnOpenRevenue_Click(object sender, EventArgs e)
         {
-            Form form = new FrmRevenue();
+            FrmListEntryRevenue form = new FrmListEntryRevenue(EntryType.Revenue);
             form.Show();
         }
 
