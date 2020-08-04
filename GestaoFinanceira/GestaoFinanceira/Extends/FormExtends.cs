@@ -61,5 +61,6 @@ namespace GestaoFinanceira
             else
                 return numericUpDowns.ToList().TrueForAll(x => x.Value > 0);
         }
+
     }
 }

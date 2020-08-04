@@ -229,5 +229,17 @@
   <ItemGroup>
     <None Include="Resources\icons8_plus_math_15px.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_credit_control_70px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_credit_control_70px_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_credit_card_70px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_credit_card_70px_1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
