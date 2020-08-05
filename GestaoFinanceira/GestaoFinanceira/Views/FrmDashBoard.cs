@@ -154,5 +154,11 @@ namespace GestaoFinanceira
             Form form = new FrmAbout();
             form.Show();
         }
+
+        private void ctCreditCard_Click(object sender, EventArgs e)
+        {
+            FrmListCreditCard form = new FrmListCreditCard();
+            form.Show();
+        }
     }
 }

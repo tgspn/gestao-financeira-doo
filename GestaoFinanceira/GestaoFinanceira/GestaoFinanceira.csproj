@@ -104,6 +104,12 @@
     <Compile Include="Views\FrmListCategories.Designer.cs">
       <DependentUpon>FrmListCategories.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\FrmListCreditCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmListCreditCard.Designer.cs">
+      <DependentUpon>FrmListCreditCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FrmMothCalendar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmListCategories.resx">
       <DependentUpon>FrmListCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmListCreditCard.resx">
+      <DependentUpon>FrmListCreditCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmMothCalendar.resx">
       <DependentUpon>FrmMothCalendar.cs</DependentUpon>
