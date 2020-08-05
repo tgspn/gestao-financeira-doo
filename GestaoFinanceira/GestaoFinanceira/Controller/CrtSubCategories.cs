@@ -11,21 +11,20 @@ namespace GestaoFinanceira.Controller
     {
         public List<SubCategories> List()
         {
-            return null;
+            throw new NotImplementedException();
         }
         public SubCategories Find(int categoriesId)
         {
-            return null;
+            throw new NotImplementedException();
         }
 
         public void Save(SubCategories subCategories)
         {
-
+            throw new NotImplementedException();
         }
         public void Remove(SubCategories subCategories)
         {
-
-
+            throw new NotImplementedException();
         }
     }
 }

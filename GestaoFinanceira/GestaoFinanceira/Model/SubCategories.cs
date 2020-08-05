@@ -8,7 +8,7 @@ namespace GestaoFinanceira.Model
 {
     class SubCategories
     {
-        private int Id { get; set; }
-        private string Descricao { get; set; }
+        public int Id { get; set; }
+        public string Descricao { get; set; }
     }
 }
