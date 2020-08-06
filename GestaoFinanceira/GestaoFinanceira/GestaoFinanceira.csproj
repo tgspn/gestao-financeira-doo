@@ -48,8 +48,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\CrtCategories.cs" />
-    <Compile Include="Controller\CrtSubCategories.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\SubCategoriesController.cs" />
+    <Compile Include="DAO\CategoriesDAO.cs" />
+    <Compile Include="DAO\DAOBase.cs" />
     <Compile Include="Enums\Enums.cs" />
     <Compile Include="Extends\FormExtends.cs" />
     <Compile Include="Model\Categories.cs" />
