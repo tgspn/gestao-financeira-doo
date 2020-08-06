@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestaoFinanceira
-{
+{    
     public static class FormExtends
     {
         public static bool ValidFields(this Form form, params Control[] control)
@@ -17,25 +17,37 @@ namespace GestaoFinanceira
             }
             foreach (Control c in control.Where(x => x.Enabled))
             {
-                if (c is TextBox)
+                switch (c)
                 {
-                    if (CheckTexBoxIsEmpty(c as TextBox))
-                        return false;
-                }
-                else if (c is ComboBox)
-                {
-                    if (CheckComboBoxIsEmpty(c as ComboBox))
-                        return false;
-                }
-                else if (c is NumericUpDown)
-                {
-                    if (CheckNumericUpDowIsEmpty(c as NumericUpDown))
-                        return false;
-                }
-                else
-                    throw new Exception("Tipo do controle não mapeado.");
+                    case TextBox txt:
+                        if (CheckTexBoxIsEmpty(txt))
+                            return false;
+                        break;
+                    case ComboBox cmb:
+                        if (CheckComboBoxIsEmpty(cmb))
+                            return false;
+                        break;
+                    case NumericUpDown nup:
+                        if (CheckNumericUpDowIsEmpty(nup))
+                            return false;
+                        break;
+                    case MaskedTextBox mtb:
+                        if (CheckMaskedTextBoxIsEmpty(mtb))
+                            return false;
+                        break;
+                    default:
+                        throw new Exception("Tipo do controle não mapeado.");
+                }                   
             }
             return true;
+        }
+
+        private static bool CheckMaskedTextBoxIsEmpty(params MaskedTextBox[] mtb)
+        {
+            if (mtb == null)
+                return false;
+
+            return mtb.ToList().TrueForAll(x =>x.MaskCompleted);
         }
 
         private static bool CheckTexBoxIsEmpty(params TextBox[] textBox)
@@ -61,5 +73,6 @@ namespace GestaoFinanceira
             else
                 return numericUpDowns.ToList().TrueForAll(x => x.Value > 0);
         }
+
     }
 }

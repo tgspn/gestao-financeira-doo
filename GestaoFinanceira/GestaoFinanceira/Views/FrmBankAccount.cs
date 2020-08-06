@@ -35,13 +35,12 @@ namespace GestaoFinanceira.Views
 
         private void txtHolder_TextChanged(object sender, EventArgs e)
         {
-            var list = new[] { txtAccount, txtAgency, txtBank, txtHolder, txtLimit }.ToList();
-
-            if (list.TrueForAll(x => !string.IsNullOrEmpty(x.Text)))
-                btnSave.Enabled = true;
-            else
-                btnSave.Enabled = false;
+                btnSave.Enabled = IsValid();
         }   
+        private bool IsValid()
+        {
+            return this.ValidFields(txtAccount, txtAgency, txtBank, txtHolder, txtLimit);
+        }
 
     }
 }
