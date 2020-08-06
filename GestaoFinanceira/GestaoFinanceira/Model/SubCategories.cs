@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GestaoFinanceira.Model
 {
-    class SubCategories
+    public class SubCategories
     {
         public int Id { get; set; }
         public string Descricao { get; set; }
