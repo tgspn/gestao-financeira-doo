@@ -43,9 +43,10 @@
             // txtCategoria
             // 
             this.txtCategoria.Font = new System.Drawing.Font("Comic Sans MS", 9.75F);
-            this.txtCategoria.Location = new System.Drawing.Point(125, 61);
+            this.txtCategoria.Location = new System.Drawing.Point(167, 75);
+            this.txtCategoria.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCategoria.Name = "txtCategoria";
-            this.txtCategoria.Size = new System.Drawing.Size(139, 26);
+            this.txtCategoria.Size = new System.Drawing.Size(184, 30);
             this.txtCategoria.TabIndex = 0;
             this.txtCategoria.TextChanged += new System.EventHandler(this.txtCategoria_TextChanged);
             // 
@@ -53,9 +54,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(21, 64);
+            this.label1.Location = new System.Drawing.Point(28, 79);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 18);
+            this.label1.Size = new System.Drawing.Size(87, 24);
             this.label1.TabIndex = 1;
             this.label1.Text = "Categoria";
             // 
@@ -63,18 +65,20 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.Blue;
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Location = new System.Drawing.Point(12, 10);
+            this.panel1.Location = new System.Drawing.Point(16, 12);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(265, 46);
+            this.panel1.Size = new System.Drawing.Size(353, 57);
             this.panel1.TabIndex = 2;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(90, 11);
+            this.label3.Location = new System.Drawing.Point(120, 14);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 26);
+            this.label3.Size = new System.Drawing.Size(120, 33);
             this.label3.TabIndex = 0;
             this.label3.Text = "Categoria";
             // 
@@ -84,9 +88,10 @@
             this.btnCancel.FlatAppearance.BorderSize = 0;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Image = global::GestaoFinanceira.Properties.Resources.icons8_delete_30px;
-            this.btnCancel.Location = new System.Drawing.Point(47, 254);
+            this.btnCancel.Location = new System.Drawing.Point(63, 313);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(100, 28);
             this.btnCancel.TabIndex = 3;
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -94,12 +99,14 @@
             // btnSave
             // 
             this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSave.Enabled = false;
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Image = global::GestaoFinanceira.Properties.Resources.icons8_checkmark_30px_2;
-            this.btnSave.Location = new System.Drawing.Point(162, 254);
+            this.btnSave.Location = new System.Drawing.Point(216, 313);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(100, 28);
             this.btnSave.TabIndex = 3;
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -112,23 +119,26 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SubCategorias});
             this.dataGridView1.GridColor = System.Drawing.Color.DarkGray;
-            this.dataGridView1.Location = new System.Drawing.Point(24, 93);
+            this.dataGridView1.Location = new System.Drawing.Point(32, 114);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(252, 135);
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.Size = new System.Drawing.Size(336, 166);
             this.dataGridView1.TabIndex = 4;
             // 
             // SubCategorias
             // 
             this.SubCategorias.HeaderText = "SubCategorias";
+            this.SubCategorias.MinimumWidth = 6;
             this.SubCategorias.Name = "SubCategorias";
             this.SubCategorias.Width = 200;
             // 
             // FrmCategories
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(289, 293);
+            this.ClientSize = new System.Drawing.Size(385, 361);
             this.ControlBox = false;
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnSave);
@@ -137,6 +147,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtCategoria);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmCategories";
             this.Text = "Criar Categoria";
             this.panel1.ResumeLayout(false);
