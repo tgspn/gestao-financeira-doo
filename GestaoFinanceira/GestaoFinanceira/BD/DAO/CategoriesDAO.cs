@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GestaoFinanceira.DAO
+namespace GestaoFinanceira.BD.DAO
 {
     public class CategoriesDAO : DAOBase<Categories>
     {
-        public override Categories Delete()
+        public override bool Delete()
         {
             throw new NotImplementedException();
         }
