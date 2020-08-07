@@ -47,7 +47,7 @@ namespace GestaoFinanceira
             if (mtb == null)
                 return false;
 
-            return mtb.ToList().TrueForAll(x =>x.MaskCompleted);
+            return mtb.ToList().TrueForAll(x =>!x.MaskCompleted);
         }
 
         private static bool CheckTexBoxIsEmpty(params TextBox[] textBox)
@@ -55,7 +55,7 @@ namespace GestaoFinanceira
             if(textBox == null)
                 return false;
             else
-                return textBox.ToList().TrueForAll(x => !string.IsNullOrEmpty(x.Text));
+                return textBox.ToList().TrueForAll(x => string.IsNullOrEmpty(x.Text));
         }
 
         private static bool CheckComboBoxIsEmpty(params ComboBox[] comboBox)
@@ -63,7 +63,7 @@ namespace GestaoFinanceira
             if (comboBox == null)
                 return false;
             else
-                return comboBox.ToList().TrueForAll(x => !string.IsNullOrEmpty(x.SelectedText));
+                return comboBox.ToList().TrueForAll(x => string.IsNullOrEmpty(x.SelectedText));
         }
 
         private static bool CheckNumericUpDowIsEmpty(params NumericUpDown[] numericUpDowns)
@@ -71,7 +71,7 @@ namespace GestaoFinanceira
             if (numericUpDowns == null)
                 return false;
             else
-                return numericUpDowns.ToList().TrueForAll(x => x.Value > 0);
+                return numericUpDowns.ToList().TrueForAll(x => x.Value == 0);
         }
 
     }
