@@ -1,4 +1,6 @@
-﻿using GestaoFinanceira.Model;
+﻿using GestaoFinanceira.BD.Conections;
+using GestaoFinanceira.BD.DAO;
+using GestaoFinanceira.Model;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
@@ -10,9 +12,16 @@ namespace GestaoFinanceira.Controllers
 {
     class CategoriesController
     {
+        private CategoriesDAO dao;
+        private IConnection<Categories> connection;
+        public CategoriesController(IConnection<Categories> connection)
+        {
+            this.connection = connection;
+            this.dao = new CategoriesDAO(connection);
+        }
         public List<Categories> List()
         {
-            throw new NotImplementedException();
+            return dao.Get().ToList();
         }
         public Categories Find(int categoriesId)
         {
@@ -21,11 +30,14 @@ namespace GestaoFinanceira.Controllers
 
         public void Save(Categories categories)
         {
-            throw new NotImplementedException();
+            if (categories.Id == 0)
+                dao.Insert(categories);
+            else
+                dao.Update(categories);
         }
         public void Remove(Categories categories)
         {
-            throw new NotImplementedException();
+            dao.Delete(categories.Id);
         }
     }
 }
