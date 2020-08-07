@@ -45,8 +45,10 @@
             this.btnAddCategorias = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.pnBanner.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupValue)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ckbRepetir
@@ -66,6 +68,7 @@
             this.cbCategoria.Name = "cbCategoria";
             this.cbCategoria.Size = new System.Drawing.Size(182, 21);
             this.cbCategoria.TabIndex = 15;
+            this.cbCategoria.SelectedIndexChanged += new System.EventHandler(this.cbCategoria_SelectedIndexChanged);
             this.cbCategoria.SelectionChangeCommitted += new System.EventHandler(this.txtDescription_TextChanged);
             // 
             // cbConta
@@ -208,11 +211,12 @@
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Image = global::GestaoFinanceira.Properties.Resources.icons8_checkmark_30px_2;
-            this.btnSave.Location = new System.Drawing.Point(160, 320);
+            this.btnSave.Location = new System.Drawing.Point(200, 15);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(44, 31);
+            this.btnSave.Size = new System.Drawing.Size(44, 23);
             this.btnSave.TabIndex = 18;
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
@@ -220,23 +224,32 @@
             this.btnCancel.FlatAppearance.BorderSize = 0;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Image = global::GestaoFinanceira.Properties.Resources.icons8_delete_30px;
-            this.btnCancel.Location = new System.Drawing.Point(38, 324);
+            this.btnCancel.Location = new System.Drawing.Point(12, 15);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(44, 23);
             this.btnCancel.TabIndex = 19;
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnCancel);
+            this.panel1.Controls.Add(this.btnSave);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 328);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(254, 48);
+            this.panel1.TabIndex = 20;
+            // 
             // FrmEntryExpenses
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(254, 359);
+            this.ClientSize = new System.Drawing.Size(254, 376);
             this.ControlBox = false;
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnAddCategorias);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.ckbRepetir);
             this.Controls.Add(this.cbSubCategoria);
             this.Controls.Add(this.cbCategoria);
@@ -251,10 +264,13 @@
             this.Controls.Add(this.pnBanner);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FrmEntryExpenses";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Despesas";
+            this.Load += new System.EventHandler(this.FrmEntryExpenses_Load);
             this.pnBanner.ResumeLayout(false);
             this.pnBanner.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupValue)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -279,5 +295,6 @@
         private System.Windows.Forms.NumericUpDown nupValue;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cbSubCategoria;
+        private System.Windows.Forms.Panel panel1;
     }
 }
