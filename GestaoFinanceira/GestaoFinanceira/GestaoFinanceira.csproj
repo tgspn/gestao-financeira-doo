@@ -48,6 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BD\Conections\IConnection.cs" />
+    <Compile Include="BD\Conections\MemorySQLConnection.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\SubCategoriesController.cs" />
     <Compile Include="BD\DAO\CategoriesDAO.cs" />

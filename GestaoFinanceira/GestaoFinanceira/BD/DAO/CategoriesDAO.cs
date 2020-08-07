@@ -1,4 +1,5 @@
-﻿using GestaoFinanceira.Model;
+﻿using GestaoFinanceira.BD.Conections;
+using GestaoFinanceira.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,24 +10,37 @@ namespace GestaoFinanceira.BD.DAO
 {
     public class CategoriesDAO : DAOBase<Categories>
     {
-        public override bool Delete()
+        public CategoriesDAO(IConnection<Categories> connection):base(connection)
         {
-            throw new NotImplementedException();
+
         }
 
-        public override List<Categories> Get()
+        public override bool Delete(int id)
         {
-            throw new NotImplementedException();
+            return connection.Delete(id);
         }
 
-        public override Categories Insert()
+        public override IEnumerable<Categories> Get()
         {
-            throw new NotImplementedException();
+            return connection.Select();
         }
 
-        public override Categories Update()
+        public override Categories Insert(Categories categories)
         {
-            throw new NotImplementedException();
+            var id=connection.Insert(categories);
+            categories.Id = id;
+            return categories;
+        }
+
+        public override Categories Update(Categories categories)
+        {
+            connection.Update(categories);
+            return categories;
+        }
+
+        protected override string GetTableName()
+        {
+            return "categories";
         }
     }
 }

@@ -12,6 +12,5 @@ namespace GestaoFinanceira.Model
         public string Descricao { get; set; }
         public List<SubCategories> SubCategories { get; set; }
 
-
     }
 }
