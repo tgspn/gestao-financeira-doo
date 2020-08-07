@@ -62,7 +62,7 @@ namespace GestaoFinanceira.BD.Conections
         {
             var id = GetIdValue(obj);
             if (id == 0)
-                id = data.Keys.Max() + 1;
+                id = data.Keys.Count() == 0 ? 1 : data.Keys.Max() + 1;
 
             if (data.ContainsKey(id))
                 throw new Exception($"Já existe uma chave com esse valor {id}");
