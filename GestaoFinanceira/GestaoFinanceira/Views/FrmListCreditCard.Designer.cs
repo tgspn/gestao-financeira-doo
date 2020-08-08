@@ -28,99 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dtvRevenue = new System.Windows.Forms.DataGridView();
-            this.cId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descrição = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPaymentMethod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cCategories = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cRepeatEvery = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cRepeatUntil = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtvCreditCard = new System.Windows.Forms.DataGridView();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.pnCreditCard = new System.Windows.Forms.Panel();
             this.lbCreditCard = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dtvRevenue)).BeginInit();
+            this.cId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cIssuer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cHolder = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cLateFee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cExpirationDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cClosingDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dtvCreditCard)).BeginInit();
             this.pnCreditCard.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dtvRevenue
+            // dtvCreditCard
             // 
-            this.dtvRevenue.AllowUserToAddRows = false;
-            this.dtvRevenue.AllowUserToDeleteRows = false;
-            this.dtvRevenue.BackgroundColor = System.Drawing.Color.White;
-            this.dtvRevenue.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dtvRevenue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtvRevenue.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dtvCreditCard.AllowUserToAddRows = false;
+            this.dtvCreditCard.AllowUserToDeleteRows = false;
+            this.dtvCreditCard.BackgroundColor = System.Drawing.Color.White;
+            this.dtvCreditCard.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dtvCreditCard.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtvCreditCard.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cId,
-            this.Descrição,
-            this.cValue,
-            this.cPaymentMethod,
-            this.cCategories,
-            this.cDate,
-            this.cStatus,
-            this.cRepeatEvery,
-            this.cRepeatUntil});
-            this.dtvRevenue.GridColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.dtvRevenue.Location = new System.Drawing.Point(49, 12);
-            this.dtvRevenue.Name = "dtvRevenue";
-            this.dtvRevenue.Size = new System.Drawing.Size(881, 149);
-            this.dtvRevenue.TabIndex = 3;
-            this.dtvRevenue.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtvRevenue_CellContentClick);
-            // 
-            // cId
-            // 
-            this.cId.HeaderText = "id";
-            this.cId.Name = "cId";
-            this.cId.Visible = false;
-            // 
-            // Descrição
-            // 
-            this.Descrição.HeaderText = "Descrição";
-            this.Descrição.Name = "Descrição";
-            this.Descrição.Width = 150;
-            // 
-            // cValue
-            // 
-            this.cValue.HeaderText = "Valor";
-            this.cValue.Name = "cValue";
-            this.cValue.Width = 70;
-            // 
-            // cPaymentMethod
-            // 
-            this.cPaymentMethod.HeaderText = "Conta";
-            this.cPaymentMethod.Name = "cPaymentMethod";
-            // 
-            // cCategories
-            // 
-            this.cCategories.HeaderText = "Categoria";
-            this.cCategories.Name = "cCategories";
-            // 
-            // cDate
-            // 
-            this.cDate.HeaderText = "Data";
-            this.cDate.Name = "cDate";
-            // 
-            // cStatus
-            // 
-            this.cStatus.HeaderText = "Status";
-            this.cStatus.Name = "cStatus";
-            this.cStatus.Width = 70;
-            // 
-            // cRepeatEvery
-            // 
-            this.cRepeatEvery.HeaderText = "Repetir";
-            this.cRepeatEvery.Name = "cRepeatEvery";
-            // 
-            // cRepeatUntil
-            // 
-            this.cRepeatUntil.HeaderText = "Data repetição";
-            this.cRepeatUntil.Name = "cRepeatUntil";
-            this.cRepeatUntil.Width = 150;
+            this.cIssuer,
+            this.cHolder,
+            this.cAmount,
+            this.cNumber,
+            this.cLateFee,
+            this.cExpirationDate,
+            this.cClosingDate});
+            this.dtvCreditCard.GridColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.dtvCreditCard.Location = new System.Drawing.Point(49, 12);
+            this.dtvCreditCard.Name = "dtvCreditCard";
+            this.dtvCreditCard.Size = new System.Drawing.Size(881, 149);
+            this.dtvCreditCard.TabIndex = 3;
+            this.dtvCreditCard.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtvRevenue_CellContentClick);
             // 
             // btnCancel
             // 
@@ -162,6 +110,7 @@
             this.btnDelete.Size = new System.Drawing.Size(37, 33);
             this.btnDelete.TabIndex = 6;
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnAdd
             // 
@@ -176,6 +125,7 @@
             this.btnAdd.Size = new System.Drawing.Size(37, 33);
             this.btnAdd.TabIndex = 7;
             this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // pnCreditCard
             // 
@@ -196,6 +146,51 @@
             this.lbCreditCard.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbCreditCard.Paint += new System.Windows.Forms.PaintEventHandler(this.lbCreditCard_Paint);
             // 
+            // cId
+            // 
+            this.cId.HeaderText = "id";
+            this.cId.Name = "cId";
+            this.cId.Visible = false;
+            // 
+            // cIssuer
+            // 
+            this.cIssuer.HeaderText = "Credor";
+            this.cIssuer.Name = "cIssuer";
+            this.cIssuer.Width = 70;
+            // 
+            // cHolder
+            // 
+            this.cHolder.HeaderText = "Titular";
+            this.cHolder.Name = "cHolder";
+            this.cHolder.Width = 170;
+            // 
+            // cAmount
+            // 
+            this.cAmount.HeaderText = "Saldo";
+            this.cAmount.Name = "cAmount";
+            // 
+            // cNumber
+            // 
+            this.cNumber.HeaderText = "Numero";
+            this.cNumber.Name = "cNumber";
+            // 
+            // cLateFee
+            // 
+            this.cLateFee.HeaderText = "% ao mês";
+            this.cLateFee.Name = "cLateFee";
+            // 
+            // cExpirationDate
+            // 
+            this.cExpirationDate.HeaderText = "Vencimento do Cartão";
+            this.cExpirationDate.Name = "cExpirationDate";
+            this.cExpirationDate.Width = 150;
+            // 
+            // cClosingDate
+            // 
+            this.cClosingDate.HeaderText = "Fechamento da Fatura";
+            this.cClosingDate.Name = "cClosingDate";
+            this.cClosingDate.Width = 150;
+            // 
             // FrmListCreditCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -204,7 +199,7 @@
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(934, 210);
             this.ControlBox = false;
-            this.Controls.Add(this.dtvRevenue);
+            this.Controls.Add(this.dtvCreditCard);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnDelete);
@@ -214,7 +209,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FrmListCreditCard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            ((System.ComponentModel.ISupportInitialize)(this.dtvRevenue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtvCreditCard)).EndInit();
             this.pnCreditCard.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -222,21 +217,20 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dtvRevenue;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descrição;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cValue;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cPaymentMethod;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cCategories;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cStatus;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cRepeatEvery;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cRepeatUntil;
+        private System.Windows.Forms.DataGridView dtvCreditCard;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Panel pnCreditCard;
         private System.Windows.Forms.Label lbCreditCard;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cIssuer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cHolder;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cLateFee;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cExpirationDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cClosingDate;
     }
 }

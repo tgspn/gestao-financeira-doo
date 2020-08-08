@@ -355,24 +355,28 @@ namespace GestaoFinanceira
             this.contaToolStripMenuItem.Name = "contaToolStripMenuItem";
             this.contaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.contaToolStripMenuItem.Text = "Conta";
+            this.contaToolStripMenuItem.Click += new System.EventHandler(this.contaToolStripMenuItem_Click);
             // 
             // cartãoDeCréditoToolStripMenuItem1
             // 
             this.cartãoDeCréditoToolStripMenuItem1.Name = "cartãoDeCréditoToolStripMenuItem1";
             this.cartãoDeCréditoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.cartãoDeCréditoToolStripMenuItem1.Text = "Cartão de Crédito";
+            this.cartãoDeCréditoToolStripMenuItem1.Click += new System.EventHandler(this.cartãoDeCréditoToolStripMenuItem1_Click);
             // 
             // despesasToolStripMenuItem
             // 
             this.despesasToolStripMenuItem.Name = "despesasToolStripMenuItem";
             this.despesasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.despesasToolStripMenuItem.Text = "Despesas";
+            this.despesasToolStripMenuItem.Click += new System.EventHandler(this.despesasToolStripMenuItem_Click);
             // 
             // receitasToolStripMenuItem
             // 
             this.receitasToolStripMenuItem.Name = "receitasToolStripMenuItem";
             this.receitasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.receitasToolStripMenuItem.Text = "Receitas";
+            this.receitasToolStripMenuItem.Click += new System.EventHandler(this.receitasToolStripMenuItem_Click);
             // 
             // categoriasToolStripMenuItem
             // 
@@ -409,21 +413,21 @@ namespace GestaoFinanceira
             // cadastrosToolStripMenuItem
             // 
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
-            this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.cadastrosToolStripMenuItem.Text = "Conta Bancária";
             this.cadastrosToolStripMenuItem.Click += new System.EventHandler(this.btnOpenBank_Click);
             // 
             // cartãoDeCréditoToolStripMenuItem
             // 
             this.cartãoDeCréditoToolStripMenuItem.Name = "cartãoDeCréditoToolStripMenuItem";
-            this.cartãoDeCréditoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cartãoDeCréditoToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.cartãoDeCréditoToolStripMenuItem.Text = "Cartão de Crédito";
             this.cartãoDeCréditoToolStripMenuItem.Click += new System.EventHandler(this.btnOpenCreditCard_Click);
             // 
             // categoriaToolStripMenuItem
             // 
             this.categoriaToolStripMenuItem.Name = "categoriaToolStripMenuItem";
-            this.categoriaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.categoriaToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.categoriaToolStripMenuItem.Text = "Categoria";
             this.categoriaToolStripMenuItem.Click += new System.EventHandler(this.categoriaToolStripMenuItem_Click);
             // 

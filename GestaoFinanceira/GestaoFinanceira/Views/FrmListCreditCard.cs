@@ -1,4 +1,7 @@
-﻿using System;
+﻿using GestaoFinanceira.BD.Conections;
+using GestaoFinanceira.Controllers;
+using GestaoFinanceira.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,12 +15,18 @@ namespace GestaoFinanceira.Views
 {
     public partial class FrmListCreditCard : Form
     {
+        private readonly CreditCardController controller;
+        private BindingList<CreditCard> creditCards;
+
         public FrmListCreditCard()
         {
             InitializeComponent();
             pnCreditCard.BackColor = SystemColors.BLUE;
             btnDelete.Enabled = false;
             btnEdit.Enabled = false;
+            this.controller = new CreditCardController(new MemorySQLConnection<CreditCard>());
+            this.creditCards = new BindingList<CreditCard>();
+            dtvCreditCard.Rows.Add(creditCards);
         }
 
         private void lbCreditCard_Paint(object sender, PaintEventArgs e)
@@ -39,6 +48,20 @@ namespace GestaoFinanceira.Views
         {
             btnDelete.Enabled = true;
             btnEdit.Enabled = true;
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            FrmCreditCard form = new FrmCreditCard();
+            form.ShowDialog();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Tem certeza que deseja apagar este item ?","", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+
+            }
         }
     }
 }
