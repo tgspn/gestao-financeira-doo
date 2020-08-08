@@ -46,6 +46,7 @@
             // btnRevenue
             // 
             this.btnRevenue.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRevenue.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnRevenue.FlatAppearance.BorderSize = 0;
             this.btnRevenue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRevenue.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -63,6 +64,7 @@
             // btnExpense
             // 
             this.btnExpense.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExpense.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnExpense.FlatAppearance.BorderSize = 0;
             this.btnExpense.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExpense.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -88,9 +90,9 @@
             this.Controls.Add(this.btnExpense);
             this.Controls.Add(this.btnRevenue);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmEntries";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.ResumeLayout(false);
             this.PerformLayout();
 

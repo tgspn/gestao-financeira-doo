@@ -17,19 +17,15 @@ namespace GestaoFinanceira.Views
         {
             InitializeComponent();
         }
-
+        public EntryType EntryType { get; set; }
         private void btnRevenue_Click(object sender, EventArgs e)
         {
-            FrmEntryExpenses form = new FrmEntryExpenses(EntryType.Revenue);
-            form.Show();
-            this.Close();
+            EntryType = EntryType.Revenue;
         }
 
         private void btnExpense_Click(object sender, EventArgs e)
         {
-            FrmEntryExpenses form = new FrmEntryExpenses(EntryType.Expense);
-            form.Show();
-            this.Close();
+            EntryType = EntryType.Expense;   
         }
     }
 }

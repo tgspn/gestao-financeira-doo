@@ -56,11 +56,18 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="BD\DAO\CategoriesDAOTests.cs" />
     <Compile Include="Form1Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GestaoFinanceira\GestaoFinanceira.csproj">
+      <Project>{30E656AB-04DB-4151-BD22-B84E7CE63B7E}</Project>
+      <Name>GestaoFinanceira</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
