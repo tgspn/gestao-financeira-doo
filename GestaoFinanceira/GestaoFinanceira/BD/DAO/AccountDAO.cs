@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 
 namespace GestaoFinanceira.BD.DAO
 {
-    public class CreditCardDAO : DAOBase<CreditCard>
+    public class AccountDAO : DAOBase<Account>
     {
-
-        public CreditCardDAO(IConnection<CreditCard> connection) : base(connection)
+        public AccountDAO(IConnection<Account> connection) : base(connection)
         {
 
         }
@@ -21,27 +20,27 @@ namespace GestaoFinanceira.BD.DAO
             return connection.Delete(id);
         }
 
-        public override IEnumerable<CreditCard> Get()
+        public override IEnumerable<Account> Get()
         {
             return connection.Select();
         }
 
-        public override CreditCard Insert(CreditCard creditCard)
+        public override Account Insert(Account accountBank)
         {
-            var id = connection.Insert(creditCard);
-            creditCard.Id = id;
-            return creditCard;
+            var id = connection.Insert(accountBank);
+            accountBank.Id = id;
+            return accountBank;
         }
 
-        public override CreditCard Update(CreditCard creditCard)
+        public override Account Update(Account accountBank)
         {
-            connection.Update(creditCard);
-            return creditCard;
+            connection.Update(accountBank);
+            return accountBank;
         }
 
         protected override string GetTableName()
         {
-            return "CreditCard";
+            return "Account";
         }
     }
 }

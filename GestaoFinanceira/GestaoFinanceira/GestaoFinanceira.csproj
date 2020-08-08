@@ -50,8 +50,10 @@
   <ItemGroup>
     <Compile Include="BD\Conections\IConnection.cs" />
     <Compile Include="BD\Conections\MemorySQLConnection.cs" />
+    <Compile Include="BD\DAO\AccountDAO.cs" />
     <Compile Include="BD\DAO\CreditCardDAO.cs" />
     <Compile Include="BD\DAO\EntryExpensesDAO.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CreditCardController.cs" />
     <Compile Include="Controllers\EntryExpensesController.cs" />
@@ -60,6 +62,7 @@
     <Compile Include="BD\DAO\DAOBase.cs" />
     <Compile Include="Enums\Enums.cs" />
     <Compile Include="Extends\FormExtends.cs" />
+    <Compile Include="Model\Account.cs" />
     <Compile Include="Model\CreditCard.cs" />
     <Compile Include="Model\Categories.cs" />
     <Compile Include="Model\EntryExpenses.cs" />
@@ -171,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmEntryExpenses.resx">
       <DependentUpon>FrmEntryExpenses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmListBankAccount.resx">
+      <DependentUpon>FrmListBankAccount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmListCategories.resx">
       <DependentUpon>FrmListCategories.cs</DependentUpon>

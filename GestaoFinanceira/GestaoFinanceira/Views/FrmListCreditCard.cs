@@ -58,9 +58,12 @@ namespace GestaoFinanceira.Views
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Tem certeza que deseja apagar este item ?","", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (dtvCreditCard.IsCurrentCellDirty == true)
             {
+                if (MessageBox.Show("Tem certeza que deseja apagar este item ?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
 
+                }
             }
         }
     }
