@@ -16,6 +16,8 @@ namespace GestaoFinanceira.Views
         {
             InitializeComponent();
             pnCreditCard.BackColor = SystemColors.BLUE;
+            btnDelete.Enabled = false;
+            btnEdit.Enabled = false;
         }
 
         private void lbCreditCard_Paint(object sender, PaintEventArgs e)
@@ -23,7 +25,7 @@ namespace GestaoFinanceira.Views
             string msg = "Cartão de Crédito";
             Font myFont = new Font("Microsoft PhagsPa", 16, FontStyle.Bold);
             Brush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
-            e.Graphics.TranslateTransform(10, 185);
+            e.Graphics.TranslateTransform(7, 185);
             e.Graphics.RotateTransform(-90);
             e.Graphics.DrawString(msg, myFont, myBrush, 0, 0);
         }
@@ -31,6 +33,12 @@ namespace GestaoFinanceira.Views
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dtvRevenue_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnDelete.Enabled = true;
+            btnEdit.Enabled = true;
         }
     }
 }

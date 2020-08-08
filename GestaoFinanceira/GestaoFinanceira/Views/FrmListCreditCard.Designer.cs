@@ -70,6 +70,7 @@
             this.dtvRevenue.Name = "dtvRevenue";
             this.dtvRevenue.Size = new System.Drawing.Size(881, 149);
             this.dtvRevenue.TabIndex = 3;
+            this.dtvRevenue.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtvRevenue_CellContentClick);
             // 
             // cId
             // 
