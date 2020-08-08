@@ -50,16 +50,20 @@
   <ItemGroup>
     <Compile Include="BD\Conections\IConnection.cs" />
     <Compile Include="BD\Conections\MemorySQLConnection.cs" />
+    <Compile Include="BD\DAO\CreditCardDAO.cs" />
     <Compile Include="BD\DAO\EntryExpensesDAO.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\CreditCardController.cs" />
     <Compile Include="Controllers\EntryExpensesController.cs" />
     <Compile Include="Controllers\SubCategoriesController.cs" />
     <Compile Include="BD\DAO\CategoriesDAO.cs" />
     <Compile Include="BD\DAO\DAOBase.cs" />
     <Compile Include="Enums\Enums.cs" />
     <Compile Include="Extends\FormExtends.cs" />
+    <Compile Include="Model\CreditCard.cs" />
     <Compile Include="Model\Categories.cs" />
     <Compile Include="Model\EntryExpenses.cs" />
+    <Compile Include="Model\PaymentMethod.cs" />
     <Compile Include="Model\SubCategories.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -109,11 +113,23 @@
     <Compile Include="Views\FrmEntryExpenses.Designer.cs">
       <DependentUpon>FrmEntryExpenses.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\FrmListBankAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmListBankAccount.Designer.cs">
+      <DependentUpon>FrmListBankAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FrmListCategories.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\FrmListCategories.Designer.cs">
       <DependentUpon>FrmListCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmListCreditCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmListCreditCard.Designer.cs">
+      <DependentUpon>FrmListCreditCard.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\FrmMothCalendar.cs">
       <SubType>Form</SubType>
@@ -158,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmListCategories.resx">
       <DependentUpon>FrmListCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmListCreditCard.resx">
+      <DependentUpon>FrmListCreditCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmMothCalendar.resx">
       <DependentUpon>FrmMothCalendar.cs</DependentUpon>

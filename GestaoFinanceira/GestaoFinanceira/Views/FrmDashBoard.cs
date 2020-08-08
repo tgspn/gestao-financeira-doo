@@ -158,5 +158,34 @@ namespace GestaoFinanceira
             form.Show();
         }
 
+        private void ctCreditCard_Click(object sender, EventArgs e)
+        {
+            FrmListCreditCard form = new FrmListCreditCard();
+            form.Show();
+        }
+
+        private void cartãoDeCréditoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form form = new FrmListCreditCard();
+            form.Show();
+        }
+
+        private void despesasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmListEntryRevenue form = new FrmListEntryRevenue(EntryType.Expense);
+            form.Show();
+        }
+
+        private void receitasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmListEntryRevenue form = new FrmListEntryRevenue(EntryType.Revenue);
+            form.Show();
+        }
+
+        private void contaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmListBankAccount form = new FrmListBankAccount();
+            form.Show();
+        }
     }
 }
