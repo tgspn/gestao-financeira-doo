@@ -91,8 +91,11 @@ namespace GestaoFinanceira
 
         private void btnOpenEntries_Click(object sender, EventArgs e)
         {
-            Form form = new FrmEntries();
-            form.Show();
+            FrmEntries form = new FrmEntries();
+            if(form.ShowDialog(this)==DialogResult.OK)
+            {
+                new FrmEntryExpenses(form.EntryType).Show(this);
+            }
         }
 
         private void btnOpenExpense_Click(object sender, EventArgs e)

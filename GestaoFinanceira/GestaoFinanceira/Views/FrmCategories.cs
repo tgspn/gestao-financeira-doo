@@ -1,4 +1,7 @@
-﻿using System;
+﻿using GestaoFinanceira.BD.Conections;
+using GestaoFinanceira.Controllers;
+using GestaoFinanceira.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,10 +15,14 @@ namespace GestaoFinanceira.Views
 {
     public partial class FrmCategories : Form
     {
+        private readonly CategoriesController controller;
+        private BindingList<SubCategories> subCategories;
         public FrmCategories()
         {
             InitializeComponent();
             panel1.BackColor = SystemColors.BLUE;
+            this.controller = new CategoriesController(new MemorySQLConnection<Categories>());
+            this.subCategories = new BindingList<SubCategories>();
         }
 
         private bool IsValid()
@@ -25,11 +32,11 @@ namespace GestaoFinanceira.Views
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            if (IsValid())
+            if (!IsValid())
                 this.Close();
             else
                 if (MessageBox.Show("Tem certeza que quer fechar ?", "Confirmação de fechamento", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    this.Close();
+                this.Close();
 
         }
 
@@ -40,8 +47,29 @@ namespace GestaoFinanceira.Views
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Categorias salvas com sucesso!", "", MessageBoxButtons.OK) == DialogResult.OK)
-                this.Close();
+
+            var model = new Categories()
+            {
+                Descricao = txtCategoria.Text,
+                SubCategories = subCategories.ToList()
+            };
+            controller.Save(model);
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+            MessageBox.Show("Categorias salvas com sucesso!", "", MessageBoxButtons.OK);
+        }
+
+        private void FrmCategories_Load(object sender, EventArgs e)
+        {
+            dgvSubcategories.DataSource = subCategories;
+
+
+        }
+
+        private void dgvSubcategories_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgvSubcategories.Columns["Id"].Visible = false;
         }
     }
 }

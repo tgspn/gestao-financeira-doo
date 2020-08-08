@@ -48,11 +48,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\CrtCategories.cs" />
-    <Compile Include="Controller\CrtSubCategories.cs" />
+    <Compile Include="BD\Conections\IConnection.cs" />
+    <Compile Include="BD\Conections\MemorySQLConnection.cs" />
+    <Compile Include="BD\DAO\EntryExpensesDAO.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\EntryExpensesController.cs" />
+    <Compile Include="Controllers\SubCategoriesController.cs" />
+    <Compile Include="BD\DAO\CategoriesDAO.cs" />
+    <Compile Include="BD\DAO\DAOBase.cs" />
     <Compile Include="Enums\Enums.cs" />
     <Compile Include="Extends\FormExtends.cs" />
     <Compile Include="Model\Categories.cs" />
+    <Compile Include="Model\EntryExpenses.cs" />
     <Compile Include="Model\SubCategories.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
