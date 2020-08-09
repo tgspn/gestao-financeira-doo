@@ -46,10 +46,10 @@
             // 
             // txtBank
             // 
-            this.txtBank.Location = new System.Drawing.Point(118, 114);
+            this.txtBank.Location = new System.Drawing.Point(118, 88);
             this.txtBank.Name = "txtBank";
             this.txtBank.Size = new System.Drawing.Size(100, 20);
-            this.txtBank.TabIndex = 2;
+            this.txtBank.TabIndex = 1;
             this.txtBank.TextChanged += new System.EventHandler(this.txtHolder_TextChanged);
             // 
             // txtAccount
@@ -70,10 +70,10 @@
             // 
             // txtHolder
             // 
-            this.txtHolder.Location = new System.Drawing.Point(118, 88);
+            this.txtHolder.Location = new System.Drawing.Point(118, 114);
             this.txtHolder.Name = "txtHolder";
             this.txtHolder.Size = new System.Drawing.Size(100, 20);
-            this.txtHolder.TabIndex = 1;
+            this.txtHolder.TabIndex = 2;
             this.txtHolder.TextChanged += new System.EventHandler(this.txtHolder_TextChanged);
             // 
             // txtLimit
@@ -105,7 +105,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(38, 117);
+            this.label3.Location = new System.Drawing.Point(38, 91);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 13);
             this.label3.TabIndex = 2;
@@ -114,7 +114,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(38, 91);
+            this.label4.Location = new System.Drawing.Point(38, 117);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(78, 13);
             this.label4.TabIndex = 2;
