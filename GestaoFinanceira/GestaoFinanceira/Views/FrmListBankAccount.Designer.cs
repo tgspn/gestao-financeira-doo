@@ -36,8 +36,8 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.cId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cBank = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cHolder = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cAgency = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,15 +55,18 @@
             this.dtvBankAccount.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtvBankAccount.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cId,
-            this.cAmount,
             this.cBank,
+            this.cAmount,
             this.cHolder,
             this.cAgency,
             this.cAccount,
             this.cLimit});
             this.dtvBankAccount.GridColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dtvBankAccount.Location = new System.Drawing.Point(49, 13);
+            this.dtvBankAccount.MultiSelect = false;
             this.dtvBankAccount.Name = "dtvBankAccount";
+            this.dtvBankAccount.ReadOnly = true;
+            this.dtvBankAccount.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtvBankAccount.Size = new System.Drawing.Size(681, 160);
             this.dtvBankAccount.TabIndex = 9;
             this.dtvBankAccount.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtvBankAccount_CellContentClick);
@@ -114,6 +117,7 @@
             this.btnEdit.Size = new System.Drawing.Size(37, 36);
             this.btnEdit.TabIndex = 11;
             this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelete
             // 
@@ -146,39 +150,46 @@
             // 
             // cId
             // 
+            this.cId.DataPropertyName = "Id";
             this.cId.HeaderText = "id";
             this.cId.Name = "cId";
             this.cId.Visible = false;
             // 
-            // cAmount
-            // 
-            this.cAmount.HeaderText = "Saldo";
-            this.cAmount.Name = "cAmount";
-            // 
             // cBank
             // 
+            this.cBank.DataPropertyName = "Bank";
             this.cBank.HeaderText = "Banco";
             this.cBank.Name = "cBank";
             // 
+            // cAmount
+            // 
+            this.cAmount.DataPropertyName = "balance";
+            this.cAmount.HeaderText = "Saldo";
+            this.cAmount.Name = "cAmount";
+            // 
             // cHolder
             // 
+            this.cHolder.DataPropertyName = "holder";
             this.cHolder.HeaderText = "Titular";
             this.cHolder.Name = "cHolder";
             this.cHolder.Width = 170;
             // 
             // cAgency
             // 
+            this.cAgency.DataPropertyName = "Agency";
             this.cAgency.HeaderText = "Agencia";
             this.cAgency.Name = "cAgency";
             this.cAgency.Width = 70;
             // 
             // cAccount
             // 
+            this.cAccount.DataPropertyName = "AccountBank";
             this.cAccount.HeaderText = "Conta";
             this.cAccount.Name = "cAccount";
             // 
             // cLimit
             // 
+            this.cLimit.DataPropertyName = "Limit";
             this.cLimit.HeaderText = "Limite";
             this.cLimit.Name = "cLimit";
             // 
@@ -187,7 +198,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(729, 223);
+            this.ClientSize = new System.Drawing.Size(728, 223);
             this.ControlBox = false;
             this.Controls.Add(this.dtvBankAccount);
             this.Controls.Add(this.btnCancel);
@@ -199,6 +210,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FrmListBankAccount";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.FrmListBankAccount_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtvBankAccount)).EndInit();
             this.pnBankAccount.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -215,8 +227,8 @@
         private System.Windows.Forms.Panel pnBankAccount;
         private System.Windows.Forms.Label lbBankAccount;
         private System.Windows.Forms.DataGridViewTextBoxColumn cId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn cBank;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn cHolder;
         private System.Windows.Forms.DataGridViewTextBoxColumn cAgency;
         private System.Windows.Forms.DataGridViewTextBoxColumn cAccount;
