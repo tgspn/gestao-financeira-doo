@@ -104,7 +104,7 @@ namespace GestaoFinanceira.Views
             };
             foreach (var item in categories)
             {
-                dict[item.Descricao] = item;
+                dict[item.Description] = item;
             }
             LoadCombobox(cbCategoria, dict);
 

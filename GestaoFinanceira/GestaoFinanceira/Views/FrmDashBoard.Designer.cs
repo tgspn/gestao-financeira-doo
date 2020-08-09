@@ -168,12 +168,13 @@ namespace GestaoFinanceira
             // 
             // ctBank
             // 
+            this.ctBank.AccessibleDescription = "Contas Bancárias";
             chartArea1.Name = "ChartArea1";
             this.ctBank.ChartAreas.Add(chartArea1);
             this.ctBank.Cursor = System.Windows.Forms.Cursors.Hand;
             legend1.Name = "Legend1";
             this.ctBank.Legends.Add(legend1);
-            this.ctBank.Location = new System.Drawing.Point(370, 160);
+            this.ctBank.Location = new System.Drawing.Point(370, 172);
             this.ctBank.Name = "ctBank";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
@@ -187,6 +188,7 @@ namespace GestaoFinanceira
             // 
             // ctCreditCard
             // 
+            this.ctCreditCard.AccessibleDescription = "Cartão de Crédito";
             this.ctCreditCard.BorderSkin.BorderWidth = 0;
             chartArea2.AxisX2.Title = "Cartões";
             chartArea2.AxisY.Title = "Reais";
@@ -197,7 +199,7 @@ namespace GestaoFinanceira
             this.ctCreditCard.IsSoftShadows = false;
             legend2.Name = "Legend1";
             this.ctCreditCard.Legends.Add(legend2);
-            this.ctCreditCard.Location = new System.Drawing.Point(370, 308);
+            this.ctCreditCard.Location = new System.Drawing.Point(370, 313);
             this.ctCreditCard.Name = "ctCreditCard";
             this.ctCreditCard.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
             this.ctCreditCard.PaletteCustomColors = new System.Drawing.Color[] {
@@ -226,12 +228,13 @@ namespace GestaoFinanceira
             // 
             // ctCategories
             // 
+            this.ctCategories.AccessibleDescription = "Categorias";
             chartArea3.Name = "ChartArea1";
             this.ctCategories.ChartAreas.Add(chartArea3);
             this.ctCategories.Cursor = System.Windows.Forms.Cursors.Hand;
             legend3.Name = "Legend1";
             this.ctCategories.Legends.Add(legend3);
-            this.ctCategories.Location = new System.Drawing.Point(370, 27);
+            this.ctCategories.Location = new System.Drawing.Point(370, 24);
             this.ctCategories.Name = "ctCategories";
             series3.ChartArea = "ChartArea1";
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
@@ -240,7 +243,7 @@ namespace GestaoFinanceira
             this.ctCategories.Series.Add(series3);
             this.ctCategories.Size = new System.Drawing.Size(238, 125);
             this.ctCategories.TabIndex = 6;
-            this.ctCategories.Text = "chart1";
+            this.ctCategories.Text = "Categorias";
             this.ctCategories.Click += new System.EventHandler(this.ctCategories_Click);
             // 
             // label4
@@ -663,15 +666,15 @@ namespace GestaoFinanceira
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(620, 445);
+            this.Controls.Add(this.btnCartaoC);
+            this.Controls.Add(this.btnContaC);
             this.Controls.Add(this.btnCartaoF);
-            this.Controls.Add(this.btnCartaoE);
             this.Controls.Add(this.btnContaF);
+            this.Controls.Add(this.btnCartaoE);
             this.Controls.Add(this.btnCartaoD);
             this.Controls.Add(this.btnCondaE);
-            this.Controls.Add(this.btnCartaoC);
             this.Controls.Add(this.btnContaD);
             this.Controls.Add(this.btnCartaoB);
-            this.Controls.Add(this.btnContaC);
             this.Controls.Add(this.btnCartaoA);
             this.Controls.Add(this.btnContaB);
             this.Controls.Add(this.btnContaA);

@@ -9,7 +9,7 @@ namespace GestaoFinanceira.Model
     public class CreditCard : PaymentMethod
     {
         public int Id { get; set; }
-        public int Number { get; set; }
+        public string Number { get; set; }
         public double LateFee { get; set; }
         public double Amount { get; set; }
         public string Holder { get; set; }
