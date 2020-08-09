@@ -50,6 +50,8 @@ namespace GestaoFinanceira.BD.Conections
 
         }
 
+
+        //Reflexão
         private int GetIdValue(TModel obj)
         {
             var type = typeof(TModel);
@@ -58,6 +60,7 @@ namespace GestaoFinanceira.BD.Conections
                 throw new ArgumentOutOfRangeException("Não foi encontrado a propriedade Id no objeto, por favor, defina uma propriedade Id com o tipo Int");
             return (int)propId.GetValue(obj);
         }
+
         public int Insert(TModel obj)
         {
             var id = GetIdValue(obj);
