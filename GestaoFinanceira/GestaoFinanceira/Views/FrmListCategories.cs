@@ -41,8 +41,18 @@ namespace GestaoFinanceira.Views
         {
             btnEdit.Enabled = true;
             btnDelete.Enabled = true;
-            subCategories = new BindingList<SubCategories>( ((Categories)dtgvCategories.SelectedRows[0].DataBoundItem).SubCategories);
-            dtgvSubCategories.DataSource = subCategories;
+            var subCat = ((Categories)dtgvCategories.SelectedRows[0].DataBoundItem).SubCategories;
+            if (subCat != null)
+            {
+                subCategories = null;
+                subCategories = new BindingList<SubCategories>(subCat);
+                dtgvSubCategories.DataSource = subCategories;
+            }
+            else
+            {
+                subCategories = new BindingList<SubCategories>();
+                dtgvSubCategories.DataSource = subCategories;
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

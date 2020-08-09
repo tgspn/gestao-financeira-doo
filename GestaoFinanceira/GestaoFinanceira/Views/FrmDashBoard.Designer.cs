@@ -704,6 +704,7 @@ namespace GestaoFinanceira
             this.Name = "FrmDashBoard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestão Financeira";
+            this.Load += new System.EventHandler(this.FrmDashBoard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ctBank)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctCreditCard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctCategories)).EndInit();

@@ -15,6 +15,7 @@ namespace GestaoFinanceira.Views
         private EntryType entryType;
         private readonly EntryExpensesController controller;
         private readonly CategoriesController categoriesController;
+        List<PaymentMethod> paymentMethod = new List<PaymentMethod>();
         private readonly bool isEditMode;
         private EntryExpenses entry;
 
@@ -40,7 +41,7 @@ namespace GestaoFinanceira.Views
 
         private void txtDescription_TextChanged(object sender, EventArgs e)
         {
-            btnSave.Enabled = this.ValidFields(txtDescription, cbConta, cbCategoria, cbSubCategoria, nupValue);
+            btnSave.Enabled = this.ValidFields(txtDescription, cbPaymentMethod, cbCategoria, cbSubCategoria, nupValue);
         }
 
         private void btnAddCategorias_Click(object sender, EventArgs e)
@@ -54,7 +55,7 @@ namespace GestaoFinanceira.Views
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            if (!this.ValidFields(nupValue, txtDescription, cbConta, cbCategoria, cbSubCategoria))
+            if (!this.ValidFields(nupValue, txtDescription, cbPaymentMethod, cbCategoria, cbSubCategoria))
             {
                 if (MessageBox.Show("Tem certeza que quer fechar ?", "Confirmação de fechamento", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     this.Close();
@@ -116,6 +117,39 @@ namespace GestaoFinanceira.Views
                 this.nupValue.BackColor = SystemColors.RED;
             }
             LoadCategories();
+            LoadPaymanetMethod();
+        }
+
+        private void LoadPaymanetMethod()
+        {
+            AccountController accountCtr = new AccountController(new MemorySQLConnection<Account>());
+            CreditCardController creditCardCtr = new CreditCardController(new MemorySQLConnection<CreditCard>());
+            
+            foreach (var item in accountCtr.List())
+            {
+                paymentMethod.Add(item);
+            }
+            foreach (var item in creditCardCtr.List())
+            {
+                paymentMethod.Add(item);
+            }
+
+            Dictionary<string, PaymentMethod> dict = new Dictionary<string, PaymentMethod>()
+            {
+                {"Selecione uma categoria", null}
+            };
+            foreach (var item in paymentMethod)
+            {
+                if (item is Account)
+                {
+                    dict[((Account)item).Bank] = item;
+                }
+                if (item is CreditCard)
+                {
+                    dict[((CreditCard)item).Issuer] = item;
+                }
+                LoadCombobox(cbPaymentMethod, dict);
+            }
         }
 
         private void LoadCategories()
