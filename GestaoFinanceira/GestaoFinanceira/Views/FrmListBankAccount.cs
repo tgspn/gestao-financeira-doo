@@ -15,18 +15,16 @@ namespace GestaoFinanceira.Views
 {
     public partial class FrmListBankAccount : Form
     {
-        private readonly AccountController controller;
+        private readonly AccountController ctr;
         private BindingList<Account> accountBancks;
 
         public FrmListBankAccount()
         {
             InitializeComponent();
-            pnBankAccount.BackColor = SystemColors.BLUE;
             btnDelete.Enabled = false;
             btnEdit.Enabled = false;
-            this.controller = new AccountController(new MemorySQLConnection<Account>());
-            this.accountBancks = new BindingList<Account>();
-            dtvBankAccount.Rows.Add(accountBancks);
+            this.ctr = new AccountController(new MemorySQLConnection<Account>());
+            this.accountBancks = new BindingList<Account>(ctr.List());
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -38,6 +36,7 @@ namespace GestaoFinanceira.Views
         {
             FrmBankAccount form = new FrmBankAccount();
             form.ShowDialog();
+            accountBancks.Add(form.Account);
         }
 
         private void dtvBankAccount_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -58,11 +57,42 @@ namespace GestaoFinanceira.Views
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (dtvBankAccount.IsCurrentCellDirty == true)
+            if (dtvBankAccount.CurrentCell != null)
             {
                 if (MessageBox.Show("Tem certeza que deseja apagar esta conta ?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
+                    Account deleteAccount = (Account)dtvBankAccount.SelectedRows[0].DataBoundItem;
+                    ctr.Remove(deleteAccount);
+                    accountBancks.Remove(deleteAccount);
+                    if (accountBancks.Count == 0)
+                    {
+                        btnEdit.Enabled = false;
+                        btnDelete.Enabled = false;
+                    }
+                }
+            }
+        }
 
+        private void FrmListBankAccount_Load(object sender, EventArgs e)
+        {
+            pnBankAccount.BackColor = SystemColors.BLUE;
+            dtvBankAccount.DataSource = accountBancks;
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (dtvBankAccount.CurrentCell != null)
+            {
+                Account editAccount = (Account)dtvBankAccount.SelectedRows[0].DataBoundItem;
+                FrmBankAccount form = new FrmBankAccount();
+                form.SetBankAccount(editAccount);
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    accountBancks.Remove(editAccount);
+                    editAccount = form.GetAccount();
+                    ctr.Save(editAccount);
+                    accountBancks.Add(editAccount);
+                    //teste
                 }
             }
         }

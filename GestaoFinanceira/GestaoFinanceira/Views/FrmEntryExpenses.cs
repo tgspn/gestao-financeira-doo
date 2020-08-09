@@ -97,15 +97,6 @@ namespace GestaoFinanceira.Views
             txtDescription.Text = entry.Description;
             ckbRepetir.Checked = entry.Reapeat;
             LoadCategories();
-
-            //int i = 0;
-            //foreach (var item in cbCategoria.Items){
-            //    if ((string)item == entry.Categorie.Description)
-            //    {
-            //        break;
-            //    }
-            //    i = i + 1;
-            //}
             cbCategoria.SelectedItem = entry.Categorie.Description;
             cbSubCategoria.SelectedItem = entry.Categorie.SubCategories[0].Description;
         }
