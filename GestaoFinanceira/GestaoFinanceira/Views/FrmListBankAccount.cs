@@ -57,11 +57,18 @@ namespace GestaoFinanceira.Views
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (dtvBankAccount.IsCurrentCellDirty == true)
+            if (dtvBankAccount.CurrentCell != null)
             {
                 if (MessageBox.Show("Tem certeza que deseja apagar esta conta ?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-
+                    Account deleteAccount = (Account)dtvBankAccount.SelectedRows[0].DataBoundItem;
+                    ctr.Remove(deleteAccount);
+                    accountBancks.Remove(deleteAccount);
+                    if (accountBancks.Count == 0)
+                    {
+                        btnEdit.Enabled = false;
+                        btnDelete.Enabled = false;
+                    }
                 }
             }
         }
@@ -74,16 +81,19 @@ namespace GestaoFinanceira.Views
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            Account editAccount = (Account)dtvBankAccount.SelectedRows[0].DataBoundItem;
-            FrmBankAccount form = new FrmBankAccount();
-            form.SetBankAccount(editAccount);
-            if (form.ShowDialog() == DialogResult.OK)
+            if (dtvBankAccount.CurrentCell != null)
             {
-                accountBancks.Remove(editAccount);
-                editAccount = form.GetAccount();
-                ctr.Save(editAccount);
-                accountBancks.Add(editAccount);
-                //teste
+                Account editAccount = (Account)dtvBankAccount.SelectedRows[0].DataBoundItem;
+                FrmBankAccount form = new FrmBankAccount();
+                form.SetBankAccount(editAccount);
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    accountBancks.Remove(editAccount);
+                    editAccount = form.GetAccount();
+                    ctr.Save(editAccount);
+                    accountBancks.Add(editAccount);
+                    //teste
+                }
             }
         }
     }
