@@ -165,6 +165,11 @@
             this.nupValue.DecimalPlaces = 2;
             this.nupValue.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
             this.nupValue.Location = new System.Drawing.Point(0, 17);
+            this.nupValue.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.nupValue.Name = "nupValue";
             this.nupValue.Size = new System.Drawing.Size(252, 30);
             this.nupValue.TabIndex = 20;
@@ -210,7 +215,7 @@
             this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Image = global::GestaoFinanceira.Properties.Resources.icons8_checkmark_30px_2;
+            this.btnSave.Image = global::GestaoFinanceira.Properties.Resources.icons8_checkmark_26px;
             this.btnSave.Location = new System.Drawing.Point(200, 15);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(44, 23);
@@ -223,7 +228,7 @@
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancel.FlatAppearance.BorderSize = 0;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Image = global::GestaoFinanceira.Properties.Resources.icons8_delete_30px;
+            this.btnCancel.Image = global::GestaoFinanceira.Properties.Resources.icons8_multiply_26px;
             this.btnCancel.Location = new System.Drawing.Point(12, 15);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(44, 23);

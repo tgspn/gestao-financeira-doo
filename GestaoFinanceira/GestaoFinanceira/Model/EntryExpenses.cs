@@ -11,8 +11,9 @@ namespace GestaoFinanceira.Model
     {
         public int Id { get; set; }
         public string Description { get; set; }
+        public double Value { get; set; }
         public DateTime Date { get; set; }
-        public Categories Categories { get; set; }
+        public Categories Categorie { get; set; }
         public bool Reapeat { get; set; }
         public DateTime RepeatUntil { get; set; }
         public EntryType EntryType{ get; set; }
