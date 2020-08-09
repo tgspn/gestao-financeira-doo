@@ -60,7 +60,7 @@ namespace GestaoFinanceira.BD.DAO.Tests
             var cat = new Categories()
             {
                 Id = 2,
-                Descricao = "categoria com id 2"
+                Description = "categoria com id 2"
             };
             var result = categoria.Insert(cat);
 
@@ -80,13 +80,13 @@ namespace GestaoFinanceira.BD.DAO.Tests
             var cat = new Categories()
             {
                 Id = 10,
-                Descricao = "categoria com id 2"
+                Description = "categoria com id 2"
             };
             var result = categoria.Update(cat);
 
 
             Assert.AreEqual(2, categoria.Get().Count());
-            Assert.AreEqual("categoria com id 2",categoria.Get().First(x => x.Id == 10).Descricao);
+            Assert.AreEqual("categoria com id 2",categoria.Get().First(x => x.Id == 10).Description);
         }
 
         private void AddSample()
