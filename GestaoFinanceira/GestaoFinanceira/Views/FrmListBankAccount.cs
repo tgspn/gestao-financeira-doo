@@ -96,26 +96,5 @@ namespace GestaoFinanceira.Views
                 }
             }
         }
-
-        private void FrmListBankAccount_Load(object sender, EventArgs e)
-        {
-            pnBankAccount.BackColor = SystemColors.BLUE;
-            dtvBankAccount.DataSource = accountBancks;
-        }
-
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            Account editAccount = (Account)dtvBankAccount.SelectedRows[0].DataBoundItem;
-            FrmBankAccount form = new FrmBankAccount();
-            form.SetBankAccount(editAccount);
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                accountBancks.Remove(editAccount);
-                editAccount = form.GetAccount();
-                ctr.Save(editAccount);
-                accountBancks.Add(editAccount);
-                //teste
-            }
-        }
     }
 }
