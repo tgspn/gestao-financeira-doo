@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             this.dtvRevenue = new System.Windows.Forms.DataGridView();
-            this.cId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descrição = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPaymentMethod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cCategories = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cRepeatEvery = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cRepeatUntil = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.pnEtries = new System.Windows.Forms.Panel();
             this.lbEntries = new System.Windows.Forms.Label();
+            this.cId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descrição = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPaymentMethod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cCategories = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cRepeatEvery = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cRepeatUntil = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtvRevenue)).BeginInit();
             this.pnEtries.SuspendLayout();
             this.SuspendLayout();
@@ -62,65 +62,17 @@
             this.cPaymentMethod,
             this.cCategories,
             this.cDate,
-            this.cStatus,
             this.cRepeatEvery,
+            this.Column,
             this.cRepeatUntil});
             this.dtvRevenue.GridColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dtvRevenue.Location = new System.Drawing.Point(46, 12);
+            this.dtvRevenue.MultiSelect = false;
             this.dtvRevenue.Name = "dtvRevenue";
-            this.dtvRevenue.Size = new System.Drawing.Size(881, 198);
+            this.dtvRevenue.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtvRevenue.Size = new System.Drawing.Size(881, 238);
             this.dtvRevenue.TabIndex = 0;
             this.dtvRevenue.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtvRevenue_CellContentClick);
-            // 
-            // cId
-            // 
-            this.cId.HeaderText = "id";
-            this.cId.Name = "cId";
-            this.cId.Visible = false;
-            // 
-            // Descrição
-            // 
-            this.Descrição.HeaderText = "Descrição";
-            this.Descrição.Name = "Descrição";
-            this.Descrição.Width = 150;
-            // 
-            // cValue
-            // 
-            this.cValue.HeaderText = "Valor";
-            this.cValue.Name = "cValue";
-            this.cValue.Width = 70;
-            // 
-            // cPaymentMethod
-            // 
-            this.cPaymentMethod.HeaderText = "Conta";
-            this.cPaymentMethod.Name = "cPaymentMethod";
-            // 
-            // cCategories
-            // 
-            this.cCategories.HeaderText = "Categoria";
-            this.cCategories.Name = "cCategories";
-            // 
-            // cDate
-            // 
-            this.cDate.HeaderText = "Data";
-            this.cDate.Name = "cDate";
-            // 
-            // cStatus
-            // 
-            this.cStatus.HeaderText = "Status";
-            this.cStatus.Name = "cStatus";
-            this.cStatus.Width = 70;
-            // 
-            // cRepeatEvery
-            // 
-            this.cRepeatEvery.HeaderText = "Repetir";
-            this.cRepeatEvery.Name = "cRepeatEvery";
-            // 
-            // cRepeatUntil
-            // 
-            this.cRepeatUntil.HeaderText = "Data repetição";
-            this.cRepeatUntil.Name = "cRepeatUntil";
-            this.cRepeatUntil.Width = 150;
             // 
             // btnAdd
             // 
@@ -196,6 +148,62 @@
             this.lbEntries.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbEntries.Paint += new System.Windows.Forms.PaintEventHandler(this.lbEntries_Paint);
             // 
+            // cId
+            // 
+            this.cId.DataPropertyName = "id";
+            this.cId.HeaderText = "id";
+            this.cId.Name = "cId";
+            this.cId.Visible = false;
+            // 
+            // Descrição
+            // 
+            this.Descrição.DataPropertyName = "description";
+            this.Descrição.HeaderText = "Descrição";
+            this.Descrição.Name = "Descrição";
+            this.Descrição.Width = 150;
+            // 
+            // cValue
+            // 
+            this.cValue.DataPropertyName = "value";
+            this.cValue.HeaderText = "Valor";
+            this.cValue.Name = "cValue";
+            this.cValue.Width = 70;
+            // 
+            // cPaymentMethod
+            // 
+            this.cPaymentMethod.DataPropertyName = "paymentMehtod";
+            this.cPaymentMethod.HeaderText = "Conta";
+            this.cPaymentMethod.Name = "cPaymentMethod";
+            // 
+            // cCategories
+            // 
+            this.cCategories.DataPropertyName = "Categories";
+            this.cCategories.HeaderText = "Categoria";
+            this.cCategories.Name = "cCategories";
+            // 
+            // cDate
+            // 
+            this.cDate.DataPropertyName = "date";
+            this.cDate.HeaderText = "Data";
+            this.cDate.Name = "cDate";
+            // 
+            // cRepeatEvery
+            // 
+            this.cRepeatEvery.HeaderText = "Repetir";
+            this.cRepeatEvery.Name = "cRepeatEvery";
+            // 
+            // Column
+            // 
+            this.Column.DataPropertyName = "status";
+            this.Column.HeaderText = "Status";
+            this.Column.Name = "Column";
+            // 
+            // cRepeatUntil
+            // 
+            this.cRepeatUntil.HeaderText = "Data repetição";
+            this.cRepeatUntil.Name = "cRepeatUntil";
+            this.cRepeatUntil.Width = 150;
+            // 
             // FrmListEntryRevenue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -214,6 +222,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FrmListEntryRevenue";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.FrmListEntryRevenue_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtvRevenue)).EndInit();
             this.pnEtries.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -223,20 +232,20 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dtvRevenue;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descrição;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cValue;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cPaymentMethod;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cCategories;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cStatus;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cRepeatEvery;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cRepeatUntil;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Panel pnEtries;
         private System.Windows.Forms.Label lbEntries;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descrição;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cPaymentMethod;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cCategories;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cRepeatEvery;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cRepeatUntil;
     }
 }

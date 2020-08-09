@@ -13,10 +13,13 @@ namespace GestaoFinanceira.Model
         public string Description { get; set; }
         public double Value { get; set; }
         public DateTime Date { get; set; }
+        public bool Status { get; set; }
         public Categories Categorie { get; set; }
+        public PaymentMethod PaymentMethod { get; set; }
         public bool Reapeat { get; set; }
         public DateTime RepeatUntil { get; set; }
         public EntryType EntryType{ get; set; }
+        
 
     }
 }

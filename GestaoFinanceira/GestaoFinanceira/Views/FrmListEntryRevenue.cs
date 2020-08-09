@@ -1,4 +1,7 @@
-﻿using GestaoFinanceira.Enums;
+﻿using GestaoFinanceira.BD.Conections;
+using GestaoFinanceira.Controllers;
+using GestaoFinanceira.Enums;
+using GestaoFinanceira.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,15 +17,18 @@ namespace GestaoFinanceira.Views
 {
     public partial class FrmListEntryRevenue : Form
     {
-        public EntryType EntryType { get; }
+        public EntryType EntryType;
+        private readonly EntryExpensesController ctr;
+        private BindingList<EntryExpenses> entryExpenses;
 
         public FrmListEntryRevenue(EntryType entryType)
         {
             InitializeComponent();
-            btnDelete.Enabled = false;
-            btnEdit.Enabled = false;
             pnEtries.BackColor = entryType == EntryType.Revenue ? SystemColors.GREEN : SystemColors.RED;
             EntryType = entryType;
+            ctr = new EntryExpensesController(new MemorySQLConnection<EntryExpenses>());
+            entryExpenses = new BindingList<EntryExpenses>(ctr.List());
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -51,5 +57,13 @@ namespace GestaoFinanceira.Views
             e.Graphics.RotateTransform(-90);
             e.Graphics.DrawString(msg, myFont, myBrush, 0, 0);
         }
+
+        private void FrmListEntryRevenue_Load(object sender, EventArgs e)
+        {
+            btnDelete.Enabled = false;
+            btnEdit.Enabled = false;
+            dtvRevenue.DataSource = entryExpenses;
+        }
+
     }
 }
