@@ -67,6 +67,8 @@ namespace GestaoFinanceira.Views
         {
             SetEntryExpenses();
             controller.Save(Model);
+            DialogResult = DialogResult.OK;
+            this.Close();
         }
 
         private void SetEntryExpenses()
