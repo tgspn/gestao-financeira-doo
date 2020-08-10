@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestaoFinanceira
-{    
+{
     public static class FormExtends
     {
         public static bool ValidFields(this Form form, params Control[] control)
         {
-            if(control == null)
+            if (control == null)
             {
                 return false;
             }
@@ -37,7 +37,7 @@ namespace GestaoFinanceira
                         break;
                     default:
                         throw new Exception("Tipo do controle não mapeado.");
-                }                   
+                }
             }
             return true;
         }
@@ -47,12 +47,12 @@ namespace GestaoFinanceira
             if (mtb == null)
                 return false;
 
-            return mtb.ToList().TrueForAll(x =>!x.MaskCompleted);
+            return mtb.ToList().TrueForAll(x => !x.MaskCompleted);
         }
 
         private static bool CheckTexBoxIsEmpty(params TextBox[] textBox)
         {
-            if(textBox == null)
+            if (textBox == null)
                 return false;
             else
                 return textBox.ToList().TrueForAll(x => string.IsNullOrEmpty(x.Text));
@@ -63,7 +63,7 @@ namespace GestaoFinanceira
             if (comboBox == null)
                 return false;
             else
-                return comboBox.ToList().TrueForAll(x => string.IsNullOrEmpty(x.SelectedText));
+                return comboBox.ToList().TrueForAll(x => x.SelectedValue == null);
         }
 
         private static bool CheckNumericUpDowIsEmpty(params NumericUpDown[] numericUpDowns)

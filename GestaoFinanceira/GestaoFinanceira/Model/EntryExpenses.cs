@@ -14,7 +14,7 @@ namespace GestaoFinanceira.Model
         public double Value { get; set; }
         public DateTime Date { get; set; }
         public bool Status { get; set; }
-        public Categories Categorie { get; set; }
+        public Categories Categorie { get; set; } = new Categories();
         public PaymentMethod PaymentMethod { get; set; }
         public bool Reapeat { get; set; }
         public DateTime RepeatUntil { get; set; }
