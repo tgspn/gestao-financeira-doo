@@ -39,7 +39,11 @@ namespace GestaoFinanceira.Views
         private void btnAdd_Click(object sender, EventArgs e)
         {
             FrmEntryExpenses form = new FrmEntryExpenses(EntryType);
-            form.ShowDialog();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                entryExpenses = new BindingList<EntryExpenses>(ctr.List());
+                dtvRevenue.DataSource = entryExpenses;
+            }
         }
 
         private void dtvRevenue_CellContentClick(object sender, DataGridViewCellEventArgs e)
