@@ -17,7 +17,6 @@ namespace GestaoFinanceira.Views
         private readonly CategoriesController categoriesController;
         List<PaymentMethod> paymentMethod = new List<PaymentMethod>();
         private readonly bool isEditMode;
-        private EntryExpenses entry;
 
         public FrmEntryExpenses(EntryType entryType)
         {
@@ -47,7 +46,7 @@ namespace GestaoFinanceira.Views
         private void btnAddCategorias_Click(object sender, EventArgs e)
         {
             FrmCategories form = new FrmCategories();
-            if(form.ShowDialog()==DialogResult.OK)
+            if (form.ShowDialog() == DialogResult.OK)
             {
                 LoadCategories();
             }
@@ -67,31 +66,31 @@ namespace GestaoFinanceira.Views
         private void btnSave_Click(object sender, EventArgs e)
         {
             SetEntryExpenses();
-            controller.Save(entry);
+            controller.Save(Model);
         }
 
         private void SetEntryExpenses()
         {
-            entry.Categorie.Description = cbCategoria.Text;
-            entry.Categorie.SubCategories.Add(cbSubCategoria.SelectedValue as SubCategories);
-            entry.Date = dtDate.Value;
-            entry.Description = txtDescription.Text;
-            entry.EntryType = this.entryType;
-            entry.Reapeat = ckbRepetir.Checked;
+            Model.Categorie.Description = cbCategoria.Text;
+            Model.Categorie.SubCategories.Add(cbSubCategoria.SelectedValue as SubCategories);
+            Model.Date = dtDate.Value;
+            Model.Description = txtDescription.Text;
+            Model.EntryType = this.entryType;
+            Model.Reapeat = ckbRepetir.Checked;
         }
 
         public EntryExpenses getEntryExpenses()
         {
-            entry.Categorie.Description = cbCategoria.Text;
-            entry.Categorie.SubCategories.Add(cbSubCategoria.SelectedValue as SubCategories);
-            entry.Date = dtDate.Value;
-            entry.Description = txtDescription.Text;
-            entry.EntryType = this.entryType;
-            entry.Reapeat = ckbRepetir.Checked;
-            return entry;
+            Model.Categorie.Description = cbCategoria.Text;
+            Model.Categorie.SubCategories.Add(cbSubCategoria.SelectedValue as SubCategories);
+            Model.Date = dtDate.Value;
+            Model.Description = txtDescription.Text;
+            Model.EntryType = this.entryType;
+            Model.Reapeat = ckbRepetir.Checked;
+            return Model;
         }
 
-        public void SetEntryExpenses( EntryExpenses entry)
+        public void SetEntryExpenses(EntryExpenses entry)
         {
             this.entryType = entry.EntryType;
             dtDate.Value = entry.Date;
@@ -124,7 +123,7 @@ namespace GestaoFinanceira.Views
         {
             AccountController accountCtr = new AccountController(new MemorySQLConnection<Account>());
             CreditCardController creditCardCtr = new CreditCardController(new MemorySQLConnection<CreditCard>());
-            
+
             foreach (var item in accountCtr.List())
             {
                 paymentMethod.Add(item);
@@ -185,11 +184,14 @@ namespace GestaoFinanceira.Views
                 {
                     { "Selecione uma subcategoria", null}
                 };
-                foreach (var item in selected.SubCategories)
+                if (selected.SubCategories != null)
                 {
-                    dict[item.Description] = item;
+                    foreach (var item in selected.SubCategories)
+                    {
+                        dict[item.Description] = item;
+                    }
+                    LoadCombobox(cbSubCategoria, dict);
                 }
-                LoadCombobox(cbSubCategoria, dict);
             }
         }
 
