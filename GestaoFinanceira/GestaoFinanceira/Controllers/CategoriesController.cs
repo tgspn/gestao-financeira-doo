@@ -36,6 +36,14 @@ namespace GestaoFinanceira.Controllers
             throw new NotImplementedException();
         }
 
+        public Categories FindByDescription(string description)
+        {
+            foreach (var categorie in this.List())
+                if (categorie.Description == description)
+                    return categorie;
+            return null;
+        }
+
         public void Save(Categories categories)
         {
             if (categories.Id == 0)

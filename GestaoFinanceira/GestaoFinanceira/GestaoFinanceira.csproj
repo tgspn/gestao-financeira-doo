@@ -57,6 +57,7 @@
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CreditCardController.cs" />
     <Compile Include="Controllers\EntryExpensesController.cs" />
+    <Compile Include="Controllers\PaymentMethodController.cs" />
     <Compile Include="Controllers\SubCategoriesController.cs" />
     <Compile Include="BD\DAO\CategoriesDAO.cs" />
     <Compile Include="BD\DAO\DAOBase.cs" />

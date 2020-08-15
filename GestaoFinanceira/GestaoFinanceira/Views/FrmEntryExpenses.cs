@@ -15,7 +15,7 @@ namespace GestaoFinanceira.Views
         private EntryType entryType;
         private readonly EntryExpensesController controller;
         private readonly CategoriesController categoriesController;
-        List<PaymentMethod> paymentMethod = new List<PaymentMethod>();
+        private readonly PaymentMethodController paymentMethodController;
         private readonly bool isEditMode;
 
         public FrmEntryExpenses(EntryType entryType)
@@ -28,12 +28,28 @@ namespace GestaoFinanceira.Views
             var categoriesConnection = new MemorySQLConnection<Categories>();
             controller = new EntryExpensesController(connection);
             categoriesController = new CategoriesController(categoriesConnection);
+            paymentMethodController = new PaymentMethodController(new MemorySQLConnection<Account>(), new MemorySQLConnection<CreditCard>());
 
             Model = new EntryExpenses();
         }
-        public FrmEntryExpenses(EntryExpenses model) : this(model.EntryType)
+        public FrmEntryExpenses(EntryExpenses entry) : this(entry.EntryType)
         {
-            this.Model = model;
+            nupValue.Value = Convert.ToDecimal(entry.Value);
+            this.entryType = entry.EntryType;
+            dtDate.Value = entry.Date;
+            txtDescription.Text = entry.Description;
+            ckbRepetir.Checked = entry.Repeat;
+            LoadCategories();
+            LoadPaymanetMethod();
+            cbCategoria.SelectedIndex = cbCategoria.FindString(entry.Categorie.Description);
+            if (entry.PaymentMethod is Account)
+                cbPaymentMethod.SelectedIndex = cbPaymentMethod.FindString(((Account)entry.PaymentMethod).Bank);
+            else
+                cbPaymentMethod.SelectedIndex = cbPaymentMethod.FindString(((CreditCard)entry.PaymentMethod).Issuer);
+            if (entry.Categorie.SubCategories.Count != 0)
+                cbSubCategoria.SelectedIndex = cbSubCategoria.FindString(entry.Categorie.SubCategories[0].Description);
+            this.isEditMode = true;
+            this.Model = entry;
             this.isEditMode = true;
         }
         public EntryExpenses Model { get; set; }
@@ -75,7 +91,9 @@ namespace GestaoFinanceira.Views
         {
             Model.Categorie.Description = cbCategoria.Text;
             Model.Categorie.SubCategories.Add(cbSubCategoria.SelectedValue as SubCategories);
+            Model.Value = Convert.ToDouble(nupValue.Value);
             Model.Date = dtDate.Value;
+            Model.PaymentMethod = paymentMethodController.FindByName(cbPaymentMethod.Text);
             Model.Description = txtDescription.Text;
             Model.EntryType = this.entryType;
             Model.Repeat = ckbRepetir.Checked;
@@ -88,19 +106,8 @@ namespace GestaoFinanceira.Views
             Model.Date = dtDate.Value;
             Model.Description = txtDescription.Text;
             Model.EntryType = this.entryType;
-            Model.Repeat = ckbRepetir.Checked;
+            Model.Repeat= ckbRepetir.Checked;
             return Model;
-        }
-
-        public void SetEntryExpenses(EntryExpenses entry)
-        {
-            this.entryType = entry.EntryType;
-            dtDate.Value = entry.Date;
-            txtDescription.Text = entry.Description;
-            ckbRepetir.Checked = entry.Repeat;
-            LoadCategories();
-            cbCategoria.SelectedItem = entry.Categorie.Description;
-            cbSubCategoria.SelectedItem = entry.Categorie.SubCategories[0].Description;
         }
 
         private void FrmEntryExpenses_Load(object sender, EventArgs e)
@@ -117,29 +124,20 @@ namespace GestaoFinanceira.Views
                 this.lbUnit.BackColor = SystemColors.RED;
                 this.nupValue.BackColor = SystemColors.RED;
             }
-            LoadCategories();
-            LoadPaymanetMethod();
+            if (!isEditMode)
+            {
+                LoadCategories();
+                LoadPaymanetMethod();
+            }
         }
 
         private void LoadPaymanetMethod()
         {
-            AccountController accountCtr = new AccountController(new MemorySQLConnection<Account>());
-            CreditCardController creditCardCtr = new CreditCardController(new MemorySQLConnection<CreditCard>());
-
-            foreach (var item in accountCtr.List())
-            {
-                paymentMethod.Add(item);
-            }
-            foreach (var item in creditCardCtr.List())
-            {
-                paymentMethod.Add(item);
-            }
-
             Dictionary<string, PaymentMethod> dict = new Dictionary<string, PaymentMethod>()
             {
                 {"Selecione uma categoria", null}
             };
-            foreach (var item in paymentMethod)
+            foreach (var item in paymentMethodController.List())
             {
                 if (item is Account)
                 {

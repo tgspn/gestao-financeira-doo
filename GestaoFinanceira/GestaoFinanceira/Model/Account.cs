@@ -15,5 +15,11 @@ namespace GestaoFinanceira.Model
         public string Holder { get; set; }
         public double Balance { get; set; }
         public double Limit { get; set; }
+
+        public override string ToString()
+        {
+            return Bank;
+        }
+
     }
 }

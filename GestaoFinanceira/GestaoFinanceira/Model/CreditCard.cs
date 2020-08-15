@@ -16,5 +16,10 @@ namespace GestaoFinanceira.Model
         public string ExpirationDate { get; set; }
         public string ClosingDate { get; set; }
 
+        public override string ToString()
+        {
+            return Issuer;
+        }
+
     }
 }

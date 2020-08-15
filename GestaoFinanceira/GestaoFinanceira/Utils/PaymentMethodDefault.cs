@@ -22,7 +22,7 @@ namespace GestaoFinanceira.Model
             list.Add(account);
 
             CreditCard credit = new CreditCard();
-            credit.Issuer = "MasterCard";
+            credit.Issuer = "Master Card";
             credit.LateFee = 12.50;
             credit.Number = "3215648971";
             credit.Amount = 2500;
