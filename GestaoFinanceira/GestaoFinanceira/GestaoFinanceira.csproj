@@ -68,6 +68,7 @@
     <Compile Include="Utils\CategoriesDefault.cs" />
     <Compile Include="Model\EntryExpenses.cs" />
     <Compile Include="Model\PaymentMethod.cs" />
+    <Compile Include="Utils\EntryesRevenueDefault.cs" />
     <Compile Include="Utils\PaymentMethodDefault.cs" />
     <Compile Include="Model\SubCategories.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
