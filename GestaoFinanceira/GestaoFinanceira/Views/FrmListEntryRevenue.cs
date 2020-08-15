@@ -27,7 +27,7 @@ namespace GestaoFinanceira.Views
             pnEtries.BackColor = entryType == EntryType.Revenue ? SystemColors.GREEN : SystemColors.RED;
             EntryType = entryType;
             ctr = new EntryExpensesController(new MemorySQLConnection<EntryExpenses>());
-            entryExpenses = new BindingList<EntryExpenses>(ctr.List());
+
 
         }
 
@@ -39,7 +39,11 @@ namespace GestaoFinanceira.Views
         private void btnAdd_Click(object sender, EventArgs e)
         {
             FrmEntryExpenses form = new FrmEntryExpenses(EntryType);
-            form.ShowDialog();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                entryExpenses = new BindingList<EntryExpenses>(ctr.List());
+                dtvRevenue.DataSource = entryExpenses;
+            }
         }
 
         private void dtvRevenue_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -60,8 +64,16 @@ namespace GestaoFinanceira.Views
 
         private void FrmListEntryRevenue_Load(object sender, EventArgs e)
         {
+            List<EntryExpenses> entries = new List<EntryExpenses>();
             btnDelete.Enabled = false;
             btnEdit.Enabled = false;
+            foreach (var entry in ctr.List()){
+                if (entry.EntryType == this.EntryType)
+                {
+                    entries.Add(entry);
+                }
+            }
+            entryExpenses = new BindingList<EntryExpenses>(entries);
             dtvRevenue.DataSource = entryExpenses;
         }
 
