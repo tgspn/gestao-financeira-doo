@@ -78,7 +78,7 @@ namespace GestaoFinanceira.Views
             Model.Date = dtDate.Value;
             Model.Description = txtDescription.Text;
             Model.EntryType = this.entryType;
-            Model.Reapeat = ckbRepetir.Checked;
+            Model.Repeat = ckbRepetir.Checked;
         }
 
         public EntryExpenses getEntryExpenses()
@@ -88,7 +88,7 @@ namespace GestaoFinanceira.Views
             Model.Date = dtDate.Value;
             Model.Description = txtDescription.Text;
             Model.EntryType = this.entryType;
-            Model.Reapeat = ckbRepetir.Checked;
+            Model.Repeat = ckbRepetir.Checked;
             return Model;
         }
 
@@ -97,7 +97,7 @@ namespace GestaoFinanceira.Views
             this.entryType = entry.EntryType;
             dtDate.Value = entry.Date;
             txtDescription.Text = entry.Description;
-            ckbRepetir.Checked = entry.Reapeat;
+            ckbRepetir.Checked = entry.Repeat;
             LoadCategories();
             cbCategoria.SelectedItem = entry.Categorie.Description;
             cbSubCategoria.SelectedItem = entry.Categorie.SubCategories[0].Description;

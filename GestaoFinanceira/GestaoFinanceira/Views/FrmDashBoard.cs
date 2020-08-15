@@ -2,6 +2,7 @@
 using GestaoFinanceira.Controllers;
 using GestaoFinanceira.Enums;
 using GestaoFinanceira.Model;
+using GestaoFinanceira.Utils;
 using GestaoFinanceira.Views;
 using System;
 using System.Collections.Generic;
@@ -196,6 +197,7 @@ namespace GestaoFinanceira
             AccountController ctrAcc = new AccountController(new MemorySQLConnection<Account>());
             CreditCardController ctrCredit = new CreditCardController(new MemorySQLConnection<CreditCard>());
             CategoriesController ctrCategories = new CategoriesController(new MemorySQLConnection<Categories>());
+            EntryExpensesController ctrEntry = new EntryExpensesController(new MemorySQLConnection<EntryExpenses>());
 
             foreach (var categorie in CategoriesDefault.GetCategories())
             {
@@ -212,6 +214,11 @@ namespace GestaoFinanceira
                 {
                     ctrCredit.Save((CreditCard)payment);
                 }
+            }
+            
+            foreach (var entry in EntryesRevenueDefault.GetEntryExpenses())
+            {
+                ctrEntry.Save(((EntryExpenses)entry));
             }
 
         }

@@ -44,6 +44,7 @@
             this.cRepeatEvery = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cRepeatUntil = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtvRevenue)).BeginInit();
             this.pnEtries.SuspendLayout();
             this.SuspendLayout();
@@ -64,7 +65,8 @@
             this.cDate,
             this.cRepeatEvery,
             this.Column,
-            this.cRepeatUntil});
+            this.cRepeatUntil,
+            this.Column1});
             this.dtvRevenue.GridColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dtvRevenue.Location = new System.Drawing.Point(46, 12);
             this.dtvRevenue.MultiSelect = false;
@@ -189,6 +191,7 @@
             // 
             // cRepeatEvery
             // 
+            this.cRepeatEvery.DataPropertyName = "Repeat";
             this.cRepeatEvery.HeaderText = "Repetir";
             this.cRepeatEvery.Name = "cRepeatEvery";
             // 
@@ -200,9 +203,17 @@
             // 
             // cRepeatUntil
             // 
+            this.cRepeatUntil.DataPropertyName = "RepeatUntil";
             this.cRepeatUntil.HeaderText = "Data repetição";
             this.cRepeatUntil.Name = "cRepeatUntil";
             this.cRepeatUntil.Width = 150;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "EntryType";
+            this.Column1.HeaderText = "EntryType";
+            this.Column1.Name = "Column1";
+            this.Column1.Visible = false;
             // 
             // FrmListEntryRevenue
             // 
@@ -230,8 +241,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dtvRevenue;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnCancel;
@@ -247,5 +256,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cRepeatEvery;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column;
         private System.Windows.Forms.DataGridViewTextBoxColumn cRepeatUntil;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        protected System.Windows.Forms.DataGridView dtvRevenue;
     }
 }
