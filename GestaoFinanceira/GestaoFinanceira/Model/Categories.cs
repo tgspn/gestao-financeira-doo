@@ -12,5 +12,9 @@ namespace GestaoFinanceira.Model
         public string Description { get; set; }
         public List<SubCategories> SubCategories { get; set; } = new List<SubCategories>();
 
+        public override string ToString()
+        {
+            return this.Description;
+        }
     }
 }
