@@ -9,7 +9,7 @@ namespace GestaoFinanceira.Model
     public class Account : PaymentMethod
     {
         public int Id { get; set; }
-        public int AccountBank { get; set; }
+        public string AccountBank { get; set; }
         public int Agency { get; set; }
         public string Bank { get; set; }
         public string Holder { get; set; }
