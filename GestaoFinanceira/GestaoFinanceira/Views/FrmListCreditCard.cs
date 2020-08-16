@@ -15,18 +15,14 @@ namespace GestaoFinanceira.Views
 {
     public partial class FrmListCreditCard : Form
     {
-        private readonly CreditCardController controller;
+        private readonly CreditCardController ctr;
         private BindingList<CreditCard> creditCards;
 
         public FrmListCreditCard()
         {
             InitializeComponent();
-            pnCreditCard.BackColor = SystemColors.BLUE;
-            btnDelete.Enabled = false;
-            btnEdit.Enabled = false;
-            this.controller = new CreditCardController(new MemorySQLConnection<CreditCard>());
+            this.ctr = new CreditCardController(new MemorySQLConnection<CreditCard>());
             this.creditCards = new BindingList<CreditCard>();
-            dtvCreditCard.Rows.Add(creditCards);
         }
 
         private void lbCreditCard_Paint(object sender, PaintEventArgs e)
@@ -54,16 +50,44 @@ namespace GestaoFinanceira.Views
         {
             FrmCreditCard form = new FrmCreditCard();
             form.ShowDialog();
+            creditCards = new BindingList<CreditCard>(ctr.List());
+            dtvCreditCard.DataSource = creditCards;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (dtvCreditCard.IsCurrentCellDirty == true)
+            if (dtvCreditCard.CurrentRow != null)
             {
                 if (MessageBox.Show("Tem certeza que deseja apagar este item ?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-
+                    CreditCard deleteCredCard = (CreditCard)dtvCreditCard.SelectedRows[0].DataBoundItem;
+                    ctr.Remove(deleteCredCard);
+                    creditCards.Remove(deleteCredCard);
                 }
+            }
+        }
+
+        private void FrmListCreditCard_Load(object sender, EventArgs e)
+        {
+            pnCreditCard.BackColor = SystemColors.BLUE;
+            btnDelete.Enabled = false;
+            btnEdit.Enabled = false;
+            creditCards = new BindingList<CreditCard>(ctr.List());
+            dtvCreditCard.DataSource = creditCards;
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            CreditCard editCard = (CreditCard)dtvCreditCard.SelectedRows[0].DataBoundItem;
+            FrmCreditCard form = new FrmCreditCard();
+            form.setCreditCard(editCard);
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                creditCards.Remove(editCard);
+                editCard = form.getCreditcard();
+                ctr.Save(editCard);
+                creditCards.Add(editCard);
+                //teste
             }
         }
     }

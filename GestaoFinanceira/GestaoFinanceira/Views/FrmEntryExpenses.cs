@@ -3,6 +3,7 @@ using GestaoFinanceira.Controllers;
 using GestaoFinanceira.Enums;
 using GestaoFinanceira.Model;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -11,10 +12,11 @@ namespace GestaoFinanceira.Views
 {
     public partial class FrmEntryExpenses : Form
     {
-        private readonly EntryType entryType;
+        private EntryType entryType;
         private readonly EntryExpensesController controller;
         private readonly CategoriesController categoriesController;
         private readonly bool isEditMode;
+        private EntryExpenses entry;
 
         public FrmEntryExpenses(EntryType entryType)
         {
@@ -63,18 +65,40 @@ namespace GestaoFinanceira.Views
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            UpdateModel();
-            controller.Save(Model);
+            SetEntryExpenses();
+            controller.Save(entry);
         }
 
-        private void UpdateModel()
+        private void SetEntryExpenses()
         {
-            Model.Categories = cbCategoria.SelectedValue as Categories;
-            Model.Categories.SubCategories.Add(cbSubCategoria.SelectedValue as SubCategories);
-            Model.Date = dtDate.Value;
-            Model.Description = txtDescription.Text;
-            Model.EntryType = this.entryType;
-            Model.Reapeat = ckbRepetir.Checked;
+            entry.Categorie.Description = cbCategoria.Text;
+            entry.Categorie.SubCategories.Add(cbSubCategoria.SelectedValue as SubCategories);
+            entry.Date = dtDate.Value;
+            entry.Description = txtDescription.Text;
+            entry.EntryType = this.entryType;
+            entry.Reapeat = ckbRepetir.Checked;
+        }
+
+        public EntryExpenses getEntryExpenses()
+        {
+            entry.Categorie.Description = cbCategoria.Text;
+            entry.Categorie.SubCategories.Add(cbSubCategoria.SelectedValue as SubCategories);
+            entry.Date = dtDate.Value;
+            entry.Description = txtDescription.Text;
+            entry.EntryType = this.entryType;
+            entry.Reapeat = ckbRepetir.Checked;
+            return entry;
+        }
+
+        public void SetEntryExpenses( EntryExpenses entry)
+        {
+            this.entryType = entry.EntryType;
+            dtDate.Value = entry.Date;
+            txtDescription.Text = entry.Description;
+            ckbRepetir.Checked = entry.Reapeat;
+            LoadCategories();
+            cbCategoria.SelectedItem = entry.Categorie.Description;
+            cbSubCategoria.SelectedItem = entry.Categorie.SubCategories[0].Description;
         }
 
         private void FrmEntryExpenses_Load(object sender, EventArgs e)
@@ -104,11 +128,20 @@ namespace GestaoFinanceira.Views
             };
             foreach (var item in categories)
             {
-                dict[item.Descricao] = item;
+                dict[item.Description] = item;
             }
             LoadCombobox(cbCategoria, dict);
 
         }
+
+        private void LoadCombobox<TValue>(ComboBox combobox, Dictionary<string, TValue> dict)
+        {
+            combobox.DataSource = new BindingSource(dict, null);
+            combobox.DisplayMember = "Key";
+            combobox.ValueMember = "Value";
+        }
+
+
         private void LoadSubCategories()
         {
             var selected = cbCategoria.SelectedValue as Categories;
@@ -124,13 +157,6 @@ namespace GestaoFinanceira.Views
                 }
                 LoadCombobox(cbSubCategoria, dict);
             }
-        }
-
-        private void LoadCombobox<TValue>(ComboBox combobox, Dictionary<string, TValue> dict)
-        {
-            combobox.DataSource = new BindingSource(dict, null);
-            combobox.DisplayMember = "Key";
-            combobox.ValueMember = "Value";
         }
 
         private void cbCategoria_SelectedIndexChanged(object sender, EventArgs e)
