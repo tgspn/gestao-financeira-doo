@@ -39,7 +39,7 @@ namespace GestaoFinanceira.Views
             FrmEntryExpenses form = new FrmEntryExpenses(EntryType);
             if (form.ShowDialog() == DialogResult.OK)
             {
-                dtvRevenue.DataSource = LoadEntryTypes();
+                dtvRevenue.DataSource = LoadEntriesTypes();
             }
         }
 
@@ -63,10 +63,10 @@ namespace GestaoFinanceira.Views
         {
             btnDelete.Enabled = false;
             btnEdit.Enabled = false;
-            dtvRevenue.DataSource = LoadEntryTypes();
+            dtvRevenue.DataSource = LoadEntriesTypes();
         }
 
-        private BindingList<EntryExpenses> LoadEntryTypes()
+        private BindingList<EntryExpenses> LoadEntriesTypes()
         {
             List<EntryExpenses> entries = new List<EntryExpenses>();
             foreach (var entry in ctr.List())
@@ -87,7 +87,20 @@ namespace GestaoFinanceira.Views
             {
                 editEntry = form.getEntryExpenses();
                 ctr.Save(editEntry);
-                dtvRevenue.DataSource = LoadEntryTypes();
+                dtvRevenue.DataSource = LoadEntriesTypes();
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dtvRevenue.CurrentRow != null)
+            {
+                if (MessageBox.Show("Tem certeza que deseja apagar este item ?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    EntryExpenses deleteEntry = (EntryExpenses)dtvRevenue.SelectedRows[0].DataBoundItem;
+                    ctr.Remove(deleteEntry);
+                    dtvRevenue.DataSource = LoadEntriesTypes();
+                }
             }
         }
     }
