@@ -13,7 +13,7 @@ namespace GestaoFinanceira.Model
             List<PaymentMethod> list = new List<PaymentMethod>();
 
             Account account = new Account();
-            account.AccountBank = 654321;
+            account.AccountBank = "654321";
             account.Agency = 1234;
             account.Balance = 5200.00;
             account.Bank = "Banco do Brasil";
