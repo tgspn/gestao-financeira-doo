@@ -29,12 +29,6 @@
         private void InitializeComponent()
         {
             this.dtvBankAccount = new System.Windows.Forms.DataGridView();
-            this.pnBankAccount = new System.Windows.Forms.Panel();
-            this.lbBankAccount = new System.Windows.Forms.Label();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
             this.cId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cBank = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,6 +36,12 @@
             this.cAgency = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cLimit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnBankAccount = new System.Windows.Forms.Panel();
+            this.lbBankAccount = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtvBankAccount)).BeginInit();
             this.pnBankAccount.SuspendLayout();
             this.SuspendLayout();
@@ -71,6 +71,58 @@
             this.dtvBankAccount.TabIndex = 9;
             this.dtvBankAccount.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtvBankAccount_CellContentClick);
             // 
+            // cId
+            // 
+            this.cId.DataPropertyName = "Id";
+            this.cId.HeaderText = "id";
+            this.cId.Name = "cId";
+            this.cId.ReadOnly = true;
+            this.cId.Visible = false;
+            // 
+            // cBank
+            // 
+            this.cBank.DataPropertyName = "Bank";
+            this.cBank.HeaderText = "Banco";
+            this.cBank.Name = "cBank";
+            this.cBank.ReadOnly = true;
+            // 
+            // cAmount
+            // 
+            this.cAmount.DataPropertyName = "balance";
+            this.cAmount.HeaderText = "Saldo";
+            this.cAmount.Name = "cAmount";
+            this.cAmount.ReadOnly = true;
+            // 
+            // cHolder
+            // 
+            this.cHolder.DataPropertyName = "holder";
+            this.cHolder.HeaderText = "Titular";
+            this.cHolder.Name = "cHolder";
+            this.cHolder.ReadOnly = true;
+            this.cHolder.Width = 170;
+            // 
+            // cAgency
+            // 
+            this.cAgency.DataPropertyName = "Agency";
+            this.cAgency.HeaderText = "Agencia";
+            this.cAgency.Name = "cAgency";
+            this.cAgency.ReadOnly = true;
+            this.cAgency.Width = 70;
+            // 
+            // cAccount
+            // 
+            this.cAccount.DataPropertyName = "AccountBank";
+            this.cAccount.HeaderText = "Conta";
+            this.cAccount.Name = "cAccount";
+            this.cAccount.ReadOnly = true;
+            // 
+            // cLimit
+            // 
+            this.cLimit.DataPropertyName = "Limit";
+            this.cLimit.HeaderText = "Limite";
+            this.cLimit.Name = "cLimit";
+            this.cLimit.ReadOnly = true;
+            // 
             // pnBankAccount
             // 
             this.pnBankAccount.Controls.Add(this.lbBankAccount);
@@ -94,7 +146,7 @@
             // 
             this.btnCancel.BackColor = System.Drawing.Color.Transparent;
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnCancel.FlatAppearance.BorderSize = 0;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Image = global::GestaoFinanceira.Properties.Resources.icons8_multiply_26px;
@@ -147,51 +199,6 @@
             this.btnAdd.TabIndex = 13;
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // cId
-            // 
-            this.cId.DataPropertyName = "Id";
-            this.cId.HeaderText = "id";
-            this.cId.Name = "cId";
-            this.cId.Visible = false;
-            // 
-            // cBank
-            // 
-            this.cBank.DataPropertyName = "Bank";
-            this.cBank.HeaderText = "Banco";
-            this.cBank.Name = "cBank";
-            // 
-            // cAmount
-            // 
-            this.cAmount.DataPropertyName = "balance";
-            this.cAmount.HeaderText = "Saldo";
-            this.cAmount.Name = "cAmount";
-            // 
-            // cHolder
-            // 
-            this.cHolder.DataPropertyName = "holder";
-            this.cHolder.HeaderText = "Titular";
-            this.cHolder.Name = "cHolder";
-            this.cHolder.Width = 170;
-            // 
-            // cAgency
-            // 
-            this.cAgency.DataPropertyName = "Agency";
-            this.cAgency.HeaderText = "Agencia";
-            this.cAgency.Name = "cAgency";
-            this.cAgency.Width = 70;
-            // 
-            // cAccount
-            // 
-            this.cAccount.DataPropertyName = "AccountBank";
-            this.cAccount.HeaderText = "Conta";
-            this.cAccount.Name = "cAccount";
-            // 
-            // cLimit
-            // 
-            this.cLimit.DataPropertyName = "Limit";
-            this.cLimit.HeaderText = "Limite";
-            this.cLimit.Name = "cLimit";
             // 
             // FrmListBankAccount
             // 

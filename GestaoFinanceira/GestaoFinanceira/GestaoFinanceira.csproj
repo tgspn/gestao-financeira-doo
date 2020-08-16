@@ -56,6 +56,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CreditCardController.cs" />
+    <Compile Include="Controllers\DashBoardController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\EntryExpensesController.cs" />
     <Compile Include="Controllers\PaymentMethodController.cs" />
     <Compile Include="Controllers\SubCategoriesController.cs" />
@@ -66,6 +68,7 @@
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\CreditCard.cs" />
     <Compile Include="Model\Categories.cs" />
+    <Compile Include="Model\Report.cs" />
     <Compile Include="Utils\CategoriesDefault.cs" />
     <Compile Include="Model\EntryExpenses.cs" />
     <Compile Include="Model\PaymentMethod.cs" />

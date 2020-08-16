@@ -21,6 +21,24 @@ namespace GestaoFinanceira.Model
             account.Limit = 5000;
             list.Add(account);
 
+            account = new Account();
+            account.AccountBank = 123465;
+            account.Agency = 4321;
+            account.Balance = 600.00;
+            account.Bank = "Banco Itau";
+            account.Holder = "Maria Pereira";
+            account.Limit = 2500;
+            list.Add(account);
+
+            account = new Account();
+            account.AccountBank = 135497;
+            account.Agency = 47123;
+            account.Balance = 1200.00;
+            account.Bank = "Banco Itau";
+            account.Holder = "João Bernardino";
+            account.Limit = 2500;
+            list.Add(account);
+
             CreditCard credit = new CreditCard();
             credit.Issuer = "Master Card";
             credit.LateFee = 12.50;
@@ -29,6 +47,16 @@ namespace GestaoFinanceira.Model
             credit.ClosingDate = "10";
             credit.ExpirationDate = "06/2021";
             credit.Holder = "João Bernardino";
+            list.Add(credit);
+
+            credit = new CreditCard();
+            credit.Issuer = "Master Card";
+            credit.LateFee = 12.50;
+            credit.Number = "3215648971";
+            credit.Amount = 2500;
+            credit.ClosingDate = "10";
+            credit.ExpirationDate = "06/2022";
+            credit.Holder = "Maria Pereira";
             list.Add(credit);
 
             return list;
