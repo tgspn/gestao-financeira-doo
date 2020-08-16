@@ -40,6 +40,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbType = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubcategories)).BeginInit();
             this.panel2.SuspendLayout();
@@ -52,17 +54,17 @@
             this.txtCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCategoria.Font = new System.Drawing.Font("Comic Sans MS", 9.75F);
-            this.txtCategoria.Location = new System.Drawing.Point(105, 20);
+            this.txtCategoria.Location = new System.Drawing.Point(105, 47);
             this.txtCategoria.Name = "txtCategoria";
             this.txtCategoria.Size = new System.Drawing.Size(174, 26);
-            this.txtCategoria.TabIndex = 0;
+            this.txtCategoria.TabIndex = 1;
             this.txtCategoria.TextChanged += new System.EventHandler(this.txtCategoria_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft PhagsPa", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(14, 23);
+            this.label1.Location = new System.Drawing.Point(34, 50);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 17);
             this.label1.TabIndex = 1;
@@ -111,7 +113,7 @@
             this.btnSave.Location = new System.Drawing.Point(204, 9);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 25);
-            this.btnSave.TabIndex = 3;
+            this.btnSave.TabIndex = 5;
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -126,12 +128,12 @@
             this.dgvSubcategories.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SubCategorias});
             this.dgvSubcategories.GridColor = System.Drawing.Color.DarkGray;
-            this.dgvSubcategories.Location = new System.Drawing.Point(105, 55);
+            this.dgvSubcategories.Location = new System.Drawing.Point(105, 79);
             this.dgvSubcategories.Name = "dgvSubcategories";
             this.dgvSubcategories.RowHeadersWidth = 25;
             this.dgvSubcategories.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgvSubcategories.Size = new System.Drawing.Size(174, 199);
-            this.dgvSubcategories.TabIndex = 4;
+            this.dgvSubcategories.Size = new System.Drawing.Size(174, 169);
+            this.dgvSubcategories.TabIndex = 3;
             this.dgvSubcategories.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvSubcategories_DataBindingComplete);
             // 
             // SubCategorias
@@ -155,6 +157,8 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.cbType);
+            this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.txtCategoria);
@@ -170,7 +174,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft PhagsPa", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 55);
+            this.label2.Location = new System.Drawing.Point(12, 79);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(87, 17);
             this.label2.TabIndex = 5;
@@ -185,6 +189,25 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(296, 73);
             this.panel4.TabIndex = 7;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft PhagsPa", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(58, 17);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(34, 17);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Tipo";
+            // 
+            // cbType
+            // 
+            this.cbType.FormattingEnabled = true;
+            this.cbType.Location = new System.Drawing.Point(103, 17);
+            this.cbType.Name = "cbType";
+            this.cbType.Size = new System.Drawing.Size(179, 22);
+            this.cbType.TabIndex = 0;
+            this.cbType.TextChanged += new System.EventHandler(this.txtCategoria_TextChanged);
             // 
             // FrmCategories
             // 
@@ -228,5 +251,7 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.DataGridViewTextBoxColumn SubCategorias;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cbType;
+        private System.Windows.Forms.Label label4;
     }
 }
