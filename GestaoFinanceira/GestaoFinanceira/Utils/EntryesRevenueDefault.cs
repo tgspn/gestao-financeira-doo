@@ -54,7 +54,7 @@ namespace GestaoFinanceira.Utils
                 cat,
                 cat.SubCategories[0],
                 ctrPaymentMethod.FindByName("Banco do Brasil"),
-                false,
+                true,
                 DateTime.Today,
                Enums.EntryType.Revenue
                 );
