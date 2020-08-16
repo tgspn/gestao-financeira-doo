@@ -57,7 +57,7 @@
             this.ckbRepetir.Location = new System.Drawing.Point(22, 311);
             this.ckbRepetir.Name = "ckbRepetir";
             this.ckbRepetir.Size = new System.Drawing.Size(62, 18);
-            this.ckbRepetir.TabIndex = 7;
+            this.ckbRepetir.TabIndex = 6;
             this.ckbRepetir.Text = "Repetir";
             this.ckbRepetir.UseVisualStyleBackColor = true;
             // 
@@ -67,7 +67,7 @@
             this.cbCategoria.Location = new System.Drawing.Point(22, 237);
             this.cbCategoria.Name = "cbCategoria";
             this.cbCategoria.Size = new System.Drawing.Size(182, 22);
-            this.cbCategoria.TabIndex = 5;
+            this.cbCategoria.TabIndex = 4;
             this.cbCategoria.SelectedIndexChanged += new System.EventHandler(this.cbCategoria_SelectedIndexChanged);
             this.cbCategoria.SelectionChangeCommitted += new System.EventHandler(this.txtDescription_TextChanged);
             // 
@@ -77,7 +77,7 @@
             this.cbPaymentMethod.Location = new System.Drawing.Point(22, 192);
             this.cbPaymentMethod.Name = "cbPaymentMethod";
             this.cbPaymentMethod.Size = new System.Drawing.Size(211, 22);
-            this.cbPaymentMethod.TabIndex = 4;
+            this.cbPaymentMethod.TabIndex = 3;
             this.cbPaymentMethod.SelectionChangeCommitted += new System.EventHandler(this.txtDescription_TextChanged);
             // 
             // dtDate
@@ -85,7 +85,7 @@
             this.dtDate.Location = new System.Drawing.Point(22, 146);
             this.dtDate.Name = "dtDate";
             this.dtDate.Size = new System.Drawing.Size(211, 22);
-            this.dtDate.TabIndex = 3;
+            this.dtDate.TabIndex = 2;
             // 
             // label5
             // 
@@ -133,7 +133,7 @@
             this.txtDescription.Location = new System.Drawing.Point(22, 98);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(211, 23);
-            this.txtDescription.TabIndex = 2;
+            this.txtDescription.TabIndex = 1;
             this.txtDescription.TextChanged += new System.EventHandler(this.txtDescription_TextChanged);
             // 
             // pnBanner
@@ -172,7 +172,7 @@
             0});
             this.nupValue.Name = "nupValue";
             this.nupValue.Size = new System.Drawing.Size(252, 28);
-            this.nupValue.TabIndex = 1;
+            this.nupValue.TabIndex = 0;
             this.nupValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.nupValue.ValueChanged += new System.EventHandler(this.txtDescription_TextChanged);
             // 
@@ -192,7 +192,7 @@
             this.cbSubCategoria.Location = new System.Drawing.Point(22, 282);
             this.cbSubCategoria.Name = "cbSubCategoria";
             this.cbSubCategoria.Size = new System.Drawing.Size(182, 22);
-            this.cbSubCategoria.TabIndex = 6;
+            this.cbSubCategoria.TabIndex = 5;
             this.cbSubCategoria.SelectionChangeCommitted += new System.EventHandler(this.txtDescription_TextChanged);
             // 
             // btnAddCategorias
@@ -219,7 +219,7 @@
             this.btnSave.Location = new System.Drawing.Point(200, 16);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(44, 25);
-            this.btnSave.TabIndex = 8;
+            this.btnSave.TabIndex = 7;
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -232,7 +232,7 @@
             this.btnCancel.Location = new System.Drawing.Point(12, 16);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(44, 25);
-            this.btnCancel.TabIndex = 9;
+            this.btnCancel.TabIndex = 8;
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 

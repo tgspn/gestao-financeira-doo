@@ -17,10 +17,20 @@ namespace GestaoFinanceira.Model
             SubCategories subCat = new SubCategories();
 
             cat.Description = "Salario";
+            cat.type = Enums.EntryType.Revenue;
+            subCat = new SubCategories();
+            subCat.Description = "Mensal";
+            list.Add(subCat);
+            subCat = new SubCategories();
+            subCat.Description = "Retorno Investido";
+            list.Add(subCat);
+            cat.SubCategories = list;
             categories.Add(cat);
-            
+
+            list = new List<SubCategories>();
             cat = new Categories();
             cat.Description = "Alimentação";
+            cat.type = Enums.EntryType.Expense;
             subCat = new SubCategories();
             subCat.Description = "Bebida Alcolica";
             list.Add(subCat);
@@ -36,6 +46,7 @@ namespace GestaoFinanceira.Model
             list = new List<SubCategories>();
             cat = new Categories();
             cat.Description = "Educação";
+            cat.type = Enums.EntryType.Expense;
             subCat = new SubCategories();
             subCat.Description = "Livros";
             list.Add(subCat);
@@ -45,15 +56,15 @@ namespace GestaoFinanceira.Model
             cat.SubCategories = list;
             categories.Add(cat);
 
-
-
             cat = new Categories();
             cat.Description = "Lazer";
+            cat.type = Enums.EntryType.Expense;
             categories.Add(cat);
 
             list = new List<SubCategories>();
             cat = new Categories();
             cat.Description = "Saude";
+            cat.type = Enums.EntryType.Expense;
             subCat = new SubCategories();
             subCat.Description = "Academia";
             list.Add(subCat);
@@ -69,6 +80,7 @@ namespace GestaoFinanceira.Model
             list = new List<SubCategories>();
             cat = new Categories();
             cat.Description = "Transporte";
+            cat.type = Enums.EntryType.Expense;
             subCat = new SubCategories();
             subCat.Description = "Combustível";
             list.Add(subCat);
@@ -83,6 +95,7 @@ namespace GestaoFinanceira.Model
 
             cat = new Categories();
             cat.Description = "Outros";
+            cat.type = Enums.EntryType.Expense;
             categories.Add(cat);
 
 

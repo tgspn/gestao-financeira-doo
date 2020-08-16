@@ -29,7 +29,7 @@ namespace GestaoFinanceira.Views
 
         private bool IsValid()
         {
-            return this.ValidFields(txtCategoria);
+            return this.ValidFields(txtCategoria, cbType);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -49,7 +49,6 @@ namespace GestaoFinanceira.Views
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
             setCategorie();
             controller.Save(categorie);
 
@@ -61,26 +60,28 @@ namespace GestaoFinanceira.Views
         private void FrmCategories_Load(object sender, EventArgs e)
         {
             dgvSubcategories.DataSource = subCategories;
-        }
+            Dictionary<string, string> dict = new Dictionary<string, string>()
+                {
+                    { "Selecione um tipo", null},
+                    { "Receita", "Revenue"},
+                    { "Despesa", "Expense"}
+
+                };
+            cbType.DataSource = new BindingSource(dict, null);
+            cbType.DisplayMember = "Key";
+            cbType.ValueMember = "Value";
+    }
 
         private void dgvSubcategories_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             dgvSubcategories.Columns["Id"].Visible = false;
         }
 
-        public void LoadFields(Categories categorie)
-        {
-            var model = new Categories()
-            {
-                Description = txtCategoria.Text,
-                SubCategories = subCategories.ToList()
-            };
-        }
-
         private void setCategorie()
         {
             categorie = new Categories()
             {
+                type = cbType.Text == "Receita" ? Enums.EntryType.Revenue : Enums.EntryType.Expense,
                 Description = txtCategoria.Text,
                 SubCategories = subCategories.ToList()
             };
@@ -88,6 +89,7 @@ namespace GestaoFinanceira.Views
 
         public void setCategorie(Categories categories)
         {
+            cbType.FindString(categorie.type == Enums.EntryType.Revenue ? "Receita" : "Despesa");
             txtCategoria.Text = categories.Description;
             subCategories = new BindingList<SubCategories>( categories.SubCategories);
         }

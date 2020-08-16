@@ -28,25 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtvRevenue = new System.Windows.Forms.DataGridView();
-            this.cId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descrição = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPaymentMethod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cCategories = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cRepeatEvery = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cRepeatUntil = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.pnEtries = new System.Windows.Forms.Panel();
             this.lbEntries = new System.Windows.Forms.Label();
+            this.cId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descrição = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPaymentMethod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cCategories = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cRepeatEvery = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cRepeatUntil = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtvRevenue)).BeginInit();
             this.pnEtries.SuspendLayout();
             this.SuspendLayout();
@@ -63,9 +66,12 @@
             this.Descrição,
             this.cValue,
             this.cPaymentMethod,
+            this.Column2,
             this.cCategories,
+            this.Column3,
             this.cDate,
             this.cRepeatEvery,
+            this.Column4,
             this.Column,
             this.cRepeatUntil,
             this.Column1});
@@ -75,9 +81,84 @@
             this.dtvRevenue.Name = "dtvRevenue";
             this.dtvRevenue.ReadOnly = true;
             this.dtvRevenue.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtvRevenue.Size = new System.Drawing.Size(666, 238);
+            this.dtvRevenue.Size = new System.Drawing.Size(740, 238);
             this.dtvRevenue.TabIndex = 0;
             this.dtvRevenue.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtvRevenue_CellContentClick);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.BackColor = System.Drawing.Color.Transparent;
+            this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdd.FlatAppearance.BorderSize = 0;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Image = global::GestaoFinanceira.Properties.Resources.icons8_plus_30px_1;
+            this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btnAdd.Location = new System.Drawing.Point(742, 256);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(37, 33);
+            this.btnAdd.TabIndex = 1;
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.BackColor = System.Drawing.Color.Transparent;
+            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancel.FlatAppearance.BorderSize = 0;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Image = global::GestaoFinanceira.Properties.Resources.icons8_multiply_26px;
+            this.btnCancel.Location = new System.Drawing.Point(46, 256);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(37, 33);
+            this.btnCancel.TabIndex = 1;
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.BackColor = System.Drawing.Color.Transparent;
+            this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEdit.FlatAppearance.BorderSize = 0;
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEdit.Image = global::GestaoFinanceira.Properties.Resources.icons8_edit_26px_2;
+            this.btnEdit.Location = new System.Drawing.Point(699, 256);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(37, 33);
+            this.btnEdit.TabIndex = 1;
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.Transparent;
+            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDelete.FlatAppearance.BorderSize = 0;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Image = global::GestaoFinanceira.Properties.Resources.icons8_trash_26px_1;
+            this.btnDelete.Location = new System.Drawing.Point(656, 256);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(37, 33);
+            this.btnDelete.TabIndex = 1;
+            this.btnDelete.UseVisualStyleBackColor = false;
+            // 
+            // pnEtries
+            // 
+            this.pnEtries.Controls.Add(this.lbEntries);
+            this.pnEtries.Location = new System.Drawing.Point(-5, -5);
+            this.pnEtries.Name = "pnEtries";
+            this.pnEtries.Size = new System.Drawing.Size(45, 308);
+            this.pnEtries.TabIndex = 2;
+            // 
+            // lbEntries
+            // 
+            this.lbEntries.Font = new System.Drawing.Font("Microsoft PhagsPa", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbEntries.Location = new System.Drawing.Point(3, 104);
+            this.lbEntries.Name = "lbEntries";
+            this.lbEntries.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lbEntries.Size = new System.Drawing.Size(36, 138);
+            this.lbEntries.TabIndex = 3;
+            this.lbEntries.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbEntries.Paint += new System.Windows.Forms.PaintEventHandler(this.lbEntries_Paint);
             // 
             // cId
             // 
@@ -101,9 +182,9 @@
             // 
             this.cValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.cValue.DataPropertyName = "value";
-            dataGridViewCellStyle3.Format = "C2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.cValue.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.cValue.DefaultCellStyle = dataGridViewCellStyle1;
             this.cValue.HeaderText = "Valor";
             this.cValue.Name = "cValue";
             this.cValue.ReadOnly = true;
@@ -119,6 +200,15 @@
             this.cPaymentMethod.ReadOnly = true;
             this.cPaymentMethod.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "CaptionCategories";
+            this.Column2.HeaderText = "Categorias";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column2.Width = 175;
+            // 
             // cCategories
             // 
             this.cCategories.DataPropertyName = "Categorie";
@@ -126,6 +216,15 @@
             this.cCategories.Name = "cCategories";
             this.cCategories.ReadOnly = true;
             this.cCategories.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.cCategories.Visible = false;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "SubCategorie";
+            this.Column3.HeaderText = "SubCategoria";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Visible = false;
             // 
             // cDate
             // 
@@ -138,12 +237,20 @@
             // cRepeatEvery
             // 
             this.cRepeatEvery.DataPropertyName = "Repeat";
-            dataGridViewCellStyle4.NullValue = null;
-            this.cRepeatEvery.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.NullValue = null;
+            this.cRepeatEvery.DefaultCellStyle = dataGridViewCellStyle2;
             this.cRepeatEvery.HeaderText = "Repetir";
             this.cRepeatEvery.Name = "cRepeatEvery";
             this.cRepeatEvery.ReadOnly = true;
             this.cRepeatEvery.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.cRepeatEvery.Visible = false;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "CaptionRepeat";
+            this.Column4.HeaderText = "Recorrente";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             // 
             // Column
             // 
@@ -173,87 +280,12 @@
             this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Column1.Visible = false;
             // 
-            // btnAdd
-            // 
-            this.btnAdd.BackColor = System.Drawing.Color.Transparent;
-            this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAdd.FlatAppearance.BorderSize = 0;
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Image = global::GestaoFinanceira.Properties.Resources.icons8_plus_30px_1;
-            this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.btnAdd.Location = new System.Drawing.Point(669, 256);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(37, 33);
-            this.btnAdd.TabIndex = 1;
-            this.btnAdd.UseVisualStyleBackColor = false;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.BackColor = System.Drawing.Color.Transparent;
-            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancel.FlatAppearance.BorderSize = 0;
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Image = global::GestaoFinanceira.Properties.Resources.icons8_multiply_26px;
-            this.btnCancel.Location = new System.Drawing.Point(46, 256);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(37, 33);
-            this.btnCancel.TabIndex = 1;
-            this.btnCancel.UseVisualStyleBackColor = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.BackColor = System.Drawing.Color.Transparent;
-            this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEdit.FlatAppearance.BorderSize = 0;
-            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEdit.Image = global::GestaoFinanceira.Properties.Resources.icons8_edit_26px_2;
-            this.btnEdit.Location = new System.Drawing.Point(626, 256);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(37, 33);
-            this.btnEdit.TabIndex = 1;
-            this.btnEdit.UseVisualStyleBackColor = false;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.BackColor = System.Drawing.Color.Transparent;
-            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDelete.FlatAppearance.BorderSize = 0;
-            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Image = global::GestaoFinanceira.Properties.Resources.icons8_trash_26px_1;
-            this.btnDelete.Location = new System.Drawing.Point(583, 256);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(37, 33);
-            this.btnDelete.TabIndex = 1;
-            this.btnDelete.UseVisualStyleBackColor = false;
-            // 
-            // pnEtries
-            // 
-            this.pnEtries.Controls.Add(this.lbEntries);
-            this.pnEtries.Location = new System.Drawing.Point(-5, -5);
-            this.pnEtries.Name = "pnEtries";
-            this.pnEtries.Size = new System.Drawing.Size(45, 308);
-            this.pnEtries.TabIndex = 2;
-            // 
-            // lbEntries
-            // 
-            this.lbEntries.Font = new System.Drawing.Font("Microsoft PhagsPa", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbEntries.Location = new System.Drawing.Point(3, 104);
-            this.lbEntries.Name = "lbEntries";
-            this.lbEntries.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lbEntries.Size = new System.Drawing.Size(36, 138);
-            this.lbEntries.TabIndex = 3;
-            this.lbEntries.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbEntries.Paint += new System.Windows.Forms.PaintEventHandler(this.lbEntries_Paint);
-            // 
             // FrmListEntryRevenue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(718, 301);
+            this.ClientSize = new System.Drawing.Size(791, 301);
             this.ControlBox = false;
             this.Controls.Add(this.dtvRevenue);
             this.Controls.Add(this.btnCancel);
@@ -285,9 +317,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Descrição;
         private System.Windows.Forms.DataGridViewTextBoxColumn cValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn cPaymentMethod;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn cCategories;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn cDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn cRepeatEvery;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column;
         private System.Windows.Forms.DataGridViewTextBoxColumn cRepeatUntil;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;

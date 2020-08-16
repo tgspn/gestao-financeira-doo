@@ -28,9 +28,7 @@ namespace GestaoFinanceira.Views
             var categoriesConnection = new MemorySQLConnection<Categories>();
             controller = new EntryExpensesController(connection);
             categoriesController = new CategoriesController(categoriesConnection);
-            paymentMethodController = new PaymentMethodController(new MemorySQLConnection<Account>(), new MemorySQLConnection<CreditCard>());
-
-            Model = new EntryExpenses();
+            paymentMethodController = new PaymentMethodController(new MemorySQLConnection<Account>(), new MemorySQLConnection<CreditCard>());;
         }
         public FrmEntryExpenses(EntryExpenses entry) : this(entry.EntryType)
         {
@@ -49,8 +47,8 @@ namespace GestaoFinanceira.Views
             if (entry.Categorie.SubCategories.Count != 0)
                 cbSubCategoria.SelectedIndex = cbSubCategoria.FindString(entry.Categorie.SubCategories[0].Description);
             this.isEditMode = true;
+            btnSave.Enabled = true;
             this.Model = entry;
-            this.isEditMode = true;
         }
         public EntryExpenses Model { get; set; }
 
@@ -89,14 +87,17 @@ namespace GestaoFinanceira.Views
 
         private void SetEntryExpenses()
         {
-            Model.Categorie.Description = cbCategoria.Text;
-            Model.Categorie.SubCategories.Add(cbSubCategoria.SelectedValue as SubCategories);
-            Model.Value = Convert.ToDouble(nupValue.Value);
-            Model.Date = dtDate.Value;
-            Model.PaymentMethod = paymentMethodController.FindByName(cbPaymentMethod.Text);
-            Model.Description = txtDescription.Text;
-            Model.EntryType = this.entryType;
-            Model.Repeat = ckbRepetir.Checked;
+            Model = new EntryExpenses(
+                txtDescription.Text,
+                Convert.ToDouble(nupValue.Value),
+                dtDate.Value,
+                true,
+                cbCategoria.SelectedValue as Categories,
+                cbSubCategoria.SelectedValue as SubCategories,
+                paymentMethodController.FindByName(cbPaymentMethod.Text),
+                ckbRepetir.Checked,
+                DateTime.Today,
+                this.entryType);
         }
 
         public EntryExpenses getEntryExpenses()
@@ -135,7 +136,7 @@ namespace GestaoFinanceira.Views
         {
             Dictionary<string, PaymentMethod> dict = new Dictionary<string, PaymentMethod>()
             {
-                {"Selecione uma categoria", null}
+                {"Selecione uma forma de pagamento", null}
             };
             foreach (var item in paymentMethodController.List())
             {
@@ -161,7 +162,8 @@ namespace GestaoFinanceira.Views
             };
             foreach (var item in categories)
             {
-                dict[item.Description] = item;
+                if (item.type == entryType)
+                    dict[item.Description] = item;
             }
             LoadCombobox(cbCategoria, dict);
 
@@ -182,7 +184,7 @@ namespace GestaoFinanceira.Views
             {
                 Dictionary<string, SubCategories> dict = new Dictionary<string, SubCategories>()
                 {
-                    { "Selecione uma subcategoria", null}
+                    { "Selecione uma subcategoria", new SubCategories()}
                 };
                 if (selected.SubCategories != null)
                 {

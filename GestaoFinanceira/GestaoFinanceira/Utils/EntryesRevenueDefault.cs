@@ -15,35 +15,49 @@ namespace GestaoFinanceira.Utils
             CategoriesController ctrCategories = new CategoriesController(new MemorySQLConnection<Categories>());
             PaymentMethodController ctrPaymentMethod = new PaymentMethodController(new MemorySQLConnection<Account>(), new MemorySQLConnection<CreditCard>());
             List<EntryExpenses> entries = new List<EntryExpenses>();
-            EntryExpenses entry = new EntryExpenses();
-
-            entry.Value = 15.00;
-            entry.Description = "Recarga Celular";
-            entry.EntryType = Enums.EntryType.Expense;
-            entry.Categorie = ctrCategories.FindByDescription("Outros");
-            entry.PaymentMethod = ctrPaymentMethod.FindByName("Banco do Brasil");
-            entry.RepeatUntil = DateTime.Today;
-            entry.Date = DateTime.Today;
+            Categories cat;
+            
+            EntryExpenses entry = new EntryExpenses(
+                "Recarga Celular", 
+                15.00, 
+                DateTime.Today, 
+                true, ctrCategories.FindByDescription("Outros"), 
+                new SubCategories(),
+                ctrPaymentMethod.FindByName("Banco do Brasil"),
+                false,
+                DateTime.Today,
+                Enums.EntryType.Expense
+                );
             entries.Add(entry);
 
-            entry = new EntryExpenses();
-            entry.Value = 25.00;
-            entry.Description = "Dogão";
-            entry.EntryType = Enums.EntryType.Expense;
-            entry.PaymentMethod = ctrPaymentMethod.FindByName("Master Card");
-            entry.Categorie = ctrCategories.FindByDescription("Outros");
-            entry.RepeatUntil = DateTime.Today;
-            entry.Date = DateTime.Today;
+            cat = ctrCategories.FindByDescription("Alimentação");
+            entry = new EntryExpenses(
+                "Dogão",
+                25.00,
+                DateTime.Today,
+                true, 
+                cat,
+                cat.SubCategories[2],
+                ctrPaymentMethod.FindByName("Master Card"),
+                false,
+                DateTime.Today,
+                Enums.EntryType.Expense
+                );
             entries.Add(entry);
 
-            entry = new EntryExpenses();
-            entry.Value = 3500.00;
-            entry.Description = "Salario";
-            entry.EntryType = Enums.EntryType.Revenue;
-            entry.PaymentMethod = ctrPaymentMethod.FindByName("Banco do Brasil");
-            entry.Categorie = ctrCategories.FindByDescription("Salario");
-            entry.RepeatUntil = DateTime.Today;
-            entry.Date = DateTime.Today;
+            cat = ctrCategories.FindByDescription("Salario");
+            entry = new EntryExpenses(
+                "Salario",
+                3500.00,
+                DateTime.Today,
+                true,
+                cat,
+                cat.SubCategories[0],
+                ctrPaymentMethod.FindByName("Banco do Brasil"),
+                false,
+                DateTime.Today,
+               Enums.EntryType.Revenue
+                );
             entries.Add(entry);
 
             return entries;

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GestaoFinanceira.Controllers
 {
-    class CrtSubCategories
+    class SubCategoriesController
     {
         public List<SubCategories> List()
         {
