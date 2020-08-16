@@ -170,6 +170,7 @@ namespace GestaoFinanceira
             // 
             chartArea1.Name = "ChartArea1";
             this.ctBank.ChartAreas.Add(chartArea1);
+            this.ctBank.Cursor = System.Windows.Forms.Cursors.Hand;
             legend1.Name = "Legend1";
             this.ctBank.Legends.Add(legend1);
             this.ctBank.Location = new System.Drawing.Point(370, 160);
@@ -182,6 +183,7 @@ namespace GestaoFinanceira
             this.ctBank.Size = new System.Drawing.Size(238, 125);
             this.ctBank.TabIndex = 6;
             this.ctBank.Text = "chart1";
+            this.ctBank.Click += new System.EventHandler(this.contaToolStripMenuItem_Click);
             // 
             // ctCreditCard
             // 
@@ -191,6 +193,7 @@ namespace GestaoFinanceira
             chartArea2.AxisY2.Title = "Cartões";
             chartArea2.Name = "ChartArea1";
             this.ctCreditCard.ChartAreas.Add(chartArea2);
+            this.ctCreditCard.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ctCreditCard.IsSoftShadows = false;
             legend2.Name = "Legend1";
             this.ctCreditCard.Legends.Add(legend2);
@@ -225,6 +228,7 @@ namespace GestaoFinanceira
             // 
             chartArea3.Name = "ChartArea1";
             this.ctCategories.ChartAreas.Add(chartArea3);
+            this.ctCategories.Cursor = System.Windows.Forms.Cursors.Hand;
             legend3.Name = "Legend1";
             this.ctCategories.Legends.Add(legend3);
             this.ctCategories.Location = new System.Drawing.Point(370, 27);
@@ -353,35 +357,35 @@ namespace GestaoFinanceira
             // contaToolStripMenuItem
             // 
             this.contaToolStripMenuItem.Name = "contaToolStripMenuItem";
-            this.contaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.contaToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.contaToolStripMenuItem.Text = "Conta";
             this.contaToolStripMenuItem.Click += new System.EventHandler(this.contaToolStripMenuItem_Click);
             // 
             // cartãoDeCréditoToolStripMenuItem1
             // 
             this.cartãoDeCréditoToolStripMenuItem1.Name = "cartãoDeCréditoToolStripMenuItem1";
-            this.cartãoDeCréditoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.cartãoDeCréditoToolStripMenuItem1.Size = new System.Drawing.Size(167, 22);
             this.cartãoDeCréditoToolStripMenuItem1.Text = "Cartão de Crédito";
             this.cartãoDeCréditoToolStripMenuItem1.Click += new System.EventHandler(this.cartãoDeCréditoToolStripMenuItem1_Click);
             // 
             // despesasToolStripMenuItem
             // 
             this.despesasToolStripMenuItem.Name = "despesasToolStripMenuItem";
-            this.despesasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.despesasToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.despesasToolStripMenuItem.Text = "Despesas";
             this.despesasToolStripMenuItem.Click += new System.EventHandler(this.despesasToolStripMenuItem_Click);
             // 
             // receitasToolStripMenuItem
             // 
             this.receitasToolStripMenuItem.Name = "receitasToolStripMenuItem";
-            this.receitasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.receitasToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.receitasToolStripMenuItem.Text = "Receitas";
             this.receitasToolStripMenuItem.Click += new System.EventHandler(this.receitasToolStripMenuItem_Click);
             // 
             // categoriasToolStripMenuItem
             // 
             this.categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
-            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.categoriasToolStripMenuItem.Text = "Categorias";
             this.categoriasToolStripMenuItem.Click += new System.EventHandler(this.ctCategories_Click);
             // 
@@ -433,6 +437,7 @@ namespace GestaoFinanceira
             // 
             // btnOpenBank
             // 
+            this.btnOpenBank.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOpenBank.FlatAppearance.BorderSize = 0;
             this.btnOpenBank.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpenBank.Image = global::GestaoFinanceira.Properties.Resources.icons8_bank_40px_3;
@@ -447,6 +452,7 @@ namespace GestaoFinanceira
             // 
             // btnOpenCreditCard
             // 
+            this.btnOpenCreditCard.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOpenCreditCard.FlatAppearance.BorderSize = 0;
             this.btnOpenCreditCard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpenCreditCard.Image = global::GestaoFinanceira.Properties.Resources.icons8_credit_control_40px_1;
@@ -461,6 +467,7 @@ namespace GestaoFinanceira
             // 
             // btnOpenRevenue
             // 
+            this.btnOpenRevenue.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOpenRevenue.FlatAppearance.BorderSize = 0;
             this.btnOpenRevenue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpenRevenue.Image = global::GestaoFinanceira.Properties.Resources.icons8_up_30px;
@@ -476,6 +483,7 @@ namespace GestaoFinanceira
             // 
             // btnOpenEntries
             // 
+            this.btnOpenEntries.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOpenEntries.FlatAppearance.BorderSize = 0;
             this.btnOpenEntries.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpenEntries.Image = global::GestaoFinanceira.Properties.Resources.icons8_plus_30px_1;
@@ -502,6 +510,7 @@ namespace GestaoFinanceira
             // 
             // btnOpenExpense
             // 
+            this.btnOpenExpense.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOpenExpense.FlatAppearance.BorderSize = 0;
             this.btnOpenExpense.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpenExpense.Image = global::GestaoFinanceira.Properties.Resources.icons8_down_arrow_30px;
@@ -685,6 +694,7 @@ namespace GestaoFinanceira
             this.Controls.Add(this.btnOpenCalendar);
             this.Controls.Add(this.btnOpenExpense);
             this.Controls.Add(this.menuStrip1);
+            this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
