@@ -15,8 +15,8 @@ namespace GestaoFinanceira.Views
         private EntryType entryType;
         private readonly EntryExpensesController controller;
         private readonly CategoriesController categoriesController;
+        private readonly PaymentMethodController paymentMethodController;
         private readonly bool isEditMode;
-        private EntryExpenses entry;
 
         public FrmEntryExpenses(EntryType entryType)
         {
@@ -28,25 +28,39 @@ namespace GestaoFinanceira.Views
             var categoriesConnection = new MemorySQLConnection<Categories>();
             controller = new EntryExpensesController(connection);
             categoriesController = new CategoriesController(categoriesConnection);
-
-            Model = new EntryExpenses();
+            paymentMethodController = new PaymentMethodController(new MemorySQLConnection<Account>(), new MemorySQLConnection<CreditCard>());;
         }
-        public FrmEntryExpenses(EntryExpenses model) : this(model.EntryType)
+        public FrmEntryExpenses(EntryExpenses entry) : this(entry.EntryType)
         {
-            this.Model = model;
+            nupValue.Value = Convert.ToDecimal(entry.Value);
+            this.entryType = entry.EntryType;
+            dtDate.Value = entry.Date;
+            txtDescription.Text = entry.Description;
+            ckbRepetir.Checked = entry.Repeat;
+            LoadCategories();
+            LoadPaymanetMethod();
+            cbCategoria.SelectedIndex = cbCategoria.FindString(entry.Categorie.Description);
+            if (entry.PaymentMethod is Account)
+                cbPaymentMethod.SelectedIndex = cbPaymentMethod.FindString(((Account)entry.PaymentMethod).Bank);
+            else
+                cbPaymentMethod.SelectedIndex = cbPaymentMethod.FindString(((CreditCard)entry.PaymentMethod).Issuer);
+            if (entry.Categorie.SubCategories.Count != 0)
+                cbSubCategoria.SelectedIndex = cbSubCategoria.FindString(entry.Categorie.SubCategories[0].Description);
             this.isEditMode = true;
+            btnSave.Enabled = true;
+            this.Model = entry;
         }
         public EntryExpenses Model { get; set; }
 
         private void txtDescription_TextChanged(object sender, EventArgs e)
         {
-            btnSave.Enabled = this.ValidFields(txtDescription, cbConta, cbCategoria, cbSubCategoria, nupValue);
+            btnSave.Enabled = this.ValidFields(txtDescription, cbPaymentMethod, cbCategoria, cbSubCategoria, nupValue);
         }
 
         private void btnAddCategorias_Click(object sender, EventArgs e)
         {
             FrmCategories form = new FrmCategories();
-            if(form.ShowDialog()==DialogResult.OK)
+            if (form.ShowDialog() == DialogResult.OK)
             {
                 LoadCategories();
             }
@@ -54,7 +68,7 @@ namespace GestaoFinanceira.Views
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            if (!this.ValidFields(nupValue, txtDescription, cbConta, cbCategoria, cbSubCategoria))
+            if (!this.ValidFields(nupValue, txtDescription, cbPaymentMethod, cbCategoria, cbSubCategoria))
             {
                 if (MessageBox.Show("Tem certeza que quer fechar ?", "Confirmação de fechamento", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     this.Close();
@@ -66,39 +80,35 @@ namespace GestaoFinanceira.Views
         private void btnSave_Click(object sender, EventArgs e)
         {
             SetEntryExpenses();
-            controller.Save(entry);
+            controller.Save(Model);
+            DialogResult = DialogResult.OK;
+            this.Close();
         }
 
         private void SetEntryExpenses()
         {
-            entry.Categorie.Description = cbCategoria.Text;
-            entry.Categorie.SubCategories.Add(cbSubCategoria.SelectedValue as SubCategories);
-            entry.Date = dtDate.Value;
-            entry.Description = txtDescription.Text;
-            entry.EntryType = this.entryType;
-            entry.Reapeat = ckbRepetir.Checked;
+            Model = new EntryExpenses(
+                txtDescription.Text,
+                Convert.ToDouble(nupValue.Value),
+                dtDate.Value,
+                true,
+                cbCategoria.SelectedValue as Categories,
+                cbSubCategoria.SelectedValue as SubCategories,
+                paymentMethodController.FindByName(cbPaymentMethod.Text),
+                ckbRepetir.Checked,
+                DateTime.Today,
+                this.entryType);
         }
 
         public EntryExpenses getEntryExpenses()
         {
-            entry.Categorie.Description = cbCategoria.Text;
-            entry.Categorie.SubCategories.Add(cbSubCategoria.SelectedValue as SubCategories);
-            entry.Date = dtDate.Value;
-            entry.Description = txtDescription.Text;
-            entry.EntryType = this.entryType;
-            entry.Reapeat = ckbRepetir.Checked;
-            return entry;
-        }
-
-        public void SetEntryExpenses( EntryExpenses entry)
-        {
-            this.entryType = entry.EntryType;
-            dtDate.Value = entry.Date;
-            txtDescription.Text = entry.Description;
-            ckbRepetir.Checked = entry.Reapeat;
-            LoadCategories();
-            cbCategoria.SelectedItem = entry.Categorie.Description;
-            cbSubCategoria.SelectedItem = entry.Categorie.SubCategories[0].Description;
+            Model.Categorie.Description = cbCategoria.Text;
+            Model.Categorie.SubCategories.Add(cbSubCategoria.SelectedValue as SubCategories);
+            Model.Date = dtDate.Value;
+            Model.Description = txtDescription.Text;
+            Model.EntryType = this.entryType;
+            Model.Repeat= ckbRepetir.Checked;
+            return Model;
         }
 
         private void FrmEntryExpenses_Load(object sender, EventArgs e)
@@ -115,7 +125,31 @@ namespace GestaoFinanceira.Views
                 this.lbUnit.BackColor = SystemColors.RED;
                 this.nupValue.BackColor = SystemColors.RED;
             }
-            LoadCategories();
+            if (!isEditMode)
+            {
+                LoadCategories();
+                LoadPaymanetMethod();
+            }
+        }
+
+        private void LoadPaymanetMethod()
+        {
+            Dictionary<string, PaymentMethod> dict = new Dictionary<string, PaymentMethod>()
+            {
+                {"Selecione uma forma de pagamento", null}
+            };
+            foreach (var item in paymentMethodController.List())
+            {
+                if (item is Account)
+                {
+                    dict[((Account)item).Bank] = item;
+                }
+                if (item is CreditCard)
+                {
+                    dict[((CreditCard)item).Issuer] = item;
+                }
+                LoadCombobox(cbPaymentMethod, dict);
+            }
         }
 
         private void LoadCategories()
@@ -128,7 +162,8 @@ namespace GestaoFinanceira.Views
             };
             foreach (var item in categories)
             {
-                dict[item.Description] = item;
+                if (item.type == entryType)
+                    dict[item.Description] = item;
             }
             LoadCombobox(cbCategoria, dict);
 
@@ -149,13 +184,16 @@ namespace GestaoFinanceira.Views
             {
                 Dictionary<string, SubCategories> dict = new Dictionary<string, SubCategories>()
                 {
-                    { "Selecione uma subcategoria", null}
+                    { "Selecione uma subcategoria", new SubCategories()}
                 };
-                foreach (var item in selected.SubCategories)
+                if (selected.SubCategories != null)
                 {
-                    dict[item.Description] = item;
+                    foreach (var item in selected.SubCategories)
+                    {
+                        dict[item.Description] = item;
+                    }
+                    LoadCombobox(cbSubCategoria, dict);
                 }
-                LoadCombobox(cbSubCategoria, dict);
             }
         }
 

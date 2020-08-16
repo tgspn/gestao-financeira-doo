@@ -22,11 +22,6 @@ namespace GestaoFinanceira.Controllers
             this.dao = new CategoriesDAO(connection);
         }
 
-        public CategoriesController(MemorySQLConnection<CreditCard> memorySQLConnection)
-        {
-            this.memorySQLConnection = memorySQLConnection;
-        }
-
         public List<Categories> List()
         {
             return dao.Get().ToList();
@@ -34,6 +29,14 @@ namespace GestaoFinanceira.Controllers
         public Categories Find(int categoriesId)
         {
             throw new NotImplementedException();
+        }
+
+        public Categories FindByDescription(string description)
+        {
+            foreach (var categorie in this.List())
+                if (categorie.Description == description)
+                    return categorie;
+            return null;
         }
 
         public void Save(Categories categories)

@@ -12,13 +12,13 @@ namespace GestaoFinanceira.Model
         public string AccountBank { get; set; }
         public int Agency { get; set; }
         public string Bank { get; set; }
-        public string Holder { get; set; }
         public double Balance { get; set; }
         public double Limit { get; set; }
 
-        public object getPaymentMethod()
+        public override string ToString()
         {
-            return this;
+            return Bank;
         }
+
     }
 }

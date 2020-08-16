@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace GestaoFinanceira.Model
 {
-    public interface PaymentMethod
+    public class PaymentMethod
     {
-         object getPaymentMethod();
+        public int Id { get; set; }
+        public string Holder { get; set; }
     }
 }
