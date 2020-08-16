@@ -41,7 +41,7 @@ namespace GestaoFinanceira.BD.DAO
 
         protected override string GetTableName()
         {
-            return "CreditCard";
+            return "credit-card";
         }
     }
 }

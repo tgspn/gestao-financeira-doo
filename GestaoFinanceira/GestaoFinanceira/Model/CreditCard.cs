@@ -11,7 +11,6 @@ namespace GestaoFinanceira.Model
         public string Number { get; set; }
         public double LateFee { get; set; }
         public double Amount { get; set; }
-        public string Holder { get; set; }
         public string Issuer { get; set; }
         public string ExpirationDate { get; set; }
         public string ClosingDate { get; set; }

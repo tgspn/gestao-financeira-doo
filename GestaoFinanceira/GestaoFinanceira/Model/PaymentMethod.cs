@@ -9,8 +9,6 @@ namespace GestaoFinanceira.Model
     public class PaymentMethod
     {
         public int Id { get; set; }
-        public object getPaymentMethod() {
-            return this;
-        }
+        public string Holder { get; set; }
     }
 }
