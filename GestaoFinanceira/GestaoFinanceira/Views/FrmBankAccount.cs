@@ -53,7 +53,7 @@ namespace GestaoFinanceira.Views
         public void SetBankAccount()
         {
             this.Account = new Account();
-            Account.AccountBank = Convert.ToInt32(txtAccount.Text);
+            Account.AccountBank = txtAccount.Text;
             Account.Agency = Convert.ToInt32(txtAgency.Text);
             Account.Limit = Convert.ToDouble(txtLimit.Text);
             Account.Holder = txtHolder.Text;
