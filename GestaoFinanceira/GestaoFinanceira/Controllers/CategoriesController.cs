@@ -22,11 +22,6 @@ namespace GestaoFinanceira.Controllers
             this.dao = new CategoriesDAO(connection);
         }
 
-        public CategoriesController(MemorySQLConnection<CreditCard> memorySQLConnection)
-        {
-            this.memorySQLConnection = memorySQLConnection;
-        }
-
         public List<Categories> List()
         {
             return dao.Get().ToList();
