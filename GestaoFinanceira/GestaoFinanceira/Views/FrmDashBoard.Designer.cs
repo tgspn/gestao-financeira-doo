@@ -219,6 +219,7 @@ namespace GestaoFinanceira
             this.ctCreditCard.TabIndex = 6;
             this.ctCreditCard.TabStop = false;
             this.ctCreditCard.Text = "chart1";
+            this.ctCreditCard.Click += new System.EventHandler(this.ctCreditCard_Click);
             // 
             // ctCategories
             // 
@@ -354,24 +355,28 @@ namespace GestaoFinanceira
             this.contaToolStripMenuItem.Name = "contaToolStripMenuItem";
             this.contaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.contaToolStripMenuItem.Text = "Conta";
+            this.contaToolStripMenuItem.Click += new System.EventHandler(this.contaToolStripMenuItem_Click);
             // 
             // cartãoDeCréditoToolStripMenuItem1
             // 
             this.cartãoDeCréditoToolStripMenuItem1.Name = "cartãoDeCréditoToolStripMenuItem1";
             this.cartãoDeCréditoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.cartãoDeCréditoToolStripMenuItem1.Text = "Cartão de Crédito";
+            this.cartãoDeCréditoToolStripMenuItem1.Click += new System.EventHandler(this.cartãoDeCréditoToolStripMenuItem1_Click);
             // 
             // despesasToolStripMenuItem
             // 
             this.despesasToolStripMenuItem.Name = "despesasToolStripMenuItem";
             this.despesasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.despesasToolStripMenuItem.Text = "Despesas";
+            this.despesasToolStripMenuItem.Click += new System.EventHandler(this.despesasToolStripMenuItem_Click);
             // 
             // receitasToolStripMenuItem
             // 
             this.receitasToolStripMenuItem.Name = "receitasToolStripMenuItem";
             this.receitasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.receitasToolStripMenuItem.Text = "Receitas";
+            this.receitasToolStripMenuItem.Click += new System.EventHandler(this.receitasToolStripMenuItem_Click);
             // 
             // categoriasToolStripMenuItem
             // 

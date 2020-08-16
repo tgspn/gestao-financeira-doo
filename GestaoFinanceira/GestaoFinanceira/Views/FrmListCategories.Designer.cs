@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtgvCategories = new System.Windows.Forms.DataGridView();
             this.Descrição = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SubCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,16 +64,16 @@
             // 
             // Descrição
             // 
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft PhagsPa", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Descrição.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft PhagsPa", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Descrição.DefaultCellStyle = dataGridViewCellStyle1;
             this.Descrição.HeaderText = "Descrição";
             this.Descrição.Name = "Descrição";
             this.Descrição.Width = 150;
             // 
             // SubCategoria
             // 
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft PhagsPa", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SubCategoria.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft PhagsPa", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SubCategoria.DefaultCellStyle = dataGridViewCellStyle2;
             this.SubCategoria.HeaderText = "SubCategoria";
             this.SubCategoria.Name = "SubCategoria";
             this.SubCategoria.Width = 300;
@@ -158,6 +158,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(557, 227);
+            this.ControlBox = false;
             this.Controls.Add(this.pnCategories);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
@@ -167,7 +168,7 @@
             this.Font = new System.Drawing.Font("Microsoft PhagsPa", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FrmListCategories";
-            this.Text = "Categoria";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             ((System.ComponentModel.ISupportInitialize)(this.dtgvCategories)).EndInit();
             this.pnCategories.ResumeLayout(false);
             this.ResumeLayout(false);

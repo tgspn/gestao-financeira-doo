@@ -196,7 +196,7 @@
             this.lbEntries.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbEntries.Paint += new System.Windows.Forms.PaintEventHandler(this.lbEntries_Paint);
             // 
-            // FrmRevenue
+            // FrmListEntryRevenue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -212,7 +212,7 @@
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Font = new System.Drawing.Font("Microsoft PhagsPa", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Name = "FrmRevenue";
+            this.Name = "FrmListEntryRevenue";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             ((System.ComponentModel.ISupportInitialize)(this.dtvRevenue)).EndInit();
             this.pnEtries.ResumeLayout(false);
