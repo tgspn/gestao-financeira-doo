@@ -21,22 +21,22 @@ namespace GestaoFinanceira.Controllers
 
         public IEnumerable<CreditCard> List()
         {
-            return db.PaymentMethod.OfType<CreditCard>();
+            return Context.PaymentMethod.OfType<CreditCard>();
         }
         public CreditCard Find(int creditCardId)
         {
-            return db.CreditCards.Find(creditCardId);
+            return Context.CreditCards.Find(creditCardId);
         }
 
         public void Save(CreditCard creditCard)
         {
-            db.CreditCards.Add(creditCard);
-            db.SaveChanges();
+            Context.CreditCards.Add(creditCard);
+            Context.SaveChanges();
         }
         public void Remove(CreditCard creditCard)
         {
-            db.CreditCards.Remove(creditCard);
-            db.SaveChanges();
+            Context.CreditCards.Remove(creditCard);
+            Context.SaveChanges();
         }
     }
 }

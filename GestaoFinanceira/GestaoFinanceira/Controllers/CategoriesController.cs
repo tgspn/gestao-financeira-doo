@@ -21,27 +21,27 @@ namespace GestaoFinanceira.Controllers
 
         public IEnumerable<Categories> List()
         {
-            return db.Categories.ToList();
+            return Context.Categories.ToList();
         }
         public Categories Find(int categoriesId)
         {
-            return db.Categories.Find(categoriesId);
+            return Context.Categories.Find(categoriesId);
         }
 
         public Categories FindByDescription(string description)
         {
-            return db.Categories.FirstOrDefault(x => x.Description == description);
+            return Context.Categories.FirstOrDefault(x => x.Description == description);
         }
 
         public void Save(Categories categories)
         {
-            db.Categories.Add(categories);
-            db.SaveChanges();
+            Context.Categories.Add(categories);
+            Context.SaveChanges();
         }
         public void Remove(Categories categories)
         {
-            db.Categories.Remove(categories);
-            db.SaveChanges();
+            Context.Categories.Remove(categories);
+            Context.SaveChanges();
         }
 
 

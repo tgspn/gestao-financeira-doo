@@ -34,14 +34,14 @@ namespace GestaoFinanceira.Controllers
         public IEnumerable<PaymentMethod> List()
         {
 
-            return db.CreditCards.Select(x => (PaymentMethod)x).Concat(db.Accounts.Select(x => (PaymentMethod)x));
+            return Context.CreditCards.Select(x => (PaymentMethod)x).Concat(Context.Accounts.Select(x => (PaymentMethod)x));
         }
 
         public PaymentMethod Find(int paymentId)
         {
             return this.List().FirstOrDefault(x => x.Id == paymentId);
         }
-
+        [Obsolete("Analisar a usabilidade de buscar por nome ao invez do id")]
         public PaymentMethod FindByName(string paymentName)
         {
             return this.List().FirstOrDefault(payment =>
@@ -55,20 +55,20 @@ namespace GestaoFinanceira.Controllers
         {
 
             if (paymentMethod is Account)
-                db.Accounts.Add(paymentMethod as Account);
+                Context.Accounts.Add(paymentMethod as Account);
             else
-                db.CreditCards.Add(paymentMethod as CreditCard);
+                Context.CreditCards.Add(paymentMethod as CreditCard);
 
-            db.SaveChanges();
+            Context.SaveChanges();
         }
         public void Remove(PaymentMethod paymentMethod)
         {
             if (paymentMethod is Account)
-                db.Accounts.Remove(paymentMethod as Account);
+                Context.Accounts.Remove(paymentMethod as Account);
             else
-                db.CreditCards.Remove(paymentMethod as CreditCard);
+                Context.CreditCards.Remove(paymentMethod as CreditCard);
 
-            db.SaveChanges();
+            Context.SaveChanges();
         }
     }
 }

@@ -24,22 +24,22 @@ namespace GestaoFinanceira.Controllers
 
         public IEnumerable<Account> List()
         {
-            return db.PaymentMethod.OfType<Account>();
+            return Context.PaymentMethod.OfType<Account>();
         }
         public Account Find(int account)
         {
-            return db.Accounts.Find(account);
+            return Context.Accounts.Find(account);
         }
 
         public void Save(Account account)
         {
-            db.Accounts.Add(account);
-            db.SaveChanges();
+            Context.Accounts.Add(account);
+            Context.SaveChanges();
         }
         public void Remove(Account account)
         {
-            db.Accounts.Remove(account);
-            db.SaveChanges();
+            Context.Accounts.Remove(account);
+            Context.SaveChanges();
         }
 
 

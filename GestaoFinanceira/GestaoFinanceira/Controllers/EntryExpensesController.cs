@@ -22,22 +22,22 @@ namespace GestaoFinanceira.Controllers
 
         public IEnumerable<EntryExpenses> List()
         {
-            return db.Expenses;
+            return Context.Expenses;
         }
         public EntryExpenses Find(int entryId)
         {
-            return db.Expenses.Find(entryId);
+            return Context.Expenses.Find(entryId);
         }
 
         public void Save(EntryExpenses entry)
         {
-            db.Expenses.Add(entry);
-            db.SaveChanges();
+            Context.Expenses.Add(entry);
+            Context.SaveChanges();
         }
         public void Remove(EntryExpenses entry)
         {
-            db.Expenses.Remove(entry);
-            db.SaveChanges();
+            Context.Expenses.Remove(entry);
+            Context.SaveChanges();
         }
     }
 }

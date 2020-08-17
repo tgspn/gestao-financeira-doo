@@ -9,7 +9,7 @@ namespace GestaoFinanceira.Controllers
 {
     abstract class ControllerBase : IDisposable
     {
-        protected readonly ApplicationDbContext db;
+        private readonly ApplicationDbContext db;
         private bool canDispose;
         public ControllerBase() : this(new ApplicationDbContext())
         {
@@ -19,11 +19,12 @@ namespace GestaoFinanceira.Controllers
         {
             this.db = db;
         }
+        public ApplicationDbContext Context { get=>db;  }
         public void Dispose()
         {
-            if (canDispose && db != null)
+            if (canDispose && Context != null)
             {
-                db.Dispose();
+                Context.Dispose();
             }
 
         }
