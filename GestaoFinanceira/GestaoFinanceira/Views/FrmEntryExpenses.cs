@@ -1,4 +1,4 @@
-﻿using GestaoFinanceira.BD.Conections;
+using GestaoFinanceira.BD.Conections;
 using GestaoFinanceira.Controllers;
 using GestaoFinanceira.Enums;
 using GestaoFinanceira.Model;
@@ -25,8 +25,8 @@ namespace GestaoFinanceira.Views
             this.entryType = entryType;
             this.Text = entryType == EntryType.Expense ? "Despesas" : "Receitas";
             controller = new EntryExpensesController();
-            categoriesController = new CategoriesController();
-            paymentMethodController = new PaymentMethodController();
+            categoriesController = new CategoriesController(controller.Context);
+            paymentMethodController = new PaymentMethodController(controller.Context);
         }
         public FrmEntryExpenses(EntryExpenses entry) : this(entry.EntryType)
         {
