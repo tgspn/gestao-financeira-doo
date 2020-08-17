@@ -12,8 +12,8 @@ namespace GestaoFinanceira.Utils
     public static class EntryesRevenueDefault
     {
         public static List<EntryExpenses> GetEntryExpenses() {
-            CategoriesController ctrCategories = new CategoriesController(new MemorySQLConnection<Categories>());
-            PaymentMethodController ctrPaymentMethod = new PaymentMethodController(new MemorySQLConnection<Account>(), new MemorySQLConnection<CreditCard>());
+            CategoriesController ctrCategories = new CategoriesController();
+            PaymentMethodController ctrPaymentMethod = new PaymentMethodController();
             List<EntryExpenses> entries = new List<EntryExpenses>();
             Categories cat;
             

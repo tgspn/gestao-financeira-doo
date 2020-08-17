@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -23,8 +24,8 @@ namespace GestaoFinanceira.Views
             InitializeComponent();
             btnDelete.Enabled = false;
             btnEdit.Enabled = false;
-            this.ctr = new AccountController(new MemorySQLConnection<Account>());
-            this.accountBancks = new BindingList<Account>(ctr.List());
+            this.ctr = new AccountController();
+            this.accountBancks = new BindingList<Account>(ctr.List().ToList());
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

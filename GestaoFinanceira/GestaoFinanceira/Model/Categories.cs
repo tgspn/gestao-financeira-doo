@@ -12,7 +12,7 @@ namespace GestaoFinanceira.Model
         public int Id {get; set;}
         public string Description { get; set; }
         public EntryType type { set; get; }
-        public List<SubCategories> SubCategories { get; set; } = new List<SubCategories>();
+        public virtual List<SubCategories> SubCategories { get; set; } = new List<SubCategories>();
         public override string ToString()
         {
             return this.Description;

@@ -11,7 +11,7 @@ namespace GestaoFinanceira.Views
     public partial class FrmBankAccount : Form
     {
         public Account Account;
-        AccountController ctr = new AccountController(new MemorySQLConnection<Account>());
+        AccountController ctr = new AccountController();
         private bool isEditMode;
 
         public FrmBankAccount()

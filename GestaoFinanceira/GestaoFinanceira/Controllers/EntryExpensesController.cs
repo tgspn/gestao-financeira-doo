@@ -9,34 +9,35 @@ using System.Threading.Tasks;
 
 namespace GestaoFinanceira.Controllers
 {
-    public class EntryExpensesController
+    class EntryExpensesController:ControllerBase
     {
-        private EntryExpensesDAO dao;
-        private IConnection<EntryExpenses> connection;
-        public EntryExpensesController(IConnection<EntryExpenses> connection)
+
+        public EntryExpensesController()
         {
-            this.connection = connection;
-            this.dao = new EntryExpensesDAO(connection);
+
         }
-        public List<EntryExpenses> List()
+        public EntryExpensesController(ApplicationDbContext db) : base(db)
         {
-            return dao.Get().ToList();
+        }
+
+        public IEnumerable<EntryExpenses> List()
+        {
+            return db.Expenses;
         }
         public EntryExpenses Find(int entryId)
         {
-            throw new NotImplementedException();
+            return db.Expenses.Find(entryId);
         }
 
         public void Save(EntryExpenses entry)
         {
-            if (entry.Id == 0)
-                dao.Insert(entry);
-            else
-                dao.Update(entry);
+            db.Expenses.Add(entry);
+            db.SaveChanges();
         }
         public void Remove(EntryExpenses entry)
         {
-            dao.Delete(entry.Id);
+            db.Expenses.Remove(entry);
+            db.SaveChanges();
         }
     }
 }

@@ -6,6 +6,7 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,14 +18,14 @@ namespace GestaoFinanceira.Views
     public partial class FrmListCategories : Form
     {
         public Categories categorie;
-        CategoriesController ctr = new CategoriesController(new MemorySQLConnection<Categories>());
+        CategoriesController ctr = new CategoriesController();
         private BindingList<Categories> categories;
         private BindingList<SubCategories> subCategories;
 
         public FrmListCategories()
         {
             InitializeComponent();
-            this.ctr = new CategoriesController(new MemorySQLConnection<Categories>());
+            this.ctr = new CategoriesController();
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
@@ -32,7 +33,7 @@ namespace GestaoFinanceira.Views
             FrmCategories form = new FrmCategories();
             if (form.ShowDialog() == DialogResult.OK)
             {
-                categories = new BindingList<Categories>(ctr.List());
+                categories = new BindingList<Categories>(ctr.List().ToList());
                 dtgvCategories.DataSource = categories;
             }
         }
@@ -85,7 +86,7 @@ namespace GestaoFinanceira.Views
             pnCategories.BackColor = SystemColors.BLUE;
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;
-            categories = new BindingList<Categories>(ctr.List());
+            categories = new BindingList<Categories>(ctr.List().ToList());
             dtgvCategories.DataSource = categories;
             
         }

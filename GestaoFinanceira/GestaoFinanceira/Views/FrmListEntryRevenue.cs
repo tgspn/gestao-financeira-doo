@@ -25,7 +25,7 @@ namespace GestaoFinanceira.Views
             InitializeComponent();
             pnEtries.BackColor = entryType == EntryType.Revenue ? SystemColors.GREEN : SystemColors.RED;
             EntryType = entryType;
-            ctr = new EntryExpensesController(new MemorySQLConnection<EntryExpenses>());
+            ctr = new EntryExpensesController();
 
         }
 

@@ -23,7 +23,7 @@ namespace GestaoFinanceira.Views
         {
             InitializeComponent();
             panel1.BackColor = SystemColors.BLUE;
-            this.controller = new CategoriesController(new MemorySQLConnection<Categories>());
+            this.controller = new CategoriesController();
             this.subCategories = new BindingList<SubCategories>();
         }
 

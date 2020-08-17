@@ -10,45 +10,40 @@ using System.Threading.Tasks;
 
 namespace GestaoFinanceira.Controllers
 {
-    class CategoriesController
+    class CategoriesController : ControllerBase
     {
-        private CategoriesDAO dao;
-        private IConnection<Categories> connection;
-        private MemorySQLConnection<CreditCard> memorySQLConnection;
-
-        public CategoriesController(IConnection<Categories> connection)
+        public CategoriesController()
         {
-            this.connection = connection;
-            this.dao = new CategoriesDAO(connection);
+        }
+        public CategoriesController(ApplicationDbContext db) : base(db)
+        {
         }
 
-        public List<Categories> List()
+        public IEnumerable<Categories> List()
         {
-            return dao.Get().ToList();
+            return db.Categories.ToList();
         }
         public Categories Find(int categoriesId)
         {
-            throw new NotImplementedException();
+            return db.Categories.Find(categoriesId);
         }
 
         public Categories FindByDescription(string description)
         {
-            foreach (var categorie in this.List())
-                if (categorie.Description == description)
-                    return categorie;
-            return null;
+            return db.Categories.FirstOrDefault(x => x.Description == description);
         }
 
         public void Save(Categories categories)
         {
-            if (categories.Id == 0)
-                dao.Insert(categories);
-            else
-                dao.Update(categories);
+            db.Categories.Add(categories);
+            db.SaveChanges();
         }
         public void Remove(Categories categories)
         {
-            dao.Delete(categories.Id);
+            db.Categories.Remove(categories);
+            db.SaveChanges();
         }
+
+
     }
 }

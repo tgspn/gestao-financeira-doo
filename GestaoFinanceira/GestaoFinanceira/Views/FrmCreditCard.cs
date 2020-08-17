@@ -16,7 +16,7 @@ namespace GestaoFinanceira.Views
     public partial class FrmCreditCard : Form
     {
         public CreditCard creditCard;
-        CreditCardController ctr = new CreditCardController(new MemorySQLConnection<CreditCard>());
+        CreditCardController ctr = new CreditCardController();
         public bool isEditMode { get; private set; } = false;
 
         public FrmCreditCard()

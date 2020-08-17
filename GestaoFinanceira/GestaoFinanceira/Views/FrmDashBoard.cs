@@ -224,15 +224,23 @@ namespace GestaoFinanceira
             ctr.LoadReport(date);
             report = ctr.report;
 
-            lb_Month.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(date.ToString("MMMM"));
-            lbBalance.Text = report.TotalIncome.ToString("C");
-            lbExpense.Text = report.TotalExpenses.ToString("C");
-            lbRevenue.Text = report.TotalRevenue.ToString("C");
-            lbEconomy.Text = ctr.GetEconomy(date);
+            //foreach (var payment in PaymentMethodDefault.GetPaymentMethod())
+            //{
+            //    if (payment is Account)
+            //    {
+            //        ctrAcc.Save((Account)payment);
+            //    }
+            //    if (payment is CreditCard)
+            //    {
+            //        ctrCredit.Save((CreditCard)payment);
+            //    }
+            //}
 
-            ctr.GenerateChart(this.ctBank, ChartType.Account, date);
-            ctr.GenerateChart(this.ctCategories, ChartType.Categories, date);
-            ctr.GenerateChart(this.ctCreditCard, ChartType.CreditCard, date);
+            //foreach (var entry in EntryesRevenueDefault.GetEntryExpenses())
+            //{
+            //    ctrEntry.Save(((EntryExpenses)entry));
+            //}
+
         }
     }
 }

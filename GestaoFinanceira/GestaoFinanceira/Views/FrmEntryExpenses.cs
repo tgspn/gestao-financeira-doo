@@ -24,11 +24,9 @@ namespace GestaoFinanceira.Views
             btnSave.Enabled = false;
             this.entryType = entryType;
             this.Text = entryType == EntryType.Expense ? "Despesas" : "Receitas";
-            var connection = new MemorySQLConnection<EntryExpenses>();
-            var categoriesConnection = new MemorySQLConnection<Categories>();
-            controller = new EntryExpensesController(connection);
-            categoriesController = new CategoriesController(categoriesConnection);
-            paymentMethodController = new PaymentMethodController(new MemorySQLConnection<Account>(), new MemorySQLConnection<CreditCard>());;
+            controller = new EntryExpensesController();
+            categoriesController = new CategoriesController();
+            paymentMethodController = new PaymentMethodController();
         }
         public FrmEntryExpenses(EntryExpenses entry) : this(entry.EntryType)
         {

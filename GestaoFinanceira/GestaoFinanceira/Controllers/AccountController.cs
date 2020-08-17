@@ -3,41 +3,45 @@ using GestaoFinanceira.BD.DAO;
 using GestaoFinanceira.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace GestaoFinanceira.Controllers
 {
-    class AccountController
-    {
+    class AccountController : ControllerBase
+    {        
 
-        private AccountDAO dao;
-        private IConnection<Account> connection;
-        public AccountController(IConnection<Account> connection)
+        public AccountController()
         {
-            this.connection = connection;
-            this.dao = new AccountDAO(connection);
+            
         }
-        public List<Account> List()
+        public AccountController(ApplicationDbContext db):base(db)
         {
-            return dao.Get().ToList();
+            
+        }
+
+        public IEnumerable<Account> List()
+        {
+            return db.PaymentMethod.OfType<Account>();
         }
         public Account Find(int account)
         {
-            throw new NotImplementedException();
+            return db.Accounts.Find(account);
         }
 
         public void Save(Account account)
         {
-            if (account.Id == 0)
-                dao.Insert(account);
-            else
-                dao.Update(account);
+            db.Accounts.Add(account);
+            db.SaveChanges();
         }
         public void Remove(Account account)
         {
-            dao.Delete(account.Id);
+            db.Accounts.Remove(account);
+            db.SaveChanges();
         }
+
+
     }
 }
