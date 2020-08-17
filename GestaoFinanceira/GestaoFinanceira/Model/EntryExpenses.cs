@@ -1,4 +1,4 @@
-﻿using GestaoFinanceira.Enums;
+using GestaoFinanceira.Enums;
 using System;
 
 namespace GestaoFinanceira.Model
@@ -21,8 +21,6 @@ namespace GestaoFinanceira.Model
             Repeat = repeat;
             RepeatUntil = repeatUntil;
             EntryType = entryType;
-            this.SetDescriptionCategories();
-            this.SetRepeat();
         }
         public int Id { get; set; }
         public string Description { get; set; }
@@ -32,22 +30,12 @@ namespace GestaoFinanceira.Model
         public Categories Categorie { get; set; } = new Categories();
         public SubCategories SubCategorie { get; set; } = new SubCategories();
         public PaymentMethod PaymentMethod { get; set; }
-        public string CaptionCategories { get; set; }
-        public string CaptionRepeat { get; set; }
+        public string CaptionCategories { get => SubCategorie.Description != "" && SubCategorie.Description != null ? Categorie.Description + ">" + SubCategorie.Description : Categorie.Description; }
+        public string CaptionRepeat { get=> Repeat ? "Sim" : "Não"; }
         public bool Repeat { set; get; }
         public DateTime RepeatUntil { get; set; }
         public EntryType EntryType { get; set; }
 
-        
-
-        public void SetDescriptionCategories()
-        {
-            this.CaptionCategories = SubCategory.Description != "" && SubCategory.Description != null ? Category.Description +">" + SubCategory.Description : Category.Description;
-        }
-
-        public void SetRepeat()
-        {
-            this.CaptionRepeat = Repeat ? "Sim" : "Não";
-        }
+       
     }
 }
