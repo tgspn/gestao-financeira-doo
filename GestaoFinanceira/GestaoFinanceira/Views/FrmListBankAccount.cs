@@ -9,7 +9,6 @@ using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestaoFinanceira.Views
@@ -25,7 +24,7 @@ namespace GestaoFinanceira.Views
             btnDelete.Enabled = false;
             btnEdit.Enabled = false;
             this.ctr = new AccountController();
-            this.accountBancks = new BindingList<Account>(ctr.List().ToList());
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -77,9 +76,16 @@ namespace GestaoFinanceira.Views
         private void FrmListBankAccount_Load(object sender, EventArgs e)
         {
             pnBankAccount.BackColor = SystemColors.BLUE;
-            dtvBankAccount.DataSource = accountBancks;
-        }
 
+        }
+        private async void FrmListBankAccount_Shown(object sender, EventArgs e)
+        {
+
+            await this.Loading(() => { this.accountBancks = new BindingList<Account>(ctr.List().ToList()); });
+
+            dtvBankAccount.DataSource = accountBancks;
+
+        }
         private void btnEdit_Click(object sender, EventArgs e)
         {
             if (dtvBankAccount.CurrentCell != null)
@@ -96,5 +102,8 @@ namespace GestaoFinanceira.Views
                 }
             }
         }
+
+
     }
+
 }
