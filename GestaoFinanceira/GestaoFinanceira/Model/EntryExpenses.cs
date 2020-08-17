@@ -27,10 +27,10 @@ namespace GestaoFinanceira.Model
         public double Value { get; set; }
         public DateTime Date { get; set; }
         public bool Status { get; set; }
-        public Categories Categorie { get; set; } = new Categories();
-        public SubCategories SubCategorie { get; set; } = new SubCategories();
+        public Categories Category { get; set; } = new Categories();
+        public SubCategories SubCategory { get; set; } = new SubCategories();
         public PaymentMethod PaymentMethod { get; set; }
-        public string CaptionCategories { get => SubCategorie.Description != "" && SubCategorie.Description != null ? Categorie.Description + ">" + SubCategorie.Description : Categorie.Description; }
+        public string CaptionCategories { get => SubCategory.Description != "" && SubCategory.Description != null ? Category.Description + ">" + SubCategory.Description : Category.Description; }
         public string CaptionRepeat { get=> Repeat ? "Sim" : "Não"; }
         public bool Repeat { set; get; }
         public DateTime RepeatUntil { get; set; }

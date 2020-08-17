@@ -8,10 +8,10 @@ namespace GestaoFinanceira.Controllers
 {
     public class ReportController
     {
-        PaymentMethodController ctrPayment = new PaymentMethodController(new MemorySQLConnection<Account>(), new MemorySQLConnection<CreditCard>());
-        AccountController ctrAcc = new AccountController(new MemorySQLConnection<Account>());
-        CreditCardController ctrCredit = new CreditCardController(new MemorySQLConnection<CreditCard>());
-        EntryExpensesController ctrEntry = new EntryExpensesController(new MemorySQLConnection<EntryExpenses>());
+        PaymentMethodController ctrPayment = new PaymentMethodController();
+        AccountController ctrAcc = new AccountController();
+        CreditCardController ctrCredit = new CreditCardController();
+        EntryExpensesController ctrEntry = new EntryExpensesController();
         public string Export()
         {
             throw new NotImplementedException();
