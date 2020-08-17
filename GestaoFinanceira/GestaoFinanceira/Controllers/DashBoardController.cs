@@ -125,6 +125,13 @@ namespace GestaoFinanceira.Controllers
                     }
                     break;
             }
+            try
+            {
+                chart.ChartAreas[0].RecalculateAxesScale();
+            }catch(Exception ex)
+            {
+
+            }
         }
 
         public void CategorieChartForReport(Chart chart, Report report, EntryType entryType)
