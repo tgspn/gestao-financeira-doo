@@ -14,10 +14,13 @@ namespace GestaoFinanceira.Model
         private double Projection { get; set; } = 0.00;
         public DateTime Date { get; set; }
         private int saving { get; set; }
-        public List<Categories> Categories { get; set; } = new List<Categories>();
-        public List<SubCategories> SubCategories { get; set; } = new List<SubCategories>();
+        public List<Account> Accounts { get; set; } = new List<Account>();
+        public List<CreditCard> CreditCards { get; set; } = new List<CreditCard>();
         public List<EntryExpenses> EntryRevenue { get; set; } = new List<EntryExpenses>();
         public List<EntryExpenses> EntryExpenses { get; set; } = new List<EntryExpenses>();
+        public List<Categories> Categories { get; set; } = new List<Categories>();
+        public List<SubCategories> SubCategories { get; set; } = new List<SubCategories>();
+
 
 
         public double GetProjection()
