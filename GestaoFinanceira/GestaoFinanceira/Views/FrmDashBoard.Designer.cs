@@ -54,7 +54,7 @@ namespace GestaoFinanceira
             this.label4 = new System.Windows.Forms.Label();
             this.lbEconomy = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.opçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.opï¿½ï¿½esToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.novoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.despesaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.receitaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,18 +63,18 @@ namespace GestaoFinanceira
             this.exportarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.opçõesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.opï¿½ï¿½esToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cartãoDeCréditoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cartï¿½oDeCrï¿½ditoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.categoriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cartãoDeCréditoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cartï¿½oDeCrï¿½ditoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.despesasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.receitasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.categoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.versãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.versï¿½oToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnOpenBank = new System.Windows.Forms.Button();
             this.btnOpenCreditCard = new System.Windows.Forms.Button();
             this.btnOpenRevenue = new System.Windows.Forms.Button();
@@ -158,7 +158,7 @@ namespace GestaoFinanceira
             // 
             // ctBank
             // 
-            this.ctBank.AccessibleDescription = "Contas Bancárias";
+            this.ctBank.AccessibleDescription = "Contas Bancï¿½rias";
             chartArea1.Name = "ChartArea1";
             this.ctBank.ChartAreas.Add(chartArea1);
             this.ctBank.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -178,11 +178,11 @@ namespace GestaoFinanceira
             // 
             // ctCreditCard
             // 
-            this.ctCreditCard.AccessibleDescription = "Cartão de Crédito";
+            this.ctCreditCard.AccessibleDescription = "Cartï¿½o de Crï¿½dito";
             this.ctCreditCard.BorderSkin.BorderWidth = 0;
-            chartArea2.AxisX2.Title = "Cartões";
+            chartArea2.AxisX2.Title = "Cartï¿½es";
             chartArea2.AxisY.Title = "Reais";
-            chartArea2.AxisY2.Title = "Cartões";
+            chartArea2.AxisY2.Title = "Cartï¿½es";
             chartArea2.Name = "ChartArea1";
             this.ctCreditCard.ChartAreas.Add(chartArea2);
             this.ctCreditCard.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -205,7 +205,7 @@ namespace GestaoFinanceira
             series2.Label = "0";
             series2.LabelBackColor = System.Drawing.Color.Transparent;
             series2.Legend = "Legend1";
-            series2.LegendText = "Cartões";
+            series2.LegendText = "Cartï¿½es";
             series2.MarkerBorderWidth = 0;
             series2.MarkerSize = 1;
             series2.Name = "CreditCard";
@@ -258,8 +258,8 @@ namespace GestaoFinanceira
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.opçõesToolStripMenuItem,
-            this.opçõesToolStripMenuItem1,
+            this.opï¿½ï¿½esToolStripMenuItem,
+            this.opï¿½ï¿½esToolStripMenuItem1,
             this.editarToolStripMenuItem,
             this.sobreToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -268,18 +268,18 @@ namespace GestaoFinanceira
             this.menuStrip1.TabIndex = 8;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // opçõesToolStripMenuItem
+            // opï¿½ï¿½esToolStripMenuItem
             // 
-            this.opçõesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.opï¿½ï¿½esToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.novoToolStripMenuItem,
             this.toolStripMenuItem1,
             this.importarToolStripMenuItem,
             this.exportarToolStripMenuItem,
             this.toolStripMenuItem2,
             this.sairToolStripMenuItem});
-            this.opçõesToolStripMenuItem.Name = "opçõesToolStripMenuItem";
-            this.opçõesToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.opçõesToolStripMenuItem.Text = "Arquivo";
+            this.opï¿½ï¿½esToolStripMenuItem.Name = "opï¿½ï¿½esToolStripMenuItem";
+            this.opï¿½ï¿½esToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.opï¿½ï¿½esToolStripMenuItem.Text = "Arquivo";
             // 
             // novoToolStripMenuItem
             // 
@@ -314,7 +314,7 @@ namespace GestaoFinanceira
             this.importarToolStripMenuItem.Name = "importarToolStripMenuItem";
             this.importarToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.importarToolStripMenuItem.Text = "Importar";
-            this.importarToolStripMenuItem.Click += new System.EventHandler(this.gerarRelatórioToolStripMenuItem_Click);
+            this.importarToolStripMenuItem.Click += new System.EventHandler(this.gerarRelatï¿½rioToolStripMenuItem_Click);
             // 
             // exportarToolStripMenuItem
             // 
@@ -336,29 +336,29 @@ namespace GestaoFinanceira
             this.sairToolStripMenuItem.Text = "&Sair";
             this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click_1);
             // 
-            // opçõesToolStripMenuItem1
+            // opï¿½ï¿½esToolStripMenuItem1
             // 
-            this.opçõesToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.opï¿½ï¿½esToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cadastrosToolStripMenuItem,
-            this.cartãoDeCréditoToolStripMenuItem,
+            this.cartï¿½oDeCrï¿½ditoToolStripMenuItem,
             this.categoriaToolStripMenuItem});
-            this.opçõesToolStripMenuItem1.Name = "opçõesToolStripMenuItem1";
-            this.opçõesToolStripMenuItem1.Size = new System.Drawing.Size(66, 20);
-            this.opçõesToolStripMenuItem1.Text = "Cadastro";
+            this.opï¿½ï¿½esToolStripMenuItem1.Name = "opï¿½ï¿½esToolStripMenuItem1";
+            this.opï¿½ï¿½esToolStripMenuItem1.Size = new System.Drawing.Size(66, 20);
+            this.opï¿½ï¿½esToolStripMenuItem1.Text = "Cadastro";
             // 
             // cadastrosToolStripMenuItem
             // 
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
-            this.cadastrosToolStripMenuItem.Text = "Conta Bancária";
+            this.cadastrosToolStripMenuItem.Text = "Conta Bancï¿½ria";
             this.cadastrosToolStripMenuItem.Click += new System.EventHandler(this.btnOpenBank_Click);
             // 
-            // cartãoDeCréditoToolStripMenuItem
+            // cartï¿½oDeCrï¿½ditoToolStripMenuItem
             // 
-            this.cartãoDeCréditoToolStripMenuItem.Name = "cartãoDeCréditoToolStripMenuItem";
-            this.cartãoDeCréditoToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
-            this.cartãoDeCréditoToolStripMenuItem.Text = "Cartão de Crédito";
-            this.cartãoDeCréditoToolStripMenuItem.Click += new System.EventHandler(this.btnOpenCreditCard_Click);
+            this.cartï¿½oDeCrï¿½ditoToolStripMenuItem.Name = "cartï¿½oDeCrï¿½ditoToolStripMenuItem";
+            this.cartï¿½oDeCrï¿½ditoToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.cartï¿½oDeCrï¿½ditoToolStripMenuItem.Text = "Cartï¿½o de Crï¿½dito";
+            this.cartï¿½oDeCrï¿½ditoToolStripMenuItem.Click += new System.EventHandler(this.btnOpenCreditCard_Click);
             // 
             // categoriaToolStripMenuItem
             // 
@@ -371,7 +371,7 @@ namespace GestaoFinanceira
             // 
             this.editarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.contaToolStripMenuItem,
-            this.cartãoDeCréditoToolStripMenuItem1,
+            this.cartï¿½oDeCrï¿½ditoToolStripMenuItem1,
             this.despesasToolStripMenuItem,
             this.receitasToolStripMenuItem,
             this.categoriasToolStripMenuItem});
@@ -386,12 +386,12 @@ namespace GestaoFinanceira
             this.contaToolStripMenuItem.Text = "Conta";
             this.contaToolStripMenuItem.Click += new System.EventHandler(this.contaToolStripMenuItem_Click);
             // 
-            // cartãoDeCréditoToolStripMenuItem1
+            // cartï¿½oDeCrï¿½ditoToolStripMenuItem1
             // 
-            this.cartãoDeCréditoToolStripMenuItem1.Name = "cartãoDeCréditoToolStripMenuItem1";
-            this.cartãoDeCréditoToolStripMenuItem1.Size = new System.Drawing.Size(167, 22);
-            this.cartãoDeCréditoToolStripMenuItem1.Text = "Cartão de Crédito";
-            this.cartãoDeCréditoToolStripMenuItem1.Click += new System.EventHandler(this.cartãoDeCréditoToolStripMenuItem1_Click);
+            this.cartï¿½oDeCrï¿½ditoToolStripMenuItem1.Name = "cartï¿½oDeCrï¿½ditoToolStripMenuItem1";
+            this.cartï¿½oDeCrï¿½ditoToolStripMenuItem1.Size = new System.Drawing.Size(167, 22);
+            this.cartï¿½oDeCrï¿½ditoToolStripMenuItem1.Text = "Cartï¿½o de Crï¿½dito";
+            this.cartï¿½oDeCrï¿½ditoToolStripMenuItem1.Click += new System.EventHandler(this.cartï¿½oDeCrï¿½ditoToolStripMenuItem1_Click);
             // 
             // despesasToolStripMenuItem
             // 
@@ -417,17 +417,17 @@ namespace GestaoFinanceira
             // sobreToolStripMenuItem
             // 
             this.sobreToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.versãoToolStripMenuItem});
+            this.versï¿½oToolStripMenuItem});
             this.sobreToolStripMenuItem.Name = "sobreToolStripMenuItem";
             this.sobreToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.sobreToolStripMenuItem.Text = "Ajuda";
             // 
-            // versãoToolStripMenuItem
+            // versï¿½oToolStripMenuItem
             // 
-            this.versãoToolStripMenuItem.Name = "versãoToolStripMenuItem";
-            this.versãoToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
-            this.versãoToolStripMenuItem.Text = "Sobre";
-            this.versãoToolStripMenuItem.Click += new System.EventHandler(this.versãoToolStripMenuItem_Click);
+            this.versï¿½oToolStripMenuItem.Name = "versï¿½oToolStripMenuItem";
+            this.versï¿½oToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
+            this.versï¿½oToolStripMenuItem.Text = "Sobre";
+            this.versï¿½oToolStripMenuItem.Click += new System.EventHandler(this.versï¿½oToolStripMenuItem_Click);
             // 
             // btnOpenBank
             // 
@@ -562,8 +562,9 @@ namespace GestaoFinanceira
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmDashBoard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Gestão Financeira";
+            this.Text = "Gestï¿½o Financeira";
             this.Load += new System.EventHandler(this.FrmDashBoard_Load);
+            this.Shown += new System.EventHandler(this.FrmDashBoard_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.ctBank)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctCreditCard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctCategories)).EndInit();
@@ -596,8 +597,8 @@ namespace GestaoFinanceira
         private System.Windows.Forms.Label lbEconomy;
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem opçõesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem opçõesToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem opï¿½ï¿½esToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem opï¿½ï¿½esToolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem novoToolStripMenuItem;
@@ -607,13 +608,13 @@ namespace GestaoFinanceira
         private System.Windows.Forms.ToolStripMenuItem exportarToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem cadastrosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cartãoDeCréditoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cartï¿½oDeCrï¿½ditoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sobreToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem versãoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem versï¿½oToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem categoriaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem contaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cartãoDeCréditoToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem cartï¿½oDeCrï¿½ditoToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem despesasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem receitasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem categoriasToolStripMenuItem;
