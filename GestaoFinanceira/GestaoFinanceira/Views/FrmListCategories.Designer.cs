@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtgvCategories = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descrição = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,6 +64,7 @@
             this.dtgvCategories.MultiSelect = false;
             this.dtgvCategories.Name = "dtgvCategories";
             this.dtgvCategories.ReadOnly = true;
+            this.dtgvCategories.RowHeadersWidth = 51;
             this.dtgvCategories.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgvCategories.Size = new System.Drawing.Size(211, 169);
             this.dtgvCategories.TabIndex = 0;
@@ -73,17 +74,20 @@
             // 
             this.id.DataPropertyName = "id";
             this.id.HeaderText = "id";
+            this.id.MinimumWidth = 6;
             this.id.Name = "id";
             this.id.ReadOnly = true;
             this.id.Visible = false;
+            this.id.Width = 125;
             // 
             // Descrição
             // 
             this.Descrição.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Descrição.DataPropertyName = "Description";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft PhagsPa", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Descrição.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft PhagsPa", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Descrição.DefaultCellStyle = dataGridViewCellStyle1;
             this.Descrição.HeaderText = "Categoria";
+            this.Descrição.MinimumWidth = 6;
             this.Descrição.Name = "Descrição";
             this.Descrição.ReadOnly = true;
             // 
@@ -178,6 +182,7 @@
             this.dtgvSubCategories.MultiSelect = false;
             this.dtgvSubCategories.Name = "dtgvSubCategories";
             this.dtgvSubCategories.ReadOnly = true;
+            this.dtgvSubCategories.RowHeadersWidth = 51;
             this.dtgvSubCategories.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgvSubCategories.Size = new System.Drawing.Size(283, 169);
             this.dtgvSubCategories.TabIndex = 0;
@@ -186,23 +191,26 @@
             // 
             this.Column1.DataPropertyName = "id";
             this.Column1.HeaderText = "id";
+            this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             this.Column1.Visible = false;
+            this.Column1.Width = 125;
             // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumn1.DataPropertyName = "Description";
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft PhagsPa", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft PhagsPa", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewTextBoxColumn1.HeaderText = "SubCategorias";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // FrmListCategories
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btnCancel;
@@ -220,6 +228,7 @@
             this.Name = "FrmListCategories";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.FrmListCategories_Load);
+            this.Shown += new System.EventHandler(this.FrmListCategories_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvCategories)).EndInit();
             this.pnCategories.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvSubCategories)).EndInit();

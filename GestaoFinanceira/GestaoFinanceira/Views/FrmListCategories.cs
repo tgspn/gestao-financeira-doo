@@ -86,8 +86,7 @@ namespace GestaoFinanceira.Views
             pnCategories.BackColor = SystemColors.BLUE;
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;
-            categories = new BindingList<Categories>(ctr.List().ToList());
-            dtgvCategories.DataSource = categories;
+          
             
         }
 
@@ -104,6 +103,13 @@ namespace GestaoFinanceira.Views
                 categories.Add(editCat);
                 subCategories.Clear();
             }
+        }
+
+        private async void FrmListCategories_Shown(object sender, EventArgs e)
+        {
+
+            await this.Loading(()=> categories = new BindingList<Categories>(ctr.List().ToList()));
+            dtgvCategories.DataSource = categories;
         }
     }
 }
