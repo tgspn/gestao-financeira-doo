@@ -1,4 +1,4 @@
-﻿using GestaoFinanceira.BD.Conections;
+using GestaoFinanceira.BD.Conections;
 using GestaoFinanceira.Enums;
 using GestaoFinanceira.Model;
 using GestaoFinanceira.Utils;
@@ -26,33 +26,7 @@ namespace GestaoFinanceira.Controllers
         EntryExpensesController ctrEntry = new EntryExpensesController();
         ReportController ctrReport = new ReportController();
         public Report report { get; set; }
-
-        public void LoadDemoProgram()
-        {
-            foreach (var categorie in CategoriesDefault.GetCategories())
-            {
-                ctrCategories.Save(categorie);
-            }
-
-            foreach (var payment in PaymentMethodDefault.GetPaymentMethod())
-            {
-                if (payment is Account)
-                {
-                    ctrAcc.Save((Account)payment);
-                }
-                if (payment is CreditCard)
-                {
-                    ctrCredit.Save((CreditCard)payment);
-                }
-            }
-
-            foreach (var entry in EntryesRevenueDefault.GetEntryExpenses())
-            {
-                ctrEntry.Save(((EntryExpenses)entry));
-            }
-        }
-
-
+        
         public List<Button> GenerateCardsForFlp(PaymentMethodType method)
         {
             List<Button> list = new List<Button>();
