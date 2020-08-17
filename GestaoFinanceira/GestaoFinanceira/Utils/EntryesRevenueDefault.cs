@@ -45,6 +45,21 @@ namespace GestaoFinanceira.Utils
                 );
             entries.Add(entry);
 
+            cat = ctrCategories.FindByDescription("Alimentação");
+            entry = new EntryExpenses(
+                "Dogão Duplo",
+                35.00,
+                ((DateTime)(DateTime.Today)).AddMonths(-1),
+                true,
+                cat,
+                cat.SubCategories[2],
+                ctrPaymentMethod.FindByName("Master Card"),
+                false,
+                ((DateTime)(DateTime.Today)).AddMonths(-1),
+                Enums.EntryType.Expense
+                );
+            entries.Add(entry);
+
             cat = ctrCategories.FindByDescription("Salario");
             entry = new EntryExpenses(
                 "Salario",

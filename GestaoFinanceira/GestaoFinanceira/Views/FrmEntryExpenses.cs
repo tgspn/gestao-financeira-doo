@@ -49,6 +49,7 @@ namespace GestaoFinanceira.Views
             this.isEditMode = true;
             btnSave.Enabled = true;
             this.Model = entry;
+            nupValue.Focus();
         }
         public EntryExpenses Model { get; set; }
 
@@ -79,8 +80,11 @@ namespace GestaoFinanceira.Views
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            SetEntryExpenses();
-            controller.Save(Model);
+            if (!isEditMode)
+            {
+                SetEntryExpenses();
+                controller.Save(Model);
+            }
             DialogResult = DialogResult.OK;
             this.Close();
         }
@@ -102,6 +106,7 @@ namespace GestaoFinanceira.Views
 
         public EntryExpenses getEntryExpenses()
         {
+            Model.Value = Convert.ToDouble(this.nupValue.Value);
             Model.Categorie.Description = cbCategoria.Text;
             Model.Categorie.SubCategories.Add(cbSubCategoria.SelectedValue as SubCategories);
             Model.Date = dtDate.Value;
@@ -201,6 +206,7 @@ namespace GestaoFinanceira.Views
         {
             if ((cbCategoria.SelectedValue as Categories) != null)
                 LoadSubCategories();
+            btnSave.Enabled = this.ValidFields(txtDescription, cbPaymentMethod, cbCategoria, cbSubCategoria, nupValue);
         }
     }
 }

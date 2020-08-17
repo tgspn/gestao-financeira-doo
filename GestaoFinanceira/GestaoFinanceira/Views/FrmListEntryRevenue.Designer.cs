@@ -50,12 +50,6 @@
             this.Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cRepeatUntil = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.pnEtries = new System.Windows.Forms.Panel();
-            this.lbEntries = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtvRevenue)).BeginInit();
             this.pnEtries.SuspendLayout();
             this.SuspendLayout();
@@ -230,6 +224,7 @@
             // 
             this.btnCancel.BackColor = System.Drawing.Color.Transparent;
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnCancel.FlatAppearance.BorderSize = 0;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Image = global::GestaoFinanceira.Properties.Resources.icons8_multiply_26px;

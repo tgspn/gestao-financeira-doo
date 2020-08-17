@@ -12,6 +12,7 @@ namespace GestaoFinanceira.Views
     {
         public Account Account;
         AccountController ctr = new AccountController(new MemorySQLConnection<Account>());
+        private bool isEditMode;
 
         public FrmBankAccount()
         {
@@ -34,8 +35,12 @@ namespace GestaoFinanceira.Views
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            SetBankAccount();
-            ctr.Save(Account);
+            if (!isEditMode)
+            {
+                SetBankAccount();
+            }
+                ctr.Save(Account);
+            
             MessageBox.Show("Conta Bancária salvo com sucesso!", "Registro");
             this.DialogResult = DialogResult.OK;
             this.Close();
@@ -53,24 +58,31 @@ namespace GestaoFinanceira.Views
         public void SetBankAccount()
         {
             this.Account = new Account();
-            Account.AccountBank = txtAccount.Text;
-            Account.Agency = Convert.ToInt32(txtAgency.Text);
-            Account.Limit = Convert.ToDouble(txtLimit.Text);
-            Account.Holder = txtHolder.Text;
-            Account.Bank = txtBank.Text;
+            this.Account.AccountBank = txtAccount.Text;
+            this.Account.Agency = Convert.ToInt32(txtAgency.Text);
+            this.Account.Limit = Convert.ToDouble(txtLimit.Text);
+            this.Account.Holder = txtHolder.Text;
+            this.Account.Bank = txtBank.Text;
         }
 
         public void SetBankAccount(Account accountBank)
         {
+            this.Account = accountBank;
             txtAccount.Text = Convert.ToString(accountBank.AccountBank);
             txtAgency.Text = Convert.ToString(accountBank.Agency);
             txtLimit.Text = Convert.ToString(accountBank.Limit);
             txtHolder.Text = accountBank.Holder;
             txtBank.Text = accountBank.Bank;
+            isEditMode = true;
         }
 
         public Account GetAccount()
         {
+            this.Account.AccountBank = txtAccount.Text;
+            this.Account.Agency = Convert.ToInt32(txtAgency.Text);
+            this.Account.Limit = Convert.ToDouble(txtLimit.Text);
+            this.Account.Holder = txtHolder.Text;
+            this.Account.Bank = txtBank.Text;
             return this.Account;
         }
     }

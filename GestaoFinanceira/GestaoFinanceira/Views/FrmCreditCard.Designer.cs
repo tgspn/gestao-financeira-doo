@@ -260,7 +260,6 @@
             this.Name = "FrmCreditCard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cartão de Crédito";
-            this.Load += new System.EventHandler(this.FrmCreditCard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

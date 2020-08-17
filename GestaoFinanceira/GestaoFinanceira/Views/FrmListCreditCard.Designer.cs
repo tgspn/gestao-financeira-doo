@@ -29,12 +29,6 @@
         private void InitializeComponent()
         {
             this.dtvCreditCard = new System.Windows.Forms.DataGridView();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.pnCreditCard = new System.Windows.Forms.Panel();
-            this.lbCreditCard = new System.Windows.Forms.Label();
             this.cId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cIssuer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cHolder = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,6 +37,12 @@
             this.cNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cExpirationDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cClosingDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.pnCreditCard = new System.Windows.Forms.Panel();
+            this.lbCreditCard = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtvCreditCard)).BeginInit();
             this.pnCreditCard.SuspendLayout();
             this.SuspendLayout();
@@ -73,11 +73,72 @@
             this.dtvCreditCard.TabIndex = 3;
             this.dtvCreditCard.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtvRevenue_CellContentClick);
             // 
+            // cId
+            // 
+            this.cId.DataPropertyName = "id";
+            this.cId.HeaderText = "id";
+            this.cId.Name = "cId";
+            this.cId.ReadOnly = true;
+            this.cId.Visible = false;
+            // 
+            // cIssuer
+            // 
+            this.cIssuer.DataPropertyName = "Issuer";
+            this.cIssuer.HeaderText = "Credor";
+            this.cIssuer.Name = "cIssuer";
+            this.cIssuer.ReadOnly = true;
+            this.cIssuer.Width = 70;
+            // 
+            // cHolder
+            // 
+            this.cHolder.DataPropertyName = "holder";
+            this.cHolder.HeaderText = "Titular";
+            this.cHolder.Name = "cHolder";
+            this.cHolder.ReadOnly = true;
+            this.cHolder.Width = 170;
+            // 
+            // cAmount
+            // 
+            this.cAmount.DataPropertyName = "amount";
+            this.cAmount.HeaderText = "Saldo";
+            this.cAmount.Name = "cAmount";
+            this.cAmount.ReadOnly = true;
+            // 
+            // cLateFee
+            // 
+            this.cLateFee.DataPropertyName = "latefee";
+            this.cLateFee.HeaderText = "% ao mês";
+            this.cLateFee.Name = "cLateFee";
+            this.cLateFee.ReadOnly = true;
+            // 
+            // cNumber
+            // 
+            this.cNumber.DataPropertyName = "number";
+            this.cNumber.HeaderText = "Numero";
+            this.cNumber.Name = "cNumber";
+            this.cNumber.ReadOnly = true;
+            // 
+            // cExpirationDate
+            // 
+            this.cExpirationDate.DataPropertyName = "expirationdate";
+            this.cExpirationDate.HeaderText = "Vencimento do Cartão";
+            this.cExpirationDate.Name = "cExpirationDate";
+            this.cExpirationDate.ReadOnly = true;
+            this.cExpirationDate.Width = 150;
+            // 
+            // cClosingDate
+            // 
+            this.cClosingDate.DataPropertyName = "closingdate";
+            this.cClosingDate.HeaderText = "Dia de Fechamento";
+            this.cClosingDate.Name = "cClosingDate";
+            this.cClosingDate.ReadOnly = true;
+            this.cClosingDate.Width = 150;
+            // 
             // btnCancel
             // 
             this.btnCancel.BackColor = System.Drawing.Color.Transparent;
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnCancel.FlatAppearance.BorderSize = 0;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Image = global::GestaoFinanceira.Properties.Resources.icons8_multiply_26px;
@@ -149,67 +210,6 @@
             this.lbCreditCard.TabIndex = 3;
             this.lbCreditCard.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbCreditCard.Paint += new System.Windows.Forms.PaintEventHandler(this.lbCreditCard_Paint);
-            // 
-            // cId
-            // 
-            this.cId.DataPropertyName = "id";
-            this.cId.HeaderText = "id";
-            this.cId.Name = "cId";
-            this.cId.ReadOnly = true;
-            this.cId.Visible = false;
-            // 
-            // cIssuer
-            // 
-            this.cIssuer.DataPropertyName = "Issuer";
-            this.cIssuer.HeaderText = "Credor";
-            this.cIssuer.Name = "cIssuer";
-            this.cIssuer.ReadOnly = true;
-            this.cIssuer.Width = 70;
-            // 
-            // cHolder
-            // 
-            this.cHolder.DataPropertyName = "holder";
-            this.cHolder.HeaderText = "Titular";
-            this.cHolder.Name = "cHolder";
-            this.cHolder.ReadOnly = true;
-            this.cHolder.Width = 170;
-            // 
-            // cAmount
-            // 
-            this.cAmount.DataPropertyName = "amount";
-            this.cAmount.HeaderText = "Saldo";
-            this.cAmount.Name = "cAmount";
-            this.cAmount.ReadOnly = true;
-            // 
-            // cLateFee
-            // 
-            this.cLateFee.DataPropertyName = "latefee";
-            this.cLateFee.HeaderText = "% ao mês";
-            this.cLateFee.Name = "cLateFee";
-            this.cLateFee.ReadOnly = true;
-            // 
-            // cNumber
-            // 
-            this.cNumber.DataPropertyName = "number";
-            this.cNumber.HeaderText = "Numero";
-            this.cNumber.Name = "cNumber";
-            this.cNumber.ReadOnly = true;
-            // 
-            // cExpirationDate
-            // 
-            this.cExpirationDate.DataPropertyName = "expirationdate";
-            this.cExpirationDate.HeaderText = "Vencimento do Cartão";
-            this.cExpirationDate.Name = "cExpirationDate";
-            this.cExpirationDate.ReadOnly = true;
-            this.cExpirationDate.Width = 150;
-            // 
-            // cClosingDate
-            // 
-            this.cClosingDate.DataPropertyName = "closingdate";
-            this.cClosingDate.HeaderText = "Dia de Fechamento";
-            this.cClosingDate.Name = "cClosingDate";
-            this.cClosingDate.ReadOnly = true;
-            this.cClosingDate.Width = 150;
             // 
             // FrmListCreditCard
             // 
