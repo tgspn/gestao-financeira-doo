@@ -31,6 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmListEntryRevenue));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            btnAdd = new System.Windows.Forms.Button();
+            btnDelete = new System.Windows.Forms.Button();
+            btnCancel = new System.Windows.Forms.Button();
+            btnEdit = new System.Windows.Forms.Button();
+            pnEtries = new System.Windows.Forms.Panel();
+            lbEntries = new System.Windows.Forms.Label();
             this.dtvRevenue = new System.Windows.Forms.DataGridView();
             this.cId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descrição = new System.Windows.Forms.DataGridViewTextBoxColumn();
