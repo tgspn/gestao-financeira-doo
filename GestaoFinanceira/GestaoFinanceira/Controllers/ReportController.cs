@@ -2,20 +2,15 @@
 using GestaoFinanceira.Enums;
 using GestaoFinanceira.Model;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data.SqlTypes;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace GestaoFinanceira.Controllers
 {
     public class ReportController
     {
+        PaymentMethodController ctrPayment = new PaymentMethodController(new MemorySQLConnection<Account>(), new MemorySQLConnection<CreditCard>());
         AccountController ctrAcc = new AccountController(new MemorySQLConnection<Account>());
         CreditCardController ctrCredit = new CreditCardController(new MemorySQLConnection<CreditCard>());
-        CategoriesController ctrCategories = new CategoriesController(new MemorySQLConnection<Categories>());
         EntryExpensesController ctrEntry = new EntryExpensesController(new MemorySQLConnection<EntryExpenses>());
         public string Export()
         {
@@ -39,8 +34,18 @@ namespace GestaoFinanceira.Controllers
             report.TotalExpenses = 0.00;
             report.TotalRevenue = 0.00;
 
-            foreach (var acc in ctrAcc.List())
-                report.TotalIncome = acc.Balance + report.TotalIncome;
+            foreach (var payment in ctrPayment.List())
+            {
+                if (payment is Account)
+                {
+                    report.TotalIncome = ((Account)payment).Balance + report.TotalIncome;
+                    report.Accounts.Add(payment as Account);
+                }
+                else
+                {
+                    report.CreditCards.Add((CreditCard)payment);
+                }
+            }
 
             foreach (var entry in ctrEntry.List())
             {
@@ -60,7 +65,7 @@ namespace GestaoFinanceira.Controllers
                     if (!report.Categories.Contains(entry.Category))
                         report.Categories.Add(entry.Category);
 
-                    if (!report.SubCategories.Contains(entry.SubCategory))
+                    if (!report.SubCategories.Contains(entry.SubCategory) && entry.SubCategory.Description != null)
                         report.SubCategories.Add(entry.SubCategory);
                     
                 }
@@ -75,12 +80,80 @@ namespace GestaoFinanceira.Controllers
 
         public Report GenerateByPeriod(DateTime dateIni, DateTime dateEnd)
         {
-            throw new NotImplementedException();
+            Report report = new Report();
+            report.TotalIncome = 0.00;
+            report.TotalExpenses = 0.00;
+            report.TotalRevenue = 0.00;
+            double balance = 0.00;
+            
+            foreach (var method in ctrPayment.List())
+            {
+                if (method is Account)
+                    report.Accounts.Add((Account)method);
+                else
+                    report.CreditCards.Add((CreditCard)method);
+            }
+
+            LoadEntriesAndCategoriesOnDate(report, dateIni);
+            LoadEntriesAndCategoriesToDate(report, dateEnd);
+
+            foreach (var acc in report.Accounts)
+                balance += acc.Balance;
+            foreach (var expense in report.EntryExpenses)
+                report.TotalExpenses += expense.Value;
+            foreach (var revenue in report.EntryRevenue)
+                report.TotalRevenue += revenue.Value;
+
+            report.TotalIncome = balance - report.TotalExpenses;
+            return report;
+        }
+
+        private void LoadEntriesAndCategoriesOnDate(Report report, DateTime dateInit)
+        {
+            foreach (var entry in ctrEntry.List())
+            {
+                if (DateTime.Compare(entry.Date, dateInit) > 0 && entry.EntryType == EntryType.Expense)
+                {
+                    report.EntryExpenses.Add(entry);
+                    report.Categories.Add(entry.Category);
+                    if (!(entry.SubCategory is null) && entry.Description != null)
+                        report.SubCategories.Add(entry.SubCategory);
+                }
+                if (DateTime.Compare(entry.Date, dateInit) > 0 && entry.EntryType == EntryType.Revenue)
+                {
+                    report.EntryRevenue.Add(entry);
+                    report.Categories.Add(entry.Category);
+                    if (!(entry.SubCategory is null) && entry.Description != null)
+                        report.SubCategories.Add(entry.SubCategory);
+                }
+            }
+        }
+
+        private void LoadEntriesAndCategoriesToDate(Report report, DateTime dateEnd)
+        {
+            foreach (var entry in ctrEntry.List())
+            {
+                if (DateTime.Compare(entry.Date, dateEnd) > 0 && entry.EntryType == EntryType.Expense)
+                {
+                    report.EntryExpenses.Remove(entry);
+                    report.Categories.Remove(entry.Category);
+                    if (!(entry.SubCategory is null))
+                        report.SubCategories.Remove(entry.SubCategory);
+                }
+                if (DateTime.Compare(entry.Date, dateEnd) > 0 && entry.EntryType == EntryType.Revenue)
+                {
+                    report.EntryRevenue.Remove(entry);
+                    report.Categories.Remove(entry.Category);
+                    if (!(entry.SubCategory is null))
+                        report.SubCategories.Remove(entry.SubCategory);
+                }
+            }
         }
 
         public Report GenerateByAccount(DateTime date, Account acc)
         {
             Report report = new Report();
+            report.Accounts.Add(acc);
             report.TotalIncome = 0.00;
             report.TotalExpenses = 0.00;
             report.TotalRevenue = 0.00;
@@ -89,7 +162,7 @@ namespace GestaoFinanceira.Controllers
             {
                 if (CheckMonth(date, entry.Date) && entry.PaymentMethod is Account)
                 {
-                    if (((Account)entry.PaymentMethod).Bank == acc.Bank)
+                    if (((Account)entry.PaymentMethod).Id == acc.Id)
                     {
                         if (entry.EntryType == EntryType.Expense)
                         {
@@ -112,6 +185,7 @@ namespace GestaoFinanceira.Controllers
         public Report GenerateByCreditCard(DateTime date, CreditCard card)
         {
             Report report = new Report();
+            report.CreditCards.Add(card);
             report.TotalIncome = 0.00;
             report.TotalExpenses = 0.00;
             report.TotalRevenue = 0.00;
@@ -120,7 +194,7 @@ namespace GestaoFinanceira.Controllers
             {
                 if (CheckMonth(date, entry.Date) && entry.PaymentMethod is CreditCard)
                 {
-                    if (((CreditCard)entry.PaymentMethod).Issuer == card.Issuer)
+                    if (((CreditCard)entry.PaymentMethod).Id == card.Id)
                     {
                         if (entry.EntryType == EntryType.Expense)
                         {

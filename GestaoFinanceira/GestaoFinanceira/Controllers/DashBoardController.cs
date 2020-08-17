@@ -81,7 +81,7 @@ namespace GestaoFinanceira.Controllers
             return list;
         }
 
-        private string GenerateCaptionHolder(string name)
+        public string GenerateCaptionHolder(string name)
         {
             string abbreviation = "";
             var names = name.Split(' ');
@@ -121,8 +121,9 @@ namespace GestaoFinanceira.Controllers
                     {
                         Report reportCard = ctrReport.GenerateByCreditCard(date, card);
                         chart.Series["CreditCard"].Points.Add(i);
-                        chart.Series["CreditCard"].Points[i].YValues[i] = reportCard.TotalExpenses;
+                        chart.Series["CreditCard"].Points[i].YValues[0] = reportCard.TotalExpenses;
                         chart.Series["CreditCard"].Points[i].Label = GenerateCaptionHolder(card.Holder) + " - " + card.Issuer;
+                        i++;
                     }
                     break;
 
@@ -148,6 +149,33 @@ namespace GestaoFinanceira.Controllers
                         }
                     }
                     break;
+            }
+        }
+
+        public void CategorieChartForReport(Chart chart, Report report, EntryType entryType)
+        {
+            double percent = 0.00;
+            int i = 0;
+
+            chart.Series["Categories"].Points.Clear();
+            chart.Series["Categories"].ChartType = SeriesChartType.Pie;
+            List<EntryExpenses> listEntries = report.EntryExpenses;
+
+            foreach (var cat in report.Categories)
+            {
+                foreach (var entry in listEntries)
+                {
+                    if (cat.type == entryType && cat.Description == entry.Category.Description)
+                    {
+                        percent = (entry.Value / report.TotalExpenses);
+                        chart.Series["Categories"].Points.Add(i);
+                        chart.Series["Categories"].Points[i].LegendText = cat.Description;
+                        chart.Series["Categories"].Points[i].Label = percent.ToString("P");
+                        chart.Series["Categories"].Points[i].SetValueXY(percent, percent);
+                        i++;
+                        break;
+                    }
+                }
             }
         }
 

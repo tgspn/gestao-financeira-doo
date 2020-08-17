@@ -234,7 +234,7 @@ namespace GestaoFinanceira
             this.ctCategories.Size = new System.Drawing.Size(330, 125);
             this.ctCategories.TabIndex = 6;
             this.ctCategories.Text = "Categorias";
-            this.ctCategories.Click += new System.EventHandler(this.ctCategories_Click);
+            this.ctCategories.Click += new System.EventHandler(this.btnOpenExpense_Click);
             // 
             // label4
             // 
@@ -434,7 +434,7 @@ namespace GestaoFinanceira
             this.btnOpenBank.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOpenBank.FlatAppearance.BorderSize = 0;
             this.btnOpenBank.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOpenBank.Image = global::GestaoFinanceira.Properties.Resources.icons8_bank_40px_3;
+            this.btnOpenBank.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenBank.Image")));
             this.btnOpenBank.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnOpenBank.Location = new System.Drawing.Point(12, 388);
             this.btnOpenBank.Name = "btnOpenBank";
@@ -449,7 +449,7 @@ namespace GestaoFinanceira
             this.btnOpenCreditCard.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOpenCreditCard.FlatAppearance.BorderSize = 0;
             this.btnOpenCreditCard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOpenCreditCard.Image = global::GestaoFinanceira.Properties.Resources.icons8_credit_control_40px_1;
+            this.btnOpenCreditCard.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenCreditCard.Image")));
             this.btnOpenCreditCard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnOpenCreditCard.Location = new System.Drawing.Point(315, 388);
             this.btnOpenCreditCard.Name = "btnOpenCreditCard";
@@ -464,7 +464,7 @@ namespace GestaoFinanceira
             this.btnOpenRevenue.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOpenRevenue.FlatAppearance.BorderSize = 0;
             this.btnOpenRevenue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOpenRevenue.Image = global::GestaoFinanceira.Properties.Resources.icons8_up_30px;
+            this.btnOpenRevenue.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenRevenue.Image")));
             this.btnOpenRevenue.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnOpenRevenue.Location = new System.Drawing.Point(31, 130);
             this.btnOpenRevenue.Name = "btnOpenRevenue";
@@ -480,7 +480,7 @@ namespace GestaoFinanceira
             this.btnOpenEntries.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOpenEntries.FlatAppearance.BorderSize = 0;
             this.btnOpenEntries.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOpenEntries.Image = global::GestaoFinanceira.Properties.Resources.icons8_plus_30px_1;
+            this.btnOpenEntries.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenEntries.Image")));
             this.btnOpenEntries.Location = new System.Drawing.Point(171, 388);
             this.btnOpenEntries.Name = "btnOpenEntries";
             this.btnOpenEntries.Size = new System.Drawing.Size(42, 42);
@@ -494,7 +494,7 @@ namespace GestaoFinanceira
             // 
             this.btnOpenCalendar.FlatAppearance.BorderSize = 0;
             this.btnOpenCalendar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOpenCalendar.Image = global::GestaoFinanceira.Properties.Resources.icons8_down_button_20px;
+            this.btnOpenCalendar.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenCalendar.Image")));
             this.btnOpenCalendar.Location = new System.Drawing.Point(125, 38);
             this.btnOpenCalendar.Name = "btnOpenCalendar";
             this.btnOpenCalendar.Size = new System.Drawing.Size(26, 25);
@@ -507,7 +507,7 @@ namespace GestaoFinanceira
             this.btnOpenExpense.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOpenExpense.FlatAppearance.BorderSize = 0;
             this.btnOpenExpense.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOpenExpense.Image = global::GestaoFinanceira.Properties.Resources.icons8_down_arrow_30px;
+            this.btnOpenExpense.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenExpense.Image")));
             this.btnOpenExpense.Location = new System.Drawing.Point(210, 130);
             this.btnOpenExpense.Name = "btnOpenExpense";
             this.btnOpenExpense.Size = new System.Drawing.Size(40, 39);
