@@ -15,6 +15,12 @@ namespace GestaoFinanceira.Views
         public FrmReport()
         {
             InitializeComponent();
+            dtpDateIni.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            dtpDateEnd.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month));
+        }
+
+        private void FrmReport_Load(object sender, EventArgs e)
+        {
         }
     }
 }
