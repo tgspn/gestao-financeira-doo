@@ -7,6 +7,7 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Security;
 using System.Text;
 using System.Threading.Tasks;
@@ -64,6 +65,7 @@ namespace GestaoFinanceira.Controllers
                 button.FlatStyle = FlatStyle.Flat;
                 button.FlatAppearance.BorderColor = SystemColors.BLUE;
                 button.Cursor = Cursors.Hand;
+                button.Tag = payment;
 
                 if (method == PaymentMethodType.BankAccount && payment is Account)
                 {
@@ -133,7 +135,7 @@ namespace GestaoFinanceira.Controllers
                     {
                         foreach (var entry in listEntries)
                         {
-                            if (cat.type == EntryType.Expense && cat.Description == entry.Categorie.Description)
+                            if (cat.type == EntryType.Expense && cat.Description == entry.Category.Description)
                             {
                                 percent = (entry.Value / report.TotalExpenses);
                                 chart.Series["Categories"].Points.Add(i);

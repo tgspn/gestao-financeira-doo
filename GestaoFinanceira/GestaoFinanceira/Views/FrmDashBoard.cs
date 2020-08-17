@@ -12,6 +12,7 @@ namespace GestaoFinanceira
     {
         DashBoardController ctr = new DashBoardController();
         DateTime date = DateTime.Now;
+        private Report report { get; set; }
 
         public FrmDashBoard()
         {
@@ -94,11 +95,26 @@ namespace GestaoFinanceira
             }
         }
 
-        private void gerarRelatórioToolStripMenuItem_Click(object sender, EventArgs e)
+        private void exportarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form form = new FrmReport();
+            FrmReport form = new FrmReport(this.report, date);
             form.Show();
         }
+
+        private void gerarRelatórioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmReport form = new FrmReport(this.report, date);
+            form.Show();
+        }
+
+        private void GerarRelatórioByButton_Click(object sender, EventArgs e)
+        {
+            FrmReport form = new FrmReport(this.report, date);
+            var btn = (Button)sender;
+            form.Payment = (PaymentMethod)btn.Tag;
+            form.Show();
+        }
+
 
         private void despesaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -116,12 +132,6 @@ namespace GestaoFinanceira
             {
                 this.LoadFilds();
             }
-        }
-
-        private void exportarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form form = new FrmReport();
-            form.Show();
         }
 
         private void sairToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -200,12 +210,19 @@ namespace GestaoFinanceira
             FlpCreditCard.Controls.Clear();
 
             foreach (var button in ctr.GenerateCardsForFlp(PaymentMethodType.BankAccount))
+            {
+                button.Click += new System.EventHandler(this.GerarRelatórioByButton_Click);
                 FlpAccounts.Controls.Add(button);
+            }
             foreach (var button in ctr.GenerateCardsForFlp(PaymentMethodType.CreditCard))
+            {
+                button.Click += new System.EventHandler(this.GerarRelatórioByButton_Click);
                 FlpCreditCard.Controls.Add(button);
+            }
+                
 
             ctr.LoadReport(date);
-            Report report = ctr.report;
+            report = ctr.report;
 
             lb_Month.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(date.ToString("MMMM"));
             lbBalance.Text = report.TotalIncome.ToString("C");

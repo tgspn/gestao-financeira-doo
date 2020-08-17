@@ -57,11 +57,11 @@ namespace GestaoFinanceira.Controllers
                         report.EntryRevenue.Add(entry);
                     }
                     
-                    if (!report.Categories.Contains(entry.Categorie))
-                        report.Categories.Add(entry.Categorie);
+                    if (!report.Categories.Contains(entry.Category))
+                        report.Categories.Add(entry.Category);
 
-                    if (!report.SubCategories.Contains(entry.SubCategorie))
-                        report.SubCategories.Add(entry.SubCategorie);
+                    if (!report.SubCategories.Contains(entry.SubCategory))
+                        report.SubCategories.Add(entry.SubCategory);
                     
                 }
             }
@@ -80,7 +80,33 @@ namespace GestaoFinanceira.Controllers
 
         public Report GenerateByAccount(DateTime date, Account acc)
         {
-            throw new NotImplementedException();
+            Report report = new Report();
+            report.TotalIncome = 0.00;
+            report.TotalExpenses = 0.00;
+            report.TotalRevenue = 0.00;
+
+            foreach (var entry in ctrEntry.List())
+            {
+                if (CheckMonth(date, entry.Date) && entry.PaymentMethod is Account)
+                {
+                    if (((Account)entry.PaymentMethod).Bank == acc.Bank)
+                    {
+                        if (entry.EntryType == EntryType.Expense)
+                        {
+                            report.TotalExpenses = entry.Value + report.TotalExpenses;
+                            report.EntryExpenses.Add(entry);
+                        }
+
+                        if (!report.Categories.Contains(entry.Category))
+                            report.Categories.Add(entry.Category);
+
+                        if (!report.SubCategories.Contains(entry.SubCategory))
+                            report.SubCategories.Add(entry.SubCategory);
+                    }
+                }
+            }
+            report.TotalIncome = acc.Balance - report.TotalExpenses;
+            return report;
         }
 
         public Report GenerateByCreditCard(DateTime date, CreditCard card)
@@ -102,11 +128,11 @@ namespace GestaoFinanceira.Controllers
                             report.EntryExpenses.Add(entry);
                         }
 
-                        if (!report.Categories.Contains(entry.Categorie))
-                            report.Categories.Add(entry.Categorie);
+                        if (!report.Categories.Contains(entry.Category))
+                            report.Categories.Add(entry.Category);
 
-                        if (!report.SubCategories.Contains(entry.SubCategorie))
-                            report.SubCategories.Add(entry.SubCategorie);
+                        if (!report.SubCategories.Contains(entry.SubCategory))
+                            report.SubCategories.Add(entry.SubCategory);
                     }
                 }
             }

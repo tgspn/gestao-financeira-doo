@@ -39,13 +39,13 @@ namespace GestaoFinanceira.Views
             ckbRepetir.Checked = entry.Repeat;
             LoadCategories();
             LoadPaymanetMethod();
-            cbCategoria.SelectedIndex = cbCategoria.FindString(entry.Categorie.Description);
+            cbCategoria.SelectedIndex = cbCategoria.FindString(entry.Category.Description);
             if (entry.PaymentMethod is Account)
                 cbPaymentMethod.SelectedIndex = cbPaymentMethod.FindString(((Account)entry.PaymentMethod).Bank);
             else
                 cbPaymentMethod.SelectedIndex = cbPaymentMethod.FindString(((CreditCard)entry.PaymentMethod).Issuer);
-            if (entry.Categorie.SubCategories.Count != 0)
-                cbSubCategoria.SelectedIndex = cbSubCategoria.FindString(entry.Categorie.SubCategories[0].Description);
+            if (entry.Category.SubCategories.Count != 0)
+                cbSubCategoria.SelectedIndex = cbSubCategoria.FindString(entry.Category.SubCategories[0].Description);
             this.isEditMode = true;
             btnSave.Enabled = true;
             this.Model = entry;
@@ -107,8 +107,8 @@ namespace GestaoFinanceira.Views
         public EntryExpenses getEntryExpenses()
         {
             Model.Value = Convert.ToDouble(this.nupValue.Value);
-            Model.Categorie.Description = cbCategoria.Text;
-            Model.Categorie.SubCategories.Add(cbSubCategoria.SelectedValue as SubCategories);
+            Model.Category.Description = cbCategoria.Text;
+            Model.Category.SubCategories.Add(cbSubCategoria.SelectedValue as SubCategories);
             Model.Date = dtDate.Value;
             Model.Description = txtDescription.Text;
             Model.EntryType = this.entryType;

@@ -1,10 +1,5 @@
 ﻿using GestaoFinanceira.Enums;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GestaoFinanceira.Model
 {
@@ -15,8 +10,8 @@ namespace GestaoFinanceira.Model
         public double Value { get; set; }
         public DateTime Date { get; set; }
         public bool Status { get; set; }
-        public Categories Categorie { get; set; } = new Categories();
-        public SubCategories SubCategorie { get; set; } = new SubCategories();
+        public Categories Category { get; set; } = new Categories();
+        public SubCategories SubCategory { get; set; } = new SubCategories();
         public PaymentMethod PaymentMethod { get; set; }
         public string CaptionCategories { get; set; }
         public string CaptionRepeat { get; set; }
@@ -30,8 +25,8 @@ namespace GestaoFinanceira.Model
             Value = value;
             Date = date;
             Status = status;
-            Categorie = categorie;
-            SubCategorie = subCategorie;
+            Category = categorie;
+            SubCategory = subCategorie;
             PaymentMethod = paymentMethod;
             Repeat = repeat;
             RepeatUntil = repeatUntil;
@@ -42,7 +37,7 @@ namespace GestaoFinanceira.Model
 
         public void SetDescriptionCategories()
         {
-            this.CaptionCategories = SubCategorie.Description != "" && SubCategorie.Description != null ? Categorie.Description +">" + SubCategorie.Description : Categorie.Description;
+            this.CaptionCategories = SubCategory.Description != "" && SubCategory.Description != null ? Category.Description +">" + SubCategory.Description : Category.Description;
         }
 
         public void SetRepeat()
