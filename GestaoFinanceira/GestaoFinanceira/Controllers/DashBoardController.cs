@@ -5,6 +5,7 @@ using GestaoFinanceira.Utils;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
@@ -18,11 +19,11 @@ namespace GestaoFinanceira.Controllers
 {
     public class DashBoardController
     {
-        AccountController ctrAcc = new AccountController(new MemorySQLConnection<Account>());
-        PaymentMethodController ctrPayment = new PaymentMethodController(new MemorySQLConnection<Account>(),new MemorySQLConnection<CreditCard>());
-        CreditCardController ctrCredit = new CreditCardController(new MemorySQLConnection<CreditCard>());
-        CategoriesController ctrCategories = new CategoriesController(new MemorySQLConnection<Categories>());
-        EntryExpensesController ctrEntry = new EntryExpensesController(new MemorySQLConnection<EntryExpenses>());
+        AccountController ctrAcc = new AccountController();
+        PaymentMethodController ctrPayment = new PaymentMethodController();
+        CreditCardController ctrCredit = new CreditCardController();
+        CategoriesController ctrCategories = new CategoriesController();
+        EntryExpensesController ctrEntry = new EntryExpensesController();
         ReportController ctrReport = new ReportController();
         public Report report { get; set; }
 
@@ -130,7 +131,7 @@ namespace GestaoFinanceira.Controllers
                 case ChartType.Categories:
                     chart.Series["Categories"].Points.Clear();
                     chart.Series["Categories"].ChartType = SeriesChartType.Pie;
-                    List<EntryExpenses> listEntries = ctrEntry.List();
+                    DbSet<EntryExpenses> listEntries = ctrEntry.List() as DbSet<EntryExpenses>;
 
                     foreach (var cat in report.Categories)
                     {
