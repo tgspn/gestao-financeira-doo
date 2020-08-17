@@ -151,7 +151,7 @@ namespace GestaoFinanceira.Properties {
         }
         
         /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap icons8_credit_card_70px_1 {
             get {
@@ -161,7 +161,7 @@ namespace GestaoFinanceira.Properties {
         }
         
         /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap icons8_credit_control_40px_1 {
             get {
@@ -181,7 +181,7 @@ namespace GestaoFinanceira.Properties {
         }
         
         /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap icons8_credit_control_70px_1 {
             get {
@@ -191,7 +191,7 @@ namespace GestaoFinanceira.Properties {
         }
         
         /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap icons8_delete_30px {
             get {
@@ -296,6 +296,16 @@ namespace GestaoFinanceira.Properties {
         internal static System.Drawing.Bitmap icons8_up_30px {
             get {
                 object obj = ResourceManager.GetObject("icons8_up_30px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap load {
+            get {
+                object obj = ResourceManager.GetObject("load", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
