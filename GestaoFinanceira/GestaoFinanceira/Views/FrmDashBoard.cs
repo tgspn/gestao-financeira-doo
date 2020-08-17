@@ -212,17 +212,18 @@ namespace GestaoFinanceira
             ctr.LoadReport(date);
             report = ctr.report;
 
-            //foreach (var payment in PaymentMethodDefault.GetPaymentMethod())
-            //{
-            //    if (payment is Account)
-            //    {
-            //        ctrAcc.Save((Account)payment);
-            //    }
-            //    if (payment is CreditCard)
-            //    {
-            //        ctrCredit.Save((CreditCard)payment);
-            //    }
-            //}
+            lb_Month.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(date.ToString("MMMM"));
+            lbBalance.Text = report.TotalIncome.ToString("C");
+            lbExpense.Text = report.TotalExpenses.ToString("C");
+            lbRevenue.Text = report.TotalRevenue.ToString("C");
+            lbEconomy.Text = ctr.GetEconomy(date);
+
+            ctr.GenerateChart(this.ctBank, ChartType.Account, date);
+            ctr.GenerateChart(this.ctCategories, ChartType.Categories, date);
+            ctr.GenerateChart(this.ctCreditCard, ChartType.CreditCard, date);
+            
+
+        }
 
         private void FrmDashBoard_Shown(object sender, EventArgs e)
         {
