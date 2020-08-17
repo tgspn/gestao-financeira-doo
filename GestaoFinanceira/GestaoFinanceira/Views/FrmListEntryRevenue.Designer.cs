@@ -32,12 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtvRevenue = new System.Windows.Forms.DataGridView();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.pnEtries = new System.Windows.Forms.Panel();
-            this.lbEntries = new System.Windows.Forms.Label();
             this.cId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descrição = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -81,6 +75,7 @@
             this.dtvRevenue.MultiSelect = false;
             this.dtvRevenue.Name = "dtvRevenue";
             this.dtvRevenue.ReadOnly = true;
+            this.dtvRevenue.RowHeadersWidth = 51;
             this.dtvRevenue.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtvRevenue.Size = new System.Drawing.Size(740, 238);
             this.dtvRevenue.TabIndex = 0;
@@ -285,10 +280,10 @@
             // 
             // FrmListEntryRevenue
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(791, 301);
+            this.ClientSize = new System.Drawing.Size(791, 300);
             this.ControlBox = false;
             this.Controls.Add(this.dtvRevenue);
             this.Controls.Add(this.btnCancel);
@@ -302,6 +297,7 @@
             this.Name = "FrmListEntryRevenue";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.FrmListEntryRevenue_Load);
+            this.Shown += new System.EventHandler(this.FrmListEntryRevenue_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dtvRevenue)).EndInit();
             this.pnEtries.ResumeLayout(false);
             this.ResumeLayout(false);
