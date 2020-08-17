@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace GestaoFinanceira.Utils
 {
+    [Obsolete("Utilize as instancias do banco de dados", true)]
     public static class EntryesRevenueDefault
     {
         public static List<EntryExpenses> GetEntryExpenses() {

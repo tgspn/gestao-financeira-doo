@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace GestaoFinanceira.Model
 {
+    [Obsolete("Utilize as instancias do banco de dados",true)]
     public static class  CategoriesDefault
     {
         public static List<Categories> GetCategories()
