@@ -59,6 +59,8 @@ namespace GestaoFinanceira.Views
             this.MaximumSize = new System.Drawing.Size(100, 100);
             this.MinimumSize = new System.Drawing.Size(100, 100);
             this.Name = "FrmLoading";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmLoading";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
