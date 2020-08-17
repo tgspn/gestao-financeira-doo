@@ -73,8 +73,7 @@ namespace GestaoFinanceira.Views
             pnCreditCard.BackColor = SystemColors.BLUE;
             btnDelete.Enabled = false;
             btnEdit.Enabled = false;
-            creditCards = new BindingList<CreditCard>(ctr.List().ToList());
-            dtvCreditCard.DataSource = creditCards;
+
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -89,6 +88,12 @@ namespace GestaoFinanceira.Views
                 ctr.Save(editCard);
                 creditCards.Add(editCard);
             }
+        }
+
+        private async void FrmListCreditCard_Shown(object sender, EventArgs e)
+        {
+            await this.Loading(() => creditCards = new BindingList<CreditCard>(ctr.List().ToList()));
+            dtvCreditCard.DataSource = creditCards;
         }
     }
 }

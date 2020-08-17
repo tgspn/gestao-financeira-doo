@@ -68,6 +68,7 @@
             this.dtvCreditCard.MultiSelect = false;
             this.dtvCreditCard.Name = "dtvCreditCard";
             this.dtvCreditCard.ReadOnly = true;
+            this.dtvCreditCard.RowHeadersWidth = 51;
             this.dtvCreditCard.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtvCreditCard.Size = new System.Drawing.Size(881, 149);
             this.dtvCreditCard.TabIndex = 3;
@@ -213,7 +214,7 @@
             // 
             // FrmListCreditCard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btnCancel;
@@ -230,6 +231,7 @@
             this.Name = "FrmListCreditCard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.FrmListCreditCard_Load);
+            this.Shown += new System.EventHandler(this.FrmListCreditCard_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dtvCreditCard)).EndInit();
             this.pnCreditCard.ResumeLayout(false);
             this.ResumeLayout(false);
