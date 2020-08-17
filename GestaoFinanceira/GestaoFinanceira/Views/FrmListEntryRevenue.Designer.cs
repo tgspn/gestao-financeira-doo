@@ -50,12 +50,6 @@
             this.Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cRepeatUntil = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.pnEtries = new System.Windows.Forms.Panel();
-            this.lbEntries = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtvRevenue)).BeginInit();
             this.pnEtries.SuspendLayout();
             this.SuspendLayout();

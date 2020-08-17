@@ -17,6 +17,7 @@ namespace GestaoFinanceira.Views
     {
         public CreditCard creditCard;
         CreditCardController ctr = new CreditCardController(new MemorySQLConnection<CreditCard>());
+        public bool isEditMode { get; private set; } = false;
 
         public FrmCreditCard()
         {
@@ -44,18 +45,14 @@ namespace GestaoFinanceira.Views
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            this.setCreditCard();
-            ctr.Save(creditCard);
+            if (!isEditMode)
+            {
+                this.setCreditCard();
+                ctr.Save(creditCard);
+            }
+            this.DialogResult = DialogResult.OK;
             this.Close();
             MessageBox.Show("Cartão de Crédito criado com sucesso!", "", MessageBoxButtons.OK);
-        }
-
-        private void FrmCreditCard_Load(object sender, EventArgs e)
-        {
-            if (creditCard != null)
-            {
-                LoadFildes();
-            }
         }
 
         private void setCreditCard()
@@ -72,8 +69,9 @@ namespace GestaoFinanceira.Views
             };
         }
 
-        public void LoadFildes()
+        public void setCreditCard(CreditCard creditCard)
         {
+            this.creditCard = creditCard;
             txtHolder.Text = creditCard.Holder;
             mtxtNumber.Text = creditCard.Number;
             txtIssuer.Text = creditCard.Issuer;
@@ -81,14 +79,18 @@ namespace GestaoFinanceira.Views
             mtxtClosingDate.Text = creditCard.ClosingDate;
             mtxtExpirationDate.Text = creditCard.ExpirationDate;
             txtAmount.Text = Convert.ToString(creditCard.Amount);
-        }
-
-        public void setCreditCard(CreditCard creditCard)
-        {
-            this.creditCard = creditCard;
+            isEditMode = true;
         }
         public CreditCard getCreditcard()
         {
+            this.creditCard.Holder = txtHolder.Text;
+            this.creditCard.Number = mtxtNumber.Text;
+            this.creditCard.Issuer = txtIssuer.Text;
+            this.creditCard.LateFee = Convert.ToDouble(mtxtLateFee.Text.Replace(" %", ""));
+            this.creditCard.ClosingDate = mtxtClosingDate.Text;
+            this.creditCard.ExpirationDate = mtxtExpirationDate.Text;
+            this.creditCard.Amount = Convert.ToDouble(txtAmount.Text.Replace("R$ ", ""));
+
             return this.creditCard;
         }
     }

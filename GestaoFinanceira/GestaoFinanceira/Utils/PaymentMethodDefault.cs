@@ -22,7 +22,7 @@ namespace GestaoFinanceira.Model
             list.Add(account);
 
             account = new Account();
-            account.AccountBank = 123465;
+            account.AccountBank = Convert.ToString(123465);
             account.Agency = 4321;
             account.Balance = 600.00;
             account.Bank = "Banco Itau";
@@ -31,7 +31,7 @@ namespace GestaoFinanceira.Model
             list.Add(account);
 
             account = new Account();
-            account.AccountBank = 135497;
+            account.AccountBank = Convert.ToString(135497);
             account.Agency = 47123;
             account.Balance = 1200.00;
             account.Bank = "Banco Itau";

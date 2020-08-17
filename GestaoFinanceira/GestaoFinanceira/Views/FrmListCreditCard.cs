@@ -87,7 +87,6 @@ namespace GestaoFinanceira.Views
                 editCard = form.getCreditcard();
                 ctr.Save(editCard);
                 creditCards.Add(editCard);
-                //teste
             }
         }
     }

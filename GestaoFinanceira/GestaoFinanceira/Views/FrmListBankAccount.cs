@@ -92,7 +92,6 @@ namespace GestaoFinanceira.Views
                     editAccount = form.GetAccount();
                     ctr.Save(editAccount);
                     accountBancks.Add(editAccount);
-                    //teste
                 }
             }
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,8 +13,9 @@ namespace GestaoFinanceira.Views
 {
     public partial class FrmMothCalendar : Form
     {
-        public String Moth { get; set; }
-        
+        public String Month { get; set; }
+        public DateTime Date { get; internal set; }
+
         public FrmMothCalendar()
         {
             InitializeComponent();
@@ -32,7 +34,9 @@ namespace GestaoFinanceira.Views
         private void btnJan_Click(object sender, EventArgs e)
         {
             var btn = (Button)sender;
-            this.Moth = btn.Tag.ToString();
+            this.Month = btn.Tag.ToString();
+            var month = DateTime.ParseExact(Month, "MMMM", CultureInfo.CurrentCulture).Month;
+            Date = new DateTime(Convert.ToInt32(lbYear.Text), month, 1);
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
@@ -43,42 +47,43 @@ namespace GestaoFinanceira.Views
             
             switch (localDate.Month) { 
                 case 1: 
-                    this.Moth = "Janeiro";
+                    this.Month = "Janeiro";
                     break;
                 case 2:
-                    this.Moth = "Fevereiro";
+                    this.Month = "Fevereiro";
                     break;
                 case 3:
-                    this.Moth = "Março";
+                    this.Month = "Março";
                     break;
                 case 4:
-                    this.Moth = "Abril";
+                    this.Month = "Abril";
                     break;
                 case 5:
-                    this.Moth = "Maio";
+                    this.Month = "Maio";
                     break;
                 case 6:
-                    this.Moth = "Junho";
+                    this.Month = "Junho";
                     break;
                 case 7:
-                    this.Moth = "Julho";
+                    this.Month = "Julho";
                     break;
                 case 8:
-                    this.Moth = "Agosto";
+                    this.Month = "Agosto";
                     break;
                 case 9:
-                    this.Moth = "Setembro";
+                    this.Month = "Setembro";
                     break;
                 case 10:
-                    this.Moth = "Outubro";
+                    this.Month = "Outubro";
                     break;
                 case 11:
-                    this.Moth = "Novembro";
+                    this.Month = "Novembro";
                     break;
                 case 12:
-                    this.Moth = "Dezembro";
+                    this.Month = "Dezembro";
                     break;
             }
+            Date = new DateTime(Convert.ToInt32(lbYear.Text), localDate.Month, 1);
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

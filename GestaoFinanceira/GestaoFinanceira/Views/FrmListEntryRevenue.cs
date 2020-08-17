@@ -87,6 +87,7 @@ namespace GestaoFinanceira.Views
             {
                 editEntry = form.getEntryExpenses();
                 ctr.Save(editEntry);
+                dtvRevenue.Rows.Clear();
                 dtvRevenue.DataSource = LoadEntriesTypes();
             }
         }

@@ -3,6 +3,7 @@ using GestaoFinanceira.Enums;
 using GestaoFinanceira.Model;
 using GestaoFinanceira.Views;
 using System;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace GestaoFinanceira
@@ -10,6 +11,7 @@ namespace GestaoFinanceira
     public partial class FrmDashBoard : Form
     {
         DashBoardController ctr = new DashBoardController();
+        DateTime date = DateTime.Now;
 
         public FrmDashBoard()
         {
@@ -27,7 +29,8 @@ namespace GestaoFinanceira
 
             if (form.ShowDialog() == DialogResult.OK)
             {
-                this.lb_MesAtual.Text = form.Moth;
+                this.lb_Month.Text = form.Month;
+                this.date = form.Date;
                 this.LoadFilds();
             }
         }
@@ -56,8 +59,11 @@ namespace GestaoFinanceira
             FrmEntries form = new FrmEntries();
             if(form.ShowDialog(this)==DialogResult.OK)
             {
-                new FrmEntryExpenses(form.EntryType).Show(this);
-                this.LoadFilds();
+                FrmEntryExpenses frm = new FrmEntryExpenses(form.EntryType);
+                if (frm.ShowDialog(this) == DialogResult.OK)
+                {
+                    this.LoadFilds(); 
+                }
             }
         }
 
@@ -73,7 +79,10 @@ namespace GestaoFinanceira
         private void btnOpenRevenue_Click(object sender, EventArgs e)
         {
             FrmListEntryRevenue form = new FrmListEntryRevenue(EntryType.Revenue);
-            form.Show();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                this.LoadFilds();
+            }
         }
 
         private void ctCategories_Click(object sender, EventArgs e)
@@ -180,50 +189,6 @@ namespace GestaoFinanceira
 
         private void FrmDashBoard_Load(object sender, EventArgs e)
         {
-            this.ctCategories.Series["Categories"].Points.Add(0);
-            this.ctCategories.Series["Categories"].Points[0].LegendText = "Categoria A";
-            this.ctCategories.Series["Categories"].Points[0].SetValueXY(10, 10);
-            this.ctCategories.Series["Categories"].Points[0].Label = "10%";
-            this.ctCategories.Series["Categories"].Points.Add(1);
-            this.ctCategories.Series["Categories"].Points[1].LegendText = "Categoria B";
-            this.ctCategories.Series["Categories"].Points[1].SetValueXY(15, 15);
-            this.ctCategories.Series["Categories"].Points[1].Label = "15%";
-            this.ctCategories.Series["Categories"].Points.Add(3);
-            this.ctCategories.Series["Categories"].Points[2].LegendText = "Categoria C";
-            this.ctCategories.Series["Categories"].Points[2].SetValueXY(30, 30);
-            this.ctCategories.Series["Categories"].Points[2].Label = "35%";
-            this.ctCategories.Series["Categories"].Points.Add(4);
-            this.ctCategories.Series["Categories"].Points[3].LegendText = "Categoria D";
-            this.ctCategories.Series["Categories"].Points[3].SetValueXY(5, 5);
-            this.ctCategories.Series["Categories"].Points[3].Label = "5%";
-            this.ctCategories.Series["Categories"].Points.Add(5);
-            this.ctCategories.Series["Categories"].Points[4].LegendText = "Categoria E";
-            this.ctCategories.Series["Categories"].Points[4].SetValueXY(35, 35);
-            this.ctCategories.Series["Categories"].Points[4].Label = "35%";
-
-            this.ctBank.Series["Bank"].Points.Add(0);
-            this.ctBank.Series["Bank"].Points[0].LegendText = "Banco A";
-            this.ctBank.Series["Bank"].Points[0].SetValueXY(15, 15);
-            this.ctBank.Series["Bank"].Points[0].Label = "15%";
-            this.ctBank.Series["Bank"].Points.Add(1);
-            this.ctBank.Series["Bank"].Points[1].LegendText = "Banco B";
-            this.ctBank.Series["Bank"].Points[1].SetValueXY(15, 15);
-            this.ctBank.Series["Bank"].Points[1].Label = "15%";
-            this.ctBank.Series["Bank"].Points.Add(3);
-            this.ctBank.Series["Bank"].Points[2].LegendText = "Banco C";
-            this.ctBank.Series["Bank"].Points[2].SetValueXY(70, 70);
-            this.ctBank.Series["Bank"].Points[2].Label = "70%";
-
-            this.ctCreditCard.Series["CreditCard"].Points.Add(0);
-            this.ctCreditCard.Series["CreditCard"].Points[0].YValues[0] = 350;
-            this.ctCreditCard.Series["CreditCard"].Points[0].Label = "Cartão 1";
-            this.ctCreditCard.Series["CreditCard"].Points.Add(1);
-            this.ctCreditCard.Series["CreditCard"].Points[1].Label = "Cartão 2";
-            this.ctCreditCard.Series["CreditCard"].Points[1].YValues[0] = 450;
-            this.ctCreditCard.Series["CreditCard"].Points.Add(2);
-            this.ctCreditCard.Series["CreditCard"].Points[2].Label = "Cartão 3";
-            this.ctCreditCard.Series["CreditCard"].Points[2].YValues[0] = 500;
-
             ctr.LoadDemoProgram();
             this.LoadFilds();
 
@@ -232,12 +197,25 @@ namespace GestaoFinanceira
         private void LoadFilds()
         {
             FlpAccounts.Controls.Clear();
-            foreach (var button in ctr.GenerateCardsBank())
-            {
+            FlpCreditCard.Controls.Clear();
+
+            foreach (var button in ctr.GenerateCardsForFlp(PaymentMethodType.BankAccount))
                 FlpAccounts.Controls.Add(button);
-            }
+            foreach (var button in ctr.GenerateCardsForFlp(PaymentMethodType.CreditCard))
+                FlpCreditCard.Controls.Add(button);
+
+            ctr.LoadReport(date);
             Report report = ctr.report;
-            lbRevenue.Text = report.TotalIncome.ToString("C") ;
+
+            lb_Month.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(date.ToString("MMMM"));
+            lbBalance.Text = report.TotalIncome.ToString("C");
+            lbExpense.Text = report.TotalExpenses.ToString("C");
+            lbRevenue.Text = report.TotalRevenue.ToString("C");
+            lbEconomy.Text = ctr.GetEconomy(date);
+
+            ctr.GenerateChart(this.ctBank, ChartType.Account, date);
+            ctr.GenerateChart(this.ctCategories, ChartType.Categories, date);
+            ctr.GenerateChart(this.ctCreditCard, ChartType.CreditCard, date);
         }
     }
 }

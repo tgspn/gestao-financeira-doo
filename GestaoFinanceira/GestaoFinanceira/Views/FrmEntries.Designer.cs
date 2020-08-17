@@ -36,10 +36,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft PhagsPa", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(97, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 26);
+            this.label1.Size = new System.Drawing.Size(84, 21);
             this.label1.TabIndex = 0;
             this.label1.Text = "Adicionar";
             // 
@@ -49,7 +49,7 @@
             this.btnRevenue.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnRevenue.FlatAppearance.BorderSize = 0;
             this.btnRevenue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRevenue.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRevenue.Font = new System.Drawing.Font("Microsoft PhagsPa", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRevenue.Image = global::GestaoFinanceira.Properties.Resources.icons8_up_30px;
             this.btnRevenue.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRevenue.Location = new System.Drawing.Point(12, 46);
@@ -67,7 +67,7 @@
             this.btnExpense.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnExpense.FlatAppearance.BorderSize = 0;
             this.btnExpense.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExpense.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExpense.Font = new System.Drawing.Font("Microsoft PhagsPa", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExpense.Image = global::GestaoFinanceira.Properties.Resources.icons8_down_arrow_30px;
             this.btnExpense.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnExpense.Location = new System.Drawing.Point(168, 46);
