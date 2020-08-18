@@ -16,7 +16,7 @@ namespace GestaoFinanceira.Utils
             CategoriesController ctrCategories = new CategoriesController();
             PaymentMethodController ctrPaymentMethod = new PaymentMethodController();
             List<EntryExpenses> entries = new List<EntryExpenses>();
-            Categories cat;
+            Category cat;
             
             EntryExpenses entry = new EntryExpenses(
                 "Recarga Celular", 

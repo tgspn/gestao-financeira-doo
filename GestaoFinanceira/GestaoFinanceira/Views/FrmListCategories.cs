@@ -17,9 +17,9 @@ namespace GestaoFinanceira.Views
 {
     public partial class FrmListCategories : Form
     {
-        public Categories categorie;
+        public Category categorie;
         CategoriesController ctr = new CategoriesController();
-        private BindingList<Categories> categories;
+        private BindingList<Category> categories;
         private BindingList<SubCategories> subCategories;
 
         public FrmListCategories()
@@ -33,7 +33,7 @@ namespace GestaoFinanceira.Views
             FrmCategories form = new FrmCategories();
             if (form.ShowDialog() == DialogResult.OK)
             {
-                categories = new BindingList<Categories>(ctr.List().ToList());
+                categories = new BindingList<Category>(ctr.List().ToList());
                 dtgvCategories.DataSource = categories;
             }
         }
@@ -42,7 +42,7 @@ namespace GestaoFinanceira.Views
         {
             btnEdit.Enabled = true;
             btnDelete.Enabled = true;
-            var subCat = ((Categories)dtgvCategories.SelectedRows[0].DataBoundItem).SubCategories;
+            var subCat = ((Category)dtgvCategories.SelectedRows[0].DataBoundItem).SubCategories;
             if (subCat != null)
             {
                 subCategories = null;
@@ -66,7 +66,7 @@ namespace GestaoFinanceira.Views
             DialogResult result = MessageBox.Show("Tem certeza que deseja apagar?", "Confirmação", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes && dtgvCategories.CurrentRow != null)
             {
-                Categories removCat = (Categories)dtgvCategories.SelectedRows[0].DataBoundItem;
+                Category removCat = (Category)dtgvCategories.SelectedRows[0].DataBoundItem;
                 ctr.Remove(removCat);
                 categories.Remove(removCat);
                 subCategories.Clear();
@@ -92,7 +92,7 @@ namespace GestaoFinanceira.Views
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            Categories editCat = (Categories)dtgvCategories.SelectedRows[0].DataBoundItem;
+            Category editCat = (Category)dtgvCategories.SelectedRows[0].DataBoundItem;
             FrmCategories form = new FrmCategories();
             form.setCategorie(editCat);
             if (form.ShowDialog() == DialogResult.OK)
@@ -108,7 +108,7 @@ namespace GestaoFinanceira.Views
         private async void FrmListCategories_Shown(object sender, EventArgs e)
         {
 
-            await this.Loading(()=> categories = new BindingList<Categories>(ctr.List().ToList()));
+            await this.Loading(()=> categories = new BindingList<Category>(ctr.List().ToList()));
             dtgvCategories.DataSource = categories;
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace GestaoFinanceira.BD.Conections
 {
+    [DbConfigurationType(typeof(MySqlEFConfiguration))]
     public class ApplicationDbContext:DbContext
     {
         public ApplicationDbContext() : base("name=ApplicationDbContext") { }
@@ -17,7 +19,7 @@ namespace GestaoFinanceira.BD.Conections
         }
         public virtual DbSet<Model.PaymentMethod> PaymentMethod { get; set; }
         public virtual DbSet<Model.Account> Accounts { get; set; }
-        public virtual DbSet<Model.Categories> Categories { get; set; }
+        public virtual DbSet<Model.Category> Categories { get; set; }
         public virtual DbSet<Model.CreditCard> CreditCards { get; set; }
         public virtual DbSet<Model.EntryExpenses> Expenses { get; set; }
         public virtual DbSet<Model.SubCategories> SubCategories { get; set; }

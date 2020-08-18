@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace GestaoFinanceira.BD.DAO
 {
-    public class CategoriesDAO : DAOBase<Categories>
+    public class CategoriesDAO : DAOBase<Category>
     {
-        public CategoriesDAO(IConnection<Categories> connection):base(connection)
+        public CategoriesDAO(IConnection<Category> connection):base(connection)
         {
 
         }
@@ -20,19 +20,19 @@ namespace GestaoFinanceira.BD.DAO
             return connection.Delete(id);
         }
 
-        public override IEnumerable<Categories> Get()
+        public override IEnumerable<Category> Get()
         {
             return connection.Select();
         }
 
-        public override Categories Insert(Categories categories)
+        public override Category Insert(Category categories)
         {
             var id=connection.Insert(categories);
             categories.Id = id;
             return categories;
         }
 
-        public override Categories Update(Categories categories)
+        public override Category Update(Category categories)
         {
             connection.Update(categories);
             return categories;

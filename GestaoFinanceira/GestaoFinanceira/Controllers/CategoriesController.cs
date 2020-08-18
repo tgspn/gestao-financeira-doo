@@ -19,26 +19,26 @@ namespace GestaoFinanceira.Controllers
         {
         }
 
-        public IEnumerable<Categories> List()
+        public IEnumerable<Category> List()
         {
             return Context.Categories.ToList();
         }
-        public Categories Find(int categoriesId)
+        public Category Find(int categoriesId)
         {
             return Context.Categories.Find(categoriesId);
         }
 
-        public Categories FindByDescription(string description)
+        public Category FindByDescription(string description)
         {
             return Context.Categories.FirstOrDefault(x => x.Description == description);
         }
 
-        public void Save(Categories categories)
+        public void Save(Category categories)
         {
             Context.Categories.Add(categories);
             Context.SaveChanges();
         }
-        public void Remove(Categories categories)
+        public void Remove(Category categories)
         {
             Context.Categories.Remove(categories);
             Context.SaveChanges();

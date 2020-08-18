@@ -39,20 +39,16 @@ namespace GestaoFinanceira
         private void btnOpenBank_Click(object sender, EventArgs e)
         {
             FrmBankAccount form = new FrmBankAccount();
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                form.Show();
-                this.LoadFilds();
-            }
+            form.FormClosed += Form_FormClosed;
+            form.Show();
+
         }
 
         private void btnOpenCreditCard_Click(object sender, EventArgs e)
         {
             FrmCreditCard form = new FrmCreditCard();
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                this.LoadFilds();
-            }
+            form.FormClosed += Form_FormClosed;
+            form.Show();
         }
 
         private void btnOpenEntries_Click(object sender, EventArgs e)
@@ -61,10 +57,8 @@ namespace GestaoFinanceira
             if(form.ShowDialog(this)==DialogResult.OK)
             {
                 FrmEntryExpenses frm = new FrmEntryExpenses(form.EntryType);
-                if (frm.ShowDialog(this) == DialogResult.OK)
-                {
-                    this.LoadFilds(); 
-                }
+                frm.FormClosed += Form_FormClosed;
+                frm.Show();
             }
         }
 
@@ -133,10 +127,8 @@ namespace GestaoFinanceira
         private void categoriaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmCategories form = new FrmCategories();
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                this.LoadFilds();
-            }
+            form.FormClosed += Form_FormClosed;
+            form.Show();
         }
 
         private void versãoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -184,6 +176,7 @@ namespace GestaoFinanceira
         {
             Form form = sender as Form;
             form.FormClosed -= Form_FormClosed;
+            this.LoadFlowPanels();
             this.LoadFilds();
         }
 
@@ -191,8 +184,7 @@ namespace GestaoFinanceira
         {
 
         }
-
-        private void LoadFilds()
+        private void LoadFlowPanels()
         {
             FlpAccounts.Controls.Clear();
             FlpCreditCard.Controls.Clear();
@@ -207,7 +199,10 @@ namespace GestaoFinanceira
                 button.Click += new System.EventHandler(this.GerarRelatórioByButton_Click);
                 FlpCreditCard.Controls.Add(button);
             }
-                
+        }
+
+        private void LoadFilds()
+        {
 
             ctr.LoadReport(date);
             report = ctr.report;
@@ -227,7 +222,7 @@ namespace GestaoFinanceira
 
         private void FrmDashBoard_Shown(object sender, EventArgs e)
         {
-
+            this.LoadFlowPanels();
             this.LoadFilds();
         }
     }

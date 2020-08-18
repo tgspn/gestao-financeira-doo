@@ -94,7 +94,7 @@ namespace GestaoFinanceira.Views
                 Convert.ToDouble(nupValue.Value),
                 dtDate.Value,
                 true,
-                cbCategoria.SelectedValue as Categories,
+                cbCategoria.SelectedValue as Category,
                 cbSubCategoria.SelectedValue as SubCategories,
                 paymentMethodController.FindByName(cbPaymentMethod.Text),
                 ckbRepetir.Checked,
@@ -159,7 +159,7 @@ namespace GestaoFinanceira.Views
         {
             var categories = categoriesController.List();
 
-            Dictionary<string, Categories> dict = new Dictionary<string, Categories>()
+            Dictionary<string, Category> dict = new Dictionary<string, Category>()
             {
                 {"Selecione uma categoria", null}
             };
@@ -182,7 +182,7 @@ namespace GestaoFinanceira.Views
 
         private void LoadSubCategories()
         {
-            var selected = cbCategoria.SelectedValue as Categories;
+            var selected = cbCategoria.SelectedValue as Category;
             if (selected != null)
             {
                 Dictionary<string, SubCategories> dict = new Dictionary<string, SubCategories>()
@@ -202,7 +202,7 @@ namespace GestaoFinanceira.Views
 
         private void cbCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if ((cbCategoria.SelectedValue as Categories) != null)
+            if ((cbCategoria.SelectedValue as Category) != null)
                 LoadSubCategories();
             btnSave.Enabled = this.ValidFields(txtDescription, cbPaymentMethod, cbCategoria, cbSubCategoria, nupValue);
         }

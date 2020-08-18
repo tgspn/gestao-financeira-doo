@@ -16,7 +16,7 @@ namespace GestaoFinanceira.Views
 {
     public partial class FrmCategories : Form
     {
-        Categories categorie;
+        Category categorie;
         private readonly CategoriesController controller;
         private BindingList<SubCategories> subCategories;
         public FrmCategories()
@@ -79,7 +79,7 @@ namespace GestaoFinanceira.Views
 
         private void setCategorie()
         {
-            categorie = new Categories()
+            categorie = new Category()
             {
                 type = cbType.Text == "Receita" ? Enums.EntryType.Revenue : Enums.EntryType.Expense,
                 Description = txtCategoria.Text,
@@ -87,14 +87,14 @@ namespace GestaoFinanceira.Views
             };
         }
 
-        public void setCategorie(Categories categories)
+        public void setCategorie(Category categories)
         {
             cbType.FindString(categorie.type == Enums.EntryType.Revenue ? "Receita" : "Despesa");
             txtCategoria.Text = categories.Description;
             subCategories = new BindingList<SubCategories>( categories.SubCategories);
         }
 
-        public Categories GetCategorie()
+        public Category GetCategorie()
         {
             return this.categorie;
         }
