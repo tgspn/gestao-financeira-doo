@@ -76,12 +76,13 @@ namespace GestaoFinanceira.Views
         private void FrmListBankAccount_Load(object sender, EventArgs e)
         {
             pnBankAccount.BackColor = SystemColors.BLUE;
+            this.Hide();
 
         }
         private async void FrmListBankAccount_Shown(object sender, EventArgs e)
         {
 
-            await this.Loading(() => { this.accountBancks = new BindingList<Account>(ctr.List().ToList()); });
+            await this.Loading(() =>{this.accountBancks = new BindingList<Account>(ctr.List().ToList());});
 
             dtvBankAccount.DataSource = accountBancks;
 

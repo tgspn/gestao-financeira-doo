@@ -22,7 +22,7 @@ namespace GestaoFinanceira.Controllers
 
         public IEnumerable<EntryExpenses> List()
         {
-            return Context.Expenses;
+            return Context.Expenses.Include("Category").Include("SubCategory").ToList();
         }
         public EntryExpenses Find(int entryId)
         {

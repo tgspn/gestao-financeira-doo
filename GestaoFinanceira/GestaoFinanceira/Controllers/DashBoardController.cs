@@ -19,14 +19,22 @@ namespace GestaoFinanceira.Controllers
 {
     public class DashBoardController
     {
-        AccountController ctrAcc = new AccountController();
-        PaymentMethodController ctrPayment = new PaymentMethodController();
-        CreditCardController ctrCredit = new CreditCardController();
-        CategoriesController ctrCategories = new CategoriesController();
-        EntryExpensesController ctrEntry = new EntryExpensesController();
-        ReportController ctrReport = new ReportController();
+        AccountController ctrAcc;
+        PaymentMethodController ctrPayment;
+        CreditCardController ctrCredit;
+        CategoriesController ctrCategories;
+        EntryExpensesController ctrEntry;
+        ReportController ctrReport;
         public Report report { get; set; }
-        
+        public DashBoardController()
+        {
+            ctrAcc = new AccountController();
+            ctrPayment = new PaymentMethodController(ctrAcc.Context);
+            ctrCredit = new CreditCardController(ctrAcc.Context);
+            ctrCategories = new CategoriesController(ctrAcc.Context);
+            ctrEntry = new EntryExpensesController(ctrAcc.Context);
+            ctrReport = new ReportController(ctrAcc.Context);
+        }
         public List<Button> GenerateCardsForFlp(PaymentMethodType method)
         {
             List<Button> list = new List<Button>();
@@ -70,6 +78,7 @@ namespace GestaoFinanceira.Controllers
 
         public void GenerateChart(Chart chart, ChartType typeChart, DateTime date)
         {
+
             double percent = 0.00;
             int i = 0;
 
@@ -92,7 +101,7 @@ namespace GestaoFinanceira.Controllers
 
                 case ChartType.CreditCard:
                     chart.Series["CreditCard"].Points.Clear();
-                    foreach (var card in ctrCredit.List())
+                    foreach (var card in ctrCredit.List().ToList())
                     {
                         Report reportCard = ctrReport.GenerateByCreditCard(date, card);
                         chart.Series["CreditCard"].Points.Add(i);
@@ -105,7 +114,7 @@ namespace GestaoFinanceira.Controllers
                 case ChartType.Categories:
                     chart.Series["Categories"].Points.Clear();
                     chart.Series["Categories"].ChartType = SeriesChartType.Pie;
-                    DbSet<EntryExpenses> listEntries = ctrEntry.List() as DbSet<EntryExpenses>;
+                  var listEntries = ctrEntry.List();
 
                     foreach (var cat in report.Categories)
                     {
@@ -128,7 +137,8 @@ namespace GestaoFinanceira.Controllers
             try
             {
                 chart.ChartAreas[0].RecalculateAxesScale();
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
 
             }
