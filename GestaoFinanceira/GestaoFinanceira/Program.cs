@@ -16,6 +16,8 @@ namespace GestaoFinanceira
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            System.Threading.Thread.CurrentThread.CurrentCulture =
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("pt-BR");
             Application.Run(new FrmDashBoard());
         }
     }
