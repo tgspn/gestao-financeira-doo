@@ -1,5 +1,4 @@
-﻿using MySql.Data.EntityFramework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -7,8 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace GestaoFinanceira.BD.Conections
-{
-    [DbConfigurationType(typeof(MySqlEFConfiguration))]
+{    
     public class ApplicationDbContext:DbContext
     {
         public ApplicationDbContext() : base("name=ApplicationDbContext") { }
