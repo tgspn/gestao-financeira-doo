@@ -2,6 +2,7 @@
 using GestaoFinanceira.Enums;
 using GestaoFinanceira.Model;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -12,7 +13,7 @@ namespace GestaoFinanceira.Controllers
         //PaymentMethodController ctrPayment = new PaymentMethodController();
         //AccountController ctrAcc = new AccountController();
         //CreditCardController ctrCredit = new CreditCardController();
-        //EntryExpensesController ctrEntry = new EntryExpensesController();
+        EntryExpensesController ctrEntry = new EntryExpensesController();
         public ReportController()
         {
 
@@ -43,7 +44,7 @@ namespace GestaoFinanceira.Controllers
             report.TotalExpenses = 0.00;
             report.TotalRevenue = 0.00;
 
-            foreach (var payment in Context.PaymentMethod)
+            foreach (var payment in Context.PaymentMethod.ToList())
             {
                 if (payment is Account)
                 {
@@ -56,7 +57,7 @@ namespace GestaoFinanceira.Controllers
                 }
             }
 
-            foreach (var entry in Context.Expenses.Include("Category").Include("SubCategory"))
+            foreach (var entry in Context.Expenses.Include("Category").Include("SubCategory").ToList())
             {
                 if (CheckMonth(date, entry.Date))
                 {
@@ -96,7 +97,7 @@ namespace GestaoFinanceira.Controllers
             report.TotalRevenue = 0.00;
             double balance = 0.00;
 
-            foreach (var method in Context.PaymentMethod)
+            foreach (var method in Context.PaymentMethod.ToList())
             {
                 if (method is Account)
                     report.Accounts.Add((Account)method);
@@ -120,7 +121,7 @@ namespace GestaoFinanceira.Controllers
 
         private void LoadEntriesAndCategoriesOnDate(Report report, DateTime dateInit)
         {
-            foreach (var entry in Context.Expenses)
+            foreach (var entry in Context.Expenses.Include("Category").Include("SubCategory").ToList())
             {
                 if (DateTime.Compare(entry.Date, dateInit) > 0 && entry.EntryType == EntryType.Expense)
                 {
@@ -168,7 +169,7 @@ namespace GestaoFinanceira.Controllers
             report.TotalExpenses = 0.00;
             report.TotalRevenue = 0.00;
 
-            foreach (var entry in Context.Expenses)
+            foreach (var entry in Context.Expenses.ToList())
             {
                 if (CheckMonth(date, entry.Date) && entry.PaymentMethod is Account)
                 {
@@ -200,7 +201,7 @@ namespace GestaoFinanceira.Controllers
             report.TotalExpenses = 0.00;
             report.TotalRevenue = 0.00;
 
-            foreach (var entry in Context.Expenses)
+            foreach (var entry in Context.Expenses.ToList())
             {
                 if (CheckMonth(date, entry.Date) && entry.PaymentMethod is CreditCard)
                 {

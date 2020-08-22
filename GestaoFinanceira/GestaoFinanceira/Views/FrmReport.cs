@@ -36,8 +36,6 @@ namespace GestaoFinanceira.Views
 
         private void FrmReport_Load(object sender, EventArgs e)
         {
-            
-
             if (this.Payment is null)
             {
                 ctrDash.LoadReport(date);
@@ -128,6 +126,11 @@ namespace GestaoFinanceira.Views
                 lbTotalRevenue.Text = searchedReport.TotalRevenue.ToString("C");
                 LbTotalExpense.Text = searchedReport.TotalExpenses.ToString("C");
             }
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
