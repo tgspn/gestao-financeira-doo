@@ -1,10 +1,11 @@
-﻿using GestaoFinanceira.BD.Conections;
+using GestaoFinanceira.BD.Conections;
 using GestaoFinanceira.Enums;
 using GestaoFinanceira.Model;
 using GestaoFinanceira.Utils;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
@@ -18,40 +19,22 @@ namespace GestaoFinanceira.Controllers
 {
     public class DashBoardController
     {
-        AccountController ctrAcc = new AccountController(new MemorySQLConnection<Account>());
-        PaymentMethodController ctrPayment = new PaymentMethodController(new MemorySQLConnection<Account>(),new MemorySQLConnection<CreditCard>());
-        CreditCardController ctrCredit = new CreditCardController(new MemorySQLConnection<CreditCard>());
-        CategoriesController ctrCategories = new CategoriesController(new MemorySQLConnection<Categories>());
-        EntryExpensesController ctrEntry = new EntryExpensesController(new MemorySQLConnection<EntryExpenses>());
-        ReportController ctrReport = new ReportController();
+        AccountController ctrAcc;
+        PaymentMethodController ctrPayment;
+        CreditCardController ctrCredit;
+        CategoriesController ctrCategories;
+        EntryExpensesController ctrEntry;
+        ReportController ctrReport;
         public Report report { get; set; }
-
-        public void LoadDemoProgram()
+        public DashBoardController()
         {
-            foreach (var categorie in CategoriesDefault.GetCategories())
-            {
-                ctrCategories.Save(categorie);
-            }
-
-            foreach (var payment in PaymentMethodDefault.GetPaymentMethod())
-            {
-                if (payment is Account)
-                {
-                    ctrAcc.Save((Account)payment);
-                }
-                if (payment is CreditCard)
-                {
-                    ctrCredit.Save((CreditCard)payment);
-                }
-            }
-
-            foreach (var entry in EntryesRevenueDefault.GetEntryExpenses())
-            {
-                ctrEntry.Save(((EntryExpenses)entry));
-            }
+            ctrAcc = new AccountController();
+            ctrPayment = new PaymentMethodController(ctrAcc.Context);
+            ctrCredit = new CreditCardController(ctrAcc.Context);
+            ctrCategories = new CategoriesController(ctrAcc.Context);
+            ctrEntry = new EntryExpensesController(ctrAcc.Context);
+            ctrReport = new ReportController(ctrAcc.Context);
         }
-
-
         public List<Button> GenerateCardsForFlp(PaymentMethodType method)
         {
             List<Button> list = new List<Button>();
@@ -95,6 +78,7 @@ namespace GestaoFinanceira.Controllers
 
         public void GenerateChart(Chart chart, ChartType typeChart, DateTime date)
         {
+
             double percent = 0.00;
             int i = 0;
 
@@ -117,7 +101,7 @@ namespace GestaoFinanceira.Controllers
 
                 case ChartType.CreditCard:
                     chart.Series["CreditCard"].Points.Clear();
-                    foreach (var card in ctrCredit.List())
+                    foreach (var card in ctrCredit.List().ToList())
                     {
                         Report reportCard = ctrReport.GenerateByCreditCard(date, card);
                         chart.Series["CreditCard"].Points.Add(i);
@@ -130,7 +114,7 @@ namespace GestaoFinanceira.Controllers
                 case ChartType.Categories:
                     chart.Series["Categories"].Points.Clear();
                     chart.Series["Categories"].ChartType = SeriesChartType.Pie;
-                    List<EntryExpenses> listEntries = ctrEntry.List();
+                  var listEntries = ctrEntry.List();
 
                     foreach (var cat in report.Categories)
                     {
@@ -149,6 +133,14 @@ namespace GestaoFinanceira.Controllers
                         }
                     }
                     break;
+            }
+            try
+            {
+                chart.ChartAreas[0].RecalculateAxesScale();
+            }
+            catch (Exception ex)
+            {
+
             }
         }
 

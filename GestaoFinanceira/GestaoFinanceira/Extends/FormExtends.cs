@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestaoFinanceira.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -72,6 +73,20 @@ namespace GestaoFinanceira
                 return false;
             else
                 return numericUpDowns.ToList().TrueForAll(x => x.Value == 0);
+        }
+
+        public static async Task Loading(this Form form, Action action)
+        {
+            form.Hide();
+            using (FrmLoading fm = new FrmLoading())
+            {
+                fm.Show(form);
+
+                await Task.Run(action);
+
+                fm.Close();
+            }
+            form.Show();
         }
 
     }

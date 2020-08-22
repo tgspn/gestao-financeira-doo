@@ -27,7 +27,7 @@ namespace GestaoFinanceira.BD.DAO.Tests
         public void DeleteTest()
         {
 
-            MemorySQLConnection<Categories> connection = new MemorySQLConnection<Categories>();
+            MemorySQLConnection<Category> connection = new MemorySQLConnection<Category>();
             var categoria = new CategoriesDAO(connection);
             var result = categoria.Delete(11);
 
@@ -42,7 +42,7 @@ namespace GestaoFinanceira.BD.DAO.Tests
         public void GetTest()
         {
 
-            MemorySQLConnection<Categories> connection = new MemorySQLConnection<Categories>();
+            MemorySQLConnection<Category> connection = new MemorySQLConnection<Category>();
             var categoria = new CategoriesDAO(connection);
             var result = categoria.Get();
 
@@ -55,9 +55,9 @@ namespace GestaoFinanceira.BD.DAO.Tests
         public void InsertTest()
         {
 
-            MemorySQLConnection<Categories> connection = new MemorySQLConnection<Categories>();
+            MemorySQLConnection<Category> connection = new MemorySQLConnection<Category>();
             var categoria = new CategoriesDAO(connection);
-            var cat = new Categories()
+            var cat = new Category()
             {
                 Id = 2,
                 Description = "categoria com id 2"
@@ -75,9 +75,9 @@ namespace GestaoFinanceira.BD.DAO.Tests
         public void UpdateTest()
         {
 
-            MemorySQLConnection<Categories> connection = new MemorySQLConnection<Categories>();
+            MemorySQLConnection<Category> connection = new MemorySQLConnection<Category>();
             var categoria = new CategoriesDAO(connection);
-            var cat = new Categories()
+            var cat = new Category()
             {
                 Id = 10,
                 Description = "categoria com id 2"
@@ -91,13 +91,13 @@ namespace GestaoFinanceira.BD.DAO.Tests
 
         private void AddSample()
         {
-            MemorySQLConnection<Categories> connection = new MemorySQLConnection<Categories>();
+            MemorySQLConnection<Category> connection = new MemorySQLConnection<Category>();
             var categoria = new CategoriesDAO(connection);
-            categoria.Insert(new Categories()
+            categoria.Insert(new Category()
             {
                 Id = 10
             });
-            categoria.Insert(new Categories()
+            categoria.Insert(new Category()
             {
                 Id = 11
             });

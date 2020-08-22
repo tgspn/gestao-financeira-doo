@@ -1,4 +1,4 @@
-﻿using GestaoFinanceira.Controllers;
+using GestaoFinanceira.Controllers;
 using GestaoFinanceira.Enums;
 using GestaoFinanceira.Model;
 using GestaoFinanceira.Views;
@@ -39,20 +39,16 @@ namespace GestaoFinanceira
         private void btnOpenBank_Click(object sender, EventArgs e)
         {
             FrmBankAccount form = new FrmBankAccount();
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                form.Show();
-                this.LoadFilds();
-            }
+            form.FormClosed += Form_FormClosed;
+            form.Show();
+
         }
 
         private void btnOpenCreditCard_Click(object sender, EventArgs e)
         {
             FrmCreditCard form = new FrmCreditCard();
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                this.LoadFilds();
-            }
+            form.FormClosed += Form_FormClosed;
+            form.Show();
         }
 
         private void btnOpenEntries_Click(object sender, EventArgs e)
@@ -61,38 +57,30 @@ namespace GestaoFinanceira
             if(form.ShowDialog(this)==DialogResult.OK)
             {
                 FrmEntryExpenses frm = new FrmEntryExpenses(form.EntryType);
-                if (frm.ShowDialog(this) == DialogResult.OK)
-                {
-                    this.LoadFilds(); 
-                }
+                frm.FormClosed += Form_FormClosed;
+                frm.Show();
             }
         }
 
         private void btnOpenExpense_Click(object sender, EventArgs e)
         {
             FrmListEntryRevenue form = new FrmListEntryRevenue(EntryType.Expense);
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                this.LoadFilds();
-            }
+            form.FormClosed += Form_FormClosed;
+            form.Show();
         }
 
         private void btnOpenRevenue_Click(object sender, EventArgs e)
         {
             FrmListEntryRevenue form = new FrmListEntryRevenue(EntryType.Revenue);
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                this.LoadFilds();
-            }
+            form.FormClosed += Form_FormClosed;
+            form.Show();
         }
 
         private void ctCategories_Click(object sender, EventArgs e)
         {
-            FrmListCategories form = new FrmListCategories ();
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                this.LoadFilds();
-            }
+            FrmListCategories form = new FrmListCategories();
+            form.FormClosed += Form_FormClosed;
+            form.Show();
         }
 
         private void exportarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -119,19 +107,15 @@ namespace GestaoFinanceira
         private void despesaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmEntryExpenses form = new FrmEntryExpenses(EntryType.Expense);
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                this.LoadFilds();
-            }
+            form.FormClosed += Form_FormClosed;
+            form.Show();
         }
 
         private void receitaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmEntryExpenses form = new FrmEntryExpenses(EntryType.Revenue);
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                this.LoadFilds();
-            }
+            form.FormClosed += Form_FormClosed;
+            form.Show();
         }
 
         private void sairToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -143,10 +127,8 @@ namespace GestaoFinanceira
         private void categoriaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmCategories form = new FrmCategories();
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                this.LoadFilds();
-            }
+            form.FormClosed += Form_FormClosed;
+            form.Show();
         }
 
         private void versãoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -158,19 +140,15 @@ namespace GestaoFinanceira
         private void ctCreditCard_Click(object sender, EventArgs e)
         {
             FrmListCreditCard form = new FrmListCreditCard();
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                this.LoadFilds();
-            }
+            form.FormClosed += Form_FormClosed;
+            form.Show();
         }
 
         private void cartãoDeCréditoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             FrmListCreditCard form = new FrmListCreditCard();
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                this.LoadFilds();
-            }
+            form.FormClosed += Form_FormClosed;
+            form.Show();
         }
 
         private void despesasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -182,29 +160,32 @@ namespace GestaoFinanceira
         private void receitasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmListEntryRevenue form = new FrmListEntryRevenue(EntryType.Revenue);
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                this.LoadFilds();
-            }
+            form.FormClosed += Form_FormClosed;
+            form.Show();
         }
 
         private void contaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmListBankAccount form = new FrmListBankAccount();
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                this.LoadFilds();
-            }
+            form.FormClosed += Form_FormClosed;
+            form.Show();
+
+        }
+
+        private void Form_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Form form = sender as Form;
+            form.FormClosed -= Form_FormClosed;
+            this.LoadFlowPanels();
+            this.LoadFilds();
         }
 
         private void FrmDashBoard_Load(object sender, EventArgs e)
         {
-            ctr.LoadDemoProgram();
-            this.LoadFilds();
 
         }
 
-        private void LoadFilds()
+        private void LoadFlowPanels()
         {
             FlpAccounts.Controls.Clear();
             FlpCreditCard.Controls.Clear();
@@ -219,7 +200,10 @@ namespace GestaoFinanceira
                 button.Click += new System.EventHandler(this.GerarRelatórioByButton_Click);
                 FlpCreditCard.Controls.Add(button);
             }
-                
+        }
+
+        private void LoadFilds()
+        {
 
             ctr.LoadReport(date);
             report = ctr.report;
@@ -233,6 +217,14 @@ namespace GestaoFinanceira
             ctr.GenerateChart(this.ctBank, ChartType.Account, date);
             ctr.GenerateChart(this.ctCategories, ChartType.Categories, date);
             ctr.GenerateChart(this.ctCreditCard, ChartType.CreditCard, date);
+            
+
+        }
+
+        private void FrmDashBoard_Shown(object sender, EventArgs e)
+        {
+            this.LoadFlowPanels();
+            this.LoadFilds();
         }
     }
 }

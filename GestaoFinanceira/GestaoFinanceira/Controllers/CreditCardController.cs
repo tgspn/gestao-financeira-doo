@@ -9,34 +9,34 @@ using System.Threading.Tasks;
 
 namespace GestaoFinanceira.Controllers
 {
-    class CreditCardController
+    class CreditCardController:ControllerBase
     {
-        private CreditCardDAO dao;
-        private IConnection<CreditCard> connection;
-        public CreditCardController(IConnection<CreditCard> connection)
+        public CreditCardController()
         {
-            this.connection = connection;
-            this.dao = new CreditCardDAO(connection);
         }
-        public List<CreditCard> List()
+
+        public CreditCardController(ApplicationDbContext db) : base(db)
         {
-            return dao.Get().ToList();
+        }
+
+        public IEnumerable<CreditCard> List()
+        {
+            return Context.PaymentMethod.OfType<CreditCard>();
         }
         public CreditCard Find(int creditCardId)
         {
-            throw new NotImplementedException();
+            return Context.CreditCards.Find(creditCardId);
         }
 
         public void Save(CreditCard creditCard)
         {
-            if (creditCard.Id == 0)
-                dao.Insert(creditCard);
-            else
-                dao.Update(creditCard);
+            Context.CreditCards.Add(creditCard);
+            Context.SaveChanges();
         }
         public void Remove(CreditCard creditCard)
         {
-            dao.Delete(creditCard.Id);
+            Context.CreditCards.Remove(creditCard);
+            Context.SaveChanges();
         }
     }
 }

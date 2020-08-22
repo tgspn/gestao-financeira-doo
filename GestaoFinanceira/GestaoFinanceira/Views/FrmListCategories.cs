@@ -6,6 +6,7 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,15 +17,15 @@ namespace GestaoFinanceira.Views
 {
     public partial class FrmListCategories : Form
     {
-        public Categories categorie;
-        CategoriesController ctr = new CategoriesController(new MemorySQLConnection<Categories>());
-        private BindingList<Categories> categories;
+        public Category categorie;
+        CategoriesController ctr = new CategoriesController();
+        private BindingList<Category> categories;
         private BindingList<SubCategories> subCategories;
 
         public FrmListCategories()
         {
             InitializeComponent();
-            this.ctr = new CategoriesController(new MemorySQLConnection<Categories>());
+            this.ctr = new CategoriesController();
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
@@ -32,7 +33,7 @@ namespace GestaoFinanceira.Views
             FrmCategories form = new FrmCategories();
             if (form.ShowDialog() == DialogResult.OK)
             {
-                categories = new BindingList<Categories>(ctr.List());
+                categories = new BindingList<Category>(ctr.List().ToList());
                 dtgvCategories.DataSource = categories;
             }
         }
@@ -41,7 +42,7 @@ namespace GestaoFinanceira.Views
         {
             btnEdit.Enabled = true;
             btnDelete.Enabled = true;
-            var subCat = ((Categories)dtgvCategories.SelectedRows[0].DataBoundItem).SubCategories;
+            var subCat = ((Category)dtgvCategories.SelectedRows[0].DataBoundItem).SubCategories;
             if (subCat != null)
             {
                 subCategories = null;
@@ -65,7 +66,7 @@ namespace GestaoFinanceira.Views
             DialogResult result = MessageBox.Show("Tem certeza que deseja apagar?", "Confirmação", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes && dtgvCategories.CurrentRow != null)
             {
-                Categories removCat = (Categories)dtgvCategories.SelectedRows[0].DataBoundItem;
+                Category removCat = (Category)dtgvCategories.SelectedRows[0].DataBoundItem;
                 ctr.Remove(removCat);
                 categories.Remove(removCat);
                 subCategories.Clear();
@@ -85,14 +86,13 @@ namespace GestaoFinanceira.Views
             pnCategories.BackColor = SystemColors.BLUE;
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;
-            categories = new BindingList<Categories>(ctr.List());
-            dtgvCategories.DataSource = categories;
+          
             
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            Categories editCat = (Categories)dtgvCategories.SelectedRows[0].DataBoundItem;
+            Category editCat = (Category)dtgvCategories.SelectedRows[0].DataBoundItem;
             FrmCategories form = new FrmCategories();
             form.setCategorie(editCat);
             if (form.ShowDialog() == DialogResult.OK)
@@ -103,6 +103,13 @@ namespace GestaoFinanceira.Views
                 categories.Add(editCat);
                 subCategories.Clear();
             }
+        }
+
+        private async void FrmListCategories_Shown(object sender, EventArgs e)
+        {
+
+            await this.Loading(()=> categories = new BindingList<Category>(ctr.List().ToList()));
+            dtgvCategories.DataSource = categories;
         }
     }
 }

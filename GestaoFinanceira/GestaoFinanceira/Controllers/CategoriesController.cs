@@ -10,45 +10,40 @@ using System.Threading.Tasks;
 
 namespace GestaoFinanceira.Controllers
 {
-    class CategoriesController
+    class CategoriesController : ControllerBase
     {
-        private CategoriesDAO dao;
-        private IConnection<Categories> connection;
-        private MemorySQLConnection<CreditCard> memorySQLConnection;
-
-        public CategoriesController(IConnection<Categories> connection)
+        public CategoriesController()
         {
-            this.connection = connection;
-            this.dao = new CategoriesDAO(connection);
+        }
+        public CategoriesController(ApplicationDbContext db) : base(db)
+        {
         }
 
-        public List<Categories> List()
+        public IEnumerable<Category> List()
         {
-            return dao.Get().ToList();
+            return Context.Categories.ToList();
         }
-        public Categories Find(int categoriesId)
+        public Category Find(int categoriesId)
         {
-            throw new NotImplementedException();
-        }
-
-        public Categories FindByDescription(string description)
-        {
-            foreach (var categorie in this.List())
-                if (categorie.Description == description)
-                    return categorie;
-            return null;
+            return Context.Categories.Find(categoriesId);
         }
 
-        public void Save(Categories categories)
+        public Category FindByDescription(string description)
         {
-            if (categories.Id == 0)
-                dao.Insert(categories);
-            else
-                dao.Update(categories);
+            return Context.Categories.FirstOrDefault(x => x.Description == description);
         }
-        public void Remove(Categories categories)
+
+        public void Save(Category categories)
         {
-            dao.Delete(categories.Id);
+            Context.Categories.Add(categories);
+            Context.SaveChanges();
         }
+        public void Remove(Category categories)
+        {
+            Context.Categories.Remove(categories);
+            Context.SaveChanges();
+        }
+
+
     }
 }

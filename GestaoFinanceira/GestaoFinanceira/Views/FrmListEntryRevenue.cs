@@ -17,15 +17,15 @@ namespace GestaoFinanceira.Views
 {
     public partial class FrmListEntryRevenue : Form
     {
-        public EntryType EntryType;
+        public readonly EntryType entryType;
         private readonly EntryExpensesController ctr;
 
         public FrmListEntryRevenue(EntryType entryType)
         {
             InitializeComponent();
             pnEtries.BackColor = entryType == EntryType.Revenue ? SystemColors.GREEN : SystemColors.RED;
-            EntryType = entryType;
-            ctr = new EntryExpensesController(new MemorySQLConnection<EntryExpenses>());
+            this.entryType = entryType;
+            ctr = new EntryExpensesController();
 
         }
 
@@ -36,7 +36,7 @@ namespace GestaoFinanceira.Views
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            FrmEntryExpenses form = new FrmEntryExpenses(EntryType);
+            FrmEntryExpenses form = new FrmEntryExpenses(entryType);
             if (form.ShowDialog() == DialogResult.OK)
             {
                 dtvRevenue.DataSource = LoadEntriesTypes();
@@ -51,7 +51,7 @@ namespace GestaoFinanceira.Views
 
         private void lbEntries_Paint(object sender, PaintEventArgs e)
         {
-            string msg = EntryType == EntryType.Revenue ? "Receitas" : "Despesas";
+            string msg = entryType == EntryType.Revenue ? "Receitas" : "Despesas";
             Font myFont = new Font("Microsoft PhagsPa", 16, FontStyle.Bold);
             Brush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
             e.Graphics.TranslateTransform(10, 100);
@@ -63,20 +63,12 @@ namespace GestaoFinanceira.Views
         {
             btnDelete.Enabled = false;
             btnEdit.Enabled = false;
-            dtvRevenue.DataSource = LoadEntriesTypes();
+
         }
 
         private BindingList<EntryExpenses> LoadEntriesTypes()
         {
-            List<EntryExpenses> entries = new List<EntryExpenses>();
-            foreach (var entry in ctr.List())
-            {
-                if (entry.EntryType == this.EntryType)
-                {
-                    entries.Add(entry);
-                }
-            }
-            return new BindingList<EntryExpenses>(entries);
+            return new BindingList<EntryExpenses>(ctr.List().Where(entry => entry.EntryType == this.entryType).ToList());
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -103,6 +95,13 @@ namespace GestaoFinanceira.Views
                     dtvRevenue.DataSource = LoadEntriesTypes();
                 }
             }
+        }
+
+        private async void FrmListEntryRevenue_Shown(object sender, EventArgs e)
+        {
+            BindingList<EntryExpenses> entries = null ;
+            await this.Loading(() => entries = LoadEntriesTypes());
+            dtvRevenue.DataSource = entries;
         }
     }
 }

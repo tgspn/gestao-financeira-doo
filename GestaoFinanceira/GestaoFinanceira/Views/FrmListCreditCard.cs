@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,7 @@ namespace GestaoFinanceira.Views
         public FrmListCreditCard()
         {
             InitializeComponent();
-            this.ctr = new CreditCardController(new MemorySQLConnection<CreditCard>());
+            this.ctr = new CreditCardController();
             this.creditCards = new BindingList<CreditCard>();
         }
 
@@ -50,7 +51,7 @@ namespace GestaoFinanceira.Views
         {
             FrmCreditCard form = new FrmCreditCard();
             form.ShowDialog();
-            creditCards = new BindingList<CreditCard>(ctr.List());
+            creditCards = new BindingList<CreditCard>(ctr.List().ToList());
             dtvCreditCard.DataSource = creditCards;
         }
 
@@ -72,8 +73,7 @@ namespace GestaoFinanceira.Views
             pnCreditCard.BackColor = SystemColors.BLUE;
             btnDelete.Enabled = false;
             btnEdit.Enabled = false;
-            creditCards = new BindingList<CreditCard>(ctr.List());
-            dtvCreditCard.DataSource = creditCards;
+
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -88,6 +88,12 @@ namespace GestaoFinanceira.Views
                 ctr.Save(editCard);
                 creditCards.Add(editCard);
             }
+        }
+
+        private async void FrmListCreditCard_Shown(object sender, EventArgs e)
+        {
+            await this.Loading(() => creditCards = new BindingList<CreditCard>(ctr.List().ToList()));
+            dtvCreditCard.DataSource = creditCards;
         }
     }
 }

@@ -66,6 +66,7 @@
             this.dtvBankAccount.MultiSelect = false;
             this.dtvBankAccount.Name = "dtvBankAccount";
             this.dtvBankAccount.ReadOnly = true;
+            this.dtvBankAccount.RowHeadersWidth = 51;
             this.dtvBankAccount.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtvBankAccount.Size = new System.Drawing.Size(681, 160);
             this.dtvBankAccount.TabIndex = 9;
@@ -202,7 +203,7 @@
             // 
             // FrmListBankAccount
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(728, 223);
@@ -218,6 +219,7 @@
             this.Name = "FrmListBankAccount";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.FrmListBankAccount_Load);
+            this.Shown += new System.EventHandler(this.FrmListBankAccount_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dtvBankAccount)).EndInit();
             this.pnBankAccount.ResumeLayout(false);
             this.ResumeLayout(false);

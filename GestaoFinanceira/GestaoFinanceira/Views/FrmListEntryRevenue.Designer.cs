@@ -31,13 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmListEntryRevenue));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.dtvRevenue = new System.Windows.Forms.DataGridView();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.pnEtries = new System.Windows.Forms.Panel();
             this.lbEntries = new System.Windows.Forms.Label();
+            this.dtvRevenue = new System.Windows.Forms.DataGridView();
             this.cId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descrição = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,40 +51,9 @@
             this.Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cRepeatUntil = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dtvRevenue)).BeginInit();
             this.pnEtries.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtvRevenue)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dtvRevenue
-            // 
-            this.dtvRevenue.AllowUserToAddRows = false;
-            this.dtvRevenue.AllowUserToDeleteRows = false;
-            this.dtvRevenue.BackgroundColor = System.Drawing.Color.White;
-            this.dtvRevenue.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dtvRevenue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtvRevenue.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cId,
-            this.Descrição,
-            this.cValue,
-            this.cPaymentMethod,
-            this.Column2,
-            this.cCategories,
-            this.Column3,
-            this.cDate,
-            this.cRepeatEvery,
-            this.Column4,
-            this.Column,
-            this.cRepeatUntil,
-            this.Column1});
-            this.dtvRevenue.GridColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.dtvRevenue.Location = new System.Drawing.Point(46, 12);
-            this.dtvRevenue.MultiSelect = false;
-            this.dtvRevenue.Name = "dtvRevenue";
-            this.dtvRevenue.ReadOnly = true;
-            this.dtvRevenue.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtvRevenue.Size = new System.Drawing.Size(740, 238);
-            this.dtvRevenue.TabIndex = 0;
-            this.dtvRevenue.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtvRevenue_CellContentClick);
             // 
             // btnAdd
             // 
@@ -100,6 +69,20 @@
             this.btnAdd.TabIndex = 1;
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.Transparent;
+            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDelete.FlatAppearance.BorderSize = 0;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Image = global::GestaoFinanceira.Properties.Resources.icons8_trash_26px_1;
+            this.btnDelete.Location = new System.Drawing.Point(656, 256);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(37, 33);
+            this.btnDelete.TabIndex = 1;
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnCancel
             // 
@@ -130,20 +113,6 @@
             this.btnEdit.UseVisualStyleBackColor = false;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
-            // btnDelete
-            // 
-            this.btnDelete.BackColor = System.Drawing.Color.Transparent;
-            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDelete.FlatAppearance.BorderSize = 0;
-            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Image = global::GestaoFinanceira.Properties.Resources.icons8_trash_26px_1;
-            this.btnDelete.Location = new System.Drawing.Point(656, 256);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(37, 33);
-            this.btnDelete.TabIndex = 1;
-            this.btnDelete.UseVisualStyleBackColor = false;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
             // pnEtries
             // 
             this.pnEtries.Controls.Add(this.lbEntries);
@@ -162,6 +131,38 @@
             this.lbEntries.TabIndex = 3;
             this.lbEntries.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbEntries.Paint += new System.Windows.Forms.PaintEventHandler(this.lbEntries_Paint);
+            // 
+            // dtvRevenue
+            // 
+            this.dtvRevenue.AllowUserToAddRows = false;
+            this.dtvRevenue.AllowUserToDeleteRows = false;
+            this.dtvRevenue.BackgroundColor = System.Drawing.Color.White;
+            this.dtvRevenue.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dtvRevenue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtvRevenue.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.cId,
+            this.Descrição,
+            this.cValue,
+            this.cPaymentMethod,
+            this.Column2,
+            this.cCategories,
+            this.Column3,
+            this.cDate,
+            this.cRepeatEvery,
+            this.Column4,
+            this.Column,
+            this.cRepeatUntil,
+            this.Column1});
+            this.dtvRevenue.GridColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.dtvRevenue.Location = new System.Drawing.Point(46, 12);
+            this.dtvRevenue.MultiSelect = false;
+            this.dtvRevenue.Name = "dtvRevenue";
+            this.dtvRevenue.ReadOnly = true;
+            this.dtvRevenue.RowHeadersWidth = 51;
+            this.dtvRevenue.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtvRevenue.Size = new System.Drawing.Size(740, 238);
+            this.dtvRevenue.TabIndex = 0;
+            this.dtvRevenue.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtvRevenue_CellContentClick);
             // 
             // cId
             // 
@@ -288,7 +289,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(791, 301);
+            this.ClientSize = new System.Drawing.Size(791, 300);
             this.ControlBox = false;
             this.Controls.Add(this.dtvRevenue);
             this.Controls.Add(this.btnCancel);
@@ -302,8 +303,9 @@
             this.Name = "FrmListEntryRevenue";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.FrmListEntryRevenue_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dtvRevenue)).EndInit();
+            this.Shown += new System.EventHandler(this.FrmListEntryRevenue_Shown);
             this.pnEtries.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtvRevenue)).EndInit();
             this.ResumeLayout(false);
 
         }

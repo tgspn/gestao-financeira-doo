@@ -5,10 +5,10 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestaoFinanceira.Views
@@ -23,8 +23,8 @@ namespace GestaoFinanceira.Views
             InitializeComponent();
             btnDelete.Enabled = false;
             btnEdit.Enabled = false;
-            this.ctr = new AccountController(new MemorySQLConnection<Account>());
-            this.accountBancks = new BindingList<Account>(ctr.List());
+            this.ctr = new AccountController();
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -76,9 +76,17 @@ namespace GestaoFinanceira.Views
         private void FrmListBankAccount_Load(object sender, EventArgs e)
         {
             pnBankAccount.BackColor = SystemColors.BLUE;
-            dtvBankAccount.DataSource = accountBancks;
-        }
+            this.Hide();
 
+        }
+        private async void FrmListBankAccount_Shown(object sender, EventArgs e)
+        {
+
+            await this.Loading(() =>{this.accountBancks = new BindingList<Account>(ctr.List().ToList());});
+
+            dtvBankAccount.DataSource = accountBancks;
+
+        }
         private void btnEdit_Click(object sender, EventArgs e)
         {
             if (dtvBankAccount.CurrentCell != null)
@@ -95,5 +103,8 @@ namespace GestaoFinanceira.Views
                 }
             }
         }
+
+
     }
+
 }

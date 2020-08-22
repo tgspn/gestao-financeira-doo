@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 
 namespace GestaoFinanceira.Utils
 {
+    [Obsolete("Utilize as instancias do banco de dados", true)]
     public static class EntryesRevenueDefault
     {
         public static List<EntryExpenses> GetEntryExpenses() {
-            CategoriesController ctrCategories = new CategoriesController(new MemorySQLConnection<Categories>());
-            PaymentMethodController ctrPaymentMethod = new PaymentMethodController(new MemorySQLConnection<Account>(), new MemorySQLConnection<CreditCard>());
+            CategoriesController ctrCategories = new CategoriesController();
+            PaymentMethodController ctrPaymentMethod = new PaymentMethodController();
             List<EntryExpenses> entries = new List<EntryExpenses>();
-            Categories cat;
+            Category cat;
             
             EntryExpenses entry = new EntryExpenses(
                 "Recarga Celular", 
