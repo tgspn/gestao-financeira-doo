@@ -1,14 +1,9 @@
 ﻿using GestaoFinanceira.Controllers;
+using GestaoFinanceira.Enums;
 using GestaoFinanceira.Model;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestaoFinanceira.Views
@@ -18,7 +13,6 @@ namespace GestaoFinanceira.Views
         DashBoardController ctrDash = new DashBoardController();
         ReportController ctrReport = new ReportController();
         public Report report { get; set; } = new Report();
-        public Report searchedReport { get; set; } = new Report();
         public PaymentMethod Payment { get; set; }
         public DateTime date { get; set; }
         bool editDate = false;
@@ -36,17 +30,34 @@ namespace GestaoFinanceira.Views
 
         private void FrmReport_Load(object sender, EventArgs e)
         {
+            lbHolder.Text = "Titular: ";
             if (this.Payment is null)
             {
                 ctrDash.LoadReport(date);
                 report = ctrDash.report;
+                lbHolder.Visible = false;
+
             }
             else
             {
                 if (this.Payment is Account)
+                {
+                    lbSaving.Visible = false;
+                    lbBill.Visible = false;
+                    lbDate.Text = ((Account)Payment).Bank;
+                    lbName.Text += Payment.Holder;
+                    lbName.Visible = true;
+                    lbHolder.Visible = true;
                     report = ctrReport.GenerateByAccount(date, ((Account)this.Payment));
+                }
                 else
+                {
+                    lbDate.Text = ((CreditCard)Payment).Issuer;
+                    lbName.Text += Payment.Holder;
+                    lbName.Visible = true;
+                    lbHolder.Visible = true;
                     report = ctrReport.GenerateByCreditCard(date, ((CreditCard)this.Payment));
+                }
 
                 ctrDash.report = report;
             }
@@ -57,10 +68,10 @@ namespace GestaoFinanceira.Views
 
         private void LoadFilds(DateTime date, Report report)
         {
-            dgvReport.DataSource = new BindingList<EntryExpenses>(report.EntryExpenses);
+            dtvEntries.DataSource = new BindingList<EntryExpenses>(report.EntryExpenses);
             ctrDash.GenerateChart(ctCategories, Enums.ChartType.Categories, date);
 
-            lbDate.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(date.ToString("MMMM yyyy"));
+            lbDate.Text += " - " +  CultureInfo.CurrentCulture.TextInfo.ToTitleCase(date.ToString("MMMM yyyy"));
             lbTotalIncome.Text = report.TotalIncome.ToString("C");
             lbTotalRevenue.Text = report.TotalRevenue.ToString("C");
             LbTotalExpense.Text = report.TotalExpenses.ToString("C");
@@ -69,62 +80,75 @@ namespace GestaoFinanceira.Views
             dtpDateEnd.Value = new DateTime(date.Year, date.Month, DateTime.DaysInMonth(date.Year, date.Month));
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-
-        }
         private void cbModels_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadComboBox(report);
-        }
-
-        private void LoadComboBox(Report report)
-        {
-            
-            cbEntities.Items.Clear();
             switch (cbModels.Text)
             {
                 case "Conta Bancária":
-                    foreach (var acc in report.Accounts)
-                        cbEntities.Items.Add(ctrDash.GenerateCaptionHolder(acc.Holder) + " - " + acc.Bank);
+                    HabilitDataGridView(DtvTypes.Account);
+                    dtvBankAccount.DataSource = new BindingList<Account>(report.Accounts);
                     break;
                 case "Cartão de Crédido":
-                    foreach (var card in report.CreditCards)
-                        cbEntities.Items.Add(ctrDash.GenerateCaptionHolder(card.Holder) + " - " + card.Issuer);
+                    HabilitDataGridView(DtvTypes.CreditCard);
+                    dtvCreditCard.DataSource = new BindingList<CreditCard>(report.CreditCards);
                     break;
                 case "Receitas":
-                    foreach (var revenue in report.EntryRevenue)
-                        cbEntities.Items.Add(revenue.Date.ToString("dd/MMM") + " - " + revenue.Description) ;
+                    HabilitDataGridView(DtvTypes.Entries);
+                    dtvEntries.DataSource = new BindingList<EntryExpenses>(report.EntryRevenue);
                     break;
                 case "Despesas":
-                    foreach (var expense in report.EntryExpenses)
-                        cbEntities.Items.Add(expense.Date.ToString("dd/MMM") + " - " + expense.Description);
+                    HabilitDataGridView(DtvTypes.Entries);
+                    dtvEntries.DataSource = new BindingList<EntryExpenses>(report.EntryExpenses);
                     break;
                 case "Categorias":
-                    foreach (var category in report.Categories)
-                        cbEntities.Items.Add(category.Description);
+                    HabilitDataGridView(DtvTypes.Categories);
+                    ctrReport.LoadDtvCategories(dtvCategorias, DtvTypes.Categories, report);
                     break;
                 case "SubCategorias":
-                        foreach (var subCategory in report.SubCategories)
-                            cbEntities.Items.Add(subCategory.Description is null == false ? subCategory.Description : "");
+                    HabilitDataGridView(DtvTypes.Categories);
+                    ctrReport.LoadDtvCategories(dtvCategorias, DtvTypes.SubCategories, report);
                     break;
             }
         }
 
+        private void HabilitDataGridView(DtvTypes type)
+        {
+            dtvBankAccount.Visible = false;
+            dtvCreditCard.Visible = false;
+            dtvCategorias.Visible = false;
+            dtvEntries.Visible = false;
+
+            if (type == DtvTypes.Account)
+                    dtvBankAccount.Visible = true;
+            else if (type == DtvTypes.CreditCard)
+                    dtvCreditCard.Visible = true;
+            else if(type == DtvTypes.Entries)
+                    dtvEntries.Visible = true;
+            else if(type == DtvTypes.Categories)
+                    dtvCategorias.Visible = true;
+            else 
+                    dtvEntries.Visible = true;
+        }
+
         private void dtpDateIni_ValueChanged(object sender, EventArgs e)
         {
+
             if (editDate)
             {
-                searchedReport = ctrReport.GenerateByPeriod(dtpDateIni.Value, dtpDateEnd.Value);
-                LoadComboBox(searchedReport);
+                lbHolder.Visible = false;
+                lbName.Visible = false;
+                lbSaving.Visible = false;
+                lbBill.Visible = false;
 
-                dgvReport.DataSource = new BindingList<EntryExpenses>(searchedReport.EntryExpenses);
-                ctrDash.CategorieChartForReport(ctCategories, searchedReport, Enums.EntryType.Expense);
+                report = ctrReport.GenerateByPeriod(dtpDateIni.Value, dtpDateEnd.Value);
+                HabilitDataGridView(DtvTypes.Entries);
+                dtvEntries.DataSource = new BindingList<EntryExpenses>(report.EntryExpenses);
+                ctrDash.CategorieChartForReport(ctCategories, report, Enums.EntryType.Expense);
 
                 lbDate.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtpDateIni.Value.ToString("MMM yyyy")) + " à " + CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dtpDateEnd.Value.ToString("MMM yyyy"));
-                lbTotalIncome.Text = searchedReport.TotalIncome.ToString("C");
-                lbTotalRevenue.Text = searchedReport.TotalRevenue.ToString("C");
-                LbTotalExpense.Text = searchedReport.TotalExpenses.ToString("C");
+                lbTotalIncome.Text = report.TotalIncome.ToString("C");
+                lbTotalRevenue.Text = report.TotalRevenue.ToString("C");
+                LbTotalExpense.Text = report.TotalExpenses.ToString("C");
             }
         }
 
