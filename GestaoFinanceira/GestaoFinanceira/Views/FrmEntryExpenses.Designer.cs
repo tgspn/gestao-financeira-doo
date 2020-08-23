@@ -144,7 +144,7 @@
             this.pnBanner.Location = new System.Drawing.Point(12, 13);
             this.pnBanner.Name = "pnBanner";
             this.pnBanner.Size = new System.Drawing.Size(232, 62);
-            this.pnBanner.TabIndex = 12;
+            this.pnBanner.TabIndex = 0;
             // 
             // lbUnit
             // 
@@ -219,7 +219,7 @@
             this.btnSave.Location = new System.Drawing.Point(200, 16);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(44, 25);
-            this.btnSave.TabIndex = 7;
+            this.btnSave.TabIndex = 0;
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -232,7 +232,7 @@
             this.btnCancel.Location = new System.Drawing.Point(12, 16);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(44, 25);
-            this.btnCancel.TabIndex = 8;
+            this.btnCancel.TabIndex = 1;
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -244,7 +244,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 353);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(254, 52);
-            this.panel1.TabIndex = 20;
+            this.panel1.TabIndex = 7;
             // 
             // FrmEntryExpenses
             // 

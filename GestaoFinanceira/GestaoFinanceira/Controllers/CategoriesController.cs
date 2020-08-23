@@ -4,6 +4,7 @@ using GestaoFinanceira.Model;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;

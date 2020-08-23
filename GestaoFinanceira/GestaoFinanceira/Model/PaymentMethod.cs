@@ -10,5 +10,6 @@ namespace GestaoFinanceira.Model
     {
         public int Id { get; set; }
         public string Holder { get; set; }
+        public double Limit { get; set; }
     }
 }

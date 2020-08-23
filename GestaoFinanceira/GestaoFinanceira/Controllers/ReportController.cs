@@ -43,7 +43,7 @@ namespace GestaoFinanceira.Controllers
             report.TotalExpenses = 0.00;
             report.TotalRevenue = 0.00;
 
-            foreach (var payment in Context.PaymentMethod.ToList())
+            foreach (var payment in Context.PaymentMethod)
             {
                 if (payment is Account)
                 {

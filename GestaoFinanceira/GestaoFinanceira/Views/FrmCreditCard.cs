@@ -65,7 +65,7 @@ namespace GestaoFinanceira.Views
                 LateFee = Convert.ToDouble(mtxtLateFee.Text.Replace(" %", "")),
                 ClosingDate = mtxtClosingDate.Text,
                 ExpirationDate = mtxtExpirationDate.Text,
-                Amount = Convert.ToDouble(txtAmount.Text.Replace("R$ ", ""))
+                Limit = Convert.ToDouble(txtAmount.Text.Replace("R$ ", ""))
             };
         }
 
