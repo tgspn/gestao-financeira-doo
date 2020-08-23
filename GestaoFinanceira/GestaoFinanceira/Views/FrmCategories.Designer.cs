@@ -38,10 +38,10 @@
             this.SubCategorias = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.cbType = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cbType = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubcategories)).BeginInit();
             this.panel2.SuspendLayout();
@@ -170,6 +170,25 @@
             this.panel3.Size = new System.Drawing.Size(296, 327);
             this.panel3.TabIndex = 6;
             // 
+            // cbType
+            // 
+            this.cbType.FormattingEnabled = true;
+            this.cbType.Location = new System.Drawing.Point(103, 17);
+            this.cbType.Name = "cbType";
+            this.cbType.Size = new System.Drawing.Size(179, 22);
+            this.cbType.TabIndex = 0;
+            this.cbType.TextChanged += new System.EventHandler(this.txtCategoria_TextChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft PhagsPa", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(58, 17);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(34, 17);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Tipo";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -189,25 +208,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(296, 73);
             this.panel4.TabIndex = 7;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft PhagsPa", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(58, 17);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(34, 17);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Tipo";
-            // 
-            // cbType
-            // 
-            this.cbType.FormattingEnabled = true;
-            this.cbType.Location = new System.Drawing.Point(103, 17);
-            this.cbType.Name = "cbType";
-            this.cbType.Size = new System.Drawing.Size(179, 22);
-            this.cbType.TabIndex = 0;
-            this.cbType.TextChanged += new System.EventHandler(this.txtCategoria_TextChanged);
             // 
             // FrmCategories
             // 

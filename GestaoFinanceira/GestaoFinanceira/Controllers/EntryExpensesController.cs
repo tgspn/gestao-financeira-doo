@@ -35,7 +35,9 @@ namespace GestaoFinanceira.Controllers
 
         public void Save(EntryExpenses entry)
         {
-            Context.Expenses.Add(entry);
+            EntryExpenses ent = entry.Id != 0 ? Context.Expenses.First(c => c.Id == entry.Id) : null;
+            if (ent == null)
+                Context.Expenses.Add(entry);
             Context.SaveChanges();
         }
         public void Remove(EntryExpenses entry)

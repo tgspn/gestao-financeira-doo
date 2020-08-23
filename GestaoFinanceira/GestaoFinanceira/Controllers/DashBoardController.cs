@@ -115,7 +115,7 @@ namespace GestaoFinanceira.Controllers
                 case ChartType.Categories:
                     chart.Series["Categories"].Points.Clear();
                     chart.Series["Categories"].ChartType = SeriesChartType.Pie;
-                  var listEntries = ctrEntry.List();
+                  var listEntries = ctrEntry.List().Where(entry => entry.Date.ToString("MMM yyyy") == date.ToString("MMM yyyy"));
                   double saldoCat = 0.00;
 
                     foreach (var cat in report.Categories)

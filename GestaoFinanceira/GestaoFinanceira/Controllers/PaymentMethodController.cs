@@ -54,12 +54,14 @@ namespace GestaoFinanceira.Controllers
 
         public void Save(PaymentMethod paymentMethod)
         {
-
-            if (paymentMethod is Account)
-                Context.Accounts.Add(paymentMethod as Account);
-            else
-                Context.CreditCards.Add(paymentMethod as CreditCard);
-
+            PaymentMethod payment = paymentMethod.Id != 0 ? Context.PaymentMethod.First(c => c.Id == paymentMethod.Id) : null;
+            if (payment == null)
+            {
+                if (paymentMethod is Account)
+                    Context.Accounts.Add(paymentMethod as Account);
+                else
+                    Context.CreditCards.Add(paymentMethod as CreditCard);
+            }
             Context.SaveChanges();
         }
         public void Remove(PaymentMethod paymentMethod)

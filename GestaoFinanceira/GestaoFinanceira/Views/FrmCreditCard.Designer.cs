@@ -38,7 +38,7 @@
             this.txtHolder = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.mtxtClosingDate = new System.Windows.Forms.MaskedTextBox();
-            this.txtAmount = new System.Windows.Forms.TextBox();
+            this.txtLimit = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.mtxtLateFee = new System.Windows.Forms.MaskedTextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -146,13 +146,13 @@
             this.mtxtClosingDate.ValidatingType = typeof(int);
             this.mtxtClosingDate.TextChanged += new System.EventHandler(this.txtIssuer_TextChanged);
             // 
-            // txtAmount
+            // txtLimit
             // 
-            this.txtAmount.Location = new System.Drawing.Point(82, 151);
-            this.txtAmount.Name = "txtAmount";
-            this.txtAmount.Size = new System.Drawing.Size(136, 22);
-            this.txtAmount.TabIndex = 3;
-            this.txtAmount.TextChanged += new System.EventHandler(this.txtIssuer_TextChanged);
+            this.txtLimit.Location = new System.Drawing.Point(82, 151);
+            this.txtLimit.Name = "txtLimit";
+            this.txtLimit.Size = new System.Drawing.Size(136, 22);
+            this.txtLimit.TabIndex = 3;
+            this.txtLimit.TextChanged += new System.EventHandler(this.txtIssuer_TextChanged);
             // 
             // label7
             // 
@@ -251,7 +251,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtAmount);
+            this.Controls.Add(this.txtLimit);
             this.Controls.Add(this.txtHolder);
             this.Controls.Add(this.txtIssuer);
             this.Controls.Add(this.label1);
@@ -279,7 +279,7 @@
         private System.Windows.Forms.MaskedTextBox mtxtClosingDate;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.TextBox txtAmount;
+        private System.Windows.Forms.TextBox txtLimit;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.MaskedTextBox mtxtLateFee;
         private System.Windows.Forms.Label label3;

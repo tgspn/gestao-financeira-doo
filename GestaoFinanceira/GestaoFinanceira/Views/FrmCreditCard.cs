@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Core.Common.CommandTrees;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -36,7 +37,7 @@ namespace GestaoFinanceira.Views
         }
         private bool IsValid()
         {
-            return this.ValidFields(txtAmount, txtHolder, txtIssuer, mtxtClosingDate, mtxtExpirationDate, mtxtLateFee, mtxtNumber);
+            return this.ValidFields(txtLimit, txtHolder, txtIssuer, mtxtClosingDate, mtxtExpirationDate, mtxtLateFee, mtxtNumber);
         }
         private void txtIssuer_TextChanged(object sender, EventArgs e)
         {
@@ -65,7 +66,8 @@ namespace GestaoFinanceira.Views
                 LateFee = Convert.ToDouble(mtxtLateFee.Text.Replace(" %", "")),
                 ClosingDate = mtxtClosingDate.Text,
                 ExpirationDate = mtxtExpirationDate.Text,
-                Limit = Convert.ToDouble(txtAmount.Text.Replace("R$ ", ""))
+                Limit = Convert.ToDouble(txtLimit.Text.Replace("R$ ", "")),
+                Amount = Convert.ToDouble(txtLimit.Text.Replace("R$ ", ""))
             };
         }
 
@@ -78,7 +80,7 @@ namespace GestaoFinanceira.Views
             mtxtLateFee.Text = Convert.ToString(creditCard.LateFee);
             mtxtClosingDate.Text = creditCard.ClosingDate;
             mtxtExpirationDate.Text = creditCard.ExpirationDate;
-            txtAmount.Text = Convert.ToString(creditCard.Amount);
+            txtLimit.Text = Convert.ToString(creditCard.Limit);
             isEditMode = true;
         }
         public CreditCard getCreditcard()
@@ -89,8 +91,8 @@ namespace GestaoFinanceira.Views
             this.creditCard.LateFee = Convert.ToDouble(mtxtLateFee.Text.Replace(" %", ""));
             this.creditCard.ClosingDate = mtxtClosingDate.Text;
             this.creditCard.ExpirationDate = mtxtExpirationDate.Text;
-            this.creditCard.Amount = Convert.ToDouble(txtAmount.Text.Replace("R$ ", ""));
-
+            this.creditCard.Amount = Convert.ToDouble(txtLimit.Text.Replace("R$ ", "")) - this.creditCard.GetBanlce();
+            this.creditCard.Limit = Convert.ToDouble(txtLimit.Text.Replace("R$ ", ""));
             return this.creditCard;
         }
     }
