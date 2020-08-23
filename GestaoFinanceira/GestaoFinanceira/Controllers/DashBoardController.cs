@@ -153,6 +153,7 @@ namespace GestaoFinanceira.Controllers
         public void CategorieChartForReport(Chart chart, Report report, EntryType entryType)
         {
             double percent = 0.00;
+            double saldoCat = 0.00;
             int i = 0;
 
             chart.Series["Categories"].Points.Clear();
@@ -161,11 +162,15 @@ namespace GestaoFinanceira.Controllers
 
             foreach (var cat in report.Categories)
             {
+                saldoCat = 0.00;
                 foreach (var entry in listEntries)
                 {
                     if (cat.type == entryType && cat.Description == entry.Category.Description)
                     {
-                        percent = (entry.Value / report.TotalExpenses);
+                        foreach (var e in listEntries)
+                            saldoCat += e.Category.Id == cat.Id ? e.Value : 0.00;
+
+                        percent = (saldoCat / report.TotalExpenses);
                         chart.Series["Categories"].Points.Add(i);
                         chart.Series["Categories"].Points[i].LegendText = cat.Description;
                         chart.Series["Categories"].Points[i].Label = percent.ToString("P");
