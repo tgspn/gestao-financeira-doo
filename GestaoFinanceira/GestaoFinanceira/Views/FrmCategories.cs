@@ -89,7 +89,7 @@ namespace GestaoFinanceira.Views
 
         public void setCategorie(Category categories)
         {
-            cbType.FindString(categorie.type == Enums.EntryType.Revenue ? "Receita" : "Despesa");
+            cbType.FindString(categories.type == Enums.EntryType.Revenue ? "Receita" : "Despesa");
             txtCategoria.Text = categories.Description;
             subCategories = new BindingList<SubCategories>( categories.SubCategories);
         }

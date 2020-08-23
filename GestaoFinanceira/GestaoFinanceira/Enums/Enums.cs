@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace GestaoFinanceira.Enums
 {
-   public enum EntryType {Expense, Revenue}
+    public enum EntryType {Expense, Revenue}
     public enum PaymentMethodType { BankAccount, CreditCard }
     public enum ChartType {Account, CreditCard, Categories}
+    public enum DtvTypes {Account, CreditCard, Entries, Categories, SubCategories }
 }

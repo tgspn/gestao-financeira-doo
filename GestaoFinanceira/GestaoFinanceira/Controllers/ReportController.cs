@@ -4,15 +4,14 @@ using GestaoFinanceira.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 
 namespace GestaoFinanceira.Controllers
 {
     class ReportController : ControllerBase
     {
-        //PaymentMethodController ctrPayment = new PaymentMethodController();
-        //AccountController ctrAcc = new AccountController();
-        //CreditCardController ctrCredit = new CreditCardController();
+
         EntryExpensesController ctrEntry = new EntryExpensesController();
         public ReportController()
         {
@@ -169,7 +168,7 @@ namespace GestaoFinanceira.Controllers
             report.TotalExpenses = 0.00;
             report.TotalRevenue = 0.00;
 
-            foreach (var entry in Context.Expenses.ToList())
+            foreach (var entry in Context.Expenses.Include("Category").Include("SubCategory").ToList())
             {
                 if (CheckMonth(date, entry.Date) && entry.PaymentMethod is Account)
                 {
@@ -201,7 +200,7 @@ namespace GestaoFinanceira.Controllers
             report.TotalExpenses = 0.00;
             report.TotalRevenue = 0.00;
 
-            foreach (var entry in Context.Expenses.ToList())
+            foreach (var entry in Context.Expenses.Include("Category").Include("SubCategory").ToList())
             {
                 if (CheckMonth(date, entry.Date) && entry.PaymentMethod is CreditCard)
                 {
@@ -266,6 +265,62 @@ namespace GestaoFinanceira.Controllers
             {
                 percent = 1 - percent;
                 return "+ " + percent.ToString("P");
+            }
+        }
+
+        public void LoadDtvCategories(DataGridView dtv,DtvTypes type, Report report)
+        {
+            int i, j, qtdEntry;
+            double valueExpense = 0.00;
+            bool addRow = false;
+            string description;
+            i = 0;
+            List<EntryExpenses> entries = new List<EntryExpenses>();
+            List<Category> cats = new List<Category>();
+            List<SubCategories> subCats = new List<SubCategories>();
+
+            dtv.Rows.Clear();
+
+            dtv.Columns[0].Name = type == DtvTypes.Categories ? "Categoria" : "SubCategoria";
+
+            foreach (var entry in report.EntryExpenses)
+                entries.Add(entry);
+
+            foreach (var entry in report.EntryRevenue)
+                entries.Add(entry);
+
+
+            entries = entries.OrderBy(e => e.Date).ToList();
+
+            foreach (var cat in report.Categories)
+            {
+                j = 1;
+                valueExpense = 0.00;
+                qtdEntry = 0;
+                addRow = false;
+                description = "";
+
+                foreach (var entry in entries)
+                {
+                    if (entry.Category.Id == cat.Id)
+                    {
+                        valueExpense += entry.Value;
+                        qtdEntry++;
+                        addRow = true;
+                        description = type == DtvTypes.Categories ? cat.Description : entry.SubCategory.Description;
+                    }
+
+                    if (entries.Count == j && addRow)
+                    {
+                        dtv.Rows.Add();
+                        dtv.Rows[i].Cells[0].Value = description;
+                        dtv.Rows[i].Cells[1].Value = valueExpense;
+                        dtv.Rows[i].Cells[2].Value = entry.EntryType == EntryType.Expense ? "Despesa" : "Receita";
+                        dtv.Rows[i].Cells[3].Value = qtdEntry;
+                        i++;
+                    }
+                    j++;
+                }
             }
         }
     }
