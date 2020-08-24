@@ -81,6 +81,7 @@ namespace GestaoFinanceira.Views
             if (!isEditMode)
             {
                 SetEntryExpenses();
+                controller.PerformTransaction(Model);
                 controller.Save(Model);
             }
             DialogResult = DialogResult.OK;

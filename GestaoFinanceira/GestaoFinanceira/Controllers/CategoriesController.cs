@@ -4,9 +4,12 @@ using GestaoFinanceira.Model;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace GestaoFinanceira.Controllers
 {
@@ -35,7 +38,9 @@ namespace GestaoFinanceira.Controllers
 
         public void Save(Category categories)
         {
-            Context.Categories.Add(categories);
+            Category cat = categories.Id != 0 ? Context.Categories.First(a => a.Id == categories.Id): null;
+            if (cat == null)
+                Context.Categories.Add(categories);
             Context.SaveChanges();
         }
         public void Remove(Category categories)
@@ -44,6 +49,41 @@ namespace GestaoFinanceira.Controllers
             Context.SaveChanges();
         }
 
+        public void LoadTreeView(TreeView tree)
+        {
+            tree.Nodes.Clear();
+            tree.Nodes.Add("Tipo despesa             ");
+            tree.Nodes.Add("Tipo receita            ");
+            tree.Nodes[0].NodeFont = new Font("Microsoft PhagsPa", 9, FontStyle.Bold);
+            tree.Nodes[1].NodeFont = new Font("Microsoft PhagsPa", 9, FontStyle.Bold);
+
+            int type = 0;
+            int i = 0;
+            int j = 0;
+            foreach (var cat in Context.Categories.ToList().OrderBy(a => a.type).ThenBy(a => a.Description))
+            {
+                if (cat.type == Enums.EntryType.Expense)
+                {
+                    type = 0;
+                }
+                else
+                {
+                    i = type == 1 ? i : 0;
+                    type = 1;
+                }
+
+                j = 0;
+                tree.Nodes[type].Nodes.Add(cat.Description);
+                tree.Nodes[type].Nodes[i].Tag = cat;
+                foreach (var subCat in cat.SubCategories)
+                {
+                    tree.Nodes[type].Nodes[i].Nodes.Add(subCat.Description);
+                    tree.Nodes[type].Nodes[i].Nodes[j].Tag = subCat;
+                    j++;
+                }
+                i++;
+            }
+        }
 
     }
 }

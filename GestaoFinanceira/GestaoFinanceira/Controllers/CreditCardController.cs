@@ -3,6 +3,7 @@ using GestaoFinanceira.BD.DAO;
 using GestaoFinanceira.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,7 +31,9 @@ namespace GestaoFinanceira.Controllers
 
         public void Save(CreditCard creditCard)
         {
-            Context.CreditCards.Add(creditCard);
+            CreditCard card = creditCard.Id != 0 ? Context.CreditCards.First(c => c.Id == creditCard.Id) : null;
+            if (card == null)
+                Context.CreditCards.Add(creditCard);
             Context.SaveChanges();
         }
         public void Remove(CreditCard creditCard)

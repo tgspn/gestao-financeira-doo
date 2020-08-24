@@ -43,7 +43,7 @@ namespace GestaoFinanceira.Controllers
             report.TotalExpenses = 0.00;
             report.TotalRevenue = 0.00;
 
-            foreach (var payment in Context.PaymentMethod.ToList())
+            foreach (var payment in Context.PaymentMethod)
             {
                 if (payment is Account)
                 {
@@ -125,16 +125,20 @@ namespace GestaoFinanceira.Controllers
                 if (DateTime.Compare(entry.Date, dateInit) > 0 && entry.EntryType == EntryType.Expense)
                 {
                     report.EntryExpenses.Add(entry);
-                    report.Categories.Add(entry.Category);
-                    if (!(entry.SubCategory is null) && entry.Description != null)
-                        report.SubCategories.Add(entry.SubCategory);
+                    if (!(report.Categories.Contains(entry.Category)))
+                        report.Categories.Add(entry.Category) ;
+                    if (!(entry.SubCategory is null) && string.IsNullOrEmpty(entry.Description))
+                        if(!(report.SubCategories.Contains(entry.SubCategory)))
+                            report.SubCategories.Add(entry.SubCategory);
                 }
                 if (DateTime.Compare(entry.Date, dateInit) > 0 && entry.EntryType == EntryType.Revenue)
                 {
                     report.EntryRevenue.Add(entry);
-                    report.Categories.Add(entry.Category);
-                    if (!(entry.SubCategory is null) && entry.Description != null)
-                        report.SubCategories.Add(entry.SubCategory);
+                    if (!(report.Categories.Contains(entry.Category)))
+                        report.Categories.Add(entry.Category);
+                    if (!(report.SubCategories.Contains(entry.SubCategory)))
+                        if (!(entry.SubCategory is null) && entry.Description != null)
+                            report.SubCategories.Add(entry.SubCategory);
                 }
             }
         }

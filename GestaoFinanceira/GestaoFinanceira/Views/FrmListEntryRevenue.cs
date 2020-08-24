@@ -19,14 +19,15 @@ namespace GestaoFinanceira.Views
     {
         public readonly EntryType entryType;
         private readonly EntryExpensesController ctr;
+        private DateTime date;
 
-        public FrmListEntryRevenue(EntryType entryType)
+        public FrmListEntryRevenue(EntryType entryType, DateTime date)
         {
             InitializeComponent();
             pnEtries.BackColor = entryType == EntryType.Revenue ? SystemColors.GREEN : SystemColors.RED;
             this.entryType = entryType;
+            this.date = date;
             ctr = new EntryExpensesController();
-
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -68,7 +69,7 @@ namespace GestaoFinanceira.Views
 
         private BindingList<EntryExpenses> LoadEntriesTypes()
         {
-            return new BindingList<EntryExpenses>(ctr.List().Where(entry => entry.EntryType == this.entryType).ToList());
+            return new BindingList<EntryExpenses>(ctr.List().Where(entry => entry.EntryType == this.entryType && (entry.Date.ToString("MM yyyy") == date.ToString("MM yyyy"))).ToList());
         }
 
         private void btnEdit_Click(object sender, EventArgs e)

@@ -4,6 +4,7 @@ using GestaoFinanceira.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,7 +34,9 @@ namespace GestaoFinanceira.Controllers
 
         public void Save(Account account)
         {
-            Context.Accounts.Add(account);
+            Account acc = account.Id != 0 ? Context.Accounts.First(a => a.Id == account.Id) : null;
+            if (acc == null)
+                Context.Accounts.Add(account);
             Context.SaveChanges();
         }
         public void Remove(Account account)

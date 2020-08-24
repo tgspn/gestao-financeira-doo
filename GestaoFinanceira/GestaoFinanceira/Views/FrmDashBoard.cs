@@ -64,14 +64,14 @@ namespace GestaoFinanceira
 
         private void btnOpenExpense_Click(object sender, EventArgs e)
         {
-            FrmListEntryRevenue form = new FrmListEntryRevenue(EntryType.Expense);
+            FrmListEntryRevenue form = new FrmListEntryRevenue(EntryType.Expense, date);
             form.FormClosed += Form_FormClosed;
             form.Show();
         }
 
         private void btnOpenRevenue_Click(object sender, EventArgs e)
         {
-            FrmListEntryRevenue form = new FrmListEntryRevenue(EntryType.Revenue);
+            FrmListEntryRevenue form = new FrmListEntryRevenue(EntryType.Revenue, date);
             form.FormClosed += Form_FormClosed;
             form.Show();
         }
@@ -153,13 +153,13 @@ namespace GestaoFinanceira
 
         private void despesasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmListEntryRevenue form = new FrmListEntryRevenue(EntryType.Expense);
+            FrmListEntryRevenue form = new FrmListEntryRevenue(EntryType.Expense, date);
             form.Show();
         }
 
         private void receitasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmListEntryRevenue form = new FrmListEntryRevenue(EntryType.Revenue);
+            FrmListEntryRevenue form = new FrmListEntryRevenue(EntryType.Revenue, date);
             form.FormClosed += Form_FormClosed;
             form.Show();
         }

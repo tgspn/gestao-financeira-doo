@@ -32,28 +32,7 @@ namespace GestaoFinanceira.Views
         {
             FrmCategories form = new FrmCategories();
             if (form.ShowDialog() == DialogResult.OK)
-            {
-                categories = new BindingList<Category>(ctr.List().ToList());
-                dtgvCategories.DataSource = categories;
-            }
-        }
-
-        private void dtgvCategories_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            btnEdit.Enabled = true;
-            btnDelete.Enabled = true;
-            var subCat = ((Category)dtgvCategories.SelectedRows[0].DataBoundItem).SubCategories;
-            if (subCat != null)
-            {
-                subCategories = null;
-                subCategories = new BindingList<SubCategories>(subCat);
-                dtgvSubCategories.DataSource = subCategories;
-            }
-            else
-            {
-                subCategories = new BindingList<SubCategories>();
-                dtgvSubCategories.DataSource = subCategories;
-            }
+                ctr.LoadTreeView(tvCategories);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -63,14 +42,19 @@ namespace GestaoFinanceira.Views
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Tem certeza que deseja apagar?", "Confirmação", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes && dtgvCategories.CurrentRow != null)
+            try
             {
-                Category removCat = (Category)dtgvCategories.SelectedRows[0].DataBoundItem;
-                ctr.Remove(removCat);
-                categories.Remove(removCat);
-                subCategories.Clear();
-            }    
+                DialogResult result = MessageBox.Show("Tem certeza que deseja apagar?", "Confirmação", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes && tvCategories.SelectedNode != null)
+                {
+                    Category removCat = tvCategories.SelectedNode.Tag as Category;
+                    ctr.Remove(removCat);
+                    ctr.LoadTreeView(tvCategories);
+                }
+            }catch (Exception msg)
+            {
+
+            }
         }
 
         private void lbCategories_Paint(object sender, PaintEventArgs e)
@@ -92,24 +76,46 @@ namespace GestaoFinanceira.Views
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            Category editCat = (Category)dtgvCategories.SelectedRows[0].DataBoundItem;
-            FrmCategories form = new FrmCategories();
-            form.setCategorie(editCat);
-            if (form.ShowDialog() == DialogResult.OK)
+            try
             {
-                categories.Remove(editCat);
-                editCat = form.GetCategorie();
-                ctr.Save(editCat);
-                categories.Add(editCat);
-                subCategories.Clear();
+                if (tvCategories.SelectedNode.Tag is Category)
+                {
+                    Category editCat = tvCategories.SelectedNode.Tag as Category;
+                    FrmCategories form = new FrmCategories();
+                    form.setCategorie(editCat);
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+                        editCat = form.GetCategorie();
+                        ctr.Save(editCat);
+                        ctr.LoadTreeView(tvCategories);
+                    }
+                }
+            }catch (Exception msg)
+            {
+
             }
         }
 
         private async void FrmListCategories_Shown(object sender, EventArgs e)
         {
+            ctr.LoadTreeView(tvCategories);
+        }
 
-            await this.Loading(()=> categories = new BindingList<Category>(ctr.List().ToList()));
-            dtgvCategories.DataSource = categories;
+        private void tvCategories_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            if (tvCategories.SelectedNode != null)
+            {
+                if (tvCategories.SelectedNode.Tag != null && tvCategories.SelectedNode.Tag is Category)
+                {
+                    btnEdit.Enabled = true;
+                    btnDelete.Enabled = true;
+                }
+                else
+                {
+                    btnEdit.Enabled = false;
+                    btnDelete.Enabled = false;
+                }
+            }
         }
     }
 }
