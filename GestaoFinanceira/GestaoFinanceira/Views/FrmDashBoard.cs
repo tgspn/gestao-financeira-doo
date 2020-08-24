@@ -10,7 +10,7 @@ namespace GestaoFinanceira
 {   
     public partial class FrmDashBoard : Form
     {
-        DashBoardController ctr = new DashBoardController();
+        //DashBoardController ctr = new DashBoardController();
         DateTime date = DateTime.Now;
         private Report report { get; set; }
 
@@ -189,35 +189,38 @@ namespace GestaoFinanceira
         {
             FlpAccounts.Controls.Clear();
             FlpCreditCard.Controls.Clear();
-
-            foreach (var button in ctr.GenerateCardsForFlp(PaymentMethodType.BankAccount))
+            using (DashBoardController ctr = new DashBoardController())
             {
-                button.Click += new System.EventHandler(this.GerarRelatórioByButton_Click);
-                FlpAccounts.Controls.Add(button);
-            }
-            foreach (var button in ctr.GenerateCardsForFlp(PaymentMethodType.CreditCard))
-            {
-                button.Click += new System.EventHandler(this.GerarRelatórioByButton_Click);
-                FlpCreditCard.Controls.Add(button);
+                foreach (var button in ctr.GenerateCardsForFlp(PaymentMethodType.BankAccount))
+                {
+                    button.Click += new System.EventHandler(this.GerarRelatórioByButton_Click);
+                    FlpAccounts.Controls.Add(button);
+                }
+                foreach (var button in ctr.GenerateCardsForFlp(PaymentMethodType.CreditCard))
+                {
+                    button.Click += new System.EventHandler(this.GerarRelatórioByButton_Click);
+                    FlpCreditCard.Controls.Add(button);
+                }
             }
         }
 
         private void LoadFilds()
         {
+            using (DashBoardController ctr = new DashBoardController())
+            {
+                ctr.LoadReport(date);
+                report = ctr.report;
 
-            ctr.LoadReport(date);
-            report = ctr.report;
+                lb_Month.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(date.ToString("MMMM"));
+                lbBalance.Text = report.TotalIncome.ToString("C");
+                lbExpense.Text = report.TotalExpenses.ToString("C");
+                lbRevenue.Text = report.TotalRevenue.ToString("C");
+                lbEconomy.Text = ctr.GetEconomy(date);
 
-            lb_Month.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(date.ToString("MMMM"));
-            lbBalance.Text = report.TotalIncome.ToString("C");
-            lbExpense.Text = report.TotalExpenses.ToString("C");
-            lbRevenue.Text = report.TotalRevenue.ToString("C");
-            lbEconomy.Text = ctr.GetEconomy(date);
-
-            ctr.GenerateChart(this.ctBank, ChartType.Account, date);
-            ctr.GenerateChart(this.ctCategories, ChartType.Categories, date);
-            ctr.GenerateChart(this.ctCreditCard, ChartType.CreditCard, date);
-            
+                ctr.GenerateChart(this.ctBank, ChartType.Account, date);
+                ctr.GenerateChart(this.ctCategories, ChartType.Categories, date);
+                ctr.GenerateChart(this.ctCreditCard, ChartType.CreditCard, date);
+            }
 
         }
 

@@ -17,7 +17,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace GestaoFinanceira.Controllers
 {
-    public class DashBoardController
+    class DashBoardController:ControllerBase
     {
         AccountController ctrAcc;
         PaymentMethodController ctrPayment;
@@ -35,6 +35,17 @@ namespace GestaoFinanceira.Controllers
             ctrEntry = new EntryExpensesController(ctrAcc.Context);
             ctrReport = new ReportController(ctrAcc.Context);
         }
+
+        public DashBoardController(ApplicationDbContext db) : base(db)
+        {
+            ctrAcc = new AccountController(db);
+            ctrPayment = new PaymentMethodController(ctrAcc.Context);
+            ctrCredit = new CreditCardController(ctrAcc.Context);
+            ctrCategories = new CategoriesController(ctrAcc.Context);
+            ctrEntry = new EntryExpensesController(ctrAcc.Context);
+            ctrReport = new ReportController(ctrAcc.Context);
+        }
+
         public List<Button> GenerateCardsForFlp(PaymentMethodType method)
         {
             List<Button> list = new List<Button>();
