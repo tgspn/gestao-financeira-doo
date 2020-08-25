@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestaoFinanceira.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace GestaoFinanceira
             Application.SetCompatibleTextRenderingDefault(false);
             System.Threading.Thread.CurrentThread.CurrentCulture =
                 System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("pt-BR");
+            new FrmSplashScreen().ShowDialog();
             Application.Run(new FrmDashBoard());
         }
     }

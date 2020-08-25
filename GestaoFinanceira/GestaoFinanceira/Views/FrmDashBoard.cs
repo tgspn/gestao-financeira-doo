@@ -4,10 +4,11 @@ using GestaoFinanceira.Model;
 using GestaoFinanceira.Views;
 using System;
 using System.Globalization;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestaoFinanceira
-{   
+{
     public partial class FrmDashBoard : Form
     {
         //DashBoardController ctr = new DashBoardController();
@@ -54,7 +55,7 @@ namespace GestaoFinanceira
         private void btnOpenEntries_Click(object sender, EventArgs e)
         {
             FrmEntries form = new FrmEntries();
-            if(form.ShowDialog(this)==DialogResult.OK)
+            if (form.ShowDialog(this) == DialogResult.OK)
             {
                 FrmEntryExpenses frm = new FrmEntryExpenses(form.EntryType);
                 frm.FormClosed += Form_FormClosed;
@@ -224,9 +225,11 @@ namespace GestaoFinanceira
 
         }
 
-        private void FrmDashBoard_Shown(object sender, EventArgs e)
+        private async void FrmDashBoard_Shown(object sender, EventArgs e)
         {
+            await Task.Run(() => { });
             this.LoadFlowPanels();
+            await Task.Run(() => { });
             this.LoadFilds();
         }
     }
