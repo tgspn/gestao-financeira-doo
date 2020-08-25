@@ -1,6 +1,6 @@
 ﻿namespace GestaoFinanceira.Views
 {
-    partial class FrmTransfer
+    partial class FrmAdjusteBalance
     {
         /// <summary>
         /// Required designer variable.
@@ -33,11 +33,11 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.dtpBaseTime = new System.Windows.Forms.DateTimePicker();
-            this.cbBankSender = new System.Windows.Forms.ComboBox();
-            this.cbDestination = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lbHolder = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.lbAccount = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pnBanner = new System.Windows.Forms.Panel();
             this.lbUnit = new System.Windows.Forms.Label();
@@ -53,17 +53,16 @@
             this.panel2.Controls.Add(this.btnSave);
             this.panel2.Controls.Add(this.btnCancel);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 241);
+            this.panel2.Location = new System.Drawing.Point(0, 190);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(261, 44);
-            this.panel2.TabIndex = 6;
+            this.panel2.TabIndex = 11;
             // 
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSave.Enabled = false;
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Image = global::GestaoFinanceira.Properties.Resources.icons8_checkmark_26px;
@@ -89,68 +88,66 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // dtpBaseTime
-            // 
-            this.dtpBaseTime.Font = new System.Drawing.Font("Microsoft PhagsPa", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpBaseTime.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpBaseTime.Location = new System.Drawing.Point(51, 188);
-            this.dtpBaseTime.Name = "dtpBaseTime";
-            this.dtpBaseTime.Size = new System.Drawing.Size(161, 24);
-            this.dtpBaseTime.TabIndex = 7;
-            // 
-            // cbBankSender
-            // 
-            this.cbBankSender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbBankSender.FormattingEnabled = true;
-            this.cbBankSender.Location = new System.Drawing.Point(51, 102);
-            this.cbBankSender.Name = "cbBankSender";
-            this.cbBankSender.Size = new System.Drawing.Size(161, 22);
-            this.cbBankSender.TabIndex = 9;
-            this.cbBankSender.SelectedIndexChanged += new System.EventHandler(this.cbBankSender_SelectedIndexChanged);
-            // 
-            // cbDestination
-            // 
-            this.cbDestination.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbDestination.FormattingEnabled = true;
-            this.cbDestination.Location = new System.Drawing.Point(51, 148);
-            this.cbDestination.Name = "cbDestination";
-            this.cbDestination.Size = new System.Drawing.Size(161, 22);
-            this.cbDestination.TabIndex = 9;
-            this.cbDestination.SelectedIndexChanged += new System.EventHandler(this.cbBankSender_SelectedIndexChanged);
-            // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.lbHolder);
+            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.lbAccount);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pnBanner);
-            this.panel1.Controls.Add(this.dtpBaseTime);
-            this.panel1.Controls.Add(this.cbBankSender);
-            this.panel1.Controls.Add(this.cbDestination);
+            this.panel1.Font = new System.Drawing.Font("Microsoft PhagsPa", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(261, 244);
-            this.panel1.TabIndex = 10;
+            this.panel1.Size = new System.Drawing.Size(261, 190);
+            this.panel1.TabIndex = 12;
+            // 
+            // lbHolder
+            // 
+            this.lbHolder.Location = new System.Drawing.Point(69, 117);
+            this.lbHolder.Name = "lbHolder";
+            this.lbHolder.Size = new System.Drawing.Size(181, 14);
+            this.lbHolder.TabIndex = 12;
+            this.lbHolder.Text = "Titular";
+            this.lbHolder.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(17, 117);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 14);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Titular:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(48, 131);
+            this.label2.Location = new System.Drawing.Point(33, 137);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 14);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "Destino";
+            this.label2.Size = new System.Drawing.Size(197, 32);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Ajustar saldo ira criar uma receita ou despesa de acordo com o saldo atual.";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbAccount
+            // 
+            this.lbAccount.Font = new System.Drawing.Font("Microsoft PhagsPa", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbAccount.Location = new System.Drawing.Point(66, 97);
+            this.lbAccount.Name = "lbAccount";
+            this.lbAccount.Size = new System.Drawing.Size(181, 20);
+            this.lbAccount.TabIndex = 11;
+            this.lbAccount.Text = "Banco";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(48, 85);
+            this.label1.Font = new System.Drawing.Font("Microsoft PhagsPa", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 97);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 14);
+            this.label1.Size = new System.Drawing.Size(51, 20);
             this.label1.TabIndex = 11;
-            this.label1.Text = "Origem";
+            this.label1.Text = "Conta:";
             // 
             // pnBanner
             // 
@@ -190,23 +187,20 @@
             this.nupValue.Size = new System.Drawing.Size(263, 28);
             this.nupValue.TabIndex = 0;
             this.nupValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.nupValue.ValueChanged += new System.EventHandler(this.cbBankSender_SelectedIndexChanged);
             // 
-            // frmTransfer
+            // FrmAdjusteBalance
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(261, 285);
+            this.ClientSize = new System.Drawing.Size(261, 234);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
-            this.Font = new System.Drawing.Font("Microsoft PhagsPa", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "frmTransfer";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Name = "FrmAdjusteBalance";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Transferência";
-            this.Load += new System.EventHandler(this.frmTransfer_Load);
+            this.Text = "Ajuste de Saldo";
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -223,14 +217,14 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.DateTimePicker dtpBaseTime;
-        private System.Windows.Forms.ComboBox cbBankSender;
-        private System.Windows.Forms.ComboBox cbDestination;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel pnBanner;
         private System.Windows.Forms.Label lbUnit;
         private System.Windows.Forms.NumericUpDown nupValue;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbAccount;
+        private System.Windows.Forms.Label lbHolder;
+        private System.Windows.Forms.Label label3;
     }
 }

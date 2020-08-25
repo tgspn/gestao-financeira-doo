@@ -191,6 +191,7 @@
             this.btnAdjustBalance.TabIndex = 12;
             this.toolTip1.SetToolTip(this.btnAdjustBalance, "Ajustar Saldo");
             this.btnAdjustBalance.UseVisualStyleBackColor = false;
+            this.btnAdjustBalance.Click += new System.EventHandler(this.btnAdjustBalance_Click);
             // 
             // btnTransfer
             // 

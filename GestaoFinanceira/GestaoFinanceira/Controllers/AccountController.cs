@@ -41,7 +41,7 @@ namespace GestaoFinanceira.Controllers
         }
         public void Remove(Account account)
         {
-            Context.Accounts.Remove(account);
+            Context.Entry(account).State = EntityState.Deleted;
             Context.SaveChanges();
         }
 

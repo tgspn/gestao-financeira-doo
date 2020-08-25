@@ -12,13 +12,13 @@ using System.Windows.Forms;
 
 namespace GestaoFinanceira.Views
 {
-    public partial class frmTransfer : Form
+    public partial class FrmTransfer : Form
     {
         EntryExpensesController ctrEntry = new EntryExpensesController();
         AccountController ctrAccount = new AccountController();
         DashBoardController ctrDash = new DashBoardController();
 
-        public frmTransfer()
+        public FrmTransfer()
         {
             InitializeComponent();
         }
@@ -37,6 +37,7 @@ namespace GestaoFinanceira.Views
             cbDestination.DataSource = new BindingSource(dict, null);
             cbDestination.DisplayMember = "Key";
             cbDestination.ValueMember = "Value";
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

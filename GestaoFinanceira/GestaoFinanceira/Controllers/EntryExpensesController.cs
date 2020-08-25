@@ -35,11 +35,33 @@ namespace GestaoFinanceira.Controllers
 
         public void Save(EntryExpenses entry)
         {
-            EntryExpenses ent = entry.Id != 0 ? Context.Expenses.First(c => c.Id == entry.Id) : null;
+            EntryExpenses ent = entry.Id != 0 ? Context.Expenses.First(e => e.Id == entry.Id) : null;
             if (ent == null)
                 Context.Expenses.Add(entry);
             Context.SaveChanges();
         }
+
+        internal bool AdjustBalance(double value, int id)
+        {
+            Account account = Context.Accounts.First(acc => acc.Id == id);
+            EntryExpenses entry = new EntryExpenses()
+                {
+                    Description = "Ajuste de Saldo",
+                    Value = value > account.Balance ? value - account.Balance : account.Balance - value,
+                    Date = DateTime.Now,
+                    EntryType = value > account.Balance ? Enums.EntryType.Revenue : Enums.EntryType.Expense,
+                    PaymentMethod = account
+                };
+
+            if (-1 * account.Limit < value)
+            {
+                account.Balance = value;
+                this.Save(entry);
+                return true;
+            }
+            return false;
+        }
+
         public void Remove(EntryExpenses entry)
         {
             Context.Expenses.Remove(entry);

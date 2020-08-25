@@ -118,11 +118,19 @@ namespace GestaoFinanceira.Views
 
         private void btnTransfer_Click(object sender, EventArgs e)
         {
-            frmTransfer form = new frmTransfer();
+            FrmTransfer form = new FrmTransfer();
             form.ShowDialog();
             LoadDataGrid();
             dtvBankAccount.DataSource = accountBancks;
 
+        }
+
+        private void btnAdjustBalance_Click(object sender, EventArgs e)
+        {
+            FrmAdjusteBalance frm = new FrmAdjusteBalance(dtvBankAccount.SelectedRows[0].DataBoundItem as Account);
+            frm.ShowDialog();
+            LoadDataGrid();
+            dtvBankAccount.DataSource = accountBancks;
         }
     }
 
