@@ -124,7 +124,7 @@ namespace GestaoFinanceira.Controllers
                             report.SubCategories.Add(entry.SubCategory);
                 }
 
-                if (DateTime.Compare(entry.Date, dateInit) > 0 && entry.EntryType == EntryType.TransferExpense || entry.EntryType == EntryType.TransferRevenue)
+                if (DateTime.Compare(entry.Date, dateInit) > 0 || entry.EntryType == EntryType.Transfer)
                     report.EntryTransfer.Add(entry);
 
                 if (DateTime.Compare(entry.Date, dateInit) > 0 && entry.EntryType == EntryType.AjustBalance)
@@ -152,7 +152,7 @@ namespace GestaoFinanceira.Controllers
                         report.SubCategories.Remove(entry.SubCategory);
                 }
 
-                if (DateTime.Compare(entry.Date, dateEnd) > 0 && entry.EntryType == EntryType.TransferExpense || entry.EntryType == EntryType.TransferRevenue)
+                if (DateTime.Compare(entry.Date, dateEnd) > 0 && entry.EntryType == EntryType.Transfer)
                     report.EntryTransfer.Remove(entry);
 
                 if (DateTime.Compare(entry.Date, dateEnd) > 0 && entry.EntryType == EntryType.AjustBalance)
@@ -218,7 +218,7 @@ namespace GestaoFinanceira.Controllers
                 report.EntryRevenue.Add(entry);
             }
 
-            if (entry.EntryType == EntryType.TransferExpense || entry.EntryType == EntryType.TransferRevenue)
+            if (entry.EntryType == EntryType.Transfer)
                 report.EntryTransfer.Add(entry);
 
             if (entry.EntryType == EntryType.AjustBalance)

@@ -50,6 +50,7 @@ namespace GestaoFinanceira.Controllers
                     Value = value > account.Balance ? value - account.Balance : account.Balance - value,
                     Date = DateTime.Now,
                     EntryType = value > account.Balance ? Enums.EntryType.Revenue : Enums.EntryType.Expense,
+                    Category = Context.Categories.First(c => c.Id == 8),
                     PaymentMethod = account
                 };
 
@@ -101,24 +102,24 @@ namespace GestaoFinanceira.Controllers
             outAcc.Balance += -value;
             inAcc.Balance += value;
 
-            
-
             EntryExpenses inEntry = new EntryExpenses()
             {
-                Description = "Transferencia entre contas",
+                Description = "Recebido de " + outAcc.Bank,
                 Value = value,
                 Date = date,
-                PaymentMethod = outAcc,
-                EntryType = EntryType.TransferRevenue
+                PaymentMethod = inAcc,
+                Category = Context.Categories.First(c => c.Id == 9),
+                EntryType = EntryType.Transfer
             };
 
             EntryExpenses outEntry = new EntryExpenses()
             {
-                Description = "Transferencia entre contas",
+                Description = "Enviado para " + inAcc.Bank,
                 Value = value,
                 Date = date,
-                PaymentMethod = inAcc,
-                EntryType = EntryType.TransferExpense
+                Category = Context.Categories.First(c => c.Id == 9),
+                PaymentMethod = outAcc,
+                EntryType = EntryType.Transfer
             };
             Save(inEntry);
             Save(outEntry);
