@@ -38,12 +38,15 @@ namespace GestaoFinanceira.Views
             LoadCategories();
             LoadPaymanetMethod();
             cbCategoria.SelectedIndex = cbCategoria.FindString(entry.Category.Description);
+
             if (entry.PaymentMethod is Account)
                 cbPaymentMethod.SelectedIndex = cbPaymentMethod.FindString(((Account)entry.PaymentMethod).Bank);
             else
                 cbPaymentMethod.SelectedIndex = cbPaymentMethod.FindString(((CreditCard)entry.PaymentMethod).Issuer);
+
             if (entry.Category.SubCategories.Count != 0)
                 cbSubCategoria.SelectedIndex = cbSubCategoria.FindString(entry.Category.SubCategories[0].Description);
+
             this.isEditMode = true;
             btnSave.Enabled = true;
             this.Model = entry;

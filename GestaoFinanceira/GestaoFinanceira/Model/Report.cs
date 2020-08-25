@@ -18,6 +18,8 @@ namespace GestaoFinanceira.Model
         public virtual List<CreditCard> CreditCards { get; set; } = new List<CreditCard>();
         public virtual List<EntryExpenses> EntryRevenue { get; set; } = new List<EntryExpenses>();
         public virtual List<EntryExpenses> EntryExpenses { get; set; } = new List<EntryExpenses>();
+        public virtual List<EntryExpenses> EntryTransfer { get; set; } = new List<EntryExpenses>();
+        public virtual List<EntryExpenses> EntryAjustBalance { get; set; } = new List<EntryExpenses>();
         public virtual List<Category> Categories { get; set; } = new List<Category>();
         public virtual List<SubCategories> SubCategories { get; set; } = new List<SubCategories>();
 

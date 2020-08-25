@@ -60,24 +60,7 @@ namespace GestaoFinanceira.Controllers
             {
                 if (CheckMonth(date, entry.Date))
                 {
-                    if (entry.EntryType == EntryType.Expense)
-                    {
-                        report.TotalExpenses = entry.Value + report.TotalExpenses;
-                        report.EntryExpenses.Add(entry);
-                    }
-
-                    if (entry.EntryType == EntryType.Revenue)
-                    {
-                        report.TotalRevenue = entry.Value + report.TotalRevenue;
-                        report.EntryRevenue.Add(entry);
-                    }
-
-                    if (!report.Categories.Any(x => x.Id == entry.Category.Id))
-                        report.Categories.Add(entry.Category);
-
-                    if (!report.SubCategories.Any(x=>entry.SubCategory.Id==x.Id) && entry.SubCategory.Description != null)
-                        report.SubCategories.Add(entry.SubCategory);
-
+                    RulesForFeactures(report, entry);
                 }
             }
             return report;
@@ -140,6 +123,13 @@ namespace GestaoFinanceira.Controllers
                         if (!(entry.SubCategory is null) && entry.Description != null)
                             report.SubCategories.Add(entry.SubCategory);
                 }
+
+                if (DateTime.Compare(entry.Date, dateInit) > 0 && entry.EntryType == EntryType.TransferExpense || entry.EntryType == EntryType.TransferRevenue)
+                    report.EntryTransfer.Add(entry);
+
+                if (DateTime.Compare(entry.Date, dateInit) > 0 && entry.EntryType == EntryType.AjustBalance)
+                    report.EntryAjustBalance.Add(entry);
+
             }
         }
 
@@ -161,6 +151,12 @@ namespace GestaoFinanceira.Controllers
                     if (!(entry.SubCategory is null))
                         report.SubCategories.Remove(entry.SubCategory);
                 }
+
+                if (DateTime.Compare(entry.Date, dateEnd) > 0 && entry.EntryType == EntryType.TransferExpense || entry.EntryType == EntryType.TransferRevenue)
+                    report.EntryTransfer.Remove(entry);
+
+                if (DateTime.Compare(entry.Date, dateEnd) > 0 && entry.EntryType == EntryType.AjustBalance)
+                    report.EntryAjustBalance.Remove(entry);
             }
         }
 
@@ -178,17 +174,7 @@ namespace GestaoFinanceira.Controllers
                 {
                     if (((Account)entry.PaymentMethod).Id == acc.Id)
                     {
-                        if (entry.EntryType == EntryType.Expense)
-                        {
-                            report.TotalExpenses = entry.Value + report.TotalExpenses;
-                            report.EntryExpenses.Add(entry);
-                        }
-
-                        if (!report.Categories.Contains(entry.Category))
-                            report.Categories.Add(entry.Category);
-
-                        if (!report.SubCategories.Contains(entry.SubCategory))
-                            report.SubCategories.Add(entry.SubCategory);
+                        RulesForFeactures(report, entry);
                     }
                 }
             }
@@ -210,17 +196,7 @@ namespace GestaoFinanceira.Controllers
                 {
                     if (((CreditCard)entry.PaymentMethod).Id == card.Id)
                     {
-                        if (entry.EntryType == EntryType.Expense)
-                        {
-                            report.TotalExpenses = entry.Value + report.TotalExpenses;
-                            report.EntryExpenses.Add(entry);
-                        }
-
-                        if (!report.Categories.Contains(entry.Category))
-                            report.Categories.Add(entry.Category);
-
-                        if (!report.SubCategories.Contains(entry.SubCategory))
-                            report.SubCategories.Add(entry.SubCategory);
+                        RulesForFeactures(report, entry);
                     }
                 }
             }
@@ -228,16 +204,38 @@ namespace GestaoFinanceira.Controllers
             return report;
         }
 
+        private void RulesForFeactures(Report report, EntryExpenses entry)
+        {
+            if (entry.EntryType == EntryType.Expense)
+            {
+                report.TotalExpenses = entry.Value + report.TotalExpenses;
+                report.EntryExpenses.Add(entry);
+            }
+
+            if (entry.EntryType == EntryType.Revenue)
+            {
+                report.TotalRevenue = entry.Value + report.TotalRevenue;
+                report.EntryRevenue.Add(entry);
+            }
+
+            if (entry.EntryType == EntryType.TransferExpense || entry.EntryType == EntryType.TransferRevenue)
+                report.EntryTransfer.Add(entry);
+
+            if (entry.EntryType == EntryType.AjustBalance)
+                report.EntryAjustBalance.Add(entry);
+
+            if (!report.Categories.Any(x => x.Id == entry.Category.Id) && !string.IsNullOrEmpty(entry.SubCategory.Description))
+                report.Categories.Add(entry.Category);
+
+            if (!report.SubCategories.Any(x => entry.SubCategory.Id == x.Id) && !string.IsNullOrEmpty(entry.SubCategory.Description))
+                report.SubCategories.Add(entry.SubCategory);
+        }
+
         public Report GenerateByCategories(DateTime date)
         {
             throw new NotImplementedException();
         }
         public Report GenerateBySubCategories()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void ToModel(string csvContent)
         {
             throw new NotImplementedException();
         }

@@ -70,6 +70,39 @@ namespace GestaoFinanceira.Controllers
             return false;
         }
 
+        internal bool PerformTransfer(double value, int bankOrigin, int BankDestination, DateTime date)
+        {
+            Account inAcc = Context.Accounts.First(c => c.Id == BankDestination);
+            Account outAcc = Context.Accounts.First(c => c.Id == bankOrigin);
+            if (outAcc.Limit * -1 > (outAcc.Balance - value))
+                return false;
+            outAcc.Balance += -value;
+            inAcc.Balance += value;
+
+            
+
+            EntryExpenses inEntry = new EntryExpenses()
+            {
+                Description = "Transferencia entre contas",
+                Value = value,
+                Date = date,
+                PaymentMethod = outAcc,
+                EntryType = EntryType.TransferRevenue
+            };
+
+            EntryExpenses outEntry = new EntryExpenses()
+            {
+                Description = "Transferencia entre contas",
+                Value = value,
+                Date = date,
+                PaymentMethod = inAcc,
+                EntryType = EntryType.TransferExpense
+            };
+            Save(inEntry);
+            Save(outEntry);
+            return true;
+        }
+
         private bool MakePayment(EntryExpenses entry)
         {
             Account acc;
