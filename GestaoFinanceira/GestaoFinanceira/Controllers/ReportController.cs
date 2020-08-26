@@ -1,8 +1,9 @@
-﻿using GestaoFinanceira.BD.Conections;
+using GestaoFinanceira.BD.Conections;
 using GestaoFinanceira.Enums;
 using GestaoFinanceira.Model;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
@@ -21,9 +22,12 @@ namespace GestaoFinanceira.Controllers
         {
         }
 
-        public string Export()
+        public void Export(string fileName, Report report)
         {
-            throw new NotImplementedException();
+            if (Path.GetExtension(fileName) == ".gfc")
+                ReportExportImportManager.GenerateGFC(fileName, report);
+            else
+                ReportExportImportManager.GenerateExcel(fileName, report);
         }
 
         public void Import(string csvContent)
