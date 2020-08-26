@@ -46,6 +46,7 @@ namespace GestaoFinanceira.Controllers
             report.TotalIncome = 0.00;
             report.TotalExpenses = 0.00;
             report.TotalRevenue = 0.00;
+            report.Date=date;
 
             foreach (var payment in Context.PaymentMethod)
             {
@@ -171,6 +172,7 @@ namespace GestaoFinanceira.Controllers
             report.TotalIncome = 0.00;
             report.TotalExpenses = 0.00;
             report.TotalRevenue = 0.00;
+            report.Date = date;
 
             foreach (var entry in Context.Expenses.Include("Category").Include("SubCategory").ToList())
             {
@@ -193,6 +195,7 @@ namespace GestaoFinanceira.Controllers
             report.TotalIncome = 0.00;
             report.TotalExpenses = 0.00;
             report.TotalRevenue = 0.00;
+            report.Date = date;
 
             foreach (var entry in Context.Expenses.Include("Category").Include("SubCategory").ToList())
             {
