@@ -38,7 +38,7 @@ namespace GestaoFinanceira.Controllers
 
         public void Save(Category categories)
         {
-            Category cat = categories.Id != 0 ? Context.Categories.First(a => a.Id == categories.Id): null;
+            Category cat = categories.Id != 0 ? Context.Categories.FirstOrDefault(a => a.Id == categories.Id): null;
             if (cat == null)
                 Context.Categories.Add(categories);
             Context.SaveChanges();

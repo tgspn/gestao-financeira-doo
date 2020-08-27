@@ -34,7 +34,7 @@ namespace GestaoFinanceira.Controllers
 
         public void Save(Account account)
         {
-            Account acc = account.Id != 0 ? Context.Accounts.First(a => a.Id == account.Id) : null;
+            Account acc = account.Id != 0 ? Context.Accounts.FirstOrDefault(a => a.Id == account.Id) : null;
             if (acc == null)
                 Context.Accounts.Add(account);
             Context.SaveChanges();

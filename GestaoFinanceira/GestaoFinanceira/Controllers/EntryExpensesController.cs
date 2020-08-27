@@ -1,13 +1,9 @@
 ﻿using GestaoFinanceira.BD.Conections;
-using GestaoFinanceira.BD.DAO;
 using GestaoFinanceira.Enums;
 using GestaoFinanceira.Model;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GestaoFinanceira.Controllers
 {
@@ -35,7 +31,7 @@ namespace GestaoFinanceira.Controllers
 
         public void Save(EntryExpenses entry)
         {
-            EntryExpenses ent = entry.Id != 0 ? Context.Expenses.First(e => e.Id == entry.Id) : null;
+            EntryExpenses ent = entry.Id != 0 ? Context.Expenses.FirstOrDefault(e => e.Id == entry.Id) : null;
             if (ent == null)
                 Context.Expenses.Add(entry);
             Context.SaveChanges();
@@ -50,7 +46,7 @@ namespace GestaoFinanceira.Controllers
                     Value = value > account.Balance ? value - account.Balance : account.Balance - value,
                     Date = DateTime.Now,
                     EntryType = value > account.Balance ? Enums.EntryType.Revenue : Enums.EntryType.Expense,
-                    Category = Context.Categories.First(c => c.Id == 8),
+                    Category = Context.Categories.FirstOrDefault(c => c.Id == 8),
                     PaymentMethod = account
                 };
 
@@ -78,7 +74,7 @@ namespace GestaoFinanceira.Controllers
             {
                 if (entry.PaymentMethod is Account)
                 {
-                    acc = Context.Accounts.First(a => a.Id == entry.PaymentMethod.Id);
+                    acc = Context.Accounts.FirstOrDefault(a => a.Id == entry.PaymentMethod.Id);
                     acc.Balance += entry.Value;
                     Context.SaveChanges();
                     return true;
@@ -95,8 +91,8 @@ namespace GestaoFinanceira.Controllers
 
         internal bool PerformTransfer(double value, int bankOrigin, int BankDestination, DateTime date)
         {
-            Account inAcc = Context.Accounts.First(c => c.Id == BankDestination);
-            Account outAcc = Context.Accounts.First(c => c.Id == bankOrigin);
+            Account inAcc = Context.Accounts.FirstOrDefault(c => c.Id == BankDestination);
+            Account outAcc = Context.Accounts.FirstOrDefault(c => c.Id == bankOrigin);
             if (outAcc.Limit * -1 > (outAcc.Balance - value))
                 return false;
             outAcc.Balance += -value;
@@ -108,7 +104,7 @@ namespace GestaoFinanceira.Controllers
                 Value = value,
                 Date = date,
                 PaymentMethod = inAcc,
-                Category = Context.Categories.First(c => c.Id == 9),
+                Category = Context.Categories.FirstOrDefault(c => c.Id == 9),
                 EntryType = EntryType.Transfer
             };
 
@@ -117,7 +113,7 @@ namespace GestaoFinanceira.Controllers
                 Description = "Enviado para " + inAcc.Bank,
                 Value = value,
                 Date = date,
-                Category = Context.Categories.First(c => c.Id == 9),
+                Category = Context.Categories.FirstOrDefault(c => c.Id == 9),
                 PaymentMethod = outAcc,
                 EntryType = EntryType.Transfer
             };
@@ -132,7 +128,7 @@ namespace GestaoFinanceira.Controllers
             CreditCard card;
             if (entry.PaymentMethod is Account)
             {
-                acc = Context.Accounts.First(a => a.Id == entry.PaymentMethod.Id);
+                acc = Context.Accounts.FirstOrDefault(a => a.Id == entry.PaymentMethod.Id);
                 if (acc.Balance > (-1) * acc.Limit)
                 {
                     acc.Balance += - entry.Value;
@@ -143,7 +139,7 @@ namespace GestaoFinanceira.Controllers
                     return false;
             }else
             {
-                card = Context.CreditCards.First(a => a.Id == entry.PaymentMethod.Id);
+                card = Context.CreditCards.FirstOrDefault(a => a.Id == entry.PaymentMethod.Id);
                 if (card.Amount > (-1) * card.Limit)
                 {
                     card.Amount += -entry.Value;
