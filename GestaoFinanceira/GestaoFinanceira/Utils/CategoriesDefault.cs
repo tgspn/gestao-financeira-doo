@@ -98,7 +98,15 @@ namespace GestaoFinanceira.Model
             cat.type = Enums.EntryType.Expense;
             categories.Add(cat);
 
+            cat = new Category();
+            cat.Description = "Reajuste";
+            cat.type = Enums.EntryType.AjustBalance;
+            categories.Add(cat);
 
+            cat = new Category();
+            cat.Description = "Transferência";
+            cat.type = Enums.EntryType.Transfer;
+            categories.Add(cat);
 
             return categories;
         }

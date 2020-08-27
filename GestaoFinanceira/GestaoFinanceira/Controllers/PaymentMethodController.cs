@@ -12,17 +12,7 @@ namespace GestaoFinanceira.Controllers
 {
     class PaymentMethodController : ControllerBase
     {
-        //private CreditCardDAO daoCredit;
-        //private IConnection<CreditCard> connectionCredit;
-        //private AccountDAO daoAccount;
-        //private IConnection<Account> connectionAccount;
-        //public PaymentMethodController(IConnection<Account> connectionAccount, IConnection<CreditCard> connectionCredit)
-        //{
-        //    this.connectionCredit = connectionCredit;
-        //    this.daoCredit = new CreditCardDAO(connectionCredit);
-        //    this.connectionAccount = connectionAccount;
-        //    this.daoAccount = new AccountDAO(connectionAccount);
-        //}
+
         public PaymentMethodController()
         {
 

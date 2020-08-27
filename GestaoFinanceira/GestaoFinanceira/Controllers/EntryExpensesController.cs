@@ -1,13 +1,9 @@
 ﻿using GestaoFinanceira.BD.Conections;
-using GestaoFinanceira.BD.DAO;
 using GestaoFinanceira.Enums;
 using GestaoFinanceira.Model;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GestaoFinanceira.Controllers
 {
@@ -35,11 +31,34 @@ namespace GestaoFinanceira.Controllers
 
         public void Save(EntryExpenses entry)
         {
-            EntryExpenses ent = entry.Id != 0 ? Context.Expenses.First(c => c.Id == entry.Id) : null;
+            EntryExpenses ent = entry.Id != 0 ? Context.Expenses.FirstOrDefault(e => e.Id == entry.Id) : null;
             if (ent == null)
                 Context.Expenses.Add(entry);
             Context.SaveChanges();
         }
+
+        internal bool AdjustBalance(double value, int id)
+        {
+            Account account = Context.Accounts.First(acc => acc.Id == id);
+            EntryExpenses entry = new EntryExpenses()
+                {
+                    Description = "Ajuste de Saldo",
+                    Value = value > account.Balance ? value - account.Balance : account.Balance - value,
+                    Date = DateTime.Now,
+                    EntryType = value > account.Balance ? Enums.EntryType.Revenue : Enums.EntryType.Expense,
+                    Category = Context.Categories.FirstOrDefault(c => c.Id == 8),
+                    PaymentMethod = account
+                };
+
+            if (-1 * account.Limit < value)
+            {
+                account.Balance = value;
+                this.Save(entry);
+                return true;
+            }
+            return false;
+        }
+
         public void Remove(EntryExpenses entry)
         {
             Context.Expenses.Remove(entry);
@@ -55,7 +74,7 @@ namespace GestaoFinanceira.Controllers
             {
                 if (entry.PaymentMethod is Account)
                 {
-                    acc = Context.Accounts.First(a => a.Id == entry.PaymentMethod.Id);
+                    acc = Context.Accounts.FirstOrDefault(a => a.Id == entry.PaymentMethod.Id);
                     acc.Balance += entry.Value;
                     Context.SaveChanges();
                     return true;
@@ -70,13 +89,46 @@ namespace GestaoFinanceira.Controllers
             return false;
         }
 
+        internal bool PerformTransfer(double value, int bankOrigin, int BankDestination, DateTime date)
+        {
+            Account inAcc = Context.Accounts.FirstOrDefault(c => c.Id == BankDestination);
+            Account outAcc = Context.Accounts.FirstOrDefault(c => c.Id == bankOrigin);
+            if (outAcc.Limit * -1 > (outAcc.Balance - value))
+                return false;
+            outAcc.Balance += -value;
+            inAcc.Balance += value;
+
+            EntryExpenses inEntry = new EntryExpenses()
+            {
+                Description = "Recebido de " + outAcc.Bank,
+                Value = value,
+                Date = date,
+                PaymentMethod = inAcc,
+                Category = Context.Categories.FirstOrDefault(c => c.Id == 9),
+                EntryType = EntryType.Transfer
+            };
+
+            EntryExpenses outEntry = new EntryExpenses()
+            {
+                Description = "Enviado para " + inAcc.Bank,
+                Value = value,
+                Date = date,
+                Category = Context.Categories.FirstOrDefault(c => c.Id == 9),
+                PaymentMethod = outAcc,
+                EntryType = EntryType.Transfer
+            };
+            Save(inEntry);
+            Save(outEntry);
+            return true;
+        }
+
         private bool MakePayment(EntryExpenses entry)
         {
             Account acc;
             CreditCard card;
             if (entry.PaymentMethod is Account)
             {
-                acc = Context.Accounts.First(a => a.Id == entry.PaymentMethod.Id);
+                acc = Context.Accounts.FirstOrDefault(a => a.Id == entry.PaymentMethod.Id);
                 if (acc.Balance > (-1) * acc.Limit)
                 {
                     acc.Balance += - entry.Value;
@@ -87,7 +139,7 @@ namespace GestaoFinanceira.Controllers
                     return false;
             }else
             {
-                card = Context.CreditCards.First(a => a.Id == entry.PaymentMethod.Id);
+                card = Context.CreditCards.FirstOrDefault(a => a.Id == entry.PaymentMethod.Id);
                 if (card.Amount > (-1) * card.Limit)
                 {
                     card.Amount += -entry.Value;

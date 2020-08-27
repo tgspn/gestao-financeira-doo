@@ -15,7 +15,7 @@ namespace GestaoFinanceira.Model
 
         public override string ToString()
         {
-            return $"{Id} {Bank}";
+            return Bank;
         }
 
     }

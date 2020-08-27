@@ -69,7 +69,7 @@ namespace GestaoFinanceira.Views
 
         private BindingList<EntryExpenses> LoadEntriesTypes()
         {
-            return new BindingList<EntryExpenses>(ctr.List().Where(entry => entry.EntryType == this.entryType && (entry.Date.ToString("MM yyyy") == date.ToString("MM yyyy"))).ToList());
+            return new BindingList<EntryExpenses>(ctr.List().Where(e => e.Date.ToString("MM yyyy") == date.ToString("MM yyyy") && e.EntryType == this.entryType).ToList());
         }
 
         private void btnEdit_Click(object sender, EventArgs e)

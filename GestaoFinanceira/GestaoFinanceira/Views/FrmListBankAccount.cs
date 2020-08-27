@@ -23,6 +23,8 @@ namespace GestaoFinanceira.Views
             InitializeComponent();
             btnDelete.Enabled = false;
             btnEdit.Enabled = false;
+            btnTransfer.Enabled = false;
+            btnAdjustBalance.Enabled = false;
             this.ctr = new AccountController();
 
         }
@@ -43,6 +45,8 @@ namespace GestaoFinanceira.Views
         {
             btnEdit.Enabled = true;
             btnDelete.Enabled = true;
+            btnTransfer.Enabled = true;
+            btnAdjustBalance.Enabled = true;
         }
 
         private void lbBankAccount_Paint(object sender, PaintEventArgs e)
@@ -82,7 +86,7 @@ namespace GestaoFinanceira.Views
         private async void FrmListBankAccount_Shown(object sender, EventArgs e)
         {
 
-            await this.Loading(() =>{this.accountBancks = new BindingList<Account>(ctr.List().ToList());});
+            await this.Loading(() =>{ LoadDataGrid(); });
 
             dtvBankAccount.DataSource = accountBancks;
 
@@ -104,7 +108,30 @@ namespace GestaoFinanceira.Views
             }
         }
 
+        private void LoadDataGrid()
+        {
+            using (AccountController ctr = new AccountController())
+            {
+                accountBancks = new BindingList<Account>(ctr.List().ToList());
+            }
+        }
 
+        private void btnTransfer_Click(object sender, EventArgs e)
+        {
+            FrmTransfer form = new FrmTransfer();
+            form.ShowDialog();
+            LoadDataGrid();
+            dtvBankAccount.DataSource = accountBancks;
+
+        }
+
+        private void btnAdjustBalance_Click(object sender, EventArgs e)
+        {
+            FrmAdjusteBalance frm = new FrmAdjusteBalance(dtvBankAccount.SelectedRows[0].DataBoundItem as Account);
+            frm.ShowDialog();
+            LoadDataGrid();
+            dtvBankAccount.DataSource = accountBancks;
+        }
     }
 
 }

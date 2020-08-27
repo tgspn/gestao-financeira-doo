@@ -38,7 +38,7 @@ namespace GestaoFinanceira.Controllers
 
         public void Save(Category categories)
         {
-            Category cat = categories.Id != 0 ? Context.Categories.First(a => a.Id == categories.Id): null;
+            Category cat = categories.Id != 0 ? Context.Categories.FirstOrDefault(a => a.Id == categories.Id): null;
             if (cat == null)
                 Context.Categories.Add(categories);
             Context.SaveChanges();
@@ -60,7 +60,10 @@ namespace GestaoFinanceira.Controllers
             int type = 0;
             int i = 0;
             int j = 0;
-            foreach (var cat in Context.Categories.ToList().OrderBy(a => a.type).ThenBy(a => a.Description))
+            foreach (var cat in Context.Categories.ToList().Where(c => 
+                c.type != Enums.EntryType.AjustBalance &&
+                c.type != Enums.EntryType.Transfer
+                ).OrderBy(a => a.type).ThenBy(a => a.Description))
             {
                 if (cat.type == Enums.EntryType.Expense)
                 {

@@ -31,7 +31,7 @@ namespace GestaoFinanceira.Controllers
 
         public void Save(CreditCard creditCard)
         {
-            CreditCard card = creditCard.Id != 0 ? Context.CreditCards.First(c => c.Id == creditCard.Id) : null;
+            CreditCard card = creditCard.Id != 0 ? Context.CreditCards.FirstOrDefault(c => c.Id == creditCard.Id) : null;
             if (card == null)
                 Context.CreditCards.Add(creditCard);
             Context.SaveChanges();

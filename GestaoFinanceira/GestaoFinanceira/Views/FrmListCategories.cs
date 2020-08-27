@@ -19,8 +19,6 @@ namespace GestaoFinanceira.Views
     {
         public Category categorie;
         CategoriesController ctr = new CategoriesController();
-        private BindingList<Category> categories;
-        private BindingList<SubCategories> subCategories;
 
         public FrmListCategories()
         {
@@ -60,7 +58,7 @@ namespace GestaoFinanceira.Views
         private void lbCategories_Paint(object sender, PaintEventArgs e)
         {
             Font myFont = new Font("Microsoft PhagsPa", 16, FontStyle.Bold);
-            Brush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
+            Brush myBrush = new SolidBrush(Color.Black);
             e.Graphics.TranslateTransform(6, 125);
             e.Graphics.RotateTransform(-90);
             e.Graphics.DrawString("Categorias", myFont, myBrush, 0, 0);

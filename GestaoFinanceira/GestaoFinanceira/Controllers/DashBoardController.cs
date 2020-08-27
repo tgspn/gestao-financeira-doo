@@ -136,8 +136,7 @@ namespace GestaoFinanceira.Controllers
                         {
                             if (cat.type == EntryType.Expense && cat.Description == entry.Category.Description)
                             {
-                                foreach (var e in listEntries)
-                                    saldoCat += e.Category.Id == cat.Id ? e.Value : 0.00; 
+                                    saldoCat = listEntries.Sum(e => e.Category.Id == cat.Id ? e.Value : 0.00);
 
                                 percent = (saldoCat / report.TotalExpenses);
                                 chart.Series["Categories"].Points.Add(i);
@@ -178,8 +177,7 @@ namespace GestaoFinanceira.Controllers
                 {
                     if (cat.type == entryType && cat.Description == entry.Category.Description)
                     {
-                        foreach (var e in listEntries)
-                            saldoCat += e.Category.Id == cat.Id ? e.Value : 0.00;
+                            saldoCat = listEntries.Sum(e => e.Category.Id == cat.Id ? e.Value : 0.00);
 
                         percent = (saldoCat / report.TotalExpenses);
                         chart.Series["Categories"].Points.Add(i);
