@@ -3,6 +3,7 @@ using GestaoFinanceira.Enums;
 using GestaoFinanceira.Model;
 using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
 
@@ -155,6 +156,19 @@ namespace GestaoFinanceira.Views
         private void btnExport_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private void lbCategories_Paint(object sender, PaintEventArgs e)
+        {
+            Font myFont = new Font("Microsoft PhagsPa", 16, FontStyle.Bold);
+            Brush myBrush = new SolidBrush(Color.Black);
+            e.Graphics.TranslateTransform(6, 200);
+            e.Graphics.RotateTransform(-90);
+            e.Graphics.DrawString("Relatório", myFont, myBrush, 0, 0);
         }
     }
 }

@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.dtvEntries = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,11 +54,11 @@
             this.lbSaving = new System.Windows.Forms.Label();
             this.lbTotalRevenue = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lbName = new System.Windows.Forms.Label();
+            this.lbHolder = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.dtpDateEnd = new System.Windows.Forms.DateTimePicker();
             this.dtpDateIni = new System.Windows.Forms.DateTimePicker();
-            this.btnImport = new System.Windows.Forms.Button();
-            this.btnExport = new System.Windows.Forms.Button();
             this.cbModels = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -66,6 +67,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnImport = new System.Windows.Forms.Button();
             this.dtvBankAccount = new System.Windows.Forms.DataGridView();
             this.cId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cBank = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,6 +77,17 @@
             this.cAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cLimit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtvCreditCard = new System.Windows.Forms.DataGridView();
+            this.dtvCategorias = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnCategories = new System.Windows.Forms.Panel();
+            this.lbCategories = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnExport = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cIssuer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -83,19 +96,15 @@
             this.cNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cExpirationDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cClosingDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtvCategorias = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lbHolder = new System.Windows.Forms.Label();
-            this.lbName = new System.Windows.Forms.Label();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtvEntries)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctCategories)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtvBankAccount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtvCreditCard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtvCategorias)).BeginInit();
+            this.pnCategories.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dtvEntries
@@ -122,11 +131,11 @@
             this.Column10,
             this.Column12,
             this.Column13});
-            this.dtvEntries.Location = new System.Drawing.Point(277, 13);
+            this.dtvEntries.Location = new System.Drawing.Point(320, 0);
             this.dtvEntries.Name = "dtvEntries";
             this.dtvEntries.ReadOnly = true;
             this.dtvEntries.RowHeadersWidth = 31;
-            this.dtvEntries.Size = new System.Drawing.Size(617, 505);
+            this.dtvEntries.Size = new System.Drawing.Size(624, 467);
             this.dtvEntries.TabIndex = 0;
             // 
             // Column1
@@ -246,19 +255,19 @@
             // 
             this.ctCategories.AccessibleDescription = "Categorias";
             this.ctCategories.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            chartArea2.Name = "ChartArea1";
-            this.ctCategories.ChartAreas.Add(chartArea2);
-            this.ctCategories.Cursor = System.Windows.Forms.Cursors.Hand;
-            legend2.Name = "Legend1";
-            this.ctCategories.Legends.Add(legend2);
-            this.ctCategories.Location = new System.Drawing.Point(12, 384);
+            chartArea3.Name = "ChartArea1";
+            this.ctCategories.ChartAreas.Add(chartArea3);
+            this.ctCategories.Cursor = System.Windows.Forms.Cursors.Arrow;
+            legend3.Name = "Legend1";
+            this.ctCategories.Legends.Add(legend3);
+            this.ctCategories.Location = new System.Drawing.Point(40, 312);
             this.ctCategories.Name = "ctCategories";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.Legend = "Legend1";
-            series2.Name = "Categories";
-            this.ctCategories.Series.Add(series2);
-            this.ctCategories.Size = new System.Drawing.Size(259, 135);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series3.Legend = "Legend1";
+            series3.Name = "Categories";
+            this.ctCategories.Series.Add(series3);
+            this.ctCategories.Size = new System.Drawing.Size(273, 158);
             this.ctCategories.TabIndex = 7;
             this.ctCategories.Text = "Categorias";
             // 
@@ -297,7 +306,7 @@
             this.lbDate.Font = new System.Drawing.Font("Microsoft PhagsPa", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbDate.Location = new System.Drawing.Point(3, 13);
             this.lbDate.Name = "lbDate";
-            this.lbDate.Size = new System.Drawing.Size(270, 24);
+            this.lbDate.Size = new System.Drawing.Size(267, 24);
             this.lbDate.TabIndex = 8;
             this.lbDate.Text = "Janeiro 2020";
             this.lbDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -324,13 +333,13 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.Controls.Add(this.lbName);
             this.panel1.Controls.Add(this.lbHolder);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.dtpDateEnd);
             this.panel1.Controls.Add(this.dtpDateIni);
-            this.panel1.Controls.Add(this.btnImport);
-            this.panel1.Controls.Add(this.btnExport);
             this.panel1.Controls.Add(this.cbModels);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label5);
@@ -345,10 +354,27 @@
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.lbDate);
             this.panel1.Controls.Add(this.lbTotalIncome);
-            this.panel1.Location = new System.Drawing.Point(-2, 12);
+            this.panel1.Location = new System.Drawing.Point(35, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(273, 365);
+            this.panel1.Size = new System.Drawing.Size(279, 316);
             this.panel1.TabIndex = 9;
+            // 
+            // lbName
+            // 
+            this.lbName.AutoSize = true;
+            this.lbName.Location = new System.Drawing.Point(156, 45);
+            this.lbName.Name = "lbName";
+            this.lbName.Size = new System.Drawing.Size(0, 14);
+            this.lbName.TabIndex = 12;
+            // 
+            // lbHolder
+            // 
+            this.lbHolder.AutoSize = true;
+            this.lbHolder.Location = new System.Drawing.Point(37, 45);
+            this.lbHolder.Name = "lbHolder";
+            this.lbHolder.Size = new System.Drawing.Size(44, 14);
+            this.lbHolder.TabIndex = 12;
+            this.lbHolder.Text = "Titular: ";
             // 
             // label8
             // 
@@ -380,25 +406,6 @@
             this.dtpDateIni.Size = new System.Drawing.Size(104, 23);
             this.dtpDateIni.TabIndex = 10;
             this.dtpDateIni.ValueChanged += new System.EventHandler(this.dtpDateIni_ValueChanged);
-            // 
-            // btnImport
-            // 
-            this.btnImport.Location = new System.Drawing.Point(7, 329);
-            this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(100, 23);
-            this.btnImport.TabIndex = 10;
-            this.btnImport.Text = "Importar CSV";
-            this.btnImport.UseVisualStyleBackColor = true;
-            // 
-            // btnExport
-            // 
-            this.btnExport.Location = new System.Drawing.Point(142, 329);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(100, 23);
-            this.btnExport.TabIndex = 10;
-            this.btnExport.Text = "Exportar CSV";
-            this.btnExport.UseVisualStyleBackColor = true;
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // cbModels
             // 
@@ -485,6 +492,18 @@
             this.label7.TabIndex = 10;
             this.label7.Text = "Saldo disponível";
             // 
+            // btnImport
+            // 
+            this.btnImport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnImport.FlatAppearance.BorderSize = 0;
+            this.btnImport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImport.Image = global::GestaoFinanceira.Properties.Resources.icons8_import_csv_26px;
+            this.btnImport.Location = new System.Drawing.Point(92, 3);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(38, 32);
+            this.btnImport.TabIndex = 10;
+            this.btnImport.UseVisualStyleBackColor = true;
+            // 
             // dtvBankAccount
             // 
             this.dtvBankAccount.AllowUserToAddRows = false;
@@ -501,13 +520,13 @@
             this.cAccount,
             this.cLimit});
             this.dtvBankAccount.GridColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.dtvBankAccount.Location = new System.Drawing.Point(277, 13);
+            this.dtvBankAccount.Location = new System.Drawing.Point(320, 0);
             this.dtvBankAccount.MultiSelect = false;
             this.dtvBankAccount.Name = "dtvBankAccount";
             this.dtvBankAccount.ReadOnly = true;
             this.dtvBankAccount.RowHeadersWidth = 25;
             this.dtvBankAccount.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtvBankAccount.Size = new System.Drawing.Size(616, 506);
+            this.dtvBankAccount.Size = new System.Drawing.Size(616, 467);
             this.dtvBankAccount.TabIndex = 10;
             this.dtvBankAccount.Visible = false;
             // 
@@ -579,17 +598,129 @@
             this.cLateFee,
             this.cNumber,
             this.cExpirationDate,
-            this.cClosingDate});
+            this.cClosingDate,
+            this.Column14});
             this.dtvCreditCard.GridColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.dtvCreditCard.Location = new System.Drawing.Point(277, 13);
+            this.dtvCreditCard.Location = new System.Drawing.Point(320, 0);
             this.dtvCreditCard.MultiSelect = false;
             this.dtvCreditCard.Name = "dtvCreditCard";
             this.dtvCreditCard.ReadOnly = true;
             this.dtvCreditCard.RowHeadersWidth = 25;
             this.dtvCreditCard.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtvCreditCard.Size = new System.Drawing.Size(617, 506);
+            this.dtvCreditCard.Size = new System.Drawing.Size(617, 467);
             this.dtvCreditCard.TabIndex = 11;
             this.dtvCreditCard.Visible = false;
+            // 
+            // dtvCategorias
+            // 
+            this.dtvCategorias.AllowUserToAddRows = false;
+            this.dtvCategorias.AllowUserToDeleteRows = false;
+            this.dtvCategorias.BackgroundColor = System.Drawing.Color.White;
+            this.dtvCategorias.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dtvCategorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtvCategorias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn8});
+            this.dtvCategorias.GridColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.dtvCategorias.Location = new System.Drawing.Point(320, 0);
+            this.dtvCategorias.MultiSelect = false;
+            this.dtvCategorias.Name = "dtvCategorias";
+            this.dtvCategorias.ReadOnly = true;
+            this.dtvCategorias.RowHeadersWidth = 47;
+            this.dtvCategorias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtvCategorias.Size = new System.Drawing.Size(617, 467);
+            this.dtvCategorias.TabIndex = 11;
+            this.dtvCategorias.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Issuer";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Categoria";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "amount";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Valor";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "holder";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Tipo de conta";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 170;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "latefee";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Qtd Utilizada";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            // 
+            // pnCategories
+            // 
+            this.pnCategories.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.pnCategories.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(240)))));
+            this.pnCategories.Controls.Add(this.lbCategories);
+            this.pnCategories.Location = new System.Drawing.Point(-1, 0);
+            this.pnCategories.Name = "pnCategories";
+            this.pnCategories.Size = new System.Drawing.Size(39, 511);
+            this.pnCategories.TabIndex = 13;
+            // 
+            // lbCategories
+            // 
+            this.lbCategories.Location = new System.Drawing.Point(1, 81);
+            this.lbCategories.Name = "lbCategories";
+            this.lbCategories.Size = new System.Drawing.Size(35, 365);
+            this.lbCategories.TabIndex = 3;
+            this.lbCategories.Paint += new System.Windows.Forms.PaintEventHandler(this.lbCategories_Paint);
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.btnCancel);
+            this.panel2.Controls.Add(this.btnExport);
+            this.panel2.Controls.Add(this.btnImport);
+            this.panel2.Location = new System.Drawing.Point(40, 473);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(904, 38);
+            this.panel2.TabIndex = 14;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.AutoSize = true;
+            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnCancel.FlatAppearance.BorderSize = 0;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Image = global::GestaoFinanceira.Properties.Resources.icons8_multiply_26px;
+            this.btnCancel.Location = new System.Drawing.Point(4, 3);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(38, 32);
+            this.btnCancel.TabIndex = 12;
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnExport
+            // 
+            this.btnExport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExport.FlatAppearance.BorderSize = 0;
+            this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExport.Image = global::GestaoFinanceira.Properties.Resources.icons8_export_csv_26px;
+            this.btnExport.Location = new System.Drawing.Point(48, 3);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(38, 32);
+            this.btnExport.TabIndex = 10;
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -654,92 +785,33 @@
             this.cClosingDate.ReadOnly = true;
             this.cClosingDate.Width = 150;
             // 
-            // dtvCategorias
+            // Column14
             // 
-            this.dtvCategorias.AllowUserToAddRows = false;
-            this.dtvCategorias.AllowUserToDeleteRows = false;
-            this.dtvCategorias.BackgroundColor = System.Drawing.Color.White;
-            this.dtvCategorias.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dtvCategorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtvCategorias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn8});
-            this.dtvCategorias.GridColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.dtvCategorias.Location = new System.Drawing.Point(277, 12);
-            this.dtvCategorias.MultiSelect = false;
-            this.dtvCategorias.Name = "dtvCategorias";
-            this.dtvCategorias.ReadOnly = true;
-            this.dtvCategorias.RowHeadersWidth = 47;
-            this.dtvCategorias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtvCategorias.Size = new System.Drawing.Size(617, 506);
-            this.dtvCategorias.TabIndex = 11;
-            this.dtvCategorias.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Issuer";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Categoria";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "amount";
-            this.dataGridViewTextBoxColumn7.HeaderText = "Valor";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "holder";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Tipo de conta";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 170;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "latefee";
-            this.dataGridViewTextBoxColumn8.HeaderText = "Qtd Utilizada";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            // 
-            // lbHolder
-            // 
-            this.lbHolder.AutoSize = true;
-            this.lbHolder.Location = new System.Drawing.Point(37, 45);
-            this.lbHolder.Name = "lbHolder";
-            this.lbHolder.Size = new System.Drawing.Size(44, 14);
-            this.lbHolder.TabIndex = 12;
-            this.lbHolder.Text = "Titular: ";
-            // 
-            // lbName
-            // 
-            this.lbName.AutoSize = true;
-            this.lbName.Location = new System.Drawing.Point(156, 45);
-            this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(0, 14);
-            this.lbName.TabIndex = 12;
+            this.Column14.DataPropertyName = "Limit";
+            this.Column14.HeaderText = "Limit";
+            this.Column14.Name = "Column14";
+            this.Column14.ReadOnly = true;
+            this.Column14.Visible = false;
             // 
             // FrmReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(905, 531);
+            this.ClientSize = new System.Drawing.Size(948, 511);
+            this.ControlBox = false;
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.pnCategories);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ctCategories);
-            this.Controls.Add(this.dtvEntries);
-            this.Controls.Add(this.dtvBankAccount);
             this.Controls.Add(this.dtvCreditCard);
             this.Controls.Add(this.dtvCategorias);
+            this.Controls.Add(this.dtvEntries);
+            this.Controls.Add(this.dtvBankAccount);
             this.Font = new System.Drawing.Font("Microsoft PhagsPa", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FrmReport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Relatório";
             this.Load += new System.EventHandler(this.FrmReport_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtvEntries)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctCategories)).EndInit();
@@ -748,6 +820,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtvBankAccount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtvCreditCard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtvCategorias)).EndInit();
+            this.pnCategories.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -798,6 +873,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cAccount;
         private System.Windows.Forms.DataGridViewTextBoxColumn cLimit;
         private System.Windows.Forms.DataGridView dtvCreditCard;
+        private System.Windows.Forms.DataGridView dtvCategorias;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.Label lbHolder;
+        private System.Windows.Forms.Label lbName;
+        private System.Windows.Forms.Panel pnCategories;
+        private System.Windows.Forms.Label lbCategories;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn cIssuer;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -806,12 +893,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn cExpirationDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn cClosingDate;
-        private System.Windows.Forms.DataGridView dtvCategorias;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.Label lbHolder;
-        private System.Windows.Forms.Label lbName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
     }
 }

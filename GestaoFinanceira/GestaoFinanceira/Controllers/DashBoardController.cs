@@ -89,7 +89,6 @@ namespace GestaoFinanceira.Controllers
 
         public void GenerateChart(Chart chart, ChartType typeChart, DateTime date)
         {
-            double saldoBank = 0.00;
             double percent = 0.00;
             int i = 0;
 

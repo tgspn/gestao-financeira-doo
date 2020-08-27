@@ -253,6 +253,26 @@ namespace GestaoFinanceira.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_export_csv_26px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_export_csv_26px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_import_csv_26px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_import_csv_26px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_initiate_money_transfer_26px_3 {
             get {
                 object obj = ResourceManager.GetObject("icons8_initiate_money_transfer_26px_3", resourceCulture);
@@ -351,7 +371,7 @@ namespace GestaoFinanceira.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap splashscrean {
             get {

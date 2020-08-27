@@ -67,9 +67,7 @@ namespace GestaoFinanceira.Views
         {
             pnCategories.BackColor = SystemColors.BLUE;
             btnEdit.Enabled = false;
-            btnDelete.Enabled = false;
-          
-            
+            btnDelete.Enabled = false;  
         }
 
         private void btnEdit_Click(object sender, EventArgs e)

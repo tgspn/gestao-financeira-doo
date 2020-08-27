@@ -370,6 +370,12 @@
   <ItemGroup>
     <None Include="Resources\splashscrean.gif" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_import_csv_26px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_export_csv_26px.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
