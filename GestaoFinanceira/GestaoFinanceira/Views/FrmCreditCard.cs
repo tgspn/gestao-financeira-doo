@@ -39,6 +39,7 @@ namespace GestaoFinanceira.Views
         {
             return this.ValidFields(txtLimit, txtHolder, txtIssuer, mtxtClosingDate, mtxtExpirationDate, mtxtLateFee, mtxtNumber);
         }
+
         private void txtIssuer_TextChanged(object sender, EventArgs e)
         {
             btnSave.Enabled = IsValid();
@@ -94,6 +95,19 @@ namespace GestaoFinanceira.Views
             this.creditCard.Amount = Convert.ToDouble(txtLimit.Text.Replace("R$ ", "")) - this.creditCard.GetBanlce();
             this.creditCard.Limit = Convert.ToDouble(txtLimit.Text.Replace("R$ ", ""));
             return this.creditCard;
+        }
+
+        private void mtxtClosingDate_Validated(object sender, EventArgs e)
+        {
+            mtxtClosingDate.Text = Convert.ToDouble(mtxtClosingDate.Text) > 30 ? 30.ToString() : mtxtClosingDate.Text;
+        }
+
+        private void mtxtExpirationDate_Validated(object sender, EventArgs e)
+        {
+            string str = mtxtExpirationDate.Text.Substring(0, mtxtExpirationDate.Text.IndexOf("/"));
+            string str2 = mtxtExpirationDate.Text.Substring(3, 4);
+
+            mtxtExpirationDate.Text = Convert.ToDouble(str) > 12 ? $"{12}/{str2}" : mtxtExpirationDate.Text;
         }
     }
 }

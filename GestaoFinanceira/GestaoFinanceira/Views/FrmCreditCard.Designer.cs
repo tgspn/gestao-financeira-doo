@@ -104,6 +104,7 @@
             this.mtxtExpirationDate.TabIndex = 6;
             this.mtxtExpirationDate.ValidatingType = typeof(System.DateTime);
             this.mtxtExpirationDate.TextChanged += new System.EventHandler(this.txtIssuer_TextChanged);
+            this.mtxtExpirationDate.Validated += new System.EventHandler(this.mtxtExpirationDate_Validated);
             // 
             // mtxtNumber
             // 
@@ -145,6 +146,7 @@
             this.mtxtClosingDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.mtxtClosingDate.ValidatingType = typeof(int);
             this.mtxtClosingDate.TextChanged += new System.EventHandler(this.txtIssuer_TextChanged);
+            this.mtxtClosingDate.Validated += new System.EventHandler(this.mtxtClosingDate_Validated);
             // 
             // txtLimit
             // 
