@@ -100,7 +100,7 @@ namespace GestaoFinanceira.Controllers
 
             EntryExpenses inEntry = new EntryExpenses()
             {
-                Description = "Recebido de " + outAcc.Bank,
+                Description = $"Recebido de {GenerateCaptionHolder(outAcc.Holder)} - {outAcc.Bank}",
                 Value = value,
                 Date = date,
                 PaymentMethod = inAcc,
@@ -110,7 +110,7 @@ namespace GestaoFinanceira.Controllers
 
             EntryExpenses outEntry = new EntryExpenses()
             {
-                Description = "Enviado para " + inAcc.Bank,
+                Description = $"Enviado para {GenerateCaptionHolder(inAcc.Holder)} - {inAcc.Bank}",
                 Value = value,
                 Date = date,
                 Category = Context.Categories.FirstOrDefault(c => c.Id == 9),
@@ -151,6 +151,18 @@ namespace GestaoFinanceira.Controllers
 
             }
             return false;
+        }
+
+        public string GenerateCaptionHolder(string name)
+        {
+            string abbreviation = "";
+            var names = name.Split(' ');
+            for (int i = names.Length; i > 0; i--)
+            {
+                abbreviation = names[i - 1].Remove(1, names[i - 1].Length - 1) + "." + abbreviation;
+            }
+
+            return abbreviation;
         }
     }
 }

@@ -43,8 +43,6 @@ namespace GestaoFinanceira.Views
             {
                 if (this.Payment is Account)
                 {
-                    lbSaving.Visible = false;
-                    lbBill.Visible = false;
                     lbDate.Text = ((Account)Payment).Bank;
                     lbName.Text += Payment.Holder;
                     lbName.Visible = true;
@@ -109,6 +107,10 @@ namespace GestaoFinanceira.Views
                     HabilitDataGridView(DtvTypes.Categories);
                     ctrReport.LoadDtvCategories(dtvCategorias, DtvTypes.SubCategories, report);
                     break;
+                case "Transferências":
+                    HabilitDataGridView(DtvTypes.Transfer);
+                    dtvEntries2.DataSource = new BindingList<EntryExpenses>(report.EntryTransfer);
+                    break;
             }
         }
 
@@ -118,6 +120,7 @@ namespace GestaoFinanceira.Views
             dtvCreditCard.Visible = false;
             dtvCategorias.Visible = false;
             dtvEntries.Visible = false;
+            dtvEntries2.Visible = false;
 
             if (type == DtvTypes.Account)
                     dtvBankAccount.Visible = true;
@@ -127,6 +130,8 @@ namespace GestaoFinanceira.Views
                     dtvEntries.Visible = true;
             else if(type == DtvTypes.Categories)
                     dtvCategorias.Visible = true;
+            else if (type == DtvTypes.Transfer || type == DtvTypes.AjustBalance)
+                    dtvEntries2.Visible = true;
             else 
                     dtvEntries.Visible = true;
         }
@@ -138,8 +143,6 @@ namespace GestaoFinanceira.Views
             {
                 lbHolder.Visible = false;
                 lbName.Visible = false;
-                lbSaving.Visible = false;
-                lbBill.Visible = false;
 
                 report = ctrReport.GenerateByPeriod(dtpDateIni.Value, dtpDateEnd.Value);
                 HabilitDataGridView(DtvTypes.Entries);
@@ -162,6 +165,7 @@ namespace GestaoFinanceira.Views
         {
             this.Close();
         }
+
         private void lbCategories_Paint(object sender, PaintEventArgs e)
         {
             Font myFont = new Font("Microsoft PhagsPa", 16, FontStyle.Bold);
