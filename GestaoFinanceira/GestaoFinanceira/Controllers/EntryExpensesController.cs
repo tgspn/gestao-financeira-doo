@@ -89,27 +89,6 @@ namespace GestaoFinanceira.Controllers
             Context.SaveChanges();
         }
 
-        internal bool UpdateEntry(double oldvalue, int idPayment, EntryExpenses entryNew)
-        {
-            if (entryNew.EntryType == EntryType.Expense)
-            {
-                    if (MakePayment(entryNew))
-                    {
-                        PaymentReturn(oldvalue, idPayment, entryNew.EntryType);
-                        return true;
-                    }
-                    else
-                        return false;
-            }
-            else
-            {
-                ReceivePayment(entryNew);
-                PaymentReturn(oldvalue, idPayment, entryNew.EntryType);
-                return true;
-            }
-            
-        }
-
         internal bool PerformTransfer(double value, int bankOrigin, int BankDestination, DateTime date)
         {
             Account inAcc = Context.Accounts.FirstOrDefault(c => c.Id == BankDestination);

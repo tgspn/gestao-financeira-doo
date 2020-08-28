@@ -71,19 +71,11 @@ namespace GestaoFinanceira.Views
         {
             EntryExpenses editEntry = (EntryExpenses)dtvRevenue.SelectedRows[0].DataBoundItem;
             FrmEntryExpenses form = new FrmEntryExpenses(editEntry, ctr.Context);
-            double valueOld = editEntry.Value;
-            int idOldPayment = editEntry.PaymentMethod.Id;
 
             if (form.ShowDialog() == DialogResult.OK)
             {
                 dtvRevenue.Rows.Clear();
                 dtvRevenue.DataSource = LoadEntriesTypes();
-
-                //if (ctr.UpdateEntry(valueOld, idOldPayment, form.Model))
-                //{
-                //}
-                //else
-                //    MessageBox.Show("Limite insuficiente da conta selecionada tente novamente.");
             }
         }
 
@@ -94,6 +86,8 @@ namespace GestaoFinanceira.Views
                 if (MessageBox.Show("Tem certeza que deseja apagar este item ?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     EntryExpenses deleteEntry = (EntryExpenses)dtvRevenue.SelectedRows[0].DataBoundItem;
+                    deleteEntry.Value *= (-1);
+                    ctr.PerformTransaction(deleteEntry);
                     ctr.Remove(deleteEntry);
                     dtvRevenue.DataSource = LoadEntriesTypes();
                 }
