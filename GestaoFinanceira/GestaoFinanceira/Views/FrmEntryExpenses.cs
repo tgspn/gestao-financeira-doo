@@ -1,11 +1,8 @@
-using GestaoFinanceira.BD.Conections;
 using GestaoFinanceira.Controllers;
 using GestaoFinanceira.Enums;
 using GestaoFinanceira.Model;
 using System;
-using System.CodeDom;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace GestaoFinanceira.Views
@@ -17,6 +14,7 @@ namespace GestaoFinanceira.Views
         private readonly CategoriesController categoriesController;
         private readonly PaymentMethodController paymentMethodController;
         private readonly bool isEditMode;
+        public EntryExpenses Model { get; set; }
 
         public FrmEntryExpenses(EntryType entryType)
         {
@@ -28,6 +26,7 @@ namespace GestaoFinanceira.Views
             categoriesController = new CategoriesController(controller.Context);
             paymentMethodController = new PaymentMethodController(controller.Context);
         }
+
         public FrmEntryExpenses(EntryExpenses entry) : this(entry.EntryType)
         {
             nupValue.Value = Convert.ToDecimal(entry.Value);
@@ -52,7 +51,6 @@ namespace GestaoFinanceira.Views
             this.Model = entry;
             nupValue.Focus();
         }
-        public EntryExpenses Model { get; set; }
 
         private void txtDescription_TextChanged(object sender, EventArgs e)
         {
@@ -100,7 +98,7 @@ namespace GestaoFinanceira.Views
                 true,
                 cbCategoria.SelectedValue as Category,
                 cbSubCategoria.SelectedValue as SubCategories,
-                paymentMethodController.FindByName(cbPaymentMethod.Text),
+                paymentMethodController.Find(((PaymentMethod)cbPaymentMethod.SelectedValue).Id),
                 ckbRepetir.Checked,
                 DateTime.Today,
                 this.entryType);
@@ -109,6 +107,7 @@ namespace GestaoFinanceira.Views
         public EntryExpenses getEntryExpenses()
         {
             Model.Value = Convert.ToDouble(this.nupValue.Value);
+            Model.PaymentMethod = cbPaymentMethod.SelectedValue as PaymentMethod;
             Model.Category.Description = cbCategoria.Text;
             Model.Category.SubCategories.Add(cbSubCategoria.SelectedValue as SubCategories);
             Model.Date = dtDate.Value;

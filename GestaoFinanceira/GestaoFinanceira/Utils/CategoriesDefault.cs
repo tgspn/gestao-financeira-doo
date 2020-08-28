@@ -32,10 +32,10 @@ namespace GestaoFinanceira.Model
             cat.Description = "Alimentação";
             cat.type = Enums.EntryType.Expense;
             subCat = new SubCategories();
-            subCat.Description = "Bebida Alcolica";
+            subCat.Description = "Refeição";
             list.Add(subCat);
             subCat = new SubCategories();
-            subCat.Description = "Bebida Geral";
+            subCat.Description = "Petisco";
             list.Add(subCat);
             subCat = new SubCategories();
             subCat.Description = "Lanche";

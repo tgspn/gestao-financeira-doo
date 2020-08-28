@@ -67,16 +67,11 @@ namespace GestaoFinanceira.Controllers
 
         internal bool PerformTransaction(EntryExpenses entry)
         {
-            Account acc = new Account();
-            CreditCard card = new CreditCard();
-
             if (entry.EntryType == EntryType.Revenue)
             {
                 if (entry.PaymentMethod is Account)
                 {
-                    acc = Context.Accounts.FirstOrDefault(a => a.Id == entry.PaymentMethod.Id);
-                    acc.Balance += entry.Value;
-                    Context.SaveChanges();
+                    ReceivePayment(entry);
                     return true;
                 }
                 else
@@ -87,6 +82,34 @@ namespace GestaoFinanceira.Controllers
               return MakePayment(entry) ? true : false;
             }
             return false;
+        }
+
+        private void ReceivePayment(EntryExpenses entry)
+        {
+            Account acc = Context.Accounts.FirstOrDefault(a => a.Id == entry.PaymentMethod.Id);
+            acc.Balance += entry.Value;
+            Context.SaveChanges();
+        }
+
+        internal bool UpdateEntry(double value, int idPayment, EntryExpenses entryNew)
+        {
+            if (entryNew.EntryType == EntryType.Expense)
+            {
+                    if (MakePayment(entryNew))
+                    {
+                        PaymentReturn(value, idPayment, entryNew.EntryType);
+                        return true;
+                    }
+                    else
+                        return false;
+            }
+            else
+            {
+                ReceivePayment(entryNew);
+                PaymentReturn(value, idPayment, entryNew.EntryType);
+                return true;
+            }
+            
         }
 
         internal bool PerformTransfer(double value, int bankOrigin, int BankDestination, DateTime date)
@@ -128,8 +151,8 @@ namespace GestaoFinanceira.Controllers
             CreditCard card;
             if (entry.PaymentMethod is Account)
             {
-                acc = Context.Accounts.FirstOrDefault(a => a.Id == entry.PaymentMethod.Id);
-                if (acc.Balance > (-1) * acc.Limit)
+                acc = Context.Accounts.First( a => a.Id == entry.PaymentMethod.Id);
+                if ((acc.Balance - entry.Value) > (-1) * (acc.Limit))
                 {
                     acc.Balance += - entry.Value;
                     Context.SaveChanges();
@@ -139,18 +162,36 @@ namespace GestaoFinanceira.Controllers
                     return false;
             }else
             {
-                card = Context.CreditCards.FirstOrDefault(a => a.Id == entry.PaymentMethod.Id);
+                card = entry.PaymentMethod as CreditCard;
                 if (card.Amount > (-1) * card.Limit)
                 {
                     card.Amount += -entry.Value;
-                    ctrCard.Save(card);
+                    Context.SaveChanges();
                     return true;
                 }
                 else
                     return false;
 
             }
-            return false;
+        }
+
+        private void PaymentReturn(double value, int idPayment, EntryType type)
+        {
+            PaymentMethod payment = Context.PaymentMethod.First(p => p.Id == idPayment);
+            Account acc;
+            CreditCard card;
+            if (payment is Account)
+            {
+                acc = payment as Account;
+                acc.Balance = type == EntryType.Expense ? acc.Balance + value : acc.Balance - value;
+                Context.SaveChanges();
+            }
+            else
+            {
+                card = payment as CreditCard;
+                card.Amount += value;
+                ctrCard.Save(card);
+            }
         }
 
         public string GenerateCaptionHolder(string name)

@@ -1,16 +1,11 @@
-﻿using GestaoFinanceira.BD.Conections;
-using GestaoFinanceira.Controllers;
+﻿using GestaoFinanceira.Controllers;
 using GestaoFinanceira.Enums;
 using GestaoFinanceira.Model;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Net.Configuration;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestaoFinanceira.Views
@@ -76,12 +71,18 @@ namespace GestaoFinanceira.Views
         {
             EntryExpenses editEntry = (EntryExpenses)dtvRevenue.SelectedRows[0].DataBoundItem;
             FrmEntryExpenses form = new FrmEntryExpenses(editEntry);
+            double valueOld = editEntry.Value;
+            int idOldPayment = editEntry.PaymentMethod.Id;
+
             if (form.ShowDialog() == DialogResult.OK)
             {
-                editEntry = form.getEntryExpenses();
-                ctr.Save(editEntry);
-                dtvRevenue.Rows.Clear();
-                dtvRevenue.DataSource = LoadEntriesTypes();
+                if (ctr.UpdateEntry(valueOld, idOldPayment, form.getEntryExpenses()))
+                {
+                    dtvRevenue.Rows.Clear();
+                    dtvRevenue.DataSource = LoadEntriesTypes();
+                }
+                else
+                    MessageBox.Show("Limite insuficiente da conta selecionada tente novamente.");
             }
         }
 

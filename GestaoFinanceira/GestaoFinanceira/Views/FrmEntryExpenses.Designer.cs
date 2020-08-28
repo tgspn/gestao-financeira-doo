@@ -76,7 +76,7 @@
             this.cbPaymentMethod.FormattingEnabled = true;
             this.cbPaymentMethod.Location = new System.Drawing.Point(22, 192);
             this.cbPaymentMethod.Name = "cbPaymentMethod";
-            this.cbPaymentMethod.Size = new System.Drawing.Size(211, 22);
+            this.cbPaymentMethod.Size = new System.Drawing.Size(209, 22);
             this.cbPaymentMethod.TabIndex = 3;
             this.cbPaymentMethod.SelectionChangeCommitted += new System.EventHandler(this.txtDescription_TextChanged);
             // 
@@ -170,6 +170,11 @@
             0,
             0,
             0});
+            this.nupValue.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
             this.nupValue.Name = "nupValue";
             this.nupValue.Size = new System.Drawing.Size(252, 28);
             this.nupValue.TabIndex = 0;

@@ -32,15 +32,6 @@ namespace GestaoFinanceira.Controllers
         {
             return this.List().FirstOrDefault(x => x.Id == paymentId);
         }
-        [Obsolete("Analisar a usabilidade de buscar por nome ao invez do id")]
-        public PaymentMethod FindByName(string paymentName)
-        {
-            return this.List().FirstOrDefault(payment =>
-            {
-                return (payment is Account && ((Account)payment).Bank == paymentName) ||
-                (payment is CreditCard && ((CreditCard)payment).Issuer == paymentName);
-            });
-        }
 
         public void Save(PaymentMethod paymentMethod)
         {

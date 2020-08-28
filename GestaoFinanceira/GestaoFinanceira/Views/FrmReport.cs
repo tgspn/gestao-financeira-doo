@@ -130,7 +130,7 @@ namespace GestaoFinanceira.Views
                     dtvEntries.Visible = true;
             else if(type == DtvTypes.Categories)
                     dtvCategorias.Visible = true;
-            else if (type == DtvTypes.Transfer || type == DtvTypes.AjustBalance)
+            else if (type == DtvTypes.Transfer)
                     dtvEntries2.Visible = true;
             else 
                     dtvEntries.Visible = true;
