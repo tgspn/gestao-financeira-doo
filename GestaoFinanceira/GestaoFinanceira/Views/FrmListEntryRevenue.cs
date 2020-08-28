@@ -70,19 +70,20 @@ namespace GestaoFinanceira.Views
         private void btnEdit_Click(object sender, EventArgs e)
         {
             EntryExpenses editEntry = (EntryExpenses)dtvRevenue.SelectedRows[0].DataBoundItem;
-            FrmEntryExpenses form = new FrmEntryExpenses(editEntry);
+            FrmEntryExpenses form = new FrmEntryExpenses(editEntry, ctr.Context);
             double valueOld = editEntry.Value;
             int idOldPayment = editEntry.PaymentMethod.Id;
 
             if (form.ShowDialog() == DialogResult.OK)
             {
-                if (ctr.UpdateEntry(valueOld, idOldPayment, form.getEntryExpenses()))
-                {
-                    dtvRevenue.Rows.Clear();
-                    dtvRevenue.DataSource = LoadEntriesTypes();
-                }
-                else
-                    MessageBox.Show("Limite insuficiente da conta selecionada tente novamente.");
+                dtvRevenue.Rows.Clear();
+                dtvRevenue.DataSource = LoadEntriesTypes();
+
+                //if (ctr.UpdateEntry(valueOld, idOldPayment, form.Model))
+                //{
+                //}
+                //else
+                //    MessageBox.Show("Limite insuficiente da conta selecionada tente novamente.");
             }
         }
 
@@ -101,7 +102,7 @@ namespace GestaoFinanceira.Views
 
         private async void FrmListEntryRevenue_Shown(object sender, EventArgs e)
         {
-            BindingList<EntryExpenses> entries = null ;
+            BindingList<EntryExpenses> entries = null;
             await this.Loading(() => entries = LoadEntriesTypes());
             dtvRevenue.DataSource = entries;
         }

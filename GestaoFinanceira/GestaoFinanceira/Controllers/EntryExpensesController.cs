@@ -9,8 +9,6 @@ namespace GestaoFinanceira.Controllers
 {
     class EntryExpensesController:ControllerBase
     {
-        AccountController ctrAcc = new AccountController();
-        CreditCardController ctrCard = new CreditCardController();
 
         public EntryExpensesController()
         {
@@ -91,13 +89,13 @@ namespace GestaoFinanceira.Controllers
             Context.SaveChanges();
         }
 
-        internal bool UpdateEntry(double value, int idPayment, EntryExpenses entryNew)
+        internal bool UpdateEntry(double oldvalue, int idPayment, EntryExpenses entryNew)
         {
             if (entryNew.EntryType == EntryType.Expense)
             {
                     if (MakePayment(entryNew))
                     {
-                        PaymentReturn(value, idPayment, entryNew.EntryType);
+                        PaymentReturn(oldvalue, idPayment, entryNew.EntryType);
                         return true;
                     }
                     else
@@ -106,7 +104,7 @@ namespace GestaoFinanceira.Controllers
             else
             {
                 ReceivePayment(entryNew);
-                PaymentReturn(value, idPayment, entryNew.EntryType);
+                PaymentReturn(oldvalue, idPayment, entryNew.EntryType);
                 return true;
             }
             
@@ -183,15 +181,15 @@ namespace GestaoFinanceira.Controllers
             if (payment is Account)
             {
                 acc = payment as Account;
-                acc.Balance = type == EntryType.Expense ? acc.Balance + value : acc.Balance - value;
-                Context.SaveChanges();
+                acc.Balance = type == EntryType.Expense ? acc.Balance + value : acc.Balance - value;              
             }
             else
             {
                 card = payment as CreditCard;
                 card.Amount += value;
-                ctrCard.Save(card);
+           
             }
+            Context.SaveChanges();
         }
 
         public string GenerateCaptionHolder(string name)

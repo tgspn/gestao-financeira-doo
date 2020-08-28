@@ -1,3 +1,4 @@
+using GestaoFinanceira.BD.Conections;
 using GestaoFinanceira.Controllers;
 using GestaoFinanceira.Enums;
 using GestaoFinanceira.Model;
@@ -15,19 +16,20 @@ namespace GestaoFinanceira.Views
         private readonly PaymentMethodController paymentMethodController;
         private readonly bool isEditMode;
         public EntryExpenses Model { get; set; }
+        public EntryExpenses OldModel { get; }
 
-        public FrmEntryExpenses(EntryType entryType)
+        public FrmEntryExpenses(EntryType entryType, ApplicationDbContext context = null)
         {
             InitializeComponent();
             btnSave.Enabled = false;
             this.entryType = entryType;
             this.Text = entryType == EntryType.Expense ? "Despesas" : "Receitas";
-            controller = new EntryExpensesController();
+            controller = context == null ? new EntryExpensesController() : new EntryExpensesController(context);
             categoriesController = new CategoriesController(controller.Context);
             paymentMethodController = new PaymentMethodController(controller.Context);
         }
 
-        public FrmEntryExpenses(EntryExpenses entry) : this(entry.EntryType)
+        public FrmEntryExpenses(EntryExpenses entry, ApplicationDbContext context) : this(entry.EntryType, context)
         {
             nupValue.Value = Convert.ToDecimal(entry.Value);
             this.entryType = entry.EntryType;
@@ -48,7 +50,8 @@ namespace GestaoFinanceira.Views
 
             this.isEditMode = true;
             btnSave.Enabled = true;
-            this.Model = entry;
+            this.Model = entry.Clone();
+            this.OldModel = entry;
             nupValue.Focus();
         }
 
@@ -79,43 +82,49 @@ namespace GestaoFinanceira.Views
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (!isEditMode)
+            SetEntryExpenses();
+            if (isEditMode && OldModel.Value != Model.Value)
             {
-                SetEntryExpenses();
-                controller.PerformTransaction(Model);
-                controller.Save(Model);
+                OldModel.Value *= -1;
+                controller.PerformTransaction(OldModel);
+                controller.Remove(OldModel);
             }
+            controller.PerformTransaction(Model);
+
+            controller.Save(Model);
             DialogResult = DialogResult.OK;
             this.Close();
         }
 
         private void SetEntryExpenses()
         {
-            Model = new EntryExpenses(
-                txtDescription.Text,
-                Convert.ToDouble(nupValue.Value),
-                dtDate.Value,
-                true,
-                cbCategoria.SelectedValue as Category,
-                cbSubCategoria.SelectedValue as SubCategories,
-                paymentMethodController.Find(((PaymentMethod)cbPaymentMethod.SelectedValue).Id),
-                ckbRepetir.Checked,
-                DateTime.Today,
-                this.entryType);
+            if (Model == null)
+            {
+                Model = new EntryExpenses(
+                    txtDescription.Text,
+                    Convert.ToDouble(nupValue.Value),
+                    dtDate.Value,
+                    true,
+                    cbCategoria.SelectedValue as Category,
+                    cbSubCategoria.SelectedValue as SubCategories,
+                    paymentMethodController.Find(((PaymentMethod)cbPaymentMethod.SelectedValue).Id),
+                    ckbRepetir.Checked,
+                    DateTime.Today,
+                    this.entryType);
+            }
+            else
+            {
+                Model.Value = Convert.ToDouble(this.nupValue.Value);
+                Model.PaymentMethod = cbPaymentMethod.SelectedValue as PaymentMethod;
+                Model.Category.Description = cbCategoria.Text;
+                Model.Category.SubCategories.Add(cbSubCategoria.SelectedValue as SubCategories);
+                Model.Date = dtDate.Value;
+                Model.Description = txtDescription.Text;
+                Model.EntryType = this.entryType;
+                Model.Repeat = ckbRepetir.Checked;
+            }
         }
 
-        public EntryExpenses getEntryExpenses()
-        {
-            Model.Value = Convert.ToDouble(this.nupValue.Value);
-            Model.PaymentMethod = cbPaymentMethod.SelectedValue as PaymentMethod;
-            Model.Category.Description = cbCategoria.Text;
-            Model.Category.SubCategories.Add(cbSubCategoria.SelectedValue as SubCategories);
-            Model.Date = dtDate.Value;
-            Model.Description = txtDescription.Text;
-            Model.EntryType = this.entryType;
-            Model.Repeat= ckbRepetir.Checked;
-            return Model;
-        }
 
         private void FrmEntryExpenses_Load(object sender, EventArgs e)
         {

@@ -45,6 +45,29 @@ namespace GestaoFinanceira.Model
         public DateTime RepeatUntil { get; set; }
         public EntryType EntryType { get; set; }
 
+        public void CopyTo(EntryExpenses destino)
+        {
+            if (destino is null)
+                throw new Exception("O destino não pode ser nulo");
+
+            destino.Description = Description;
+            destino.Value = Value;
+            destino.Date = Date;
+            destino.Status = Status;
+            destino.Category = Category;
+            destino.SubCategory = SubCategory;
+            destino.PaymentMethod = PaymentMethod;
+            destino.Repeat = Repeat;
+            destino.RepeatUntil = RepeatUntil;
+            destino.EntryType = EntryType;
+
+        }
+        public EntryExpenses Clone()
+        {
+            EntryExpenses clone = new EntryExpenses();
+            CopyTo(clone);
+            return clone;
+        }
 
     }
 }
