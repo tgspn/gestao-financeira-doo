@@ -70,9 +70,9 @@ namespace GestaoFinanceira.Model
 
         }
 
-        public void SetCaptionRepeat (string caption) {
-            
-        
+        public override string ToString()
+        {
+            return this.Description;
         }
 
         public EntryExpenses Clone()

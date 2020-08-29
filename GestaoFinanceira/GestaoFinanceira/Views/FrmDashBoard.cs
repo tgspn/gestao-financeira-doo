@@ -98,8 +98,8 @@ namespace GestaoFinanceira
 
         private void GerarRelatórioByButton_Click(object sender, EventArgs e)
         {
-            FrmReport form = new FrmReport(this.report, date);
             var btn = (Button)sender;
+            FrmReport form = new FrmReport(this.report, btn.Tag is Account ? date : date.AddMonths(1));
             form.Payment = (PaymentMethod)btn.Tag;
             form.Show();
         }

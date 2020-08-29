@@ -1,17 +1,10 @@
 using GestaoFinanceira.BD.Conections;
 using GestaoFinanceira.Enums;
 using GestaoFinanceira.Model;
-using GestaoFinanceira.Utils;
 using System;
-using System.CodeDom;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
-using System.Reflection;
-using System.Security;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -114,9 +107,9 @@ namespace GestaoFinanceira.Controllers
                     chart.Series["CreditCard"].Points.Clear();
                     foreach (var card in ctrCredit.List().ToList())
                     {
-                        Report reportCard = ctrReport.GenerateByCreditCard(date, card);
+                        Report reportCard = ctrReport.GenerateByCreditCard(date.AddMonths(1), card);
                         chart.Series["CreditCard"].Points.Add(i);
-                        chart.Series["CreditCard"].Points[i].YValues[0] = reportCard.TotalExpenses;
+                        chart.Series["CreditCard"].Points[i].YValues[0] = reportCard.EntryExpenses.Sum(e=>e.Value);
                         chart.Series["CreditCard"].Points[i].Label = GenerateCaptionHolder(card.Holder) + " - " + card.Issuer;
                         i++;
                     }
@@ -126,7 +119,8 @@ namespace GestaoFinanceira.Controllers
                     chart.Series["Categories"].Points.Clear();
                     chart.Series["Categories"].ChartType = SeriesChartType.Pie;
                   var listEntries = ctrEntry.List().Where(entry => entry.Date.ToString("MMM yyyy") == date.ToString("MMM yyyy"));
-                  double saldoCat = 0.00;
+                    double gastosTotais = report.EntryExpenses.Sum(e => e.Value);
+                    double saldoCat = 0.00;
 
                     foreach (var cat in report.Categories)
                     {
@@ -137,7 +131,7 @@ namespace GestaoFinanceira.Controllers
                             {
                                     saldoCat = listEntries.Sum(e => e.Category.Id == cat.Id ? e.Value : 0.00);
 
-                                percent = (saldoCat / report.TotalExpenses);
+                                percent = (saldoCat / gastosTotais);
                                 chart.Series["Categories"].Points.Add(i);
                                 chart.Series["Categories"].Points[i].LegendText = cat.Description;
                                 chart.Series["Categories"].Points[i].Label = percent.ToString("P");

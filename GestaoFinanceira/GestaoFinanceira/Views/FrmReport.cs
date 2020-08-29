@@ -38,6 +38,7 @@ namespace GestaoFinanceira.Views
                 ctrDash.LoadReport(date);
                 report = ctrDash.report;
                 lbHolder.Visible = false;
+                lbName.Visible = false;
 
             }
             else
@@ -56,6 +57,7 @@ namespace GestaoFinanceira.Views
                     lbName.Text += Payment.Holder;
                     lbName.Visible = true;
                     lbHolder.Visible = true;
+                    lbCaptionRevenue.Text = "Limite";
                     report = ctrReport.GenerateByCreditCard(date, ((CreditCard)this.Payment));
                 }
 
@@ -73,7 +75,7 @@ namespace GestaoFinanceira.Views
 
             lbDate.Text += " - " +  CultureInfo.CurrentCulture.TextInfo.ToTitleCase(date.ToString("MMMM yyyy"));
             lbTotalIncome.Text = report.TotalIncome.ToString("C");
-            lbTotalRevenue.Text = report.TotalRevenue.ToString("C");
+            lbTotalRevenue.Text = report.Accounts.Count() > 0 ? report.TotalRevenue.ToString("C") : report.CreditCards.Sum(c => c.Limit).ToString("C");
             LbTotalExpense.Text = report.TotalExpenses.ToString("C");
 
             dtpDateIni.Value = new DateTime(date.Year, date.Month, 1);
@@ -89,6 +91,8 @@ namespace GestaoFinanceira.Views
                     dtvBankAccount.DataSource = new BindingList<Account>(report.Accounts.OrderBy(a=> a.Id).ToList());
                     break;
                 case "Cartão de Crédido":
+                    lbCaptionRevenue.Text = "Limite";
+                    lbTotalRevenue.Text = report.CreditCards.Sum(c => c.Limit).ToString("C");
                     HabilitDataGridView(DtvTypes.CreditCard);
                     dtvCreditCard.DataSource = new BindingList<CreditCard>(report.CreditCards.OrderBy(a => a.Id).ToList());
                     break;
@@ -144,6 +148,7 @@ namespace GestaoFinanceira.Views
             {
                 lbHolder.Visible = false;
                 lbName.Visible = false;
+                lbCaptionRevenue.Text = "Receita";
 
                 report = ctrReport.GenerateByPeriod(dtpDateIni.Value, dtpDateEnd.Value);
                 HabilitDataGridView(DtvTypes.Entries);

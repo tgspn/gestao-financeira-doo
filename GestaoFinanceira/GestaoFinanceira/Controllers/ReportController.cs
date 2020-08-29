@@ -82,7 +82,10 @@ namespace GestaoFinanceira.Controllers
             foreach (var method in Context.PaymentMethod.ToList())
             {
                 if (method is Account)
+                {
                     report.Accounts.Add((Account)method);
+                    report.TotalIncome += ((Account)method).Balance;
+                }
                 else
                     report.CreditCards.Add((CreditCard)method);
             }
@@ -164,7 +167,7 @@ namespace GestaoFinanceira.Controllers
         {
             Report report = new Report();
             report.Accounts.Add(acc);
-            report.TotalIncome = 0.00;
+            report.TotalIncome = acc.Balance;
             report.TotalExpenses = 0.00;
             report.TotalRevenue = 0.00;
 
@@ -178,7 +181,6 @@ namespace GestaoFinanceira.Controllers
                     }
                 }
             }
-            report.TotalIncome = acc.Balance - report.TotalExpenses;
             return report;
         }
 
@@ -186,7 +188,7 @@ namespace GestaoFinanceira.Controllers
         {
             Report report = new Report();
             report.CreditCards.Add(card);
-            report.TotalIncome = 0.00;
+            report.TotalIncome = card.Amount;
             report.TotalExpenses = 0.00;
             report.TotalRevenue = 0.00;
 
@@ -200,7 +202,6 @@ namespace GestaoFinanceira.Controllers
                     }
                 }
             }
-            report.TotalIncome = card.Amount - report.TotalExpenses;
             return report;
         }
 
@@ -208,8 +209,8 @@ namespace GestaoFinanceira.Controllers
         {
             if (entry.EntryType == EntryType.Expense)
             {
-                report.TotalExpenses = entry.Value + report.TotalExpenses;
                 report.EntryExpenses.Add(entry);
+                report.TotalExpenses += entry.Status ? entry.Value : 0.00;
             }
 
             if (entry.EntryType == EntryType.Revenue)
@@ -224,7 +225,7 @@ namespace GestaoFinanceira.Controllers
             if (entry.EntryType == EntryType.AjustBalance)
                 report.EntryAjustBalance.Add(entry);
 
-            if (!report.Categories.Any(x => x.Id == entry.Category.Id) && !string.IsNullOrEmpty(entry.SubCategory.Description))
+            if (!report.Categories.Any(x => x.Id == entry.Category.Id))
                 report.Categories.Add(entry.Category);
 
             if (!report.SubCategories.Any(x => entry.SubCategory.Id == x.Id) && !string.IsNullOrEmpty(entry.SubCategory.Description))

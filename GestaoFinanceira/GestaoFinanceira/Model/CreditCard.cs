@@ -24,7 +24,7 @@ namespace GestaoFinanceira.Model
 
         public override string ToString()
         {
-            return Issuer;
+            return $"Cartão { Issuer}";
         }
 
     }

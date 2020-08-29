@@ -20,7 +20,7 @@ namespace GestaoFinanceira
             System.Threading.Thread.CurrentThread.CurrentCulture =
                 System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("pt-BR");
             new FrmSplashScreen().ShowDialog();
-            ; Application.Run(new FrmDashBoard());
+            Application.Run(new FrmDashBoard());
         }
     }
 }

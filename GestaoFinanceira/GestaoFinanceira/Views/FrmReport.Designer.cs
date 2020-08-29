@@ -33,6 +33,19 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.dtvEntries = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ctCategories = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.lbTotalIncome = new System.Windows.Forms.Label();
             this.LbTotalExpense = new System.Windows.Forms.Label();
@@ -48,9 +61,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbCaptionRevenue = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.btnImport = new System.Windows.Forms.Button();
             this.dtvBankAccount = new System.Windows.Forms.DataGridView();
             this.cId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cBank = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,6 +91,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
+            this.btnImport = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.dtvEntries2 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -94,19 +107,6 @@
             this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtvEntries)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctCategories)).BeginInit();
             this.panel1.SuspendLayout();
@@ -151,6 +151,119 @@
             this.dtvEntries.Size = new System.Drawing.Size(626, 467);
             this.dtvEntries.TabIndex = 0;
             // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "id";
+            this.Column1.HeaderText = "Id";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column1.Visible = false;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "Description";
+            this.Column2.HeaderText = "Descrição";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column11
+            // 
+            this.Column11.DataPropertyName = "Value";
+            this.Column11.HeaderText = "Valor";
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            this.Column11.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column11.Width = 75;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "Date";
+            this.Column3.HeaderText = "Data";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column3.Width = 75;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "CaptionCategories";
+            this.Column5.HeaderText = "Categoria";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column5.Width = 160;
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "Category";
+            this.Column6.HeaderText = "Categories";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column6.Visible = false;
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "SubCategory";
+            this.Column7.HeaderText = "SubCategories";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column7.Visible = false;
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "PaymentMethod";
+            this.Column8.HeaderText = "Pagamento";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "Status";
+            this.Column4.HeaderText = "Status";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column4.Visible = false;
+            this.Column4.Width = 50;
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "CaptionRepeat";
+            this.Column9.HeaderText = "Parcelamento";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column9.Width = 80;
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "RepeatUntil";
+            this.Column10.HeaderText = "Repetir até";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            this.Column10.Visible = false;
+            // 
+            // Column12
+            // 
+            this.Column12.DataPropertyName = "Repeat";
+            this.Column12.HeaderText = "Repeat";
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
+            this.Column12.Visible = false;
+            // 
+            // Column13
+            // 
+            this.Column13.DataPropertyName = "EntryType";
+            this.Column13.HeaderText = "EntryType";
+            this.Column13.Name = "Column13";
+            this.Column13.ReadOnly = true;
+            this.Column13.Visible = false;
+            // 
             // ctCategories
             // 
             this.ctCategories.AccessibleDescription = "Categorias";
@@ -175,7 +288,7 @@
             // lbTotalIncome
             // 
             this.lbTotalIncome.Font = new System.Drawing.Font("Microsoft PhagsPa", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotalIncome.Location = new System.Drawing.Point(162, 67);
+            this.lbTotalIncome.Location = new System.Drawing.Point(162, 105);
             this.lbTotalIncome.Name = "lbTotalIncome";
             this.lbTotalIncome.Size = new System.Drawing.Size(102, 14);
             this.lbTotalIncome.TabIndex = 8;
@@ -185,7 +298,7 @@
             // LbTotalExpense
             // 
             this.LbTotalExpense.Font = new System.Drawing.Font("Microsoft PhagsPa", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LbTotalExpense.Location = new System.Drawing.Point(162, 121);
+            this.LbTotalExpense.Location = new System.Drawing.Point(162, 83);
             this.LbTotalExpense.Name = "LbTotalExpense";
             this.LbTotalExpense.Size = new System.Drawing.Size(102, 14);
             this.LbTotalExpense.TabIndex = 8;
@@ -205,7 +318,7 @@
             // lbTotalRevenue
             // 
             this.lbTotalRevenue.Font = new System.Drawing.Font("Microsoft PhagsPa", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotalRevenue.Location = new System.Drawing.Point(162, 93);
+            this.lbTotalRevenue.Location = new System.Drawing.Point(162, 61);
             this.lbTotalRevenue.Name = "lbTotalRevenue";
             this.lbTotalRevenue.Size = new System.Drawing.Size(102, 14);
             this.lbTotalRevenue.TabIndex = 8;
@@ -227,7 +340,7 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.LbTotalExpense);
             this.panel1.Controls.Add(this.lbTotalRevenue);
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.lbCaptionRevenue);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.lbDate);
             this.panel1.Controls.Add(this.lbTotalIncome);
@@ -327,44 +440,31 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft PhagsPa", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(43, 120);
+            this.label2.Location = new System.Drawing.Point(43, 82);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 16);
             this.label2.TabIndex = 10;
             this.label2.Text = "Despesas";
             // 
-            // label1
+            // lbCaptionRevenue
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft PhagsPa", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(43, 92);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 16);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Receitas";
+            this.lbCaptionRevenue.AutoSize = true;
+            this.lbCaptionRevenue.Font = new System.Drawing.Font("Microsoft PhagsPa", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCaptionRevenue.Location = new System.Drawing.Point(43, 60);
+            this.lbCaptionRevenue.Name = "lbCaptionRevenue";
+            this.lbCaptionRevenue.Size = new System.Drawing.Size(51, 16);
+            this.lbCaptionRevenue.TabIndex = 10;
+            this.lbCaptionRevenue.Text = "Receitas";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft PhagsPa", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(43, 67);
+            this.label7.Location = new System.Drawing.Point(43, 104);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(94, 16);
             this.label7.TabIndex = 10;
             this.label7.Text = "Saldo disponível";
-            // 
-            // btnImport
-            // 
-            this.btnImport.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnImport.FlatAppearance.BorderSize = 0;
-            this.btnImport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImport.Image = global::GestaoFinanceira.Properties.Resources.icons8_import_csv_26px;
-            this.btnImport.Location = new System.Drawing.Point(92, 3);
-            this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(38, 32);
-            this.btnImport.TabIndex = 10;
-            this.toolTip1.SetToolTip(this.btnImport, "Importar CSV");
-            this.btnImport.UseVisualStyleBackColor = true;
             // 
             // dtvBankAccount
             // 
@@ -657,6 +757,19 @@
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
+            // btnImport
+            // 
+            this.btnImport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnImport.FlatAppearance.BorderSize = 0;
+            this.btnImport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImport.Image = global::GestaoFinanceira.Properties.Resources.icons8_import_csv_26px;
+            this.btnImport.Location = new System.Drawing.Point(92, 3);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(38, 32);
+            this.btnImport.TabIndex = 10;
+            this.toolTip1.SetToolTip(this.btnImport, "Importar CSV");
+            this.btnImport.UseVisualStyleBackColor = true;
+            // 
             // dtvEntries2
             // 
             this.dtvEntries2.AllowUserToAddRows = false;
@@ -806,119 +919,6 @@
             this.dataGridViewTextBoxColumn20.ReadOnly = true;
             this.dataGridViewTextBoxColumn20.Visible = false;
             // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "id";
-            this.Column1.HeaderText = "Id";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column1.Visible = false;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "Description";
-            this.Column2.HeaderText = "Descrição";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column11
-            // 
-            this.Column11.DataPropertyName = "Value";
-            this.Column11.HeaderText = "Valor";
-            this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
-            this.Column11.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column11.Width = 75;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "Date";
-            this.Column3.HeaderText = "Data";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column3.Width = 75;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "CaptionCategories";
-            this.Column5.HeaderText = "Categoria";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column5.Width = 160;
-            // 
-            // Column6
-            // 
-            this.Column6.DataPropertyName = "Category";
-            this.Column6.HeaderText = "Categories";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column6.Visible = false;
-            // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "SubCategory";
-            this.Column7.HeaderText = "SubCategories";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            this.Column7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column7.Visible = false;
-            // 
-            // Column8
-            // 
-            this.Column8.DataPropertyName = "PaymentMethod";
-            this.Column8.HeaderText = "Pagamento";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            this.Column8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "Status";
-            this.Column4.HeaderText = "Status";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column4.Visible = false;
-            this.Column4.Width = 50;
-            // 
-            // Column9
-            // 
-            this.Column9.DataPropertyName = "CaptionRepeat";
-            this.Column9.HeaderText = "Parcelamento";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            this.Column9.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column9.Width = 80;
-            // 
-            // Column10
-            // 
-            this.Column10.DataPropertyName = "RepeatUntil";
-            this.Column10.HeaderText = "Repetir até";
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            this.Column10.Visible = false;
-            // 
-            // Column12
-            // 
-            this.Column12.DataPropertyName = "Repeat";
-            this.Column12.HeaderText = "Repeat";
-            this.Column12.Name = "Column12";
-            this.Column12.ReadOnly = true;
-            this.Column12.Visible = false;
-            // 
-            // Column13
-            // 
-            this.Column13.DataPropertyName = "EntryType";
-            this.Column13.HeaderText = "EntryType";
-            this.Column13.Name = "Column13";
-            this.Column13.ReadOnly = true;
-            this.Column13.Visible = false;
-            // 
             // FrmReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -968,7 +968,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbCaptionRevenue;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnImport;
         private System.Windows.Forms.Button btnExport;
