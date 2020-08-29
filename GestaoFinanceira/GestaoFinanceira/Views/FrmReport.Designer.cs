@@ -53,6 +53,8 @@
             this.lbSaving = new System.Windows.Forms.Label();
             this.lbTotalRevenue = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lbName = new System.Windows.Forms.Label();
+            this.lbHolder = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.dtpDateEnd = new System.Windows.Forms.DateTimePicker();
             this.dtpDateIni = new System.Windows.Forms.DateTimePicker();
@@ -88,8 +90,6 @@
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lbHolder = new System.Windows.Forms.Label();
-            this.lbName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtvEntries)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctCategories)).BeginInit();
             this.panel1.SuspendLayout();
@@ -350,6 +350,23 @@
             this.panel1.Size = new System.Drawing.Size(273, 365);
             this.panel1.TabIndex = 9;
             // 
+            // lbName
+            // 
+            this.lbName.AutoSize = true;
+            this.lbName.Location = new System.Drawing.Point(156, 45);
+            this.lbName.Name = "lbName";
+            this.lbName.Size = new System.Drawing.Size(0, 14);
+            this.lbName.TabIndex = 12;
+            // 
+            // lbHolder
+            // 
+            this.lbHolder.AutoSize = true;
+            this.lbHolder.Location = new System.Drawing.Point(37, 45);
+            this.lbHolder.Name = "lbHolder";
+            this.lbHolder.Size = new System.Drawing.Size(44, 14);
+            this.lbHolder.TabIndex = 12;
+            this.lbHolder.Text = "Titular: ";
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -389,6 +406,7 @@
             this.btnImport.TabIndex = 10;
             this.btnImport.Text = "Importar CSV";
             this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
             // btnExport
             // 
@@ -705,23 +723,6 @@
             this.dataGridViewTextBoxColumn8.HeaderText = "Qtd Utilizada";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            // 
-            // lbHolder
-            // 
-            this.lbHolder.AutoSize = true;
-            this.lbHolder.Location = new System.Drawing.Point(37, 45);
-            this.lbHolder.Name = "lbHolder";
-            this.lbHolder.Size = new System.Drawing.Size(44, 14);
-            this.lbHolder.TabIndex = 12;
-            this.lbHolder.Text = "Titular: ";
-            // 
-            // lbName
-            // 
-            this.lbName.AutoSize = true;
-            this.lbName.Location = new System.Drawing.Point(156, 45);
-            this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(0, 14);
-            this.lbName.TabIndex = 12;
             // 
             // FrmReport
             // 
