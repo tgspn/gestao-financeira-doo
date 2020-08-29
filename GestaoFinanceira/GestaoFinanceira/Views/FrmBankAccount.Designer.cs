@@ -32,7 +32,6 @@
             this.txtAccount = new System.Windows.Forms.TextBox();
             this.txtAgency = new System.Windows.Forms.TextBox();
             this.txtHolder = new System.Windows.Forms.TextBox();
-            this.txtLimit = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -41,7 +40,9 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.nupLimit = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nupLimit)).BeginInit();
             this.SuspendLayout();
             // 
             // txtBank
@@ -67,6 +68,8 @@
             this.txtAgency.Size = new System.Drawing.Size(100, 20);
             this.txtAgency.TabIndex = 3;
             this.txtAgency.TextChanged += new System.EventHandler(this.txtHolder_TextChanged);
+            this.txtAgency.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAgency_KeyPress);
+            this.txtAgency.Validating += new System.ComponentModel.CancelEventHandler(this.txtAgency_Validating);
             // 
             // txtHolder
             // 
@@ -75,14 +78,6 @@
             this.txtHolder.Size = new System.Drawing.Size(100, 20);
             this.txtHolder.TabIndex = 2;
             this.txtHolder.TextChanged += new System.EventHandler(this.txtHolder_TextChanged);
-            // 
-            // txtLimit
-            // 
-            this.txtLimit.Location = new System.Drawing.Point(118, 192);
-            this.txtLimit.Name = "txtLimit";
-            this.txtLimit.Size = new System.Drawing.Size(100, 20);
-            this.txtLimit.TabIndex = 5;
-            this.txtLimit.TextChanged += new System.EventHandler(this.txtHolder_TextChanged);
             // 
             // label1
             // 
@@ -165,6 +160,22 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // nupLimit
+            // 
+            this.nupLimit.DecimalPlaces = 2;
+            this.nupLimit.Location = new System.Drawing.Point(118, 195);
+            this.nupLimit.Maximum = new decimal(new int[] {
+            -1304428545,
+            434162106,
+            542,
+            0});
+            this.nupLimit.Name = "nupLimit";
+            this.nupLimit.Size = new System.Drawing.Size(100, 20);
+            this.nupLimit.TabIndex = 7;
+            this.nupLimit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nupLimit.ThousandsSeparator = true;
+            this.nupLimit.ValueChanged += new System.EventHandler(this.txtHolder_TextChanged);
+            // 
             // FrmBankAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -172,13 +183,13 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(255, 275);
             this.ControlBox = false;
+            this.Controls.Add(this.nupLimit);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtLimit);
             this.Controls.Add(this.txtHolder);
             this.Controls.Add(this.txtAgency);
             this.Controls.Add(this.txtAccount);
@@ -192,6 +203,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastrar Conta Bancária";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nupLimit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -204,7 +216,6 @@
         private System.Windows.Forms.TextBox txtAccount;
         private System.Windows.Forms.TextBox txtAgency;
         private System.Windows.Forms.TextBox txtHolder;
-        private System.Windows.Forms.TextBox txtLimit;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -212,5 +223,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.NumericUpDown nupLimit;
     }
 }
