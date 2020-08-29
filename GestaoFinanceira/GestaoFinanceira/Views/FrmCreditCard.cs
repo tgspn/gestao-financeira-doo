@@ -1,28 +1,23 @@
-﻿using GestaoFinanceira.BD.Conections;
+﻿
 using GestaoFinanceira.Controllers;
 using GestaoFinanceira.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.Entity.Core.Common.CommandTrees;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestaoFinanceira.Views
 {
     public partial class FrmCreditCard : Form
     {
-        public CreditCard creditCard;
+        public CreditCard creditCard; 
+        AccountController ctrAccount = new AccountController();
         CreditCardController ctr = new CreditCardController();
         public bool isEditMode { get; private set; } = false;
 
         public FrmCreditCard()
         {
             InitializeComponent();
+            LoadPaymanetMethod();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -37,7 +32,7 @@ namespace GestaoFinanceira.Views
         }
         private bool IsValid()
         {
-            return this.ValidFields(txtLimit, txtHolder, txtIssuer, mtxtClosingDate, mtxtExpirationDate, mtxtLateFee, mtxtNumber);
+            return this.ValidFields(txtLimit, txtHolder, txtIssuer, cbPaymentMethod, mtxtClosingDate, mtxtExpirationDate, mtxtLateFee, mtxtNumber);
         }
 
         private void txtIssuer_TextChanged(object sender, EventArgs e)
@@ -99,15 +94,45 @@ namespace GestaoFinanceira.Views
 
         private void mtxtClosingDate_Validated(object sender, EventArgs e)
         {
-            mtxtClosingDate.Text = Convert.ToDouble(mtxtClosingDate.Text) > 30 ? 30.ToString() : mtxtClosingDate.Text;
+            if (mtxtClosingDate.MaskCompleted)
+            {
+                mtxtClosingDate.Text = Convert.ToDouble(mtxtClosingDate.Text) > 30 ? 30.ToString() : mtxtClosingDate.Text;
+            }
         }
 
         private void mtxtExpirationDate_Validated(object sender, EventArgs e)
         {
-            string str = mtxtExpirationDate.Text.Substring(0, mtxtExpirationDate.Text.IndexOf("/"));
-            string str2 = mtxtExpirationDate.Text.Substring(3, 4);
+            if (mtxtExpirationDate.MaskCompleted) {
+                string str = mtxtExpirationDate.Text.Substring(0, mtxtExpirationDate.Text.IndexOf("/"));
+                string str2 = mtxtExpirationDate.Text.Substring(3, 4);
 
-            mtxtExpirationDate.Text = Convert.ToDouble(str) > 12 ? $"{12}/{str2}" : mtxtExpirationDate.Text;
+                mtxtExpirationDate.Text = Convert.ToDouble(str) > 12 ? $"{12}/{str2}" : mtxtExpirationDate.Text;
+            }
+        }
+
+        private void LoadPaymanetMethod()
+        {
+
+            Dictionary<string, PaymentMethod> dict = new Dictionary<string, PaymentMethod>()
+            {
+                {"Selecione uma Conta.", null}
+            };
+            foreach (var item in ctrAccount.List())
+            {
+                dict[item.Bank] = item;
+                LoadCombobox(cbPaymentMethod, dict);
+            }
+        }
+        private void LoadCombobox<TValue>(ComboBox combobox, Dictionary<string, TValue> dict)
+        {
+            combobox.DataSource = new BindingSource(dict, null);
+            combobox.DisplayMember = "Key";
+            combobox.ValueMember = "Value";
+        }
+
+        private void FrmCreditCard_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

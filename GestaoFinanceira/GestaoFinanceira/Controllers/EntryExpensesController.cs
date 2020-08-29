@@ -152,23 +152,16 @@ namespace GestaoFinanceira.Controllers
             }
         }
 
-        private void PaymentReturn(double value, int idPayment, EntryType type)
+        internal void SplitAccount(int value, EntryExpenses model)
         {
-            PaymentMethod payment = Context.PaymentMethod.First(p => p.Id == idPayment);
-            Account acc;
-            CreditCard card;
-            if (payment is Account)
+            PerformTransaction(model);
+            for (int i = 1; i < value; i++)
             {
-                acc = payment as Account;
-                acc.Balance = type == EntryType.Expense ? acc.Balance + value : acc.Balance - value;              
+                model.Date = model.Date.AddMonths(1);
+                model.CaptionRepeat = $"({i+1}/{value})";
+                PerformTransaction(model);
+                Save(model.Clone());
             }
-            else
-            {
-                card = payment as CreditCard;
-                card.Amount += value;
-           
-            }
-            Context.SaveChanges();
         }
 
         public string GenerateCaptionHolder(string name)

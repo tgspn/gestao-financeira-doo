@@ -15,6 +15,8 @@ namespace GestaoFinanceira.Model
         public string ExpirationDate { get; set; }
         public string ClosingDate { get; set; }
 
+        public Account Account { get; set; }
+
         public double GetBanlce()
         {
             return Limit - Amount;

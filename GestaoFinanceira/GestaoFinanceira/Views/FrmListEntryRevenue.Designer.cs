@@ -158,7 +158,6 @@
             this.dtvRevenue.MultiSelect = false;
             this.dtvRevenue.Name = "dtvRevenue";
             this.dtvRevenue.ReadOnly = true;
-            this.dtvRevenue.RowHeadersWidth = 51;
             this.dtvRevenue.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtvRevenue.Size = new System.Drawing.Size(740, 238);
             this.dtvRevenue.TabIndex = 0;
@@ -252,7 +251,7 @@
             // Column4
             // 
             this.Column4.DataPropertyName = "CaptionRepeat";
-            this.Column4.HeaderText = "Recorrente";
+            this.Column4.HeaderText = "Pagamento";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
             // 

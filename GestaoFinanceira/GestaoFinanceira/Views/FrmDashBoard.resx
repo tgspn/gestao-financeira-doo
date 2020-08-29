@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>132, 17</value>
+  </metadata>
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
@@ -193,18 +196,6 @@
         NShYwncV1vEVF1VbDOFdc1zXTdUWQ3gGH81xVW9xQrWDwcE8/vdlKvIF51RXDg7XTVEZP3FZNdWg4NAU
         DuqezqtDSQNPTGmRXZ3Wh7L8G74w5X95ig2dxUBhC+808JvXOKV4LLkYLzVkPcN6/1pFMJDH7WPPj7fc
         b7UqDOXPfAs39NKYUSWlHxeB1t90OYZ2AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="btnOpenCalendar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAZdJREFUOE+t
-        lc9Kw0AQxtOj/7U+gQf17FPoRW8itDSWbJKS3noQhF70TTzoRfQZLMWqoFC9FUTNNkXEl6jf7E6ibdo0
-        kf5gCfNlZ3ZmM7sxJuG6b0u27a/RKBZfF1nOhufJFceRp7Ytn2y7e4PnmR5+Q2vypFz+WObpySDAARza
-        GKbrfs6yHEGaEPKQ5uC5z/JoMOkYmV1Wq9/zLI3FsjoLCHiFrI9YGkQIv0DBDKOfYykF/RwquqaqWNDo
-        jZftUulrjqXUUKbkO/DBsEKd9oXNzKA6i7aLTRXwvlYLZtjMDH0oBGwpQ6fsN5TBYMUtx+lusxlDiGCH
-        5rCpQMCm6grH6W3AOGddAYc8HB6wDbssRWChPf0uyLOkQJUXlUqwjgzfN4cDEvyhWnAusKQ6AdotvWMp
-        ggJSciNLDvkbNCkYgXfNqEtg3I07p6bZW9UlxssMoaNKC7Op0q1DcNmMQSsn9Sj8Pfj/tg2Vgc1+/n9j
-        +y+xCmmPpnb0QijtqV0OIbQaAk/n+gqZcME+YqS/YIfRvZj2F2AYP3RyGouezj74AAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

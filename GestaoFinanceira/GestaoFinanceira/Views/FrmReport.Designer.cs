@@ -29,23 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.dtvEntries = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ctCategories = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.lbTotalIncome = new System.Windows.Forms.Label();
             this.LbTotalExpense = new System.Windows.Forms.Label();
@@ -73,17 +60,6 @@
             this.cAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cLimit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtvCreditCard = new System.Windows.Forms.DataGridView();
-            this.dtvCategorias = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pnCategories = new System.Windows.Forms.Panel();
-            this.lbCategories = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnExport = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cIssuer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -93,6 +69,17 @@
             this.cExpirationDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cClosingDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtvCategorias = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnCategories = new System.Windows.Forms.Panel();
+            this.lbCategories = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.dtvEntries2 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -107,6 +94,19 @@
             this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtvEntries)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctCategories)).BeginInit();
             this.panel1.SuspendLayout();
@@ -151,135 +151,22 @@
             this.dtvEntries.Size = new System.Drawing.Size(626, 467);
             this.dtvEntries.TabIndex = 0;
             // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "id";
-            this.Column1.HeaderText = "Id";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column1.Visible = false;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "Description";
-            this.Column2.HeaderText = "Descrição";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column11
-            // 
-            this.Column11.DataPropertyName = "Value";
-            this.Column11.HeaderText = "Valor";
-            this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
-            this.Column11.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column11.Width = 75;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "Date";
-            this.Column3.HeaderText = "Data";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column3.Width = 75;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "CaptionCategories";
-            this.Column5.HeaderText = "Categoria";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column5.Width = 160;
-            // 
-            // Column6
-            // 
-            this.Column6.DataPropertyName = "Category";
-            this.Column6.HeaderText = "Categories";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column6.Visible = false;
-            // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "SubCategory";
-            this.Column7.HeaderText = "SubCategories";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            this.Column7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column7.Visible = false;
-            // 
-            // Column8
-            // 
-            this.Column8.DataPropertyName = "PaymentMethod";
-            this.Column8.HeaderText = "Pagamento";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            this.Column8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "Status";
-            this.Column4.HeaderText = "Status";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column4.Visible = false;
-            this.Column4.Width = 50;
-            // 
-            // Column9
-            // 
-            this.Column9.DataPropertyName = "CaptionRepeat";
-            this.Column9.HeaderText = "Recorrente";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            this.Column9.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column9.Width = 75;
-            // 
-            // Column10
-            // 
-            this.Column10.DataPropertyName = "RepeatUntil";
-            this.Column10.HeaderText = "Repetir até";
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            this.Column10.Visible = false;
-            // 
-            // Column12
-            // 
-            this.Column12.DataPropertyName = "Repeat";
-            this.Column12.HeaderText = "Repeat";
-            this.Column12.Name = "Column12";
-            this.Column12.ReadOnly = true;
-            this.Column12.Visible = false;
-            // 
-            // Column13
-            // 
-            this.Column13.DataPropertyName = "EntryType";
-            this.Column13.HeaderText = "EntryType";
-            this.Column13.Name = "Column13";
-            this.Column13.ReadOnly = true;
-            this.Column13.Visible = false;
-            // 
             // ctCategories
             // 
             this.ctCategories.AccessibleDescription = "Categorias";
             this.ctCategories.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            chartArea1.Name = "ChartArea1";
-            this.ctCategories.ChartAreas.Add(chartArea1);
+            chartArea2.Name = "ChartArea1";
+            this.ctCategories.ChartAreas.Add(chartArea2);
             this.ctCategories.Cursor = System.Windows.Forms.Cursors.Arrow;
-            legend1.Name = "Legend1";
-            this.ctCategories.Legends.Add(legend1);
+            legend2.Name = "Legend1";
+            this.ctCategories.Legends.Add(legend2);
             this.ctCategories.Location = new System.Drawing.Point(40, 259);
             this.ctCategories.Name = "ctCategories";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Legend = "Legend1";
-            series1.Name = "Categories";
-            this.ctCategories.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.Legend = "Legend1";
+            series2.Name = "Categories";
+            this.ctCategories.Series.Add(series2);
             this.ctCategories.Size = new System.Drawing.Size(274, 208);
             this.ctCategories.TabIndex = 7;
             this.ctCategories.Text = "Categorias";
@@ -586,6 +473,77 @@
             this.dtvCreditCard.TabIndex = 11;
             this.dtvCreditCard.Visible = false;
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "id";
+            this.dataGridViewTextBoxColumn1.HeaderText = "id";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // cIssuer
+            // 
+            this.cIssuer.DataPropertyName = "Issuer";
+            this.cIssuer.HeaderText = "Credor";
+            this.cIssuer.Name = "cIssuer";
+            this.cIssuer.ReadOnly = true;
+            this.cIssuer.Width = 70;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "holder";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Titular";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 170;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "amount";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Saldo";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // cLateFee
+            // 
+            this.cLateFee.DataPropertyName = "latefee";
+            this.cLateFee.HeaderText = "% ao mês";
+            this.cLateFee.Name = "cLateFee";
+            this.cLateFee.ReadOnly = true;
+            // 
+            // cNumber
+            // 
+            this.cNumber.DataPropertyName = "number";
+            this.cNumber.HeaderText = "Numero";
+            this.cNumber.Name = "cNumber";
+            this.cNumber.ReadOnly = true;
+            this.cNumber.Visible = false;
+            // 
+            // cExpirationDate
+            // 
+            this.cExpirationDate.DataPropertyName = "expirationdate";
+            this.cExpirationDate.HeaderText = "Vencimento do Cartão";
+            this.cExpirationDate.Name = "cExpirationDate";
+            this.cExpirationDate.ReadOnly = true;
+            this.cExpirationDate.Visible = false;
+            this.cExpirationDate.Width = 150;
+            // 
+            // cClosingDate
+            // 
+            this.cClosingDate.DataPropertyName = "closingdate";
+            this.cClosingDate.HeaderText = "Dia de Fechamento";
+            this.cClosingDate.Name = "cClosingDate";
+            this.cClosingDate.ReadOnly = true;
+            this.cClosingDate.Width = 150;
+            // 
+            // Column14
+            // 
+            this.Column14.DataPropertyName = "Limit";
+            this.Column14.HeaderText = "Limit";
+            this.Column14.Name = "Column14";
+            this.Column14.ReadOnly = true;
+            this.Column14.Visible = false;
+            // 
             // dtvCategorias
             // 
             this.dtvCategorias.AllowUserToAddRows = false;
@@ -698,77 +656,6 @@
             this.toolTip1.SetToolTip(this.btnExport, "Exportar CSV");
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "id";
-            this.dataGridViewTextBoxColumn1.HeaderText = "id";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // cIssuer
-            // 
-            this.cIssuer.DataPropertyName = "Issuer";
-            this.cIssuer.HeaderText = "Credor";
-            this.cIssuer.Name = "cIssuer";
-            this.cIssuer.ReadOnly = true;
-            this.cIssuer.Width = 70;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "holder";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Titular";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 170;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "amount";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Saldo";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // cLateFee
-            // 
-            this.cLateFee.DataPropertyName = "latefee";
-            this.cLateFee.HeaderText = "% ao mês";
-            this.cLateFee.Name = "cLateFee";
-            this.cLateFee.ReadOnly = true;
-            // 
-            // cNumber
-            // 
-            this.cNumber.DataPropertyName = "number";
-            this.cNumber.HeaderText = "Numero";
-            this.cNumber.Name = "cNumber";
-            this.cNumber.ReadOnly = true;
-            this.cNumber.Visible = false;
-            // 
-            // cExpirationDate
-            // 
-            this.cExpirationDate.DataPropertyName = "expirationdate";
-            this.cExpirationDate.HeaderText = "Vencimento do Cartão";
-            this.cExpirationDate.Name = "cExpirationDate";
-            this.cExpirationDate.ReadOnly = true;
-            this.cExpirationDate.Visible = false;
-            this.cExpirationDate.Width = 150;
-            // 
-            // cClosingDate
-            // 
-            this.cClosingDate.DataPropertyName = "closingdate";
-            this.cClosingDate.HeaderText = "Dia de Fechamento";
-            this.cClosingDate.Name = "cClosingDate";
-            this.cClosingDate.ReadOnly = true;
-            this.cClosingDate.Width = 150;
-            // 
-            // Column14
-            // 
-            this.Column14.DataPropertyName = "Limit";
-            this.Column14.HeaderText = "Limit";
-            this.Column14.Name = "Column14";
-            this.Column14.ReadOnly = true;
-            this.Column14.Visible = false;
             // 
             // dtvEntries2
             // 
@@ -919,6 +806,119 @@
             this.dataGridViewTextBoxColumn20.ReadOnly = true;
             this.dataGridViewTextBoxColumn20.Visible = false;
             // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "id";
+            this.Column1.HeaderText = "Id";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column1.Visible = false;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "Description";
+            this.Column2.HeaderText = "Descrição";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column11
+            // 
+            this.Column11.DataPropertyName = "Value";
+            this.Column11.HeaderText = "Valor";
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            this.Column11.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column11.Width = 75;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "Date";
+            this.Column3.HeaderText = "Data";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column3.Width = 75;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "CaptionCategories";
+            this.Column5.HeaderText = "Categoria";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column5.Width = 160;
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "Category";
+            this.Column6.HeaderText = "Categories";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column6.Visible = false;
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "SubCategory";
+            this.Column7.HeaderText = "SubCategories";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column7.Visible = false;
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "PaymentMethod";
+            this.Column8.HeaderText = "Pagamento";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "Status";
+            this.Column4.HeaderText = "Status";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column4.Visible = false;
+            this.Column4.Width = 50;
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "CaptionRepeat";
+            this.Column9.HeaderText = "Parcelamento";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column9.Width = 80;
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "RepeatUntil";
+            this.Column10.HeaderText = "Repetir até";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            this.Column10.Visible = false;
+            // 
+            // Column12
+            // 
+            this.Column12.DataPropertyName = "Repeat";
+            this.Column12.HeaderText = "Repeat";
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
+            this.Column12.Visible = false;
+            // 
+            // Column13
+            // 
+            this.Column13.DataPropertyName = "EntryType";
+            this.Column13.HeaderText = "EntryType";
+            this.Column13.Name = "Column13";
+            this.Column13.ReadOnly = true;
+            this.Column13.Visible = false;
+            // 
             // FrmReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -930,11 +930,11 @@
             this.Controls.Add(this.pnCategories);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ctCategories);
+            this.Controls.Add(this.dtvEntries);
             this.Controls.Add(this.dtvEntries2);
             this.Controls.Add(this.dtvBankAccount);
             this.Controls.Add(this.dtvCreditCard);
             this.Controls.Add(this.dtvCategorias);
-            this.Controls.Add(this.dtvEntries);
             this.Font = new System.Drawing.Font("Microsoft PhagsPa", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FrmReport";
@@ -975,19 +975,6 @@
         private System.Windows.Forms.DateTimePicker dtpDateEnd;
         private System.Windows.Forms.DateTimePicker dtpDateIni;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
         private System.Windows.Forms.DataGridView dtvBankAccount;
         private System.Windows.Forms.DataGridViewTextBoxColumn cId;
         private System.Windows.Forms.DataGridViewTextBoxColumn cBank;
@@ -1032,5 +1019,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
     }
 }

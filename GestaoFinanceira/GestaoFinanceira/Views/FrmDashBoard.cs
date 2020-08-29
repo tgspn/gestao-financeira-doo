@@ -31,7 +31,7 @@ namespace GestaoFinanceira
 
             if (form.ShowDialog() == DialogResult.OK)
             {
-                this.lb_Month.Text = form.Month;
+                this.btnOpenCalendar.Text = form.Month;
                 this.date = form.Date;
                 this.LoadFilds();
             }
@@ -212,7 +212,7 @@ namespace GestaoFinanceira
                 ctr.LoadReport(date);
                 report = ctr.report;
 
-                lb_Month.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(date.ToString("MMMM"));
+                btnOpenCalendar.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(date.ToString("MMMM"));
                 lbBalance.Text = report.TotalIncome.ToString("C");
                 lbExpense.Text = report.TotalExpenses.ToString("C");
                 lbRevenue.Text = report.TotalRevenue.ToString("C");
@@ -231,6 +231,18 @@ namespace GestaoFinanceira
             this.LoadFlowPanels();
             await Task.Run(() => { });
             this.LoadFilds();
+        }
+
+        private void btnRight_Click(object sender, EventArgs e)
+        {
+            date = date.AddMonths(1);
+            LoadFilds();
+        }
+
+        private void btnLeft_Click(object sender, EventArgs e)
+        {
+            date = date.AddMonths(-1);
+            LoadFilds();
         }
     }
 }

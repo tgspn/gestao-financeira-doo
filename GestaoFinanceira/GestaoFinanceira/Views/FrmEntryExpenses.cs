@@ -4,6 +4,7 @@ using GestaoFinanceira.Enums;
 using GestaoFinanceira.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace GestaoFinanceira.Views
@@ -17,6 +18,7 @@ namespace GestaoFinanceira.Views
         private readonly bool isEditMode;
         public EntryExpenses Model { get; set; }
         public EntryExpenses OldModel { get; }
+        string captionComboBox;
 
         public FrmEntryExpenses(EntryType entryType, ApplicationDbContext context = null)
         {
@@ -35,15 +37,14 @@ namespace GestaoFinanceira.Views
             this.entryType = entry.EntryType;
             dtDate.Value = entry.Date;
             txtDescription.Text = entry.Description;
-            ckbRepetir.Checked = entry.Repeat;
             LoadCategories();
             LoadPaymanetMethod();
             cbCategoria.SelectedIndex = cbCategoria.FindString(entry.Category.Description);
 
             if (entry.PaymentMethod is Account)
-                cbPaymentMethod.SelectedIndex = cbPaymentMethod.FindString(((Account)entry.PaymentMethod).Bank);
+                cbPaymentMethod.SelectedIndex = cbPaymentMethod.FindString($"{controller.GenerateCaptionHolder(entry.PaymentMethod.Holder)} conta: {((Account)entry.PaymentMethod).Bank}");
             else
-                cbPaymentMethod.SelectedIndex = cbPaymentMethod.FindString(((CreditCard)entry.PaymentMethod).Issuer);
+                cbPaymentMethod.SelectedIndex = cbPaymentMethod.FindString($"{controller.GenerateCaptionHolder(entry.PaymentMethod.Holder)} cartão: {((CreditCard)entry.PaymentMethod).Issuer}");
 
             if (entry.Category.SubCategories.Count != 0)
                 cbSubCategoria.SelectedIndex = cbSubCategoria.FindString(entry.Category.SubCategories[0].Description);
@@ -52,12 +53,22 @@ namespace GestaoFinanceira.Views
             btnSave.Enabled = true;
             this.Model = entry.Clone();
             this.OldModel = entry;
+
             nupValue.Focus();
+            cbCategoria.Enabled = false;
+            cbSubCategoria.Enabled = false;
+            cbPaymentMethod.Enabled = false;
+            ckRepeat.Enabled = false;
+            nupTimes.Enabled = false;
         }
 
         private void txtDescription_TextChanged(object sender, EventArgs e)
         {
             btnSave.Enabled = this.ValidFields(txtDescription, cbPaymentMethod, cbCategoria, cbSubCategoria, nupValue);
+            if (cbPaymentMethod.SelectedValue is CreditCard)
+                ckRepeat.Visible = true;
+            else
+                ckRepeat.Visible = false;
         }
 
         private void btnAddCategorias_Click(object sender, EventArgs e)
@@ -89,7 +100,15 @@ namespace GestaoFinanceira.Views
                 controller.PerformTransaction(OldModel);
                 controller.Remove(OldModel);
             }
-            controller.PerformTransaction(Model);
+
+            if (Model.PaymentMethod is Account)
+                controller.PerformTransaction(Model);
+            else if (!isEditMode)
+                if (ckRepeat.Enabled && ckRepeat.Checked)
+                {
+                    Model.CaptionRepeat = $"(1/{nupTimes.Value})";
+                    controller.SplitAccount(Convert.ToInt32(nupTimes.Value), Model.Clone());
+                }
 
             controller.Save(Model);
             DialogResult = DialogResult.OK;
@@ -103,12 +122,12 @@ namespace GestaoFinanceira.Views
                 Model = new EntryExpenses(
                     txtDescription.Text,
                     Convert.ToDouble(nupValue.Value),
-                    dtDate.Value,
-                    true,
+                    (cbPaymentMethod.SelectedValue) is Account ? dtDate.Value : dtDate.Value.AddMonths(1),
+                    cbPaymentMethod.SelectedValue is Account ? true : false,
+                    ckRepeat.Checked,
                     cbCategoria.SelectedValue as Category,
                     cbSubCategoria.SelectedValue as SubCategories,
                     paymentMethodController.Find(((PaymentMethod)cbPaymentMethod.SelectedValue).Id),
-                    ckbRepetir.Checked,
                     DateTime.Today,
                     this.entryType);
             }
@@ -118,10 +137,11 @@ namespace GestaoFinanceira.Views
                 Model.PaymentMethod = cbPaymentMethod.SelectedValue as PaymentMethod;
                 Model.Category.Description = cbCategoria.Text;
                 Model.Category.SubCategories.Add(cbSubCategoria.SelectedValue as SubCategories);
-                Model.Date = dtDate.Value;
+                Model.Status = cbPaymentMethod.SelectedValue is Account ? true : false;
+                Model.Repeat = ckRepeat.Checked;
+                Model.Date = cbPaymentMethod.SelectedValue is Account ? dtDate.Value : dtDate.Value.AddMonths(1);
                 Model.Description = txtDescription.Text;
                 Model.EntryType = this.entryType;
-                Model.Repeat = ckbRepetir.Checked;
             }
         }
 
@@ -133,12 +153,16 @@ namespace GestaoFinanceira.Views
                 this.pnBanner.BackColor = SystemColors.GREEN;
                 this.lbUnit.BackColor = SystemColors.GREEN;
                 this.nupValue.BackColor = SystemColors.GREEN;
+                lbPayment.Text = "Conta Destino";
+                captionComboBox = "Selecione uma conta de destino";
             }
             else
             {
                 this.pnBanner.BackColor = SystemColors.RED;
                 this.lbUnit.BackColor = SystemColors.RED;
                 this.nupValue.BackColor = SystemColors.RED;
+                lbPayment.Text = "Meio de Pagamento";
+                captionComboBox = "Selecione uma forma de pagamento";
             }
             if (!isEditMode)
             {
@@ -149,19 +173,21 @@ namespace GestaoFinanceira.Views
 
         private void LoadPaymanetMethod()
         {
-            Dictionary<string, PaymentMethod> dict = new Dictionary<string, PaymentMethod>()
+            captionComboBox = entryType == EntryType.Revenue ? "Selecione uma conta de destino" : "Selecione uma forma de pagamento";
+                Dictionary<string, PaymentMethod> dict = new Dictionary<string, PaymentMethod>()
             {
-                {"Selecione uma forma de pagamento", null}
+                {captionComboBox, null}
             };
             foreach (var item in paymentMethodController.List())
             {
+
                 if (item is Account)
                 {
-                    dict[((Account)item).Bank] = item;
+                    dict[$"{controller.GenerateCaptionHolder(item.Holder)} conta: {((Account)item).Bank}"] = item;
                 }
-                if (item is CreditCard)
+                if (item is CreditCard && entryType == EntryType.Expense)
                 {
-                    dict[((CreditCard)item).Issuer] = item;
+                    dict[$"{controller.GenerateCaptionHolder(item.Holder)} cartão: {((CreditCard)item).Issuer}"] = item;
                 }
                 LoadCombobox(cbPaymentMethod, dict);
             }
@@ -217,6 +243,25 @@ namespace GestaoFinanceira.Views
             if ((cbCategoria.SelectedValue as Category) != null)
                 LoadSubCategories();
             btnSave.Enabled = this.ValidFields(txtDescription, cbPaymentMethod, cbCategoria, cbSubCategoria, nupValue);
+        }
+
+        private void cbRepeat_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ckRepeat.Checked)
+            {
+                nupTimes.Visible = true;
+                lbtimes.Visible = true;
+            }else
+            {
+                nupTimes.Visible = false;
+                lbtimes.Visible = false;
+            }
+
+        }
+
+        private void cbPaymentMethod_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

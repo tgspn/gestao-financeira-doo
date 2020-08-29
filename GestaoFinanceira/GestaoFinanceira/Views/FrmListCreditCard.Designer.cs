@@ -44,6 +44,7 @@
             this.cExpirationDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cClosingDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtvCreditCard)).BeginInit();
             this.pnCreditCard.SuspendLayout();
             this.SuspendLayout();
@@ -64,7 +65,8 @@
             this.cNumber,
             this.cExpirationDate,
             this.cClosingDate,
-            this.Column1});
+            this.Column1,
+            this.Column2});
             this.dtvCreditCard.GridColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dtvCreditCard.Location = new System.Drawing.Point(49, 12);
             this.dtvCreditCard.MultiSelect = false;
@@ -221,6 +223,13 @@
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "Account";
+            this.Column2.HeaderText = "Pagamento";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
             // FrmListCreditCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -265,5 +274,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cExpirationDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn cClosingDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
     }
 }

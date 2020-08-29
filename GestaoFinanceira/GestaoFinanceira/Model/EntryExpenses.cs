@@ -9,16 +9,16 @@ namespace GestaoFinanceira.Model
         {
 
         }
-        public EntryExpenses(string description, double value, DateTime date, bool status, Category categorie, SubCategories subCategorie, PaymentMethod paymentMethod, bool repeat, DateTime repeatUntil, EntryType entryType)
+        public EntryExpenses(string description, double value, DateTime date, bool status, bool repeat, Category categorie, SubCategories subCategorie, PaymentMethod paymentMethod, DateTime repeatUntil, EntryType entryType)
         {
             Description = description;
             Value = value;
             Date = date;
             Status = status;
             Category = categorie;
+            Repeat = repeat;
             SubCategory = subCategorie;
             PaymentMethod = paymentMethod;
-            Repeat = repeat;
             RepeatUntil = repeatUntil;
             EntryType = entryType;
         }
@@ -40,10 +40,16 @@ namespace GestaoFinanceira.Model
                     return Category.Description;
             }
         }
-        public string CaptionRepeat { get => Repeat ? "Sim" : "Não"; }
+        private string _captionRepeat;
         public bool Repeat { set; get; }
         public DateTime RepeatUntil { get; set; }
         public EntryType EntryType { get; set; }
+
+        public string CaptionRepeat
+        {
+            get => this.Repeat ? _captionRepeat : "à vista"; 
+            set => _captionRepeat = value;
+        }
 
         public void CopyTo(EntryExpenses destino)
         {
@@ -57,11 +63,18 @@ namespace GestaoFinanceira.Model
             destino.Category = Category;
             destino.SubCategory = SubCategory;
             destino.PaymentMethod = PaymentMethod;
+            destino.CaptionRepeat = _captionRepeat;
             destino.Repeat = Repeat;
             destino.RepeatUntil = RepeatUntil;
             destino.EntryType = EntryType;
 
         }
+
+        public void SetCaptionRepeat (string caption) {
+            
+        
+        }
+
         public EntryExpenses Clone()
         {
             EntryExpenses clone = new EntryExpenses();

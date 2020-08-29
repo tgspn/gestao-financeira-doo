@@ -5,6 +5,7 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace GestaoFinanceira.Views
@@ -85,19 +86,19 @@ namespace GestaoFinanceira.Views
             {
                 case "Conta Bancária":
                     HabilitDataGridView(DtvTypes.Account);
-                    dtvBankAccount.DataSource = new BindingList<Account>(report.Accounts);
+                    dtvBankAccount.DataSource = new BindingList<Account>(report.Accounts.OrderBy(a=> a.Id).ToList());
                     break;
                 case "Cartão de Crédido":
                     HabilitDataGridView(DtvTypes.CreditCard);
-                    dtvCreditCard.DataSource = new BindingList<CreditCard>(report.CreditCards);
+                    dtvCreditCard.DataSource = new BindingList<CreditCard>(report.CreditCards.OrderBy(a => a.Id).ToList());
                     break;
                 case "Receitas":
                     HabilitDataGridView(DtvTypes.Entries);
-                    dtvEntries.DataSource = new BindingList<EntryExpenses>(report.EntryRevenue);
+                    dtvEntries.DataSource = new BindingList<EntryExpenses>(report.EntryRevenue.OrderBy(a => a.Id).ToList());
                     break;
                 case "Despesas":
                     HabilitDataGridView(DtvTypes.Entries);
-                    dtvEntries.DataSource = new BindingList<EntryExpenses>(report.EntryExpenses);
+                    dtvEntries.DataSource = new BindingList<EntryExpenses>(report.EntryExpenses.OrderBy(a => a.Id).ToList());
                     break;
                 case "Categorias":
                     HabilitDataGridView(DtvTypes.Categories);
@@ -109,7 +110,7 @@ namespace GestaoFinanceira.Views
                     break;
                 case "Transferências":
                     HabilitDataGridView(DtvTypes.Transfer);
-                    dtvEntries2.DataSource = new BindingList<EntryExpenses>(report.EntryTransfer);
+                    dtvEntries2.DataSource = new BindingList<EntryExpenses>(report.EntryTransfer.OrderBy(a => a.Id).ToList());
                     break;
             }
         }
