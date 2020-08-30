@@ -96,11 +96,23 @@ namespace GestaoFinanceira.Views
                 DialogResult result = MessageBox.Show("Tem certeza que deseja apagar?", "Confirmação", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes && tvCategories.SelectedNode != null)
                 {
-                    Category removCat = tvCategories.SelectedNode.Tag as Category;
-                    ctr.Remove(removCat);
-                    ctr.LoadTreeView(tvCategories);
+                    var node = tvCategories.SelectedNode;
+                    if (node.Tag is Category)
+                    {
+                        Category removCat = node.Tag as Category;
+                        ctr.Remove(removCat);
+                    }
+                    else if(node.Tag is SubCategories)
+                    {
+                        var cat = node.Parent.Tag as Category;
+                        var subCategorie = node.Tag as SubCategories;
+                        cat.SubCategories.Remove(subCategorie);
+                        ctr.Save(cat);
+                    }
+                        tvCategories.SelectedNode.Parent.Nodes.Remove(node);
                 }
-            }catch (Exception msg)
+            }
+            catch (Exception msg)
             {
 
             }
