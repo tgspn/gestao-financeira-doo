@@ -46,6 +46,43 @@ namespace GestaoFinanceira.Views
             node.BeginEdit();
 
         }
+        private void tvCategories_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(e.Label))
+            {
+                if (e.Node.Parent.Level == 0)
+                {
+                    var cat = e.Node.Tag as Category ?? new Category()
+                    {
+                        SubCategories = new List<SubCategories>(),
+                        type = (GestaoFinanceira.Enums.EntryType)tvCategories.SelectedNode.Tag
+                    };
+                    cat.Description = e.Label;
+                    ctr.Save(cat);
+                    if (e.Node.Tag is null)
+                        e.Node.Tag = cat;
+                }
+                else
+                if (e.Node.Parent.Tag is Category)
+                {
+                    var cat = (e.Node.Parent.Tag as Category);
+                    var subCat = e.Node.Tag as SubCategories ?? new SubCategories();
+
+                    subCat.Description = e.Label;
+                    cat.SubCategories.Add(subCat);
+                    ctr.Save(cat);
+                    if (e.Node.Tag is null)
+                        e.Node.Tag = subCat;
+
+                }
+
+            }
+            else if (e.Node.Tag == null)
+            {
+                e.Node.Parent.Nodes.Remove(e.Node);
+            }
+            tvCategories.LabelEdit = false;
+        }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
