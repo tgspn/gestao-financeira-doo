@@ -1,4 +1,4 @@
-﻿using GestaoFinanceira.BD.Conections;
+using GestaoFinanceira.BD.Conections;
 using GestaoFinanceira.Controllers;
 using GestaoFinanceira.Model;
 using System;
@@ -28,9 +28,23 @@ namespace GestaoFinanceira.Views
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
-            FrmCategories form = new FrmCategories();
-            if (form.ShowDialog() == DialogResult.OK)
-                ctr.LoadTreeView(tvCategories);
+            string description = "";
+            if (tvCategories.SelectedNode.Level == 0)
+            {
+                description = "Nova Categoria";
+            }
+            else
+            if (tvCategories.SelectedNode.Tag is Category)
+            {
+                description = "Nova Subcategoria";
+            }
+            var node = tvCategories.SelectedNode.Nodes.Add(description);
+
+            tvCategories.LabelEdit = true;
+            node.EnsureVisible();
+
+            node.BeginEdit();
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
