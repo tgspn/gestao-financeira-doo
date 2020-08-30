@@ -131,33 +131,23 @@ namespace GestaoFinanceira.Views
             pnCategories.BackColor = SystemColors.BLUE;
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;
-          
-            
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
             try
             {
-                if (tvCategories.SelectedNode.Tag is Category)
-                {
-                    Category editCat = tvCategories.SelectedNode.Tag as Category;
-                    FrmCategories form = new FrmCategories();
-                    form.setCategorie(editCat);
-                    if (form.ShowDialog() == DialogResult.OK)
-                    {
-                        editCat = form.GetCategorie();
-                        ctr.Save(editCat);
-                        ctr.LoadTreeView(tvCategories);
-                    }
-                }
-            }catch (Exception msg)
+                tvCategories.LabelEdit = true;
+                tvCategories.SelectedNode.BeginEdit();
+
+            }
+            catch (Exception msg)
             {
 
             }
         }
 
-        private async void FrmListCategories_Shown(object sender, EventArgs e)
+        private void FrmListCategories_Shown(object sender, EventArgs e)
         {
             ctr.LoadTreeView(tvCategories);
         }
