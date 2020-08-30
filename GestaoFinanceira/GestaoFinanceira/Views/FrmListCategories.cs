@@ -166,7 +166,7 @@ namespace GestaoFinanceira.Views
         {
             if (tvCategories.SelectedNode != null)
             {
-                if (tvCategories.SelectedNode.Tag != null && tvCategories.SelectedNode.Tag is Category)
+                if (tvCategories.SelectedNode.Tag is SubCategories || tvCategories.SelectedNode.Tag is Category)
                 {
                     btnEdit.Enabled = true;
                     btnDelete.Enabled = true;
