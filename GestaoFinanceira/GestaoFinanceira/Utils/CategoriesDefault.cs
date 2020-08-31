@@ -63,7 +63,7 @@ namespace GestaoFinanceira.Model
 
             list = new List<SubCategories>();
             cat = new Category();
-            cat.Description = "Saude";
+            cat.Description = "Saúde";
             cat.type = Enums.EntryType.Expense;
             subCat = new SubCategories();
             subCat.Description = "Academia";
@@ -89,6 +89,16 @@ namespace GestaoFinanceira.Model
             list.Add(subCat);
             subCat = new SubCategories();
             subCat.Description = "Documentos";
+            list.Add(subCat);
+            cat.SubCategories = list;
+            categories.Add(cat);
+
+            list = new List<SubCategories>();
+            cat = new Category();
+            cat.Description = "Fatura";
+            cat.type = Enums.EntryType.ExpenseCreditCard;
+            subCat = new SubCategories();
+            subCat.Description = "Cartão de Crédito";
             list.Add(subCat);
             cat.SubCategories = list;
             categories.Add(cat);

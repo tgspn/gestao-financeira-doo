@@ -109,6 +109,8 @@ namespace GestaoFinanceira.Views
                     Model.CaptionRepeat = $"(1/{nupTimes.Value})";
                     controller.SplitAccount(Convert.ToInt32(nupTimes.Value), Model.Clone());
                 }
+            else
+                controller.PerformTransaction(Model);
 
             controller.Save(Model);
             DialogResult = DialogResult.OK;
@@ -122,7 +124,7 @@ namespace GestaoFinanceira.Views
                 Model = new EntryExpenses(
                     txtDescription.Text,
                     Convert.ToDouble(nupValue.Value),
-                    (cbPaymentMethod.SelectedValue) is Account ? dtDate.Value : dtDate.Value.AddMonths(1),
+                    dtDate.Value,
                     cbPaymentMethod.SelectedValue is Account ? true : false,
                     ckRepeat.Checked,
                     cbCategoria.SelectedValue as Category,
@@ -139,7 +141,7 @@ namespace GestaoFinanceira.Views
                 Model.Category.SubCategories.Add(cbSubCategoria.SelectedValue as SubCategories);
                 Model.Status = cbPaymentMethod.SelectedValue is Account ? true : false;
                 Model.Repeat = ckRepeat.Checked;
-                Model.Date = cbPaymentMethod.SelectedValue is Account ? dtDate.Value : dtDate.Value.AddMonths(1);
+                Model.Date = dtDate.Value;
                 Model.Description = txtDescription.Text;
                 Model.EntryType = this.entryType;
             }
@@ -195,7 +197,7 @@ namespace GestaoFinanceira.Views
 
         private void LoadCategories()
         {
-            var categories = categoriesController.List();
+            var categories = categoriesController.List().Where(c=> !string.IsNullOrEmpty(c.Description));
 
             Dictionary<string, Category> dict = new Dictionary<string, Category>()
             {
@@ -229,7 +231,7 @@ namespace GestaoFinanceira.Views
                 };
                 if (selected.SubCategories != null)
                 {
-                    foreach (var item in selected.SubCategories)
+                    foreach (var item in selected.SubCategories.Where(e=> !string.IsNullOrEmpty(e.Description)))
                     {
                         dict[item.Description] = item;
                     }
@@ -261,7 +263,22 @@ namespace GestaoFinanceira.Views
 
         private void cbPaymentMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cbPaymentMethod.SelectedValue != null && cbPaymentMethod.SelectedValue is CreditCard)
+            {
+                btnInfo.Visible = Convert.ToInt32(((CreditCard)cbPaymentMethod.SelectedValue).ClosingDate) < dtDate.Value.Day || Convert.ToInt32(((CreditCard)cbPaymentMethod.SelectedValue).DueDate) < dtDate.Value.Day ? true : false;
+            }
+            else
+                btnInfo.Visible = false;
+        }
 
+        private void btnInfo_Click(object sender, EventArgs e)
+        {
+            int day = Convert.ToInt32(((CreditCard)cbPaymentMethod.SelectedValue).DueDate);
+            int month = Convert.ToInt32(((CreditCard)cbPaymentMethod.SelectedValue).ClosingDate) < dtDate.Value.Day ? dtDate.Value.AddMonths(2).Month : dtDate.Value.AddMonths(1).Month;
+            int year = Convert.ToInt32(((CreditCard)cbPaymentMethod.SelectedValue).ClosingDate) < dtDate.Value.Day ? dtDate.Value.AddMonths(2).Year : dtDate.Value.AddMonths(1).Year;
+            var date = DateTime.Parse($"{day}-{month}-{year}").ToString("dd/MM/yyyy");
+            var msg = $"Esta conta constará na fatura {date}";
+            MessageBox.Show(msg, "Informativo", MessageBoxButtons.OK);
         }
     }
 }

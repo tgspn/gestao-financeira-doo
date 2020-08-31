@@ -4,6 +4,7 @@ using GestaoFinanceira.Model;
 using GestaoFinanceira.Views;
 using System;
 using System.Globalization;
+using System.Runtime.Remoting.Messaging;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -99,8 +100,9 @@ namespace GestaoFinanceira
         private void GerarRelatórioByButton_Click(object sender, EventArgs e)
         {
             var btn = (Button)sender;
-            FrmReport form = new FrmReport(this.report, btn.Tag is Account ? date : date.AddMonths(1));
+            FrmReport form = new FrmReport(this.report, date);
             form.Payment = (PaymentMethod)btn.Tag;
+            form.FormClosed += Form_FormClosed;
             form.Show();
         }
 

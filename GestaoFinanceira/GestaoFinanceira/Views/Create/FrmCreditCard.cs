@@ -1,6 +1,7 @@
 ﻿
 using GestaoFinanceira.Controllers;
 using GestaoFinanceira.Model;
+using GestaoFinanceira.Views.Utils;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -17,7 +18,6 @@ namespace GestaoFinanceira.Views
         public FrmCreditCard()
         {
             InitializeComponent();
-            LoadPaymanetMethod();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -32,7 +32,7 @@ namespace GestaoFinanceira.Views
         }
         private bool IsValid()
         {
-            return this.ValidFields(txtLimit, txtHolder, txtIssuer, cbPaymentMethod, mtxtClosingDate, mtxtExpirationDate, mtxtLateFee, mtxtNumber);
+            return this.ValidFields(txtLimit, txtHolder, txtIssuer, mtxtClosingDate, mtxtExpirationDate, mtxtLateFee, mtxtNumber, mtxtDueDate, mtxtInterest, mtxtInterestDay);
         }
 
         private void txtIssuer_TextChanged(object sender, EventArgs e)
@@ -60,7 +60,10 @@ namespace GestaoFinanceira.Views
                 Number = mtxtNumber.Text,
                 Issuer = txtIssuer.Text,
                 LateFee = Convert.ToDouble(mtxtLateFee.Text.Replace(" %", "")),
+                InterestPerDay = Convert.ToDouble(mtxtInterestDay.Text.Replace(" %", "")),
+                InterestPerMonth = Convert.ToDouble(mtxtInterest.Text.Replace(" %", "")),
                 ClosingDate = mtxtClosingDate.Text,
+                DueDate = mtxtDueDate.Text,
                 ExpirationDate = mtxtExpirationDate.Text,
                 Limit = Convert.ToDouble(txtLimit.Text.Replace("R$ ", "")),
                 Amount = Convert.ToDouble(txtLimit.Text.Replace("R$ ", ""))
@@ -73,8 +76,11 @@ namespace GestaoFinanceira.Views
             txtHolder.Text = creditCard.Holder;
             mtxtNumber.Text = creditCard.Number;
             txtIssuer.Text = creditCard.Issuer;
+            mtxtInterestDay.Text = Convert.ToString(creditCard.InterestPerDay);
+            mtxtInterest.Text = Convert.ToString(creditCard.InterestPerMonth);
             mtxtLateFee.Text = Convert.ToString(creditCard.LateFee);
             mtxtClosingDate.Text = creditCard.ClosingDate;
+            mtxtDueDate.Text = creditCard.DueDate;
             mtxtExpirationDate.Text = creditCard.ExpirationDate;
             txtLimit.Text = Convert.ToString(creditCard.Limit);
             isEditMode = true;
@@ -85,7 +91,10 @@ namespace GestaoFinanceira.Views
             this.creditCard.Number = mtxtNumber.Text;
             this.creditCard.Issuer = txtIssuer.Text;
             this.creditCard.LateFee = Convert.ToDouble(mtxtLateFee.Text.Replace(" %", ""));
+            this.creditCard.InterestPerDay = Convert.ToDouble(mtxtInterestDay.Text.Replace(" %", ""));
+            this.creditCard.InterestPerMonth = Convert.ToDouble(mtxtInterest.Text.Replace(" %", ""));
             this.creditCard.ClosingDate = mtxtClosingDate.Text;
+            this.creditCard.DueDate = mtxtDueDate.Text;
             this.creditCard.ExpirationDate = mtxtExpirationDate.Text;
             this.creditCard.Amount = Convert.ToDouble(txtLimit.Text.Replace("R$ ", "")) - this.creditCard.GetBanlce();
             this.creditCard.Limit = Convert.ToDouble(txtLimit.Text.Replace("R$ ", ""));
@@ -110,28 +119,18 @@ namespace GestaoFinanceira.Views
             }
         }
 
-        private void LoadPaymanetMethod()
+        private void mtxtDueDate_Validated(object sender, EventArgs e)
         {
-
-            Dictionary<string, PaymentMethod> dict = new Dictionary<string, PaymentMethod>()
+            if (mtxtDueDate.MaskCompleted)
             {
-                {"Selecione uma Conta.", null}
-            };
-            foreach (var item in ctrAccount.List())
-            {
-                dict[item.Bank] = item;
-                LoadCombobox(cbPaymentMethod, dict);
+                mtxtDueDate.Text = Convert.ToDouble(mtxtDueDate.Text) > 30 ? 30.ToString() : mtxtDueDate.Text;
             }
         }
-        private void LoadCombobox<TValue>(ComboBox combobox, Dictionary<string, TValue> dict)
-        {
-            combobox.DataSource = new BindingSource(dict, null);
-            combobox.DisplayMember = "Key";
-            combobox.ValueMember = "Value";
-        }
 
-        private void FrmCreditCard_Load(object sender, EventArgs e)
+        private void pictureBox2_Click(object sender, EventArgs e)
         {
+            Form InfoJuros = new FrmAboutInterest();
+            InfoJuros.Show();
 
         }
     }

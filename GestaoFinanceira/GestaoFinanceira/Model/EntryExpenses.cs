@@ -14,6 +14,7 @@ namespace GestaoFinanceira.Model
             Description = description;
             Value = value;
             Date = date;
+            PaymentDate = date;
             Status = status;
             Category = categorie;
             Repeat = repeat;
@@ -26,6 +27,7 @@ namespace GestaoFinanceira.Model
         public string Description { get; set; }
         public double Value { get; set; }
         public DateTime Date { get; set; }
+        public DateTime PaymentDate { get; set; }
         public bool Status { get; set; }
         public virtual Category Category { get; set; } = new Category();
         public virtual SubCategories SubCategory { get; set; } = new SubCategories();
@@ -34,10 +36,10 @@ namespace GestaoFinanceira.Model
         {
             get
             {
-                if (!string.IsNullOrEmpty(SubCategory.Description))
+                if (SubCategory != null && !string.IsNullOrEmpty(SubCategory.Description))
                     return Category.Description + ">" + SubCategory.Description;
                 else
-                    return Category.Description;
+                    return Category != null ? Category.Description : "";
             }
         }
         private string _captionRepeat;
@@ -59,6 +61,7 @@ namespace GestaoFinanceira.Model
             destino.Description = Description;
             destino.Value = Value;
             destino.Date = Date;
+            destino.PaymentDate = PaymentDate;
             destino.Status = Status;
             destino.Category = Category;
             destino.SubCategory = SubCategory;

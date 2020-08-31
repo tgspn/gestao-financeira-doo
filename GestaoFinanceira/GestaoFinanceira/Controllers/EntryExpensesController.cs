@@ -4,6 +4,7 @@ using GestaoFinanceira.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 
 namespace GestaoFinanceira.Controllers
 {
@@ -43,8 +44,8 @@ namespace GestaoFinanceira.Controllers
                     Description = "Ajuste de Saldo",
                     Value = value > account.Balance ? value - account.Balance : account.Balance - value,
                     Date = DateTime.Now,
-                    EntryType = value > account.Balance ? Enums.EntryType.Revenue : Enums.EntryType.Expense,
-                    Category = Context.Categories.FirstOrDefault(c => c.Id == 8),
+                    EntryType = value > account.Balance ? EntryType.Revenue : EntryType.Expense,
+                    Category = Context.Categories.Find(9),
                     PaymentMethod = account
                 };
 
@@ -75,7 +76,7 @@ namespace GestaoFinanceira.Controllers
                 else
                     return false;
             }
-            else if (entry.EntryType == EntryType.Expense)
+            else if (entry.EntryType == EntryType.Expense || entry.EntryType == EntryType.ExpenseCreditCard)
             {
               return MakePayment(entry) ? true : false;
             }
@@ -104,7 +105,7 @@ namespace GestaoFinanceira.Controllers
                 Value = value,
                 Date = date,
                 PaymentMethod = inAcc,
-                Category = Context.Categories.FirstOrDefault(c => c.Id == 9),
+                Category = Context.Categories.Find(10),
                 EntryType = EntryType.Transfer
             };
 
@@ -113,7 +114,7 @@ namespace GestaoFinanceira.Controllers
                 Description = $"Enviado para {GenerateCaptionHolder(inAcc.Holder)} - {inAcc.Bank}",
                 Value = value,
                 Date = date,
-                Category = Context.Categories.FirstOrDefault(c => c.Id == 9),
+                Category = Context.Categories.Find(10),
                 PaymentMethod = outAcc,
                 EntryType = EntryType.Transfer
             };
@@ -140,15 +141,53 @@ namespace GestaoFinanceira.Controllers
             }else
             {
                 card = entry.PaymentMethod as CreditCard;
-                if (card.Amount > (-1) * card.Limit)
-                {
-                    card.Amount += -entry.Value;
-                    Context.SaveChanges();
-                    return true;
-                }
-                else
-                    return false;
+                //Se data de fechamento menor que data de pagamento da conta data de pagamento vai para o mês que vem.
+                int day = Convert.ToInt32(card.DueDate);
+                int month = Convert.ToInt32(card.ClosingDate) < entry.Date.Day ? entry.Date.AddMonths(1).Month : entry.Date.Month;
+                int year = Convert.ToInt32(card.ClosingDate) < entry.Date.Day ? entry.Date.AddMonths(2).Year : entry.Date.AddMonths(1).Year;
+                entry.PaymentDate = DateTime.Parse($"{day}-{month}-{year}");
+                    if (card.Amount > (-1) * card.Limit)
+                    {
+                        card.Amount += -entry.Value;
+                        Context.SaveChanges();
+                        return true;
+                    }
+                    else
+                        return false;
+            }
+        }
 
+        internal void PayCreditCard(int idAcc, int idCredit, double valueToPay, double valueParcel, DateTime DatePaid ,DateTime dateToPay)
+        {
+            CreditCard card = Context.CreditCards.Find(idCredit);
+            EntryExpenses entry = new EntryExpenses
+            {
+                Description = $"{GenerateCaptionHolder(card.Holder)} fatura - {card.Issuer}",
+                Value = valueToPay,
+                EntryType = EntryType.ExpenseCreditCard,
+                Date = DatePaid,
+                Category = Context.Categories.Find(6),
+                SubCategory = Context.SubCategories.Find(14),
+                PaymentMethod = Context.PaymentMethod.Find(idAcc),
+                Status = true
+            };
+
+            PerformTransaction(entry);
+            Save(entry);
+
+            if (valueParcel > 0)
+            {
+                entry = new EntryExpenses
+                {
+                    Description = $"{GenerateCaptionHolder(card.Holder)} fatura parcial - {card.Issuer}",
+                    Value = valueParcel,
+                    EntryType = EntryType.ExpenseCreditCard,
+                    Date = dateToPay.AddMonths(1),
+                    Category = Context.Categories.Find(6),
+                    SubCategory = Context.SubCategories.Find(14),
+                    PaymentMethod = card
+                };
+                Save(entry);
             }
         }
 

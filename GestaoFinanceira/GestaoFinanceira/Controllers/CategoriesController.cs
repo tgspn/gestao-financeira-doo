@@ -62,7 +62,8 @@ namespace GestaoFinanceira.Controllers
             int j = 0;
             foreach (var cat in Context.Categories.ToList().Where(c => 
                 c.type != Enums.EntryType.AjustBalance &&
-                c.type != Enums.EntryType.Transfer
+                c.type != Enums.EntryType.Transfer &&
+                c.type != Enums.EntryType.ExpenseCreditCard
                 ).OrderBy(a => a.type).ThenBy(a => a.Description))
             {
                 if (cat.type == Enums.EntryType.Expense)

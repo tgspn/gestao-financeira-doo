@@ -5,6 +5,7 @@ using System;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -22,6 +23,7 @@ namespace GestaoFinanceira.Views
             pnEtries.BackColor = entryType == EntryType.Revenue ? SystemColors.GREEN : SystemColors.RED;
             this.entryType = entryType;
             this.date = date;
+            btnOpenCalendar.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(date.ToString("MMMM"));
             ctr = new EntryExpensesController();
         }
 
@@ -64,7 +66,9 @@ namespace GestaoFinanceira.Views
 
         private BindingList<EntryExpenses> LoadEntriesTypes()
         {
-            return new BindingList<EntryExpenses>(ctr.List().Where(e => e.Date.ToString("MM yyyy") == date.ToString("MM yyyy") && e.EntryType == this.entryType).ToList());
+            return new BindingList<EntryExpenses>(ctr.List().Where(e => 
+            e.Date.ToString("MM yyyy") == date.ToString("MM yyyy") && 
+            (e.EntryType == this.entryType || e.EntryType == (this.entryType == EntryType.Expense ? EntryType.ExpenseCreditCard : EntryType.Revenue))).ToList());
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -86,8 +90,12 @@ namespace GestaoFinanceira.Views
                 if (MessageBox.Show("Tem certeza que deseja apagar este item ?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     EntryExpenses deleteEntry = (EntryExpenses)dtvRevenue.SelectedRows[0].DataBoundItem;
-                    deleteEntry.Value *= (-1);
-                    ctr.PerformTransaction(deleteEntry);
+                    if (deleteEntry.PaymentMethod is Account || (deleteEntry.PaymentMethod is CreditCard && deleteEntry.Status == false))
+                    {
+                        deleteEntry.Value *= (-1);
+                        ctr.PerformTransaction(deleteEntry);
+                    }
+
                     ctr.Remove(deleteEntry);
                     dtvRevenue.DataSource = LoadEntriesTypes();
                 }
@@ -99,6 +107,29 @@ namespace GestaoFinanceira.Views
             BindingList<EntryExpenses> entries = null;
             await this.Loading(() => entries = LoadEntriesTypes());
             dtvRevenue.DataSource = entries;
+        }
+
+        private void btnOpenCalendar_Click(object sender, EventArgs e)
+        {
+            FrmMothCalendar calendar = new FrmMothCalendar();
+            calendar.ShowDialog();
+            date = calendar.DialogResult == DialogResult.OK ? calendar.Date : date;
+            btnOpenCalendar.Text = calendar.DialogResult == DialogResult.OK ? calendar.Month : btnOpenCalendar.Text;
+            dtvRevenue.DataSource = LoadEntriesTypes();
+        }
+
+        private void btnRight_Click(object sender, EventArgs e)
+        {
+            date = date.AddMonths(1);
+            btnOpenCalendar.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(date.ToString("MMMM"));
+            dtvRevenue.DataSource = LoadEntriesTypes();
+        }
+
+        private void btnLeft_Click(object sender, EventArgs e)
+        {
+            date = date.AddMonths(-1);
+            btnOpenCalendar.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(date.ToString("MMMM"));
+            dtvRevenue.DataSource = LoadEntriesTypes();
         }
     }
 }

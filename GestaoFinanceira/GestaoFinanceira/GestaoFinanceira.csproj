@@ -103,34 +103,40 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Utils\SystemColors.cs" />
-    <Compile Include="Views\FrmAbout.cs">
+    <Compile Include="Views\Utils\FrmAbout.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FrmAbout.Designer.cs">
+    <Compile Include="Views\Utils\FrmAbout.Designer.cs">
       <DependentUpon>FrmAbout.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FrmAdjusteBalance.cs">
+    <Compile Include="Views\Utils\FrmAboutInterest.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FrmAdjusteBalance.Designer.cs">
+    <Compile Include="Views\Utils\FrmAboutInterest.Designer.cs">
+      <DependentUpon>FrmAboutInterest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Utils\FrmAdjusteBalance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Utils\FrmAdjusteBalance.Designer.cs">
       <DependentUpon>FrmAdjusteBalance.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FrmBankAccount.cs">
+    <Compile Include="Views\Create\FrmBankAccount.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FrmBankAccount.Designer.cs">
+    <Compile Include="Views\Create\FrmBankAccount.Designer.cs">
       <DependentUpon>FrmBankAccount.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FrmCategories.cs">
+    <Compile Include="Views\Create\FrmCategories.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FrmCategories.Designer.cs">
+    <Compile Include="Views\Create\FrmCategories.Designer.cs">
       <DependentUpon>FrmCategories.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FrmCreditCard.cs">
+    <Compile Include="Views\Create\FrmCreditCard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FrmCreditCard.Designer.cs">
+    <Compile Include="Views\Create\FrmCreditCard.Designer.cs">
       <DependentUpon>FrmCreditCard.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\FrmDashBoard.cs">
@@ -139,47 +145,53 @@
     <Compile Include="Views\FrmDashBoard.Designer.cs">
       <DependentUpon>FrmDashBoard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FrmEntries.cs">
+    <Compile Include="Views\Utils\FrmEntries.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FrmEntries.Designer.cs">
+    <Compile Include="Views\Utils\FrmEntries.Designer.cs">
       <DependentUpon>FrmEntries.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FrmEntryExpenses.cs">
+    <Compile Include="Views\Create\FrmEntryExpenses.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FrmEntryExpenses.Designer.cs">
+    <Compile Include="Views\Create\FrmEntryExpenses.Designer.cs">
       <DependentUpon>FrmEntryExpenses.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FrmListBankAccount.cs">
+    <Compile Include="Views\List\FrmListBankAccount.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FrmListBankAccount.Designer.cs">
+    <Compile Include="Views\List\FrmListBankAccount.Designer.cs">
       <DependentUpon>FrmListBankAccount.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FrmListCategories.cs">
+    <Compile Include="Views\List\FrmListCategories.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FrmListCategories.Designer.cs">
+    <Compile Include="Views\List\FrmListCategories.Designer.cs">
       <DependentUpon>FrmListCategories.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FrmListCreditCard.cs">
+    <Compile Include="Views\List\FrmListCreditCard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FrmListCreditCard.Designer.cs">
+    <Compile Include="Views\List\FrmListCreditCard.Designer.cs">
       <DependentUpon>FrmListCreditCard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FrmLoading.cs">
+    <Compile Include="Views\Utils\FrmLoading.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FrmLoading.Designer.cs">
+    <Compile Include="Views\Utils\FrmLoading.Designer.cs">
       <DependentUpon>FrmLoading.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FrmMothCalendar.cs">
+    <Compile Include="Views\Utils\FrmMothCalendar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FrmMothCalendar.Designer.cs">
+    <Compile Include="Views\Utils\FrmMothCalendar.Designer.cs">
       <DependentUpon>FrmMothCalendar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Utils\FrmPayInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Utils\FrmPayInvoice.Designer.cs">
+      <DependentUpon>FrmPayInvoice.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\FrmReport.cs">
       <SubType>Form</SubType>
@@ -189,61 +201,64 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\FrmListEntryRevenue.cs">
+    <Compile Include="Views\List\FrmListEntryRevenue.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FrmListEntryRevenue.Designer.cs">
+    <Compile Include="Views\List\FrmListEntryRevenue.Designer.cs">
       <DependentUpon>FrmListEntryRevenue.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FrmTransfer.cs">
+    <Compile Include="Views\Utils\FrmTransfer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FrmTransfer.Designer.cs">
+    <Compile Include="Views\Utils\FrmTransfer.Designer.cs">
       <DependentUpon>FrmTransfer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FrmSplashScreen.cs">
+    <Compile Include="Views\Utils\FrmSplashScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FrmSplashScreen.Designer.cs">
+    <Compile Include="Views\Utils\FrmSplashScreen.Designer.cs">
       <DependentUpon>FrmSplashScreen.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Views\FrmAbout.resx">
+    <EmbeddedResource Include="Views\Utils\FrmAbout.resx">
       <DependentUpon>FrmAbout.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\FrmAdjusteBalance.resx">
+    <EmbeddedResource Include="Views\Utils\FrmAboutInterest.resx">
+      <DependentUpon>FrmAboutInterest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Utils\FrmAdjusteBalance.resx">
       <DependentUpon>FrmAdjusteBalance.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\FrmBankAccount.resx">
+    <EmbeddedResource Include="Views\Create\FrmBankAccount.resx">
       <DependentUpon>FrmBankAccount.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\FrmCategories.resx">
+    <EmbeddedResource Include="Views\Create\FrmCategories.resx">
       <DependentUpon>FrmCategories.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\FrmCreditCard.resx">
+    <EmbeddedResource Include="Views\Create\FrmCreditCard.resx">
       <DependentUpon>FrmCreditCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmDashBoard.resx">
       <DependentUpon>FrmDashBoard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\FrmEntries.resx">
+    <EmbeddedResource Include="Views\Utils\FrmEntries.resx">
       <DependentUpon>FrmEntries.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\FrmEntryExpenses.resx">
+    <EmbeddedResource Include="Views\Create\FrmEntryExpenses.resx">
       <DependentUpon>FrmEntryExpenses.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\FrmListBankAccount.resx">
+    <EmbeddedResource Include="Views\List\FrmListBankAccount.resx">
       <DependentUpon>FrmListBankAccount.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\FrmListCategories.resx">
+    <EmbeddedResource Include="Views\List\FrmListCategories.resx">
       <DependentUpon>FrmListCategories.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\FrmListCreditCard.resx">
+    <EmbeddedResource Include="Views\List\FrmListCreditCard.resx">
       <DependentUpon>FrmListCreditCard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\FrmLoading.resx">
+    <EmbeddedResource Include="Views\Utils\FrmLoading.resx">
       <DependentUpon>FrmLoading.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\FrmMothCalendar.resx">
+    <EmbeddedResource Include="Views\Utils\FrmMothCalendar.resx">
       <DependentUpon>FrmMothCalendar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -251,16 +266,19 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Utils\FrmPayInvoice.resx">
+      <DependentUpon>FrmPayInvoice.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmReport.resx">
       <DependentUpon>FrmReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\FrmListEntryRevenue.resx">
+    <EmbeddedResource Include="Views\List\FrmListEntryRevenue.resx">
       <DependentUpon>FrmListEntryRevenue.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\FrmTransfer.resx">
+    <EmbeddedResource Include="Views\Utils\FrmTransfer.resx">
       <DependentUpon>FrmTransfer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\FrmSplashScreen.resx">
+    <EmbeddedResource Include="Views\Utils\FrmSplashScreen.resx">
       <DependentUpon>FrmSplashScreen.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -387,6 +405,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8_chevron_left_26px_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_invoice_26px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_info_26px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_info_26px_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_info_9px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_info_15px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_info_15px_1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

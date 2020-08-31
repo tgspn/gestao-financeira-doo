@@ -4,7 +4,6 @@ using GestaoFinanceira.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 
 namespace GestaoFinanceira.Controllers
@@ -192,13 +191,14 @@ namespace GestaoFinanceira.Controllers
             report.TotalExpenses = 0.00;
             report.TotalRevenue = 0.00;
 
-            foreach (var entry in Context.Expenses.Include("Category").Include("SubCategory").ToList())
+            foreach (var entry in Context.Expenses.Include("Category").Include("SubCategory").Where(e => e.PaymentMethod.Id == card.Id).ToList())
             {
                 if (CheckMonth(date, entry.Date) && entry.PaymentMethod is CreditCard)
                 {
-                    if (((CreditCard)entry.PaymentMethod).Id == card.Id)
+                    if (CheckMonthCreditCard(card.ClosingDate, entry.PaymentDate, date))
                     {
                         RulesForFeactures(report, entry);
+                        report.TotalExpenses += entry.Status is false ? entry.Value : -entry.Value;
                     }
                 }
             }
@@ -207,7 +207,7 @@ namespace GestaoFinanceira.Controllers
 
         private void RulesForFeactures(Report report, EntryExpenses entry)
         {
-            if (entry.EntryType == EntryType.Expense)
+            if (entry.EntryType == EntryType.Expense || entry.EntryType == EntryType.ExpenseCreditCard)
             {
                 report.EntryExpenses.Add(entry);
                 report.TotalExpenses += entry.Status ? entry.Value : 0.00;
@@ -225,26 +225,26 @@ namespace GestaoFinanceira.Controllers
             if (entry.EntryType == EntryType.AjustBalance)
                 report.EntryAjustBalance.Add(entry);
 
-            if (!report.Categories.Any(x => x.Id == entry.Category.Id))
+            if (!report.Categories.Any(x => x.Id == entry.Category.Id) && !string.IsNullOrEmpty(entry.Category.Description))
                 report.Categories.Add(entry.Category);
 
             if (!report.SubCategories.Any(x => entry.SubCategory.Id == x.Id) && !string.IsNullOrEmpty(entry.SubCategory.Description))
                 report.SubCategories.Add(entry.SubCategory);
         }
 
-        public Report GenerateByCategories(DateTime date)
-        {
-            throw new NotImplementedException();
-        }
-        public Report GenerateBySubCategories()
-        {
-            throw new NotImplementedException();
-        }
-
         public bool CheckMonth(DateTime RefDate, DateTime EntryDate)
         {
             if (RefDate.Month == EntryDate.Date.Month && RefDate.Year == EntryDate.Date.Year)
                 return true;
+            return false;
+        }
+
+        public bool CheckMonthCreditCard(string RefDate, DateTime EntryDate, DateTime date)
+        {
+            //if (EntryDate.Date.Day >= Convert.ToInt32(RefDate))
+            if ((date.Month >= EntryDate.Month && EntryDate.Day >= Convert.ToInt32(RefDate)) ||
+                    (EntryDate.Month <= date.AddMonths(1).Month && EntryDate.Day <= Convert.ToInt32(RefDate)))
+                    return true;
             return false;
         }
 
