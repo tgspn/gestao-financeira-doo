@@ -136,6 +136,7 @@
             this.tvCategories.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tvCategories.Size = new System.Drawing.Size(230, 258);
             this.tvCategories.TabIndex = 3;
+            this.tvCategories.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.tvCategories_AfterLabelEdit);
             this.tvCategories.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvCategories_AfterSelect);
             // 
             // FrmListCategories
