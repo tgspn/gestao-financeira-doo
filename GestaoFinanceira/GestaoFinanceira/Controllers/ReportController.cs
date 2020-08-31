@@ -205,7 +205,7 @@ namespace GestaoFinanceira.Controllers
             {
                 if (CheckMonth(date, entry.Date) && entry.PaymentMethod is CreditCard)
                 {
-                    if (CheckMonthCreditCard(card.ClosingDate, entry.PaymentDate, date))
+                    if (CheckMonthCreditCard(card.ClosingDate, entry.Date, date))
                     {
                         RulesForFeactures(report, entry);
                         report.TotalExpenses += entry.Status is false ? entry.Value : -entry.Value;
@@ -253,7 +253,7 @@ namespace GestaoFinanceira.Controllers
         {
             //if (EntryDate.Date.Day >= Convert.ToInt32(RefDate))
             if ((date.Month >= EntryDate.Month && EntryDate.Day >= Convert.ToInt32(RefDate)) ||
-                    (EntryDate.Month <= date.AddMonths(1).Month && EntryDate.Day <= Convert.ToInt32(RefDate)))
+                (EntryDate.Month <= date.AddMonths(1).Month && EntryDate.Day <= Convert.ToInt32(RefDate)))
                     return true;
             return false;
         }

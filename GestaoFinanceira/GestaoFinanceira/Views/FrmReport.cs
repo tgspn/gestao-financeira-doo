@@ -221,7 +221,7 @@ namespace GestaoFinanceira.Views
 
         private DateTime VerificDateForCreditCard(Report report, DateTime date)
         {
-            if (report.Accounts.Count == 0)
+            if (report.Accounts.Count == 0 && report.CreditCards.Count > 0)
             {
                 int day = Convert.ToInt32(report.CreditCards[0].ClosingDate);
                 int month = date.Day > day ? date.AddMonths(1).Month : date.Month;
