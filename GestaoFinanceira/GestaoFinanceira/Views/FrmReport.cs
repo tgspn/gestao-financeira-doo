@@ -236,12 +236,6 @@ namespace GestaoFinanceira.Views
 
         private void btnImport_Click(object sender, EventArgs e)
         {
-
-        }
-
-
-        private void btnImport_Click(object sender, EventArgs e)
-        {
             using (OpenFileDialog open=new OpenFileDialog())
             {
                 open.Filter = "Arquivo do Gestão Financeira|*.gfc|Todos os arquivos|*.*";

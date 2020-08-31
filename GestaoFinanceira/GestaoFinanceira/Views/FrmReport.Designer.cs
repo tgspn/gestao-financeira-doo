@@ -55,7 +55,6 @@
             this.pnReport = new System.Windows.Forms.Panel();
             this.lbFilter = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.lbName = new System.Windows.Forms.Label();
             this.lbHolder = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
