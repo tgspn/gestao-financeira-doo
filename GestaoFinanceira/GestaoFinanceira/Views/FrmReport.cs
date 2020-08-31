@@ -184,5 +184,26 @@ namespace GestaoFinanceira.Views
         {
 
         }
+
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog open=new OpenFileDialog())
+            {
+                open.Filter = "Arquivo do Gestão Financeira|*.gfc|Todos os arquivos|*.*";
+                if (open.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        var report= ctrReport.Import(open.FileName);
+                        ctrDash.report = report;
+                        LoadFilds(report.Date, report);
+                    }catch
+                    {
+                        MessageBox.Show("Não foi possivel abrir o arquivo","Erro",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
     }
 }

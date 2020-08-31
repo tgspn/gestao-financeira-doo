@@ -30,9 +30,12 @@ namespace GestaoFinanceira.Controllers
                 ReportExportImportManager.GenerateExcel(fileName, report);
         }
 
-        public void Import(string csvContent)
+        public Report Import(string filename)
         {
-            throw new NotImplementedException();
+            if (Path.GetExtension(filename) == ".gfc")
+                return Newtonsoft.Json.JsonConvert.DeserializeObject<Report>(File.ReadAllText(filename));
+
+            throw new Exception("Arquivo invalido");
         }
 
         public Report GenerateByDay()
