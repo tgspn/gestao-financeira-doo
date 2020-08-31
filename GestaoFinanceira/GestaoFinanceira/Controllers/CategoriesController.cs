@@ -1,5 +1,6 @@
 ﻿using GestaoFinanceira.BD.Conections;
 using GestaoFinanceira.BD.DAO;
+using GestaoFinanceira.Enums;
 using GestaoFinanceira.Model;
 using System;
 using System.CodeDom;
@@ -52,8 +53,8 @@ namespace GestaoFinanceira.Controllers
         public void LoadTreeView(TreeView tree)
         {
             tree.Nodes.Clear();
-            tree.Nodes.Add("Tipo despesa             ");
-            tree.Nodes.Add("Tipo receita            ");
+            tree.Nodes.Add("Tipo despesa             ").Tag=EntryType.Expense;
+            tree.Nodes.Add("Tipo receita            ").Tag=EntryType.Revenue;
             tree.Nodes[0].NodeFont = new Font("Microsoft PhagsPa", 9, FontStyle.Bold);
             tree.Nodes[1].NodeFont = new Font("Microsoft PhagsPa", 9, FontStyle.Bold);
 
@@ -62,8 +63,8 @@ namespace GestaoFinanceira.Controllers
             int j = 0;
             foreach (var cat in Context.Categories.ToList().Where(c => 
                 c.type != Enums.EntryType.AjustBalance &&
-                c.type != Enums.EntryType.Transfer
-                ).OrderBy(a => a.type).ThenBy(a => a.Description))
+                c.type != Enums.EntryType.Transfer)
+                .OrderBy(a => a.type).ThenBy(a => a.Description))
             {
                 if (cat.type == Enums.EntryType.Expense)
                 {
