@@ -1,9 +1,10 @@
-﻿using GestaoFinanceira.Controllers;
+using GestaoFinanceira.Controllers;
 using GestaoFinanceira.Enums;
 using GestaoFinanceira.Model;
 using System;
 using System.ComponentModel;
 using System.Globalization;
+using System.IO;
 using System.Windows.Forms;
 
 namespace GestaoFinanceira.Views
@@ -153,6 +154,33 @@ namespace GestaoFinanceira.Views
         }
 
         private void btnExport_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog save = new SaveFileDialog())
+            {
+                save.FileName = $"relatorio_{date:MMMM_yyyy}";
+                save.DefaultExt = ".gfc";
+                save.AddExtension = true;
+                save.Filter = "Arquivo do Gestão Financeira|*.gfc|Arquivos do excel|*.xlsx|Arquivos do excel 97-2003|*.xls|Todos os arquivos|*.*";
+                save.Title = "Exportar";
+                if (save.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        ctrReport.Export(save.FileName, report);
+                        MessageBox.Show("Exportado com sucesso", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Algo deu errado, não foi possível exportar", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+
+
+        }
+
+
+        private void btnImport_Click(object sender, EventArgs e)
         {
 
         }
