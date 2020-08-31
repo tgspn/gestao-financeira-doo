@@ -116,8 +116,6 @@
             this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnPayment = new System.Windows.Forms.Panel();
-            this.lbName = new System.Windows.Forms.Label();
-            this.lbHolder = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.LbTotalExpense2 = new System.Windows.Forms.Label();
             this.lbTotalRevenue2 = new System.Windows.Forms.Label();
@@ -447,26 +445,9 @@
             this.dtpDateIni.TabIndex = 10;
             this.toolTip1.SetToolTip(this.dtpDateIni, "Selecione a data de início");
             this.dtpDateIni.ValueChanged += new System.EventHandler(this.dtpDateIni_ValueChanged);
-            // 
-            // btnImport
-            // 
-            this.btnImport.Location = new System.Drawing.Point(7, 329);
-            this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(100, 23);
-            this.btnImport.TabIndex = 10;
-            this.btnImport.Text = "Importar CSV";
-            this.btnImport.UseVisualStyleBackColor = true;
-            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
-            // 
-            // btnExport
-            // 
-            this.btnExport.Location = new System.Drawing.Point(142, 329);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(100, 23);
-            this.btnExport.TabIndex = 10;
-            this.btnExport.Text = "Exportar CSV";
-            this.btnExport.UseVisualStyleBackColor = true;
+            //
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
             // cbModels
             // 
@@ -851,7 +832,6 @@
             this.btnExport.TabIndex = 10;
             this.toolTip1.SetToolTip(this.btnExport, "Exportar CSV");
             this.btnExport.UseVisualStyleBackColor = true;
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // btnImport
             // 

@@ -9,6 +9,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -28,22 +29,25 @@ namespace GestaoFinanceira.Views
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
-            string description = "";
-            if (tvCategories.SelectedNode.Level == 0)
+            if (tvCategories.SelectedNode != null)
             {
-                description = "Nova Categoria";
-            }
-            else
-            if (tvCategories.SelectedNode.Tag is Category)
-            {
-                description = "Nova Subcategoria";
-            }
-            var node = tvCategories.SelectedNode.Nodes.Add(description);
+                string description = "";
+                if (tvCategories.SelectedNode.Level == 0)
+                {
+                    description = "Nova Categoria";
+                }
+                else
+                if (tvCategories.SelectedNode.Tag is Category)
+                {
+                    description = "Nova Subcategoria";
+                }
+                var node = tvCategories.SelectedNode.Nodes.Add(description);
 
-            tvCategories.LabelEdit = true;
-            node.EnsureVisible();
+                tvCategories.LabelEdit = true;
+                node.EnsureVisible();
 
-            node.BeginEdit();
+                node.BeginEdit();
+            }
 
         }
         private void tvCategories_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
