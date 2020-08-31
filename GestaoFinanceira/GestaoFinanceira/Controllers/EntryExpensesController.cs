@@ -46,7 +46,8 @@ namespace GestaoFinanceira.Controllers
                     Date = DateTime.Now,
                     EntryType = value > account.Balance ? EntryType.Revenue : EntryType.Expense,
                     Category = Context.Categories.Find(9),
-                    PaymentMethod = account
+                    PaymentMethod = account,
+                    Status = true
                 };
 
             if (-1 * account.Limit < value)
@@ -106,7 +107,8 @@ namespace GestaoFinanceira.Controllers
                 Date = date,
                 PaymentMethod = inAcc,
                 Category = Context.Categories.Find(10),
-                EntryType = EntryType.Transfer
+                EntryType = EntryType.Transfer,
+                Status = true
             };
 
             EntryExpenses outEntry = new EntryExpenses()
@@ -116,7 +118,8 @@ namespace GestaoFinanceira.Controllers
                 Date = date,
                 Category = Context.Categories.Find(10),
                 PaymentMethod = outAcc,
-                EntryType = EntryType.Transfer
+                EntryType = EntryType.Transfer,
+                Status = true
             };
             Save(inEntry);
             Save(outEntry);
