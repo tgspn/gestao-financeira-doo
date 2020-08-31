@@ -1,16 +1,12 @@
-﻿using GestaoFinanceira.BD.Conections;
-using GestaoFinanceira.Controllers;
+﻿using GestaoFinanceira.Controllers;
 using GestaoFinanceira.Enums;
 using GestaoFinanceira.Model;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
-using System.Net.Configuration;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestaoFinanceira.Views
@@ -27,6 +23,7 @@ namespace GestaoFinanceira.Views
             pnEtries.BackColor = entryType == EntryType.Revenue ? SystemColors.GREEN : SystemColors.RED;
             this.entryType = entryType;
             this.date = date;
+            btnOpenCalendar.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(date.ToString("MMMM"));
             ctr = new EntryExpensesController();
         }
 
@@ -69,17 +66,18 @@ namespace GestaoFinanceira.Views
 
         private BindingList<EntryExpenses> LoadEntriesTypes()
         {
-            return new BindingList<EntryExpenses>(ctr.List().Where(e => e.Date.ToString("MM yyyy") == date.ToString("MM yyyy") && e.EntryType == this.entryType).ToList());
+            return new BindingList<EntryExpenses>(ctr.List().Where(e => 
+            e.Date.ToString("MM yyyy") == date.ToString("MM yyyy") && 
+            (e.EntryType == this.entryType || e.EntryType == (this.entryType == EntryType.Expense ? EntryType.ExpenseCreditCard : EntryType.Revenue))).ToList());
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
             EntryExpenses editEntry = (EntryExpenses)dtvRevenue.SelectedRows[0].DataBoundItem;
-            FrmEntryExpenses form = new FrmEntryExpenses(editEntry);
+            FrmEntryExpenses form = new FrmEntryExpenses(editEntry, ctr.Context);
+
             if (form.ShowDialog() == DialogResult.OK)
             {
-                editEntry = form.getEntryExpenses();
-                ctr.Save(editEntry);
                 dtvRevenue.Rows.Clear();
                 dtvRevenue.DataSource = LoadEntriesTypes();
             }
@@ -92,6 +90,12 @@ namespace GestaoFinanceira.Views
                 if (MessageBox.Show("Tem certeza que deseja apagar este item ?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     EntryExpenses deleteEntry = (EntryExpenses)dtvRevenue.SelectedRows[0].DataBoundItem;
+                    if (deleteEntry.PaymentMethod is Account || (deleteEntry.PaymentMethod is CreditCard && deleteEntry.Status == false))
+                    {
+                        deleteEntry.Value *= (-1);
+                        ctr.PerformTransaction(deleteEntry);
+                    }
+
                     ctr.Remove(deleteEntry);
                     dtvRevenue.DataSource = LoadEntriesTypes();
                 }
@@ -100,9 +104,32 @@ namespace GestaoFinanceira.Views
 
         private async void FrmListEntryRevenue_Shown(object sender, EventArgs e)
         {
-            BindingList<EntryExpenses> entries = null ;
+            BindingList<EntryExpenses> entries = null;
             await this.Loading(() => entries = LoadEntriesTypes());
             dtvRevenue.DataSource = entries;
+        }
+
+        private void btnOpenCalendar_Click(object sender, EventArgs e)
+        {
+            FrmMothCalendar calendar = new FrmMothCalendar();
+            calendar.ShowDialog();
+            date = calendar.DialogResult == DialogResult.OK ? calendar.Date : date;
+            btnOpenCalendar.Text = calendar.DialogResult == DialogResult.OK ? calendar.Month : btnOpenCalendar.Text;
+            dtvRevenue.DataSource = LoadEntriesTypes();
+        }
+
+        private void btnRight_Click(object sender, EventArgs e)
+        {
+            date = date.AddMonths(1);
+            btnOpenCalendar.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(date.ToString("MMMM"));
+            dtvRevenue.DataSource = LoadEntriesTypes();
+        }
+
+        private void btnLeft_Click(object sender, EventArgs e)
+        {
+            date = date.AddMonths(-1);
+            btnOpenCalendar.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(date.ToString("MMMM"));
+            dtvRevenue.DataSource = LoadEntriesTypes();
         }
     }
 }

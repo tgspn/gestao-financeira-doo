@@ -38,6 +38,9 @@
             this.pnEtries = new System.Windows.Forms.Panel();
             this.lbEntries = new System.Windows.Forms.Label();
             this.dtvRevenue = new System.Windows.Forms.DataGridView();
+            this.btnLeft = new System.Windows.Forms.Button();
+            this.btnRight = new System.Windows.Forms.Button();
+            this.btnOpenCalendar = new System.Windows.Forms.Button();
             this.cId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descrição = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,7 +51,8 @@
             this.cDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cRepeatEvery = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cRepeatUntil = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnEtries.SuspendLayout();
@@ -63,7 +67,7 @@
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
             this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.btnAdd.Location = new System.Drawing.Point(742, 256);
+            this.btnAdd.Location = new System.Drawing.Point(767, 255);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(37, 33);
             this.btnAdd.TabIndex = 1;
@@ -77,7 +81,7 @@
             this.btnDelete.FlatAppearance.BorderSize = 0;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Image = global::GestaoFinanceira.Properties.Resources.icons8_trash_26px_1;
-            this.btnDelete.Location = new System.Drawing.Point(656, 256);
+            this.btnDelete.Location = new System.Drawing.Point(681, 255);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(37, 33);
             this.btnDelete.TabIndex = 1;
@@ -106,7 +110,7 @@
             this.btnEdit.FlatAppearance.BorderSize = 0;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Image = global::GestaoFinanceira.Properties.Resources.icons8_edit_26px_2;
-            this.btnEdit.Location = new System.Drawing.Point(699, 256);
+            this.btnEdit.Location = new System.Drawing.Point(724, 255);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(37, 33);
             this.btnEdit.TabIndex = 1;
@@ -151,6 +155,7 @@
             this.cRepeatEvery,
             this.Column4,
             this.Column,
+            this.Column5,
             this.cRepeatUntil,
             this.Column1});
             this.dtvRevenue.GridColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -158,11 +163,58 @@
             this.dtvRevenue.MultiSelect = false;
             this.dtvRevenue.Name = "dtvRevenue";
             this.dtvRevenue.ReadOnly = true;
-            this.dtvRevenue.RowHeadersWidth = 51;
+            this.dtvRevenue.RowHeadersWidth = 18;
             this.dtvRevenue.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtvRevenue.Size = new System.Drawing.Size(740, 238);
+            this.dtvRevenue.Size = new System.Drawing.Size(770, 238);
             this.dtvRevenue.TabIndex = 0;
             this.dtvRevenue.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtvRevenue_CellContentClick);
+            // 
+            // btnLeft
+            // 
+            this.btnLeft.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLeft.FlatAppearance.BorderSize = 0;
+            this.btnLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.btnLeft.Image = global::GestaoFinanceira.Properties.Resources.icons8_chevron_left_26px_2;
+            this.btnLeft.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLeft.Location = new System.Drawing.Point(340, 256);
+            this.btnLeft.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLeft.Name = "btnLeft";
+            this.btnLeft.Size = new System.Drawing.Size(24, 33);
+            this.btnLeft.TabIndex = 4;
+            this.btnLeft.UseVisualStyleBackColor = true;
+            this.btnLeft.Click += new System.EventHandler(this.btnLeft_Click);
+            // 
+            // btnRight
+            // 
+            this.btnRight.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRight.FlatAppearance.BorderSize = 0;
+            this.btnRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRight.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.btnRight.Image = global::GestaoFinanceira.Properties.Resources.icons8_chevron_right_26px_1;
+            this.btnRight.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRight.Location = new System.Drawing.Point(488, 256);
+            this.btnRight.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRight.Name = "btnRight";
+            this.btnRight.Size = new System.Drawing.Size(24, 33);
+            this.btnRight.TabIndex = 4;
+            this.btnRight.UseVisualStyleBackColor = true;
+            this.btnRight.Click += new System.EventHandler(this.btnRight_Click);
+            // 
+            // btnOpenCalendar
+            // 
+            this.btnOpenCalendar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnOpenCalendar.FlatAppearance.BorderSize = 0;
+            this.btnOpenCalendar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOpenCalendar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.btnOpenCalendar.Location = new System.Drawing.Point(370, 256);
+            this.btnOpenCalendar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnOpenCalendar.Name = "btnOpenCalendar";
+            this.btnOpenCalendar.Size = new System.Drawing.Size(114, 33);
+            this.btnOpenCalendar.TabIndex = 4;
+            this.btnOpenCalendar.Text = "Dezembro";
+            this.btnOpenCalendar.UseVisualStyleBackColor = true;
+            this.btnOpenCalendar.Click += new System.EventHandler(this.btnOpenCalendar_Click);
             // 
             // cId
             // 
@@ -252,18 +304,26 @@
             // Column4
             // 
             this.Column4.DataPropertyName = "CaptionRepeat";
-            this.Column4.HeaderText = "Recorrente";
+            this.Column4.HeaderText = "Pagamento";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
             // 
             // Column
             // 
             this.Column.DataPropertyName = "status";
-            this.Column.HeaderText = "Status";
+            this.Column.HeaderText = "Pago";
             this.Column.Name = "Column";
             this.Column.ReadOnly = true;
-            this.Column.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column.Visible = false;
+            this.Column.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column.Width = 50;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "PaymentDate";
+            this.Column5.HeaderText = "Data de pagamento";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Visible = false;
             // 
             // cRepeatUntil
             // 
@@ -289,8 +349,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(791, 300);
+            this.ClientSize = new System.Drawing.Size(816, 300);
             this.ControlBox = false;
+            this.Controls.Add(this.btnLeft);
+            this.Controls.Add(this.btnRight);
+            this.Controls.Add(this.btnOpenCalendar);
             this.Controls.Add(this.dtvRevenue);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnEdit);
@@ -318,6 +381,9 @@
         private System.Windows.Forms.Panel pnEtries;
         private System.Windows.Forms.Label lbEntries;
         protected System.Windows.Forms.DataGridView dtvRevenue;
+        private System.Windows.Forms.Button btnLeft;
+        private System.Windows.Forms.Button btnRight;
+        private System.Windows.Forms.Button btnOpenCalendar;
         private System.Windows.Forms.DataGridViewTextBoxColumn cId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descrição;
         private System.Windows.Forms.DataGridViewTextBoxColumn cValue;
@@ -328,7 +394,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn cRepeatEvery;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn cRepeatUntil;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }

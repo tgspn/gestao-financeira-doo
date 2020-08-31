@@ -39,11 +39,14 @@
             this.cIssuer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cHolder = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cLateFee = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cExpirationDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cClosingDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cExpirationDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtvCreditCard)).BeginInit();
             this.pnCreditCard.SuspendLayout();
             this.SuspendLayout();
@@ -60,11 +63,14 @@
             this.cIssuer,
             this.cHolder,
             this.cAmount,
+            this.Column2,
+            this.Column3,
+            this.Column4,
             this.cLateFee,
             this.cNumber,
-            this.cExpirationDate,
             this.cClosingDate,
-            this.Column1});
+            this.Column1,
+            this.cExpirationDate});
             this.dtvCreditCard.GridColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dtvCreditCard.Location = new System.Drawing.Point(49, 12);
             this.dtvCreditCard.MultiSelect = false;
@@ -175,7 +181,7 @@
             this.cHolder.HeaderText = "Titular";
             this.cHolder.Name = "cHolder";
             this.cHolder.ReadOnly = true;
-            this.cHolder.Width = 170;
+            this.cHolder.Width = 150;
             // 
             // cAmount
             // 
@@ -183,13 +189,40 @@
             this.cAmount.HeaderText = "Saldo";
             this.cAmount.Name = "cAmount";
             this.cAmount.ReadOnly = true;
+            this.cAmount.Width = 70;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "DueDate";
+            this.Column2.HeaderText = "Vencimento";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "latefee";
+            this.Column3.HeaderText = "Multa/Atraso";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "InterestPerDay";
+            this.Column4.HeaderText = "%/Dia";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // cLateFee
             // 
-            this.cLateFee.DataPropertyName = "latefee";
-            this.cLateFee.HeaderText = "% ao mês";
+            this.cLateFee.DataPropertyName = "InterestPerMonth";
+            this.cLateFee.HeaderText = "%/mês";
             this.cLateFee.Name = "cLateFee";
             this.cLateFee.ReadOnly = true;
+            this.cLateFee.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.cLateFee.Width = 70;
             // 
             // cNumber
             // 
@@ -197,14 +230,6 @@
             this.cNumber.HeaderText = "Numero";
             this.cNumber.Name = "cNumber";
             this.cNumber.ReadOnly = true;
-            // 
-            // cExpirationDate
-            // 
-            this.cExpirationDate.DataPropertyName = "expirationdate";
-            this.cExpirationDate.HeaderText = "Vencimento do Cartão";
-            this.cExpirationDate.Name = "cExpirationDate";
-            this.cExpirationDate.ReadOnly = true;
-            this.cExpirationDate.Width = 150;
             // 
             // cClosingDate
             // 
@@ -220,6 +245,14 @@
             this.Column1.HeaderText = "Limite";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
+            // 
+            // cExpirationDate
+            // 
+            this.cExpirationDate.DataPropertyName = "expirationdate";
+            this.cExpirationDate.HeaderText = "Vencimento do Cartão";
+            this.cExpirationDate.Name = "cExpirationDate";
+            this.cExpirationDate.ReadOnly = true;
+            this.cExpirationDate.Width = 150;
             // 
             // FrmListCreditCard
             // 
@@ -260,10 +293,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cIssuer;
         private System.Windows.Forms.DataGridViewTextBoxColumn cHolder;
         private System.Windows.Forms.DataGridViewTextBoxColumn cAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn cLateFee;
         private System.Windows.Forms.DataGridViewTextBoxColumn cNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cExpirationDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn cClosingDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cExpirationDate;
     }
 }

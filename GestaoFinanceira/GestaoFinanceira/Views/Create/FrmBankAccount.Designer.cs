@@ -140,7 +140,7 @@
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Image = global::GestaoFinanceira.Properties.Resources.icons8_checkmark_26px;
-            this.btnSave.Location = new System.Drawing.Point(149, 230);
+            this.btnSave.Location = new System.Drawing.Point(181, 240);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(37, 23);
             this.btnSave.TabIndex = 6;
@@ -153,7 +153,7 @@
             this.btnCancel.FlatAppearance.BorderSize = 0;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Image = global::GestaoFinanceira.Properties.Resources.icons8_multiply_26px;
-            this.btnCancel.Location = new System.Drawing.Point(71, 230);
+            this.btnCancel.Location = new System.Drawing.Point(41, 240);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(32, 23);
             this.btnCancel.TabIndex = 0;

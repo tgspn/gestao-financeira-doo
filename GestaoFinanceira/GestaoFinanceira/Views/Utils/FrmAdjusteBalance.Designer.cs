@@ -183,6 +183,11 @@
             0,
             0,
             0});
+            this.nupValue.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
             this.nupValue.Name = "nupValue";
             this.nupValue.Size = new System.Drawing.Size(263, 28);
             this.nupValue.TabIndex = 0;

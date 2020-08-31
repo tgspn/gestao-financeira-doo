@@ -4,6 +4,7 @@ using GestaoFinanceira.Model;
 using GestaoFinanceira.Views;
 using System;
 using System.Globalization;
+using System.Runtime.Remoting.Messaging;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -31,7 +32,7 @@ namespace GestaoFinanceira
 
             if (form.ShowDialog() == DialogResult.OK)
             {
-                this.lb_Month.Text = form.Month;
+                this.btnOpenCalendar.Text = form.Month;
                 this.date = form.Date;
                 this.LoadFilds();
             }
@@ -98,9 +99,10 @@ namespace GestaoFinanceira
 
         private void GerarRelatórioByButton_Click(object sender, EventArgs e)
         {
-            FrmReport form = new FrmReport(this.report, date);
             var btn = (Button)sender;
+            FrmReport form = new FrmReport(this.report, date);
             form.Payment = (PaymentMethod)btn.Tag;
+            form.FormClosed += Form_FormClosed;
             form.Show();
         }
 
@@ -212,7 +214,7 @@ namespace GestaoFinanceira
                 ctr.LoadReport(date);
                 report = ctr.report;
 
-                lb_Month.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(date.ToString("MMMM"));
+                btnOpenCalendar.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(date.ToString("MMMM"));
                 lbBalance.Text = report.TotalIncome.ToString("C");
                 lbExpense.Text = report.TotalExpenses.ToString("C");
                 lbRevenue.Text = report.TotalRevenue.ToString("C");
@@ -231,6 +233,18 @@ namespace GestaoFinanceira
             this.LoadFlowPanels();
             await Task.Run(() => { });
             this.LoadFilds();
+        }
+
+        private void btnRight_Click(object sender, EventArgs e)
+        {
+            date = date.AddMonths(1);
+            LoadFilds();
+        }
+
+        private void btnLeft_Click(object sender, EventArgs e)
+        {
+            date = date.AddMonths(-1);
+            LoadFilds();
         }
     }
 }

@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 
 namespace GestaoFinanceira.Controllers
@@ -90,7 +89,10 @@ namespace GestaoFinanceira.Controllers
             foreach (var method in Context.PaymentMethod.ToList())
             {
                 if (method is Account)
+                {
                     report.Accounts.Add((Account)method);
+                    report.TotalIncome += ((Account)method).Balance;
+                }
                 else
                     report.CreditCards.Add((CreditCard)method);
             }
@@ -172,7 +174,7 @@ namespace GestaoFinanceira.Controllers
         {
             Report report = new Report();
             report.Accounts.Add(acc);
-            report.TotalIncome = 0.00;
+            report.TotalIncome = acc.Balance;
             report.TotalExpenses = 0.00;
             report.TotalRevenue = 0.00;
             report.Date = date;
@@ -187,7 +189,6 @@ namespace GestaoFinanceira.Controllers
                     }
                 }
             }
-            report.TotalIncome = acc.Balance - report.TotalExpenses;
             return report;
         }
 
@@ -195,31 +196,31 @@ namespace GestaoFinanceira.Controllers
         {
             Report report = new Report();
             report.CreditCards.Add(card);
-            report.TotalIncome = 0.00;
+            report.TotalIncome = card.Amount;
             report.TotalExpenses = 0.00;
             report.TotalRevenue = 0.00;
             report.Date = date;
 
-            foreach (var entry in Context.Expenses.Include("Category").Include("SubCategory").ToList())
+            foreach (var entry in Context.Expenses.Include("Category").Include("SubCategory").Where(e => e.PaymentMethod.Id == card.Id).ToList())
             {
                 if (CheckMonth(date, entry.Date) && entry.PaymentMethod is CreditCard)
                 {
-                    if (((CreditCard)entry.PaymentMethod).Id == card.Id)
+                    if (CheckMonthCreditCard(card.ClosingDate, entry.PaymentDate, date))
                     {
                         RulesForFeactures(report, entry);
+                        report.TotalExpenses += entry.Status is false ? entry.Value : -entry.Value;
                     }
                 }
             }
-            report.TotalIncome = card.Amount - report.TotalExpenses;
             return report;
         }
 
         private void RulesForFeactures(Report report, EntryExpenses entry)
         {
-            if (entry.EntryType == EntryType.Expense)
+            if (entry.EntryType == EntryType.Expense || entry.EntryType == EntryType.ExpenseCreditCard)
             {
-                report.TotalExpenses = entry.Value + report.TotalExpenses;
                 report.EntryExpenses.Add(entry);
+                report.TotalExpenses += entry.Status ? entry.Value : 0.00;
             }
 
             if (entry.EntryType == EntryType.Revenue)
@@ -234,26 +235,26 @@ namespace GestaoFinanceira.Controllers
             if (entry.EntryType == EntryType.AjustBalance)
                 report.EntryAjustBalance.Add(entry);
 
-            if (!report.Categories.Any(x => x.Id == entry.Category.Id) && !string.IsNullOrEmpty(entry.SubCategory.Description))
+            if (!report.Categories.Any(x => x.Id == entry.Category.Id) && !string.IsNullOrEmpty(entry.Category.Description))
                 report.Categories.Add(entry.Category);
 
             if (!report.SubCategories.Any(x => entry.SubCategory.Id == x.Id) && !string.IsNullOrEmpty(entry.SubCategory.Description))
                 report.SubCategories.Add(entry.SubCategory);
         }
 
-        public Report GenerateByCategories(DateTime date)
-        {
-            throw new NotImplementedException();
-        }
-        public Report GenerateBySubCategories()
-        {
-            throw new NotImplementedException();
-        }
-
         public bool CheckMonth(DateTime RefDate, DateTime EntryDate)
         {
             if (RefDate.Month == EntryDate.Date.Month && RefDate.Year == EntryDate.Date.Year)
                 return true;
+            return false;
+        }
+
+        public bool CheckMonthCreditCard(string RefDate, DateTime EntryDate, DateTime date)
+        {
+            //if (EntryDate.Date.Day >= Convert.ToInt32(RefDate))
+            if ((date.Month >= EntryDate.Month && EntryDate.Day >= Convert.ToInt32(RefDate)) ||
+                    (EntryDate.Month <= date.AddMonths(1).Month && EntryDate.Day <= Convert.ToInt32(RefDate)))
+                    return true;
             return false;
         }
 
