@@ -4,13 +4,12 @@ using GestaoFinanceira.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 
 namespace GestaoFinanceira.Controllers
 {
     class EntryExpensesController:ControllerBase
     {
-        AccountController ctrAcc = new AccountController();
-        CreditCardController ctrCard = new CreditCardController();
 
         public EntryExpensesController()
         {
@@ -45,9 +44,10 @@ namespace GestaoFinanceira.Controllers
                     Description = "Ajuste de Saldo",
                     Value = value > account.Balance ? value - account.Balance : account.Balance - value,
                     Date = DateTime.Now,
-                    EntryType = value > account.Balance ? Enums.EntryType.Revenue : Enums.EntryType.Expense,
-                    Category = Context.Categories.FirstOrDefault(c => c.Id == 8),
-                    PaymentMethod = account
+                    EntryType = value > account.Balance ? EntryType.Revenue : EntryType.Expense,
+                    Category = Context.Categories.Find(9),
+                    PaymentMethod = account,
+                    Status = true
                 };
 
             if (-1 * account.Limit < value)
@@ -67,26 +67,28 @@ namespace GestaoFinanceira.Controllers
 
         internal bool PerformTransaction(EntryExpenses entry)
         {
-            Account acc = new Account();
-            CreditCard card = new CreditCard();
-
             if (entry.EntryType == EntryType.Revenue)
             {
                 if (entry.PaymentMethod is Account)
                 {
-                    acc = Context.Accounts.FirstOrDefault(a => a.Id == entry.PaymentMethod.Id);
-                    acc.Balance += entry.Value;
-                    Context.SaveChanges();
+                    ReceivePayment(entry);
                     return true;
                 }
                 else
                     return false;
             }
-            else if (entry.EntryType == EntryType.Expense)
+            else if (entry.EntryType == EntryType.Expense || entry.EntryType == EntryType.ExpenseCreditCard)
             {
               return MakePayment(entry) ? true : false;
             }
             return false;
+        }
+
+        private void ReceivePayment(EntryExpenses entry)
+        {
+            Account acc = Context.Accounts.FirstOrDefault(a => a.Id == entry.PaymentMethod.Id);
+            acc.Balance += entry.Value;
+            Context.SaveChanges();
         }
 
         internal bool PerformTransfer(double value, int bankOrigin, int BankDestination, DateTime date)
@@ -100,22 +102,24 @@ namespace GestaoFinanceira.Controllers
 
             EntryExpenses inEntry = new EntryExpenses()
             {
-                Description = "Recebido de " + outAcc.Bank,
+                Description = $"Recebido de {GenerateCaptionHolder(outAcc.Holder)} - {outAcc.Bank}",
                 Value = value,
                 Date = date,
                 PaymentMethod = inAcc,
-                Category = Context.Categories.FirstOrDefault(c => c.Id == 9),
-                EntryType = EntryType.Transfer
+                Category = Context.Categories.Find(10),
+                EntryType = EntryType.Transfer,
+                Status = true
             };
 
             EntryExpenses outEntry = new EntryExpenses()
             {
-                Description = "Enviado para " + inAcc.Bank,
+                Description = $"Enviado para {GenerateCaptionHolder(inAcc.Holder)} - {inAcc.Bank}",
                 Value = value,
                 Date = date,
-                Category = Context.Categories.FirstOrDefault(c => c.Id == 9),
+                Category = Context.Categories.Find(10),
                 PaymentMethod = outAcc,
-                EntryType = EntryType.Transfer
+                EntryType = EntryType.Transfer,
+                Status = true
             };
             Save(inEntry);
             Save(outEntry);
@@ -128,8 +132,8 @@ namespace GestaoFinanceira.Controllers
             CreditCard card;
             if (entry.PaymentMethod is Account)
             {
-                acc = Context.Accounts.FirstOrDefault(a => a.Id == entry.PaymentMethod.Id);
-                if (acc.Balance > (-1) * acc.Limit)
+                acc = Context.Accounts.First( a => a.Id == entry.PaymentMethod.Id);
+                if ((acc.Balance - entry.Value) > (-1) * (acc.Limit))
                 {
                     acc.Balance += - entry.Value;
                     Context.SaveChanges();
@@ -139,18 +143,79 @@ namespace GestaoFinanceira.Controllers
                     return false;
             }else
             {
-                card = Context.CreditCards.FirstOrDefault(a => a.Id == entry.PaymentMethod.Id);
-                if (card.Amount > (-1) * card.Limit)
-                {
-                    card.Amount += -entry.Value;
-                    ctrCard.Save(card);
-                    return true;
-                }
-                else
-                    return false;
-
+                card = entry.PaymentMethod as CreditCard;
+                //Se data de fechamento menor que data de pagamento da conta data de pagamento vai para o mês que vem.
+                int day = Convert.ToInt32(card.DueDate);
+                int month = Convert.ToInt32(card.ClosingDate) < entry.Date.Day ? entry.Date.AddMonths(1).Month : entry.Date.Month;
+                int year = Convert.ToInt32(card.ClosingDate) < entry.Date.Day ? entry.Date.AddMonths(2).Year : entry.Date.AddMonths(1).Year;
+                entry.PaymentDate = DateTime.Parse($"{day}-{month}-{year}");
+                    if (card.Amount > (-1) * card.Limit)
+                    {
+                        card.Amount += -entry.Value;
+                        Context.SaveChanges();
+                        return true;
+                    }
+                    else
+                        return false;
             }
-            return false;
+        }
+
+        internal void PayCreditCard(int idAcc, int idCredit, double valueToPay, double valueParcel, DateTime DatePaid ,DateTime dateToPay)
+        {
+            CreditCard card = Context.CreditCards.Find(idCredit);
+            EntryExpenses entry = new EntryExpenses
+            {
+                Description = $"{GenerateCaptionHolder(card.Holder)} fatura - {card.Issuer}",
+                Value = valueToPay,
+                EntryType = EntryType.ExpenseCreditCard,
+                Date = DatePaid,
+                Category = Context.Categories.Find(6),
+                SubCategory = Context.SubCategories.Find(14),
+                PaymentMethod = Context.PaymentMethod.Find(idAcc),
+                Status = true
+            };
+
+            PerformTransaction(entry);
+            Save(entry);
+
+            if (valueParcel > 0)
+            {
+                entry = new EntryExpenses
+                {
+                    Description = $"{GenerateCaptionHolder(card.Holder)} fatura parcial - {card.Issuer}",
+                    Value = valueParcel,
+                    EntryType = EntryType.ExpenseCreditCard,
+                    Date = dateToPay.AddMonths(1),
+                    Category = Context.Categories.Find(6),
+                    SubCategory = Context.SubCategories.Find(14),
+                    PaymentMethod = card
+                };
+                Save(entry);
+            }
+        }
+
+        internal void SplitAccount(int value, EntryExpenses model)
+        {
+            PerformTransaction(model);
+            for (int i = 1; i < value; i++)
+            {
+                model.Date = model.Date.AddMonths(1);
+                model.CaptionRepeat = $"({i+1}/{value})";
+                PerformTransaction(model);
+                Save(model.Clone());
+            }
+        }
+
+        public string GenerateCaptionHolder(string name)
+        {
+            string abbreviation = "";
+            var names = name.Split(' ');
+            for (int i = names.Length; i > 0; i--)
+            {
+                abbreviation = names[i - 1].Remove(1, names[i - 1].Length - 1) + "." + abbreviation;
+            }
+
+            return abbreviation;
         }
     }
 }

@@ -1,22 +1,17 @@
-﻿using GestaoFinanceira.BD.Conections;
+﻿
 using GestaoFinanceira.Controllers;
 using GestaoFinanceira.Model;
+using GestaoFinanceira.Views.Utils;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.Entity.Core.Common.CommandTrees;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestaoFinanceira.Views
 {
     public partial class FrmCreditCard : Form
     {
-        public CreditCard creditCard;
+        public CreditCard creditCard; 
+        AccountController ctrAccount = new AccountController();
         CreditCardController ctr = new CreditCardController();
         public bool isEditMode { get; private set; } = false;
 
@@ -37,8 +32,9 @@ namespace GestaoFinanceira.Views
         }
         private bool IsValid()
         {
-            return this.ValidFields(txtLimit, txtHolder, txtIssuer, mtxtClosingDate, mtxtExpirationDate, mtxtLateFee, mtxtNumber);
+            return this.ValidFields(txtLimit, txtHolder, txtIssuer, mtxtClosingDate, mtxtExpirationDate, mtxtLateFee, mtxtNumber, mtxtDueDate, mtxtInterest, mtxtInterestDay);
         }
+
         private void txtIssuer_TextChanged(object sender, EventArgs e)
         {
             btnSave.Enabled = IsValid();
@@ -64,7 +60,10 @@ namespace GestaoFinanceira.Views
                 Number = mtxtNumber.Text,
                 Issuer = txtIssuer.Text,
                 LateFee = Convert.ToDouble(mtxtLateFee.Text.Replace(" %", "")),
+                InterestPerDay = Convert.ToDouble(mtxtInterestDay.Text.Replace(" %", "")),
+                InterestPerMonth = Convert.ToDouble(mtxtInterest.Text.Replace(" %", "")),
                 ClosingDate = mtxtClosingDate.Text,
+                DueDate = mtxtDueDate.Text,
                 ExpirationDate = mtxtExpirationDate.Text,
                 Limit = Convert.ToDouble(txtLimit.Text.Replace("R$ ", "")),
                 Amount = Convert.ToDouble(txtLimit.Text.Replace("R$ ", ""))
@@ -77,8 +76,11 @@ namespace GestaoFinanceira.Views
             txtHolder.Text = creditCard.Holder;
             mtxtNumber.Text = creditCard.Number;
             txtIssuer.Text = creditCard.Issuer;
+            mtxtInterestDay.Text = Convert.ToString(creditCard.InterestPerDay);
+            mtxtInterest.Text = Convert.ToString(creditCard.InterestPerMonth);
             mtxtLateFee.Text = Convert.ToString(creditCard.LateFee);
             mtxtClosingDate.Text = creditCard.ClosingDate;
+            mtxtDueDate.Text = creditCard.DueDate;
             mtxtExpirationDate.Text = creditCard.ExpirationDate;
             txtLimit.Text = Convert.ToString(creditCard.Limit);
             isEditMode = true;
@@ -89,11 +91,47 @@ namespace GestaoFinanceira.Views
             this.creditCard.Number = mtxtNumber.Text;
             this.creditCard.Issuer = txtIssuer.Text;
             this.creditCard.LateFee = Convert.ToDouble(mtxtLateFee.Text.Replace(" %", ""));
+            this.creditCard.InterestPerDay = Convert.ToDouble(mtxtInterestDay.Text.Replace(" %", ""));
+            this.creditCard.InterestPerMonth = Convert.ToDouble(mtxtInterest.Text.Replace(" %", ""));
             this.creditCard.ClosingDate = mtxtClosingDate.Text;
+            this.creditCard.DueDate = mtxtDueDate.Text;
             this.creditCard.ExpirationDate = mtxtExpirationDate.Text;
             this.creditCard.Amount = Convert.ToDouble(txtLimit.Text.Replace("R$ ", "")) - this.creditCard.GetBanlce();
             this.creditCard.Limit = Convert.ToDouble(txtLimit.Text.Replace("R$ ", ""));
             return this.creditCard;
+        }
+
+        private void mtxtClosingDate_Validated(object sender, EventArgs e)
+        {
+            if (mtxtClosingDate.MaskCompleted)
+            {
+                mtxtClosingDate.Text = Convert.ToDouble(mtxtClosingDate.Text) > 30 ? 30.ToString() : mtxtClosingDate.Text;
+            }
+        }
+
+        private void mtxtExpirationDate_Validated(object sender, EventArgs e)
+        {
+            if (mtxtExpirationDate.MaskCompleted) {
+                string str = mtxtExpirationDate.Text.Substring(0, mtxtExpirationDate.Text.IndexOf("/"));
+                string str2 = mtxtExpirationDate.Text.Substring(3, 4);
+
+                mtxtExpirationDate.Text = Convert.ToDouble(str) > 12 ? $"{12}/{str2}" : mtxtExpirationDate.Text;
+            }
+        }
+
+        private void mtxtDueDate_Validated(object sender, EventArgs e)
+        {
+            if (mtxtDueDate.MaskCompleted)
+            {
+                mtxtDueDate.Text = Convert.ToDouble(mtxtDueDate.Text) > 30 ? 30.ToString() : mtxtDueDate.Text;
+            }
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            Form InfoJuros = new FrmAboutInterest();
+            InfoJuros.Show();
+
         }
     }
 }

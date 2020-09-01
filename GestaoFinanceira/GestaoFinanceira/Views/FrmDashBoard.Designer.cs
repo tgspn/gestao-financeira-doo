@@ -31,15 +31,17 @@ namespace GestaoFinanceira
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea28 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend28 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series28 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea29 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend29 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series29 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea30 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend30 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series30 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDashBoard));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -47,7 +49,6 @@ namespace GestaoFinanceira
             this.lbBalance = new System.Windows.Forms.Label();
             this.lbRevenue = new System.Windows.Forms.Label();
             this.lbExpense = new System.Windows.Forms.Label();
-            this.lb_Month = new System.Windows.Forms.Label();
             this.ctBank = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.ctCreditCard = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.ctCategories = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -59,6 +60,7 @@ namespace GestaoFinanceira
             this.despesaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.receitaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.relatórioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
@@ -88,7 +90,10 @@ namespace GestaoFinanceira
             this.btnOpenExpense = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.btnLeft = new System.Windows.Forms.Button();
+            this.btnRight = new System.Windows.Forms.Button();
             this.btnOpenCalendar = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ctBank)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctCreditCard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctCategories)).BeginInit();
@@ -104,7 +109,7 @@ namespace GestaoFinanceira
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(127, 3);
+            this.label1.Location = new System.Drawing.Point(147, 3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(87, 13);
             this.label1.TabIndex = 0;
@@ -113,7 +118,7 @@ namespace GestaoFinanceira
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(52, 8);
+            this.label2.Location = new System.Drawing.Point(62, 7);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 13);
             this.label2.TabIndex = 0;
@@ -122,7 +127,7 @@ namespace GestaoFinanceira
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(250, 8);
+            this.label3.Location = new System.Drawing.Point(259, 8);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 13);
             this.label3.TabIndex = 0;
@@ -131,7 +136,7 @@ namespace GestaoFinanceira
             // lbBalance
             // 
             this.lbBalance.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbBalance.Location = new System.Drawing.Point(61, 16);
+            this.lbBalance.Location = new System.Drawing.Point(81, 16);
             this.lbBalance.Name = "lbBalance";
             this.lbBalance.Size = new System.Drawing.Size(223, 24);
             this.lbBalance.TabIndex = 0;
@@ -141,7 +146,7 @@ namespace GestaoFinanceira
             // lbRevenue
             // 
             this.lbRevenue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbRevenue.Location = new System.Drawing.Point(51, 20);
+            this.lbRevenue.Location = new System.Drawing.Point(59, 20);
             this.lbRevenue.Name = "lbRevenue";
             this.lbRevenue.Size = new System.Drawing.Size(119, 20);
             this.lbRevenue.TabIndex = 0;
@@ -151,107 +156,104 @@ namespace GestaoFinanceira
             // lbExpense
             // 
             this.lbExpense.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbExpense.Location = new System.Drawing.Point(249, 21);
+            this.lbExpense.Location = new System.Drawing.Point(258, 21);
             this.lbExpense.Name = "lbExpense";
             this.lbExpense.Size = new System.Drawing.Size(115, 20);
             this.lbExpense.TabIndex = 0;
             this.lbExpense.Text = "-";
             this.lbExpense.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // lb_Month
-            // 
-            this.lb_Month.AutoSize = true;
-            this.lb_Month.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_Month.Location = new System.Drawing.Point(145, 13);
-            this.lb_Month.Name = "lb_Month";
-            this.lb_Month.Size = new System.Drawing.Size(56, 24);
-            this.lb_Month.TabIndex = 3;
-            this.lb_Month.Text = "Julho";
-            // 
             // ctBank
             // 
             this.ctBank.AccessibleDescription = "Contas Bancárias";
-            chartArea28.Name = "ChartArea1";
-            this.ctBank.ChartAreas.Add(chartArea28);
+            chartArea1.Name = "ChartArea1";
+            this.ctBank.ChartAreas.Add(chartArea1);
             this.ctBank.Cursor = System.Windows.Forms.Cursors.Hand;
-            legend28.Name = "Legend1";
-            this.ctBank.Legends.Add(legend28);
+            legend1.Name = "Legend1";
+            this.ctBank.Legends.Add(legend1);
             this.ctBank.Location = new System.Drawing.Point(3, 172);
             this.ctBank.Name = "ctBank";
-            series28.ChartArea = "ChartArea1";
-            series28.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series28.Legend = "Legend1";
-            series28.Name = "Bank";
-            this.ctBank.Series.Add(series28);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "Bank";
+            this.ctBank.Series.Add(series1);
             this.ctBank.Size = new System.Drawing.Size(330, 136);
             this.ctBank.TabIndex = 6;
             this.ctBank.Text = "chart1";
+            this.toolTip1.SetToolTip(this.ctBank, "Listar contas bancárias (Clique para abrir)");
             this.ctBank.Click += new System.EventHandler(this.contaToolStripMenuItem_Click);
             // 
             // ctCreditCard
             // 
             this.ctCreditCard.AccessibleDescription = "Cartão de Crédito";
             this.ctCreditCard.BorderSkin.BorderWidth = 0;
-            chartArea29.AxisX2.Title = "Cartões";
-            chartArea29.AxisY.Title = "Reais";
-            chartArea29.AxisY2.Title = "Cartões";
-            chartArea29.Name = "ChartArea1";
-            this.ctCreditCard.ChartAreas.Add(chartArea29);
+            chartArea2.AxisX2.Title = "Cartões";
+            chartArea2.AxisY.Title = "Reais";
+            chartArea2.AxisY2.Title = "Cartões";
+            chartArea2.Name = "ChartArea1";
+            this.ctCreditCard.ChartAreas.Add(chartArea2);
             this.ctCreditCard.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ctCreditCard.IsSoftShadows = false;
-            legend29.Name = "Legend1";
-            this.ctCreditCard.Legends.Add(legend29);
+            legend2.Name = "Legend1";
+            this.ctCreditCard.Legends.Add(legend2);
             this.ctCreditCard.Location = new System.Drawing.Point(3, 314);
             this.ctCreditCard.Name = "ctCreditCard";
-            this.ctCreditCard.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
             this.ctCreditCard.PaletteCustomColors = new System.Drawing.Color[] {
         System.Drawing.Color.Blue};
             this.ctCreditCard.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            series29.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Top;
-            series29.BackImageTransparentColor = System.Drawing.Color.White;
-            series29.BackImageWrapMode = System.Windows.Forms.DataVisualization.Charting.ChartImageWrapMode.TileFlipX;
-            series29.BorderWidth = 0;
-            series29.ChartArea = "ChartArea1";
-            series29.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
-            series29.IsVisibleInLegend = false;
-            series29.Label = "0";
-            series29.LabelBackColor = System.Drawing.Color.Transparent;
-            series29.Legend = "Legend1";
-            series29.LegendText = "Cartões";
-            series29.MarkerBorderWidth = 0;
-            series29.MarkerSize = 1;
-            series29.Name = "CreditCard";
-            this.ctCreditCard.Series.Add(series29);
+            series2.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Top;
+            series2.BackImageTransparentColor = System.Drawing.Color.White;
+            series2.BackImageWrapMode = System.Windows.Forms.DataVisualization.Charting.ChartImageWrapMode.TileFlipX;
+            series2.BorderWidth = 0;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
+            series2.IsVisibleInLegend = false;
+            series2.LabelBackColor = System.Drawing.Color.Transparent;
+            series2.Legend = "Legend1";
+            series2.LegendText = "Cartões";
+            series2.MarkerBorderWidth = 0;
+            series2.MarkerSize = 1;
+            series2.Name = "Saldo";
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
+            series3.IsVisibleInLegend = false;
+            series3.Legend = "Legend1";
+            series3.Name = "Limite";
+            this.ctCreditCard.Series.Add(series2);
+            this.ctCreditCard.Series.Add(series3);
             this.ctCreditCard.Size = new System.Drawing.Size(330, 136);
             this.ctCreditCard.TabIndex = 6;
             this.ctCreditCard.TabStop = false;
             this.ctCreditCard.Text = "chart1";
+            this.toolTip1.SetToolTip(this.ctCreditCard, "Listar cartões (Clique para abrir)");
             this.ctCreditCard.Click += new System.EventHandler(this.ctCreditCard_Click);
             // 
             // ctCategories
             // 
             this.ctCategories.AccessibleDescription = "Categorias";
-            chartArea30.Name = "ChartArea1";
-            this.ctCategories.ChartAreas.Add(chartArea30);
+            chartArea3.Name = "ChartArea1";
+            this.ctCategories.ChartAreas.Add(chartArea3);
             this.ctCategories.Cursor = System.Windows.Forms.Cursors.Hand;
-            legend30.Name = "Legend1";
-            this.ctCategories.Legends.Add(legend30);
+            legend3.Name = "Legend1";
+            this.ctCategories.Legends.Add(legend3);
             this.ctCategories.Location = new System.Drawing.Point(3, 13);
             this.ctCategories.Name = "ctCategories";
-            series30.ChartArea = "ChartArea1";
-            series30.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series30.Legend = "Legend1";
-            series30.Name = "Categories";
-            this.ctCategories.Series.Add(series30);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series4.Legend = "Legend1";
+            series4.Name = "Categories";
+            this.ctCategories.Series.Add(series4);
             this.ctCategories.Size = new System.Drawing.Size(330, 136);
             this.ctCategories.TabIndex = 6;
             this.ctCategories.Text = "Categorias";
+            this.toolTip1.SetToolTip(this.ctCategories, "Listar despesas Despesas (Clique para abrir)");
             this.ctCategories.Click += new System.EventHandler(this.btnOpenExpense_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(121, 50);
+            this.label4.Location = new System.Drawing.Point(141, 50);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(57, 13);
             this.label4.TabIndex = 0;
@@ -260,7 +262,7 @@ namespace GestaoFinanceira
             // lbEconomy
             // 
             this.lbEconomy.AutoSize = true;
-            this.lbEconomy.Location = new System.Drawing.Point(184, 50);
+            this.lbEconomy.Location = new System.Drawing.Point(204, 50);
             this.lbEconomy.Name = "lbEconomy";
             this.lbEconomy.Size = new System.Drawing.Size(21, 13);
             this.lbEconomy.TabIndex = 0;
@@ -286,6 +288,7 @@ namespace GestaoFinanceira
             this.opçõesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.novoToolStripMenuItem,
             this.toolStripMenuItem1,
+            this.relatórioToolStripMenuItem,
             this.importarToolStripMenuItem,
             this.exportarToolStripMenuItem,
             this.toolStripMenuItem2,
@@ -300,7 +303,7 @@ namespace GestaoFinanceira
             this.despesaToolStripMenuItem,
             this.receitaToolStripMenuItem});
             this.novoToolStripMenuItem.Name = "novoToolStripMenuItem";
-            this.novoToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.novoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.novoToolStripMenuItem.Text = "Novo";
             // 
             // despesaToolStripMenuItem
@@ -320,32 +323,41 @@ namespace GestaoFinanceira
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(132, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // relatórioToolStripMenuItem
+            // 
+            this.relatórioToolStripMenuItem.Name = "relatórioToolStripMenuItem";
+            this.relatórioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.relatórioToolStripMenuItem.Text = "Relatório";
+            this.relatórioToolStripMenuItem.Click += new System.EventHandler(this.gerarRelatórioToolStripMenuItem_Click);
             // 
             // importarToolStripMenuItem
             // 
             this.importarToolStripMenuItem.Name = "importarToolStripMenuItem";
-            this.importarToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.importarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.importarToolStripMenuItem.Text = "Importar";
+            this.importarToolStripMenuItem.Visible = false;
             this.importarToolStripMenuItem.Click += new System.EventHandler(this.gerarRelatórioToolStripMenuItem_Click);
             // 
             // exportarToolStripMenuItem
             // 
             this.exportarToolStripMenuItem.Name = "exportarToolStripMenuItem";
-            this.exportarToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.exportarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exportarToolStripMenuItem.Text = "Exportar";
+            this.exportarToolStripMenuItem.Visible = false;
             this.exportarToolStripMenuItem.Click += new System.EventHandler(this.exportarToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(132, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
             // 
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
             this.sairToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.sairToolStripMenuItem.Text = "&Sair";
             this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click_1);
             // 
@@ -485,6 +497,7 @@ namespace GestaoFinanceira
             this.btnOpenBank.Size = new System.Drawing.Size(49, 50);
             this.btnOpenBank.TabIndex = 5;
             this.btnOpenBank.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnOpenBank, "Adcionar conta");
             this.btnOpenBank.UseVisualStyleBackColor = true;
             this.btnOpenBank.Click += new System.EventHandler(this.btnOpenBank_Click);
             // 
@@ -494,13 +507,14 @@ namespace GestaoFinanceira
             this.btnOpenEntries.FlatAppearance.BorderSize = 0;
             this.btnOpenEntries.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpenEntries.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenEntries.Image")));
-            this.btnOpenEntries.Location = new System.Drawing.Point(161, 12);
+            this.btnOpenEntries.Location = new System.Drawing.Point(170, 12);
             this.btnOpenEntries.Margin = new System.Windows.Forms.Padding(2);
             this.btnOpenEntries.Name = "btnOpenEntries";
             this.btnOpenEntries.Size = new System.Drawing.Size(42, 42);
             this.btnOpenEntries.TabIndex = 5;
             this.btnOpenEntries.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnOpenEntries.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnOpenEntries, "Adcionar receita ou despesa");
             this.btnOpenEntries.UseVisualStyleBackColor = true;
             this.btnOpenEntries.Click += new System.EventHandler(this.btnOpenEntries_Click);
             // 
@@ -516,6 +530,7 @@ namespace GestaoFinanceira
             this.btnOpenCreditCard.Size = new System.Drawing.Size(49, 50);
             this.btnOpenCreditCard.TabIndex = 5;
             this.btnOpenCreditCard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnOpenCreditCard, "Adcionar cartão de crédito");
             this.btnOpenCreditCard.UseVisualStyleBackColor = true;
             this.btnOpenCreditCard.Click += new System.EventHandler(this.btnOpenCreditCard_Click);
             // 
@@ -559,12 +574,13 @@ namespace GestaoFinanceira
             this.btnOpenRevenue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpenRevenue.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenRevenue.Image")));
             this.btnOpenRevenue.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOpenRevenue.Location = new System.Drawing.Point(16, 1);
+            this.btnOpenRevenue.Location = new System.Drawing.Point(18, 1);
             this.btnOpenRevenue.Name = "btnOpenRevenue";
             this.btnOpenRevenue.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnOpenRevenue.Size = new System.Drawing.Size(40, 39);
             this.btnOpenRevenue.TabIndex = 5;
             this.btnOpenRevenue.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnOpenRevenue, "Receitas (Clique para abrir)");
             this.btnOpenRevenue.UseVisualStyleBackColor = true;
             this.btnOpenRevenue.Click += new System.EventHandler(this.btnOpenRevenue_Click);
             // 
@@ -574,11 +590,12 @@ namespace GestaoFinanceira
             this.btnOpenExpense.FlatAppearance.BorderSize = 0;
             this.btnOpenExpense.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpenExpense.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenExpense.Image")));
-            this.btnOpenExpense.Location = new System.Drawing.Point(205, 3);
+            this.btnOpenExpense.Location = new System.Drawing.Point(214, 3);
             this.btnOpenExpense.Margin = new System.Windows.Forms.Padding(2);
             this.btnOpenExpense.Name = "btnOpenExpense";
             this.btnOpenExpense.Size = new System.Drawing.Size(40, 39);
             this.btnOpenExpense.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.btnOpenExpense, "Despesas (Clique para abrir)");
             this.btnOpenExpense.UseVisualStyleBackColor = true;
             this.btnOpenExpense.Click += new System.EventHandler(this.btnOpenExpense_Click);
             // 
@@ -595,23 +612,61 @@ namespace GestaoFinanceira
             // 
             // panel6
             // 
+            this.panel6.Controls.Add(this.btnLeft);
+            this.panel6.Controls.Add(this.btnRight);
             this.panel6.Controls.Add(this.btnOpenCalendar);
-            this.panel6.Controls.Add(this.lb_Month);
             this.panel6.Location = new System.Drawing.Point(3, 24);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(379, 47);
             this.panel6.TabIndex = 16;
             // 
+            // btnLeft
+            // 
+            this.btnLeft.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLeft.FlatAppearance.BorderSize = 0;
+            this.btnLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.btnLeft.Image = global::GestaoFinanceira.Properties.Resources.icons8_chevron_left_26px_2;
+            this.btnLeft.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLeft.Location = new System.Drawing.Point(102, 9);
+            this.btnLeft.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLeft.Name = "btnLeft";
+            this.btnLeft.Size = new System.Drawing.Size(24, 33);
+            this.btnLeft.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.btnLeft, "Voltar um mês");
+            this.btnLeft.UseVisualStyleBackColor = true;
+            this.btnLeft.Click += new System.EventHandler(this.btnLeft_Click);
+            // 
+            // btnRight
+            // 
+            this.btnRight.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRight.FlatAppearance.BorderSize = 0;
+            this.btnRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRight.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.btnRight.Image = global::GestaoFinanceira.Properties.Resources.icons8_chevron_right_26px_1;
+            this.btnRight.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRight.Location = new System.Drawing.Point(250, 9);
+            this.btnRight.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRight.Name = "btnRight";
+            this.btnRight.Size = new System.Drawing.Size(24, 33);
+            this.btnRight.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.btnRight, "Avançar um mês");
+            this.btnRight.UseVisualStyleBackColor = true;
+            this.btnRight.Click += new System.EventHandler(this.btnRight_Click);
+            // 
             // btnOpenCalendar
             // 
+            this.btnOpenCalendar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOpenCalendar.FlatAppearance.BorderSize = 0;
             this.btnOpenCalendar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOpenCalendar.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenCalendar.Image")));
-            this.btnOpenCalendar.Location = new System.Drawing.Point(114, 12);
+            this.btnOpenCalendar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.btnOpenCalendar.Location = new System.Drawing.Point(134, 9);
             this.btnOpenCalendar.Margin = new System.Windows.Forms.Padding(2);
             this.btnOpenCalendar.Name = "btnOpenCalendar";
-            this.btnOpenCalendar.Size = new System.Drawing.Size(26, 25);
+            this.btnOpenCalendar.Size = new System.Drawing.Size(114, 33);
             this.btnOpenCalendar.TabIndex = 4;
+            this.btnOpenCalendar.Text = "Dezembro";
+            this.toolTip1.SetToolTip(this.btnOpenCalendar, "Abrir calendário");
             this.btnOpenCalendar.UseVisualStyleBackColor = true;
             this.btnOpenCalendar.Click += new System.EventHandler(this.btnOpenCalendar_Click);
             // 
@@ -650,7 +705,6 @@ namespace GestaoFinanceira
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -664,7 +718,6 @@ namespace GestaoFinanceira
         private System.Windows.Forms.Label lbBalance;
         private System.Windows.Forms.Label lbRevenue;
         private System.Windows.Forms.Label lbExpense;
-        private System.Windows.Forms.Label lb_Month;
         private System.Windows.Forms.Button btnOpenExpense;
         private System.Windows.Forms.Button btnOpenBank;
         private System.Windows.Forms.Button btnOpenCreditCard;
@@ -707,6 +760,10 @@ namespace GestaoFinanceira
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button btnRight;
+        private System.Windows.Forms.Button btnLeft;
+        private System.Windows.Forms.ToolStripMenuItem relatórioToolStripMenuItem;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 

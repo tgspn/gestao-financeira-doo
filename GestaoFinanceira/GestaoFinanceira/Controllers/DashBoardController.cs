@@ -1,17 +1,10 @@
 using GestaoFinanceira.BD.Conections;
 using GestaoFinanceira.Enums;
 using GestaoFinanceira.Model;
-using GestaoFinanceira.Utils;
 using System;
-using System.CodeDom;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
-using System.Reflection;
-using System.Security;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -89,7 +82,6 @@ namespace GestaoFinanceira.Controllers
 
         public void GenerateChart(Chart chart, ChartType typeChart, DateTime date)
         {
-            double saldoBank = 0.00;
             double percent = 0.00;
             int i = 0;
 
@@ -112,13 +104,19 @@ namespace GestaoFinanceira.Controllers
                     break;
 
                 case ChartType.CreditCard:
-                    chart.Series["CreditCard"].Points.Clear();
+                    chart.Series["Saldo"].Points.Clear();
+                    chart.Series["Limite"].Points.Clear();
+
                     foreach (var card in ctrCredit.List().ToList())
                     {
                         Report reportCard = ctrReport.GenerateByCreditCard(date, card);
-                        chart.Series["CreditCard"].Points.Add(i);
-                        chart.Series["CreditCard"].Points[i].YValues[0] = reportCard.TotalExpenses;
-                        chart.Series["CreditCard"].Points[i].Label = GenerateCaptionHolder(card.Holder) + " - " + card.Issuer;
+                        var value = ctrEntry.List().Where(e =>
+                        e.PaymentMethod.Id == reportCard.CreditCards[0].Id &&
+                        e.Status == false).Sum(e => e.Value);
+
+                        chart.Series["Saldo"].Points.AddXY($"{GenerateCaptionHolder(card.Holder)} - {card.Issuer}", value.ToString("C"));
+                        chart.Series["Limite"].Points.AddXY($"{GenerateCaptionHolder(card.Holder)} - {card.Issuer}", ((double)(report.CreditCards[0].Limit - value)).ToString("C"));
+                        chart.Series["Limite"].Points[i].Label = ((double)(report.CreditCards[0].Limit - value)).ToString();
                         i++;
                     }
                     break;
@@ -126,19 +124,20 @@ namespace GestaoFinanceira.Controllers
                 case ChartType.Categories:
                     chart.Series["Categories"].Points.Clear();
                     chart.Series["Categories"].ChartType = SeriesChartType.Pie;
-                  var listEntries = ctrEntry.List().Where(entry => entry.Date.ToString("MMM yyyy") == date.ToString("MMM yyyy"));
-                  double saldoCat = 0.00;
+                    var listEntries = report.EntryExpenses;
+                    double gastosTotais = CalcBalanceCreditCard(report, date);
+                    double saldoCat = 0.00;
 
                     foreach (var cat in report.Categories)
                     {
                         saldoCat = 0.00;
                         foreach (var entry in listEntries)
                         {
-                            if (cat.type == EntryType.Expense && cat.Description == entry.Category.Description)
+                            if ((cat.type == EntryType.Expense || cat.type == EntryType.ExpenseCreditCard) && cat.Description == entry.Category.Description)
                             {
                                     saldoCat = listEntries.Sum(e => e.Category.Id == cat.Id ? e.Value : 0.00);
 
-                                percent = (saldoCat / report.TotalExpenses);
+                                percent = (saldoCat / gastosTotais);
                                 chart.Series["Categories"].Points.Add(i);
                                 chart.Series["Categories"].Points[i].LegendText = cat.Description;
                                 chart.Series["Categories"].Points[i].Label = percent.ToString("P");
@@ -189,6 +188,22 @@ namespace GestaoFinanceira.Controllers
                     }
                 }
             }
+        }
+
+        private double CalcBalanceCreditCard(Report report, DateTime date)
+        {
+            if (report.Accounts.Count == 0)
+            {
+                double total = 0;
+                foreach (var entry in report.EntryExpenses)
+                {
+                    if ((date.Month >= entry.Date.Month && entry.Date.Day >= Convert.ToInt32(report.CreditCards[0].ClosingDate)) ||
+                        (entry.Date.Month <= date.AddMonths(1).Month && entry.Date.Day <= Convert.ToInt32(report.CreditCards[0].ClosingDate)))
+                        total += entry.Value;
+                }
+                return total;
+            }
+            return report.EntryExpenses.Sum(e => e.Value);
         }
 
         public void LoadReport(DateTime date)

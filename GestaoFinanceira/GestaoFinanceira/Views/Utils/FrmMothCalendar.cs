@@ -87,5 +87,10 @@ namespace GestaoFinanceira.Views
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+
+        private void btn_Cancelar_Click(object sender, EventArgs e)
+        {
+           
+        }
     }
 }

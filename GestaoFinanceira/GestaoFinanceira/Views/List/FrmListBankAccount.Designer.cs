@@ -159,7 +159,7 @@
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(37, 36);
             this.btnCancel.TabIndex = 10;
-            this.toolTip1.SetToolTip(this.btnCancel, "Excluir");
+            this.toolTip1.SetToolTip(this.btnCancel, "Sair");
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -219,7 +219,7 @@
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(37, 36);
             this.btnDelete.TabIndex = 12;
-            this.toolTip1.SetToolTip(this.btnDelete, "Lixeira");
+            this.toolTip1.SetToolTip(this.btnDelete, "Excluir");
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 

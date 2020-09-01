@@ -4,6 +4,7 @@ using GestaoFinanceira.Model;
 using System;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace GestaoFinanceira.Views
@@ -21,15 +22,16 @@ namespace GestaoFinanceira.Views
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            if (txtAccount.Text != "" || txtAgency.Text != "" || txtBank.Text != "" || txtHolder.Text != "" || txtLimit.Text != "" )
+            if (txtAccount.Text != "" || txtAgency.Text != "" || txtBank.Text != "" || txtHolder.Text != "" || nupLimit.Value != 0)
             {
-               var result = MessageBox.Show("Tem certeza que deseja cancelar ?", "Há campos preenchidos", MessageBoxButtons.YesNo);
-                
+                var result = MessageBox.Show("Tem certeza que deseja cancelar ?", "Há campos preenchidos", MessageBoxButtons.YesNo);
+
                 if (result == DialogResult.Yes)
                 {
                     this.Close();
                 }
-            }else
+            }
+            else
                 this.Close();
         }
 
@@ -39,8 +41,8 @@ namespace GestaoFinanceira.Views
             {
                 SetBankAccount();
             }
-                ctr.Save(Account);
-            
+            ctr.Save(Account);
+
             MessageBox.Show("Conta Bancária salvo com sucesso!", "Registro");
             this.DialogResult = DialogResult.OK;
             this.Close();
@@ -48,11 +50,11 @@ namespace GestaoFinanceira.Views
 
         private void txtHolder_TextChanged(object sender, EventArgs e)
         {
-                btnSave.Enabled = IsValid();
-        }   
+            btnSave.Enabled = IsValid();
+        }
         private bool IsValid()
         {
-            return this.ValidFields(txtAccount, txtAgency, txtBank, txtHolder, txtLimit);
+            return this.ValidFields(txtAccount, txtAgency, txtBank, txtHolder, nupLimit);
         }
 
         public void SetBankAccount()
@@ -60,7 +62,7 @@ namespace GestaoFinanceira.Views
             this.Account = new Account();
             this.Account.AccountBank = txtAccount.Text;
             this.Account.Agency = Convert.ToInt32(txtAgency.Text);
-            this.Account.Limit = Convert.ToDouble(txtLimit.Text);
+            this.Account.Limit = (double)nupLimit.Value;
             this.Account.Holder = txtHolder.Text;
             this.Account.Bank = txtBank.Text;
         }
@@ -70,7 +72,7 @@ namespace GestaoFinanceira.Views
             this.Account = accountBank;
             txtAccount.Text = Convert.ToString(accountBank.AccountBank);
             txtAgency.Text = Convert.ToString(accountBank.Agency);
-            txtLimit.Text = Convert.ToString(accountBank.Limit);
+            nupLimit.Value = (decimal)accountBank.Limit;
             txtHolder.Text = accountBank.Holder;
             txtBank.Text = accountBank.Bank;
             isEditMode = true;
@@ -80,10 +82,23 @@ namespace GestaoFinanceira.Views
         {
             this.Account.AccountBank = txtAccount.Text;
             this.Account.Agency = Convert.ToInt32(txtAgency.Text);
-            this.Account.Limit = Convert.ToDouble(txtLimit.Text);
+            this.Account.Limit = (double)nupLimit.Value;
             this.Account.Holder = txtHolder.Text;
             this.Account.Bank = txtBank.Text;
             return this.Account;
+        }
+
+        private void txtAgency_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = Regex.IsMatch(txtAgency.Text, @"[\D]");
+        }
+
+        private void txtAgency_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
